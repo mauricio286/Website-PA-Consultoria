@@ -217,6 +217,22 @@ img {
   background-color: var(--color-primary-dark);
 }
 
+.btn-pa.gray {
+  color: #303030;
+  width: fit-content;
+}
+.btn-pa.gray::after {
+  background-color: #f0f0f0;
+}
+
+.btn-pa.green-accent {
+  color: #ffffff;
+  width: fit-content;
+}
+.btn-pa.green-accent::after {
+  background-color: var(--color-green-accent);
+}
+
 .btn-pa .btn-label {
   flex: 1;
   padding-right: 12px;
@@ -261,7 +277,8 @@ img {
 
 /* Text color transition over lime background */
 .btn-pa.dark-green:hover .btn-label,
-.btn-pa.dark-green-lg:hover .btn-label {
+.btn-pa.dark-green-lg:hover .btn-label,
+.btn-pa.green-accent:hover .btn-label {
   color: var(--color-primary-dark);
 }
 

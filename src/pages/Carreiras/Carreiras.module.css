@@ -1,0 +1,698 @@
+/* ── Carreiras.module.css ───────────────────────────────────────────────────── */
+
+/* ==================== Página ==================== */
+.carreirasPage {
+  width: 100%;
+  background-color: var(--color-bg-white);
+  overflow-x: hidden;
+}
+
+/* ==================== Sessão 01: Hero ==================== */
+/* Exatamente igual ao QuemSomos: 440px, sem botão back, com scroll-down */
+.heroSection {
+  position: relative;
+  width: 100%;
+  height: 440px;
+}
+
+.heroBgWrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.heroBg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+/* Botão de scroll-down — padronizado com as outras páginas */
+.scrollDownWrapper {
+  position: absolute;
+  bottom: -30px;
+  left: calc(40% + 162px);
+  z-index: 10;
+  background-color: var(--color-bg-white);
+  padding: 5px;
+  border-radius: 15px;
+}
+
+.scrollDownButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-primary);
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.scrollDownButton:hover {
+  transform: translateY(5px);
+}
+
+.scrollDownIcon {
+  font-size: 24px;
+  color: var(--color-primary-dark);
+}
+
+/* ==================== Sessão 02: Conteúdo ==================== */
+.mainSection {
+  background-color: var(--color-bg-white);
+  padding-bottom: var(--section-py);
+}
+
+/* ── Intro text ── */
+.introContainer {
+  padding: var(--section-py) var(--container-px) 60px;
+  max-width: calc(var(--container-max) + var(--container-px) * 2);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.introTitle {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(36px, 4vw, 60px);
+  line-height: 1.05;
+  letter-spacing: -1.2px;
+  color: var(--color-text-body);
+  margin: 0;
+}
+
+.highlight {
+  color: #88a668; /* mesmo verde do QuemSomos */
+}
+
+.introText {
+  font-family: var(--font-body);
+  font-size: clamp(16px, 1.4vw, 20px);
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.3px;
+  color: var(--color-text-body);
+  max-width: 1200px;
+  margin: 0;
+}
+
+/* ==================== Carrossel de Vagas ==================== */
+.carouselSection {
+  position: relative;
+  width: 100%;
+  background-color: #f0f0f0;
+  padding: 75px 0 65px;
+  margin-top: 40px;
+}
+
+/* Controles prev/next — alinhados acima do carrossel, à direita do container */
+.carouselControls {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  max-width: calc(var(--container-max) + var(--container-px) * 2);
+  padding: 0 var(--container-px);
+  margin: 0 auto 24px;
+}
+
+.controlBtn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-body);
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.controlBtn:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-primary-dark);
+}
+
+/* Track — overflow-x scroll sem scrollbar visível */
+.carouselTrack {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  cursor: grab;
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 40px;
+  align-items: stretch;
+  padding-right: var(--container-px);
+}
+
+.carouselTrack::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Card de Vaga ── */
+/* Figma: 385×409px, borda arredondada */
+.vagaCard {
+  flex: 0 0 385px;
+  min-height: 409px;
+  border-radius: 30px;
+  border: 2px solid transparent;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 30px 30px;
+  scroll-snap-align: start;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  position: relative;
+}
+
+.vagaCard:hover:not(.vagaCardSelected) {
+  border-color: rgba(0, 0, 0, 0.05);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+}
+
+/* Card selecionado — igual ao Figma: fundo branco + borda verde accent */
+.vagaCardSelected {
+  border-color: var(--color-green-accent) !important;
+  box-shadow: 0 8px 32px rgba(136, 166, 104, 0.15) !important;
+  transform: translateY(-3px) !important;
+}
+
+/* Textos do card selecionado mudam de cor */
+.vagaCardSelected .vagaTitulo {
+  color: var(--color-green-accent) !important;
+}
+
+/* Topo do card — data */
+.cardTop {
+  position: relative;
+  z-index: 1;
+  padding: 10px 0 15px;
+}
+
+.vagaData {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(48, 48, 48, 0.45);
+  letter-spacing: 0;
+  transition: color 0.3s ease;
+}
+
+/* Corpo do card — título + descrição */
+.cardBody {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* texto desce para o fundo, como no Figma */
+  gap: 14px;
+  padding-bottom: 5px;
+}
+
+.vagaTitulo {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 1.15;
+  letter-spacing: -0.56px;
+  color: var(--color-text-body);
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.vagaDescricao {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: -0.32px;
+  color: #808080;
+  margin: 0;
+  /* Truncar em 2 linhas */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+/* Divisória */
+.vagaDivider {
+  position: relative;
+  z-index: 1;
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  margin: 20px 0 18px;
+  transition: border-color 0.3s ease;
+}
+
+/* Botão do card */
+.cardBottom {
+  position: relative;
+  z-index: 1;
+}
+
+/* Fix global rotation for the close (X) icon */
+.closeIcon {
+  transform: rotate(0deg) !important;
+}
+
+:global(.btn-pa:hover) .closeIcon {
+  transform: rotate(90deg) !important;
+}
+
+/* ==================== Formulário de Candidatura ==================== */
+.formularioWrapper {
+  max-width: calc(var(--container-max) + var(--container-px) * 2);
+  margin: 80px auto 0;
+  padding: 0 var(--container-px);
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  animation: fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Cabeçalho da vaga selecionada */
+.vagaDetalheHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 60px;
+}
+
+.vagaDetalheTitulo {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(30px, 3.5vw, 56px);
+  line-height: 1.1;
+  letter-spacing: -1.1px;
+  color: var(--color-text-body);
+  margin: 0;
+}
+
+.vagaDetalheDesc {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-text-body);
+  max-width: 100%;
+  margin: 0;
+}
+
+/* Requisitos + Atribuições */
+.vagaReqAtrib {
+  display: flex;
+  gap: 20px;
+  background-color: #f8f8f6;
+  border-radius: 16px;
+  padding: 40px 50px;
+}
+
+.vagaColuna {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.vagaColunaTitle {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: -0.36px;
+  color: var(--color-primary-dark);
+  margin: 0;
+}
+
+.vagaLista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vagaLista li {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--color-text-body);
+  padding-left: 20px;
+  position: relative;
+}
+
+.vagaLista li::before {
+  content: '•';
+  position: absolute;
+  left: 6px;
+  color: var(--color-green-accent);
+}
+
+/* ── Formulário ── */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 827px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.formRow {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.formRow2 > .formInput {
+  flex: 1;
+}
+
+.formInput {
+  width: 100%;
+  height: 45px;
+  padding: 0 15px;
+  border: 1px solid #c2c2c2;
+  border-radius: 14px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: -0.45px;
+  color: #707070;
+  background-color: transparent;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.formInput:hover {
+  border-color: #a0a0a0;
+  background-color: #fdfdfd;
+}
+
+.formInput:focus {
+  border-color: var(--color-green-accent);
+  box-shadow: 0 0 0 1px var(--color-green-accent), 0 4px 12px rgba(136, 166, 104, 0.1);
+  color: #202020;
+  font-weight: 400;
+  background-color: #ffffff;
+}
+
+.formInput::placeholder {
+  color: #707070;
+}
+
+.formTextarea {
+  padding: 12px 15px;
+  resize: vertical;
+  min-height: 101px;
+}
+
+/* Upload */
+.formRowUpload {
+  flex-direction: row;
+  gap: 0;
+  border: 1px solid #c2c2c2;
+  border-radius: 14px;
+  overflow: hidden;
+  background-color: transparent;
+  height: 45px;
+  align-items: stretch;
+}
+
+.uploadLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 89px;
+  background-color: #e8e8e8;
+  border-right: 1px solid #c2c2c2;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 300;
+  color: #707070;
+  letter-spacing: -0.45px;
+  white-space: nowrap;
+}
+
+.uploadBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  background: transparent;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 300;
+  color: #707070;
+  letter-spacing: -0.45px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.uploadBtn:hover:not(:disabled) {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.uploadFileSelected {
+  color: #202020;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 250px;
+}
+
+.uploadIcon {
+  font-size: 20px;
+  color: #303030;
+}
+
+.uploadIconSuccess {
+  color: var(--color-green-stat);
+  font-variation-settings: 'FILL' 1;
+}
+
+/* Upload Progress Minimalist */
+.uploadProgressContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  height: 100%;
+}
+
+.uploadProgressTrack {
+  flex: 1;
+  height: 4px;
+  background-color: #e8e8e8;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.uploadProgressBar {
+  height: 100%;
+  background-color: var(--color-green-accent);
+  transition: width 0.15s linear;
+}
+
+.uploadProgressText {
+  font-size: 13px;
+  color: #707070;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.fileInputHidden {
+  display: none;
+}
+
+/* Botão Enviar — fundo lime full-width, igual ao Figma */
+.submitBtn {
+  width: 100%;
+  height: 45px;
+  background-color: #e1fe00;
+  border: none;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.45px;
+  color: #303030;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  margin-top: 10px;
+}
+
+.submitBtn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background-color: #d1ec00;
+  box-shadow: 0 4px 14px rgba(225, 254, 0, 0.35);
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btnIcon {
+  font-size: 20px;
+  color: #303030;
+  transition: font-variation-settings 0.3s ease;
+  font-variation-settings: 'FILL' 0;
+}
+
+.submitBtn:hover:not(:disabled) .btnIcon {
+  font-variation-settings: 'FILL' 1;
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(48, 48, 48, 0.2);
+  border-top-color: #303030;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Mensagem de Sucesso */
+.successMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 80px 40px;
+  background-color: var(--color-lime-light);
+  border-radius: 20px;
+  text-align: center;
+  animation: fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.successIcon {
+  font-size: 60px;
+  color: var(--color-primary-dark);
+}
+
+.successMessage h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 30px;
+  letter-spacing: -0.6px;
+  color: var(--color-primary-dark);
+  margin: 0;
+}
+
+.successMessage p {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-green-stat);
+  max-width: 480px;
+  margin: 0;
+}
+
+/* ==================== Responsivo ==================== */
+@media (max-width: 1400px) {
+  .vagaCard {
+    flex: 0 0 340px;
+    min-height: 390px;
+  }
+
+  .vagaReqAtrib {
+    padding: 35px 40px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .vagaCard {
+    flex: 0 0 300px;
+    min-height: 360px;
+    padding: 15px 24px 24px;
+  }
+
+  .vagaReqAtrib {
+    flex-direction: column;
+    gap: 30px;
+    padding: 30px;
+  }
+
+  .form {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    height: 340px;
+  }
+
+  .introTitle {
+    font-size: 30px;
+  }
+
+  .introText {
+    font-size: 16px;
+  }
+
+  .vagaCard {
+    flex: 0 0 260px;
+    min-height: 330px;
+  }
+
+  .vagaDetalheTitulo {
+    font-size: 26px;
+  }
+
+  .vagaDetalheDesc {
+    font-size: 16px;
+  }
+
+  .vagaReqAtrib {
+    padding: 24px;
+  }
+
+  .formRow2 {
+    flex-direction: column;
+  }
+
+  .formRow2 > .formInput {
+    flex: none;
+    width: 100%;
+  }
+
+  .formularioWrapper {
+    margin-top: 50px;
+    gap: 36px;
+  }
+}

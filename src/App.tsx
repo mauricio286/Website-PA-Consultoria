@@ -10,8 +10,9 @@ import styles from './App.module.css';
 import Home from './pages/Home';
 import QuemSomos from './pages/QuemSomos/QuemSomos';
 import Servicos from './pages/Servicos/Servicos';
+import Contato from './pages/Contato/Contato';
 
-import EmDesenvolvimento from './pages/EmDesenvolvimento/EmDesenvolvimento';
+import Carreiras from './pages/Carreiras/Carreiras';
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -70,8 +71,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/quem-somos" element={<QuemSomos />} />
           <Route path="/servicos" element={<Servicos />} />
-          <Route path="/carreiras" element={<EmDesenvolvimento />} />
-          <Route path="/contato" element={<EmDesenvolvimento />} />
+          <Route path="/carreiras" element={<Carreiras />} />
+          <Route path="/contato" element={<Contato />} />
         </Routes>
 
         <Footer />

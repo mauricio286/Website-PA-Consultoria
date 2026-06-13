@@ -5,9 +5,7 @@ import styles from './QuemSomos.module.css';
 // Import images from assets
 import { 
   imgBg, 
-  imgAreaVideo,
-  imgImagem,
-  imgVector6
+  imgImagem
 } from '../../assets';
 
 export default function QuemSomos() {
@@ -148,7 +146,7 @@ export default function QuemSomos() {
 
           <div className={styles.videoPlayerWrapper}>
             <div className={styles.videoThumbOverlay}>
-              <img src={imgAreaVideo} alt="Vídeo Thumbnail" className={styles.videoThumb} />
+              <img src={imgImagem} alt="Vídeo thumbnail" className={styles.videoThumb} />
             </div>
             <button className={styles.playButton} aria-label="Reproduzir vídeo">
               <span className={`material-symbols-rounded ${styles.playIcon}`}>play_arrow</span>
@@ -205,7 +203,7 @@ export default function QuemSomos() {
                     <div className={styles.timelineLine}>
                       <span className="tag-badge light" style={{ background: '#e1fe00', border: 'none', color: '#002d22' }}>{item.tag}</span>
                       <div className={styles.timelineDottedContainer}>
-                        <img src={imgVector6} alt="" className={styles.timelineDotted} />
+                        <div className={styles.timelineDottedCSS}></div>
                       </div>
                     </div>
                     <div className={styles.timelineItem}>

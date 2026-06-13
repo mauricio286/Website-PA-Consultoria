@@ -468,6 +468,13 @@
   overflow: hidden;
 }
 
+.timelineDottedCSS {
+  width: 100%;
+  border-top: 2px dotted rgba(255, 255, 255, 0.4);
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 .timelineImage {
   width: 100%;
   height: 100%;
