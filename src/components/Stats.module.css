@@ -1,0 +1,153 @@
+/* Stats — Figma node 29:897 (Sessão 4) */
+/* bg: white, px: 195px, py: 120px, h: 955px, gap: 85px */
+
+.stats {
+  background-color: var(--color-bg-white);
+  padding: var(--section-py) var(--container-px);
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+.inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: flex;
+  gap: 85px;
+  align-items: flex-start;
+}
+
+/* Left: Title + subtext */
+.textCol {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+
+/* Heading row: title + description side by side */
+/* Figma node 35:1006 — h:282px, items-start, justify-between */
+.headingRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* Figma node 29:901 — Neulis Alt (Outfit) 48px, tracking -0.96px, #303030 */
+/* "Números que" normal + "traduzem excelência" in #88a668 */
+.title {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.96px;
+  color: var(--color-text-body);
+  max-width: 645px;
+  flex-shrink: 0;
+}
+
+.titleAccent {
+  color: var(--color-green-accent);
+}
+
+/* Figma node 35:1007 — DM Sans Regular, 20px, tracking -0.4px, #303030 */
+.subtext {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.6;
+  letter-spacing: -0.4px;
+  color: var(--color-text-body);
+  max-width: 555px;
+}
+
+/* ── Cards Grid ─────────────────────────────── */
+/* Figma node 29:902/29:912 — flex row, gap 15px, h: 290px */
+.grid {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+  min-height: 290px;
+}
+
+/* Individual stat card */
+.card {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 55px 30px;
+  border-radius: 30px;
+  text-align: center;
+}
+
+.cardIcon {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  margin-bottom: 19px;
+}
+
+/* Figma: Neulis Alt (Outfit) 40px, tracking -0.8px */
+.value {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.8px;
+}
+
+/* Figma: DM Sans Regular, 18px */
+.label {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.4;
+  white-space: normal;
+}
+
+/* ── Card variants ─────────────────────────── */
+/* Card 1: bg #ffd087, text #965a30 */
+.cardPeach { background-color: #ffd087; color: #965a30; }
+
+/* Card 2: bg #002d22, text #e1fe00 */
+.cardDark { background-color: var(--color-primary-dark); color: var(--color-primary); }
+
+/* Card 3: bg #e1fe00, text #002d22 */
+.cardLime { background-color: var(--color-primary); color: var(--color-primary-dark); }
+
+/* Card 4: bg #f2ffd9, text #4c7043 */
+.cardPaleGreen { background-color: #f2ffd9; color: #4c7043; }
+
+/* Card 4 label: #596d43 */
+.cardPaleGreenLabel { color: #596d43; }
+
+@media (max-width: 1400px) {
+  .inner { gap: 40px; }
+  .headingRow { flex-direction: column; gap: 20px; }
+  .title { font-size: 38px; }
+  .desc { font-size: 16px; }
+  .counterNum { font-size: 60px; }
+  .label { font-size: 20px; }
+  .numberCol { gap: 40px; }
+}
+
+@media (max-width: 1100px) {
+  .inner { flex-direction: column; gap: 40px; }
+  .headingRow { flex-direction: column; }
+  .title { font-size: 36px; line-height: 1.2; }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .card {
+    flex: 1 1 calc(50% - 6px);
+    padding: 30px 20px;
+  }
+  .value { font-size: 32px; }
+  .label { font-size: 15px; white-space: normal; }
+}

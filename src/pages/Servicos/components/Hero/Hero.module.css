@@ -1,0 +1,56 @@
+.heroSection {
+  position: relative;
+  width: 100%;
+  height: 440px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0;
+}
+
+.heroBgWrapper {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.heroBg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.scrollDownWrapper {
+  position: absolute;
+  bottom: -30px;
+  left: calc(40% + 162px);
+  z-index: 2;
+  background-color: var(--color-white);
+  padding: 5px;
+  border-radius: 15px;
+}
+
+.scrollDownButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-primary);
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.scrollDownButton:hover {
+  transform: translateY(5px);
+}
+
+.scrollDownIcon {
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  color: var(--color-primary-dark);
+}

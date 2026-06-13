@@ -1,0 +1,553 @@
+/* QuemSomos.module.css */
+
+.quemSomosPage {
+  width: 100%;
+  background-color: var(--color-bg-white);
+  overflow-x: hidden;
+}
+
+/* ================== Sessão 1: Hero ================== */
+.heroSection {
+  position: relative;
+  width: 100%;
+  height: 440px; /* Shorter vertical height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0; /* Goes all the way to the top under the header */
+}
+
+.heroBgWrapper {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden; /* Added here instead of heroSection so the arrow isn't cut off */
+}
+
+.heroBg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 55%; /* Adjusted to find the sweet spot between sky and feet */
+}
+
+.scrollDownWrapper {
+  position: absolute;
+  bottom: -30px; /* Halfway over the edge */
+  left: calc(40% + 162px); /* Matched from Figma */
+  z-index: 2;
+  background-color: var(--color-white);
+  padding: 5px;
+  border-radius: 15px;
+}
+
+.scrollDownButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-primary);
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.scrollDownButton:hover {
+  transform: translateY(5px);
+}
+
+.scrollDownIcon {
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  color: var(--color-primary-dark);
+}
+
+/* ================== Sessão 2: Intro ================== */
+.introSection {
+  background-color: var(--color-bg-white);
+  padding: var(--section-py) var(--container-px);
+}
+
+.introContainer {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column; /* Stacked below title */
+  gap: 40px; /* Adjusted gap */
+  align-items: flex-start;
+}
+
+.introLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 29px; /* From Figma */
+  flex-shrink: 0;
+  width: 100%; /* Fill full width */
+}
+
+.introTitle {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 48px; /* Match results section size */
+  line-height: 1.1;
+  letter-spacing: -0.96px;
+  color: var(--color-text-body);
+  margin: 0;
+}
+
+.highlight {
+  color: #88a668;
+}
+
+.introDescription {
+  flex: 1;
+  width: 100%; /* Fill full width */
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Reduced from 24px */
+  font-family: var(--font-body);
+  font-size: 20px;
+  line-height: 1.3;
+  letter-spacing: -0.4px;
+  color: var(--color-text-body);
+}
+
+.introDescription p {
+  margin: 0;
+}
+
+.introDescription strong {
+  font-weight: 800; /* ExtraBold na fonte DM Sans */
+}
+
+/* ================== Sessão 3: Cards ================== */
+.cardsSection {
+  display: flex;
+  width: 100%;
+  min-height: 500px;
+}
+
+.card {
+  flex: 1;
+  padding: 140px 65px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  text-align: center;
+}
+
+.cardTitle, .cardTitleDark, .cardTitleGreen {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 1.2;
+  letter-spacing: -0.8px;
+  margin: 0;
+}
+
+.cardText, .cardTextDark, .cardTextGreen {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 426px;
+}
+
+.cardDark {
+  background-color: var(--color-primary-dark);
+}
+.cardDark .cardTitle {
+  color: var(--color-primary);
+}
+.cardDark .cardText {
+  color: var(--color-primary);
+}
+
+.cardLime {
+  background-color: var(--color-primary);
+}
+.cardLime .cardTitleDark {
+  color: var(--color-primary-dark);
+}
+.cardLime .cardTextDark {
+  color: var(--color-primary-dark);
+}
+
+.cardLight {
+  background-color: #f2ffd9;
+}
+.cardLight .cardTitleGreen {
+  color: #4c7043;
+}
+.cardLight .cardTextGreen {
+  color: #596d43;
+}
+
+/* ================== Sessão 4: Vídeo ================== */
+.videoSection {
+  background-color: var(--color-bg-white);
+  padding: var(--section-py) var(--container-px);
+}
+
+.videoContainer {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  text-align: center;
+}
+
+.videoTitle {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 48px;
+  letter-spacing: -0.96px;
+  color: var(--color-text-body);
+  margin: 0 0 60px 0;
+}
+
+.videoPlayerWrapper {
+  position: relative;
+  width: 100%;
+  height: 594px;
+  border-radius: 46px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+}
+
+.videoThumbOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+.videoThumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.playButton {
+  position: relative;
+  z-index: 2;
+  width: 85px;
+  height: 99px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.playButton:hover {
+  transform: scale(1.1);
+}
+
+.playIcon {
+  font-size: 85px; /* scale to match original 85x99 shape roughly */
+  line-height: 1;
+  color: var(--color-white);
+  transition: color 0.3s ease;
+}
+
+.playButton:hover .playIcon {
+  color: var(--color-primary);
+}
+
+/* ================== Sessão 5: Timeline ================== */
+.timelineSection {
+  background-color: var(--color-bg-white);
+  padding: var(--section-py) var(--container-px);
+  overflow: hidden;
+}
+
+.timelineContainer {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.videoHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center; /* Center the badge and title */
+}
+
+.videoHeader .tag-badge {
+  align-self: center;
+}
+
+.timelineHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.timelineTitle {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 48px;
+  letter-spacing: -0.96px;
+  color: var(--color-text-body);
+  margin: 0;
+}
+
+.timelineControls {
+  display: flex;
+  gap: 15px;
+  margin-left: auto; /* Push controls to the right if in flex */
+}
+
+.controlBtn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.1);
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-body);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.controlBtn:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-primary-dark);
+}
+
+.timelineScroller {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.timelineTrack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.timelineLine {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-130px);
+  z-index: 10;
+}
+
+.timelineDottedContainer {
+  flex: 1;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+}
+
+.timelineDotted {
+  width: calc(100% + var(--timeline-gap, 85px));
+  height: 2px;
+  object-fit: cover;
+  object-position: left;
+}
+
+.timelineItems {
+  --timeline-gap: 85px;
+  display: flex;
+  gap: var(--timeline-gap);
+  width: 100%;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 20px; /* space for scrollbar or shadow */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  cursor: grab;
+}
+
+.timelineItems.dragging {
+  cursor: grabbing;
+  scroll-behavior: auto; /* Remove smooth so drag is 1:1 */
+  scroll-snap-type: none; /* Disable snap while dragging */
+  user-select: none;
+}
+
+.timelineItems::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+.timelineItemWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 100%;
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  position: relative;
+}
+
+.timelineItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: opacity 0.4s ease;
+}
+
+.timelineItemFaded {
+  opacity: 0.15;
+}
+
+.timelineYearWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.timelineYear {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 200px;
+  letter-spacing: -4px;
+  line-height: 1;
+}
+
+.timelineYear span {
+  background: linear-gradient(to bottom, #002d22, rgba(0,45,34,0.64));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.timelineContent {
+  display: flex;
+  gap: 85px;
+  align-items: center;
+}
+
+.timelineText {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.4;
+  letter-spacing: -0.4px;
+  color: var(--color-text-body);
+  width: 392px;
+}
+
+.timelineImageWrapper {
+  width: 437px;
+  height: 412px;
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+.timelineImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.scrollIndicatorWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.scrollIndicator {
+  flex: 1;
+  max-width: 521px;
+  height: 8px;
+  background-color: #f2f2f2;
+  border-radius: 20px;
+  position: relative;
+}
+
+.scrollIndicatorThumb {
+  width: 67px;
+  height: 100%;
+  background-color: rgba(174,174,174,0.45);
+  border-radius: 20px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+@media (max-width: 1400px) {
+  .introContainer { gap: 40px; }
+  .introTitle { font-size: 50px; }
+  .introDescription { font-size: 18px; }
+  .card { padding: 100px 30px; }
+  .cardTitle, .cardTitleDark, .cardTitleGreen { font-size: 32px; }
+  .videoPlayerWrapper { height: 450px; }
+  .timelineItem, .timelineContent { gap: 40px; }
+  .timelineYear { font-size: 140px; }
+  .timelineText { width: 300px; font-size: 18px; }
+  .timelineImageWrapper { width: 350px; height: 350px; }
+  .scrollIndicator { width: 100%; max-width: 521px; }
+}
+
+@media (max-width: 1024px) {
+  .introContainer {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .introLeft {
+    width: 100%;
+  }
+  .cardsSection {
+    flex-direction: column;
+  }
+  .card {
+    padding: 80px 40px;
+  }
+  .timelineItems {
+    --timeline-gap: 40px;
+    width: 100%;
+    /* Keep flex-direction: row for horizontal scroll on mobile */
+  }
+  .timelineItem {
+    flex-direction: column;
+    gap: 40px;
+    align-items: flex-start;
+  }
+  .timelineContent {
+    flex-direction: column;
+    gap: 40px;
+    align-items: flex-start;
+  }
+  .timelineText {
+    width: 100%;
+  }
+  .timelineImageWrapper {
+    width: 100%;
+  }
+}

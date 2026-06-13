@@ -1,0 +1,61 @@
+/* LogoCarousel — Figma node 3:19 / 64:87 */
+/* Overlaps the bottom of hero: top 824px of 1024px hero */
+
+.carousel {
+  position: relative;
+  width: 100%;
+  max-width: 1100px; /* Reduced area per user request */
+  margin: 0 auto; /* Centered in the Hero section */
+  background-color: transparent;
+  overflow: hidden;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  /* Fade edges for smooth transition */
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  gap: 75px;
+  /* Double the items for seamless loop */
+  animation: logo-scroll 30s linear infinite;
+  width: max-content;
+  padding: 10px;
+}
+
+@keyframes logo-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes logo-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.track:hover {
+  animation-play-state: paused;
+}
+
+/* Logo items — match Figma sizes */
+.logo {
+  display: block;
+  object-fit: contain;
+  flex-shrink: 0;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+  filter: brightness(0) invert(1); /* All logos white on dark bg */
+}
+
+.logo:hover {
+  opacity: 1;
+}
+
+/* Figma dimensions per brand */
+.logoSyngenta { width: 127px; height: 42px; }
+.logoCorteva  { width: 154px; height: 32px; }
+.logoBasf     { width: 87px;  height: 32px; }
+.logoBayer    { width: 145px; height: 96px; }

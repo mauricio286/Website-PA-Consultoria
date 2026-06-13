@@ -1,0 +1,198 @@
+/* Methodology — Figma section: dark green bg, 120px py, 195px px */
+/* Node 35:1024 (Pilares Metodológicos) */
+
+.methodology {
+  position: relative;
+  width: 100%;
+  padding: var(--section-py) var(--container-px);
+  background-color: var(--color-bg-dark);
+  overflow: visible; /* Let the symbol bleed down */
+  overflow-x: clip; /* Ensure no horizontal scrollbar */
+}
+
+/* Decorative background symbol */
+.bgDecoration {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%; /* Only cover the right half so it doesn't invade the cards */
+  height: 125%; /* Let it overflow into the next section */
+  z-index: 1;
+  opacity: 0.3; /* slightly visible for the elegant stroke */
+  pointer-events: none;
+  overflow: visible;
+  /* Smooth fade out towards the bottom */
+  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 95%);
+  mask-image: linear-gradient(to bottom, black 50%, transparent 95%);
+}
+
+.bgEmblem {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 150%; 
+  height: 150%;
+  transform: translateY(-50%) scale(1.4);
+  transform-origin: left center;
+  object-fit: contain;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Figma: Neulis Alt 40px, #ebebeb, tracking -0.8px, line-height 70px */
+.title {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.8px;
+  color: var(--color-near-white);
+}
+
+/* Content: tabs + image */
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: stretch; /* Ensures columns match in height */
+}
+
+/* ── Tabs column ─────────────────────────── */
+.tabsCol {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.tabCard {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 28px;
+  border-radius: 24px;
+  text-align: left;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+}
+
+/* Active: lime bg, dark text */
+.activeTab {
+  background-color: var(--color-primary);
+  color: var(--color-primary-dark);
+  border-color: var(--color-primary);
+}
+
+/* Inactive: slight dark glass */
+.inactiveTab {
+  background-color: rgba(255, 255, 255, 0.03);
+  color: var(--color-near-white);
+  border-color: rgba(225, 254, 0, 0.25);
+}
+
+.inactiveTab:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(225, 254, 0, 0.6);
+}
+
+.iconWrapper {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tabIcon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: filter 0.25s ease;
+}
+
+/* Active: Make any icon completely dark to contrast with lime bg */
+.activeIcon {
+  filter: brightness(0.1);
+}
+
+/* Inactive: Keep the original lime green gradient of the SVG */
+.inactiveIcon {
+  filter: none;
+  opacity: 0.9;
+}
+
+.textWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Tab title: DM Sans 24px */
+.tabTitle {
+  font-family: var(--font-body);
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: -0.48px;
+}
+
+/* Tab description: DM Sans 15px */
+.tabDescription {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
+/* ── Image column ─────────────────────────── */
+.imageCol {
+  width: 100%;
+  display: flex; /* Flex context guarantees child can stretch */
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  flex: 1; /* Stretch to exactly match the left column height */
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.3);
+}
+
+.mainImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: opacity 0.3s ease;
+}
+
+@media (max-width: 1100px) {
+  .content { grid-template-columns: 1fr; gap: 40px; }
+  .bgDecoration { width: 100%; }
+  .imageWrapper { height: 400px; }
+}
+
+@media (max-width: 580px) {
+  .tabCard { padding: 20px; gap: 16px; }
+  .iconWrapper { width: 44px; height: 44px; }
+  .imageWrapper { height: 300px; }
+}

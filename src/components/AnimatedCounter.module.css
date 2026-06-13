@@ -1,0 +1,58 @@
+.container {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  letter-spacing: -0.025em; /* tracking-tight */
+}
+
+.digitWrapper {
+  display: inline-block;
+  position: relative;
+  vertical-align: bottom;
+  height: 1em;
+  clip-path: inset(0 -100% 0 -100%);
+}
+
+.digitWrapper.shifted {
+  margin-left: -0.03em; /* -ml-[0.03em] */
+}
+
+.invisiblePlaceholder {
+  display: block;
+  visibility: hidden;
+  line-height: 1;
+  height: 1em;
+}
+
+.motionContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.digitSpan {
+  flex: none;
+  display: block;
+  line-height: 1;
+  text-align: center;
+  height: 1em;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.prefixSuffix {
+  display: inline-block;
+  line-height: 1;
+  height: 1em;
+}
+
+.suffix {
+  margin-left: 0.05em;
+}

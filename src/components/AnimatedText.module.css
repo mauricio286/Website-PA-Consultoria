@@ -1,0 +1,26 @@
+.animatedTextWrapper {
+  display: inline-flex;
+  flex-wrap: wrap;
+  /* Ensure it flows with text naturally */
+  vertical-align: top;
+}
+
+.wordWrapper {
+  display: inline-block;
+  overflow: hidden; /* This hides the text before it translates up */
+  vertical-align: top;
+}
+
+.word {
+  display: inline-block;
+  /* Start pushed completely below its own bounding box */
+  transform: translateY(115%);
+  /* Luxury easing curve: fast start, super slow finish */
+  transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+  will-change: transform;
+}
+
+.word.visible {
+  /* Animate to natural position */
+  transform: translateY(0);
+}

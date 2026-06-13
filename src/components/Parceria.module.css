@@ -1,0 +1,110 @@
+.parceria {
+  width: 100%;
+  padding: var(--section-py) 0;
+  background-color: var(--color-bg-white);
+  overflow: hidden;
+  position: relative;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: var(--container-px);
+  padding-right: 12%;
+}
+
+.sliderWrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.sliderTrack {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: scroll-left 40s linear infinite;
+}
+
+@keyframes scroll-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-50% - 12px)); } 
+}
+
+
+.sliderTrack::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+.slideCard {
+  flex-shrink: 0;
+  width: 450px;
+  height: 600px;
+  overflow: hidden;
+  border-radius: 0;
+  transition: border-radius 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+}
+
+.slideCard:hover {
+  border-radius: 40px;
+}
+
+/* Card ANTERIOR ao que está com hover: arredonda o lado direito */
+.slideCard:has(+ .slideCard:hover) {
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+}
+
+/* Card SEGUINTE ao que está com hover: arredonda o lado esquerdo */
+.slideCard:hover + .slideCard {
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.slideImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Força a GPU a aplicar suavização (anti-aliasing) ao reduzir a imagem */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+/* Responsive configurations */
+@media (max-width: 1400px) {
+  .inner { gap: 40px; }
+  .imagesCol { width: 40%; min-width: 300px; }
+  .imgLarge { width: 100%; height: auto; }
+  .imgSmall { width: 80%; height: auto; bottom: -20px; right: -20px; }
+  .title { font-size: 38px; }
+  .desc { font-size: 16px; }
+  .textCol { flex: 1; }
+}
+
+@media (max-width: 1024px) {
+  .header {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .slideCard {
+    width: 320px;
+    height: 420px;
+  }
+}

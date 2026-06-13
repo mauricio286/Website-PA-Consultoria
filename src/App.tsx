@@ -1,0 +1,84 @@
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import Lenis from 'lenis';
+import 'lenis/dist/lenis.css'; // Recommended base styles for lenis
+import Header from './components/Header';
+import Footer from './components/Footer';
+import BackToTop from './components/BackToTop';
+import styles from './App.module.css';
+
+import Home from './pages/Home';
+import QuemSomos from './pages/QuemSomos/QuemSomos';
+import Servicos from './pages/Servicos/Servicos';
+
+import EmDesenvolvimento from './pages/EmDesenvolvimento/EmDesenvolvimento';
+
+function ScrollToTop() {
+  const { pathname, hash } = useLocation();
+
+  useEffect(() => {
+    // Dispara apenas quando o pathname muda.
+    if (!hash) {
+      window.scrollTo(0, 0);
+      const lenis = (window as any).lenisInstance;
+      if (lenis) {
+        lenis.scrollTo(0, { immediate: true });
+      }
+    } else {
+      // Se navegamos de OUTRA página com um hash (ex: /quem-somos para /#servicos)
+      setTimeout(() => {
+        const lenis = (window as any).lenisInstance;
+        if (lenis) {
+          lenis.scrollTo(hash, { offset: -50, immediate: true });
+        } else {
+          const el = document.querySelector(hash);
+          if (el) el.scrollIntoView();
+        }
+      }, 50);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]); // Apenas dispara quando muda a página (pathname), evita engasgo no mesmo path
+
+  return null;
+}
+
+function App() {
+  // Initialize Lenis smooth scroll
+  useEffect(() => {
+    const lenis = new Lenis({
+      autoRaf: true,
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+    });
+
+    // Expose to window so BackToTop can trigger native smooth scrolls
+    (window as any).lenisInstance = lenis;
+
+    return () => {
+      lenis.destroy();
+      delete (window as any).lenisInstance;
+    };
+  }, []);
+
+  return (
+    <Router>
+      <ScrollToTop />
+      <div className={styles.appContainer}>
+        <Header />
+        
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/quem-somos" element={<QuemSomos />} />
+          <Route path="/servicos" element={<Servicos />} />
+          <Route path="/carreiras" element={<EmDesenvolvimento />} />
+          <Route path="/contato" element={<EmDesenvolvimento />} />
+        </Routes>
+
+        <Footer />
+        <BackToTop />
+      </div>
+    </Router>
+  );
+}
+
+export default App;

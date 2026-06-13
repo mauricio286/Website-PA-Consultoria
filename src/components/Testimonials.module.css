@@ -1,0 +1,163 @@
+/* Testimonials — Figma: white bg, px: 195px, py: 120px */
+/* Grid: 2 columns of cards, gap 15px — Figma 902px x 563px cards */
+
+.testimonials {
+  width: 100%;
+  padding: var(--section-py) var(--container-px);
+  background-color: var(--color-bg-white);
+}
+
+.inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Figma: Neulis Alt (Outfit) 40px */
+.title {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.8px;
+  color: var(--color-text-body);
+}
+
+.titleAccent {
+  color: var(--color-green-accent);
+}
+
+/* 2-column grid, gap 15px — Figma Depoimentos layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+/* Card base — Figma: 563px h, 30px rounded, px 25px py 40px */
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 25px;
+  border-radius: 30px;
+  min-height: 480px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card:not(.cardSelected):hover {
+  border-color: #88a668;
+}
+
+.cardSelected {
+  cursor: default;
+}
+
+/* Figma: Chivo Medium 128px, lime yellow (#e1fe00) or #303030 quote mark */
+.quoteMark {
+  font-family: var(--font-quote);
+  font-size: 120px;
+  font-weight: 500;
+  line-height: 0.7;
+  height: 60px;
+  letter-spacing: -2.56px;
+  user-select: none;
+}
+
+/* Figma: DM Sans Regular 24px, tracking -0.48px */
+.quoteText {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: -0.4px;
+  margin-top: 12px;
+  flex: 1;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+/* Figma: 50x51px, border-radius 140px */
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* Figma: DM Sans 18px */
+.profileName {
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.profileLocation {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+/* ── Card variants ─────────────────────────────── */
+/* Dark card — Figma: bg #002d22, text white, quoteMark #e1fe00 */
+.cardDark {
+  background-color: var(--color-primary-dark);
+  color: var(--color-white);
+}
+
+.cardDark .quoteMark { color: var(--color-primary); }
+.cardDark .profileName { color: var(--color-white); }
+.cardDark .profileLocation { color: rgba(255, 255, 255, 0.7); }
+
+/* Light card — Figma: bg #eeeeee, text #303030 */
+.cardLight {
+  background-color: var(--color-bg-gray);
+  color: var(--color-text-body);
+}
+
+.cardLight .quoteMark { color: var(--color-text-body); }
+.cardLight .profileName { color: var(--color-text-body); }
+.cardLight .profileLocation { color: rgba(48, 48, 48, 0.7); }
+
+/* CTA at the bottom */
+.ctaWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+@media (max-width: 1024px) {
+  .grid { grid-template-columns: 1fr; }
+  .card { min-height: auto; }
+}
+
+@media (max-width: 580px) {
+  .quoteText { font-size: 17px; }
+  .title { font-size: 32px; line-height: 1.3; }
+}

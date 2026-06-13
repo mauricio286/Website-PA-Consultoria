@@ -1,0 +1,187 @@
+/* Hero — Figma node 34:1004 / BgSessaoHero */
+/* Full viewport: 1920x1024 at design scale */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 700px;
+  max-height: 1024px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+  background-color: var(--color-bg-dark);
+}
+
+/* Background Image */
+.bgWrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.parallaxWrapper {
+  width: 100%;
+  height: 100%;
+  /* Creates the "delay/bem suave" trailing effect behind the scroll */
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+.bgImage {
+  position: absolute;
+  /* Figma: left: -7.91%, top: -16.73%, w: 115.77%, h: 144.73% */
+  left: -7.91%;
+  top: -16.73%;
+  width: 115.77%;
+  max-width: none;
+  object-fit: cover;
+  animation: hero-impact-zoom 6.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  transform-origin: center;
+}
+
+@keyframes hero-impact-zoom {
+  0% { 
+    transform: scale(1.35); 
+    opacity: 0; 
+  }
+  15% {
+    opacity: 1;
+  }
+  100% { 
+    transform: scale(1); 
+    opacity: 1;
+  }
+}
+
+/* Dark overlay — rgba(0,0,0,0.5) from Figma */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+/* Content sits above bg */
+.contentWrapper {
+  position: relative;
+  z-index: 3;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 var(--container-px);
+  max-width: calc(var(--container-max) + var(--container-px) * 2);
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Brings the carousel in front of the background image */
+.carouselWrapper {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+}
+
+/* Main content row at ~55% from top */
+.content {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-bottom: clamp(120px, 20vh, 250px);
+  width: 100%;
+}
+
+/* Left col: title + button */
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.titleLine1, .titleLine2 {
+  text-align: left;
+}
+
+/* Title — Figma: font Neulis Alt (Outfit), 70px line-height, color #ebebeb */
+/* The actual text renders as two lines */
+.titleLine1 {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 5vw, 70px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -1.4px;
+  color: var(--color-near-white);
+  display: block;
+}
+
+/* "campo comprova!" comes from the SVG text animation in Figma (Union shapes) */
+/* We render it as static text for the web */
+.titleLine2 {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 5vw, 70px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -1.4px;
+  color: var(--color-near-white);
+  display: block;
+  position: relative;
+}
+
+/* Right col: description text */
+.rightCol {
+  max-width: 480px;
+  text-align: right;
+  margin-bottom: 70px; /* Offset to align with the title visually */
+}
+
+.description {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.2px;
+  color: var(--color-near-white);
+}
+
+/* CTA Button wrapper */
+.ctaWrapper {
+  /* Button is at top: 575px in Figma */
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+    padding-bottom: 120px;
+  }
+
+  .rightCol {
+    text-align: left;
+    max-width: 100%;
+    padding-right: 0;
+  }
+
+  .description {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contentWrapper { padding: 0 24px; }
+
+  .titleLine1,
+  .titleLine2 {
+    font-size: clamp(32px, 8vw, 52px);
+    line-height: 1.1;
+  }
+
+  .content {
+    padding-bottom: 80px;
+  }
+}

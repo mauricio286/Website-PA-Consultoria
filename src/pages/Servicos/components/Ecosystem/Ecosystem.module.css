@@ -1,0 +1,243 @@
+.ecosystemSection {
+  background-color: var(--color-white);
+  padding: 0 195px 130px 195px; 
+  position: relative;
+}
+
+.ecosystemContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.tagWrapperCenter {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.ecosystemTitle {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 150px;
+  line-height: 1;
+  letter-spacing: -3px;
+  color: #303030;
+  text-align: center;
+  margin: 60px 0 20px 0;
+  z-index: 2;
+}
+
+.highlight {
+  color: #88a668;
+}
+
+.ecosystemGrid {
+  position: relative;
+  width: 100%;
+}
+
+.svgOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 300px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.circleMarker {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #88A668;
+  border-radius: 50%;
+  background-color: var(--color-white);
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.ecoCardsWrapper {
+  position: relative;
+  width: 100%;
+  height: 600px; /* Espaço para suportar os cartões com position absolute */
+  z-index: 2;
+  margin-top: 280px;
+}
+
+.ecoCard {
+  position: absolute;
+  width: calc(25% - 15px);
+  max-width: 415px;
+  height: 536px;
+  border-radius: 45px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  z-index: 2;
+}
+
+/* Alinhamento geométrico perfeito pelo centro para a linha conectar exato */
+.ecoCard:nth-child(1) { left: 12.5%; transform: translateX(-50%); top: 0; }
+.ecoCard:nth-child(2) { left: 37.5%; transform: translateX(-50%); top: 50px; }
+.ecoCard:nth-child(3) { left: 62.5%; transform: translateX(-50%); top: 0; }
+.ecoCard:nth-child(4) { left: 87.5%; transform: translateX(-50%); top: 50px; }
+
+.cardGreen { background-color: #88a668; }
+.cardDarkGreen { background-color: #002d22; }
+
+.ecoImageWrapper {
+  width: 100%;
+  height: 316px;
+  border-radius: 25px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.ecoImageWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Imagens com zoom sutil para matching do figma */
+.ecoCard:nth-child(1) .ecoImageWrapper img { transform: scale(1.1); }
+.ecoCard:nth-child(2) .ecoImageWrapper img { transform: scale(1.15); }
+.ecoCard:nth-child(3) .ecoImageWrapper img { transform: scale(1.2); }
+.ecoCard:nth-child(4) .ecoImageWrapper img { transform: scale(1.1); }
+
+
+.ecoCardTitle {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1.2;
+  letter-spacing: -0.64px;
+  color: #e8e8e8;
+  margin: 0;
+  text-align: left;
+  width: 100%;
+}
+
+.ecoCardButton {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  width: 100%;
+  flex: 1;
+}
+
+@media (max-width: 1600px) {
+  .ecosystemSection {
+    padding: 0 100px 100px 100px;
+  }
+  .ecoCard {
+    width: 100%;
+    height: 480px;
+    transform: none;
+    position: relative;
+  }
+  .ecoCard:nth-child(even) {
+    top: 0;
+    margin-top: 30px;
+  }
+  .ecoCard:nth-child(1) { left: 0; }
+  .ecoCard:nth-child(2) { left: 0; }
+  .ecoCard:nth-child(3) { left: 0; }
+  .ecoCard:nth-child(4) { left: 0; }
+  .ecoImageWrapper {
+    height: 250px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .ecosystemSection {
+    padding: 0 40px 80px 40px;
+  }
+  .ecosystemGrid {
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .ecoCardsWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 0;
+    height: auto;
+  }
+  .ecoCard {
+    width: 100%;
+    height: auto;
+    margin-top: 0 !important;
+    position: relative;
+    left: 0 !important;
+    transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .ecosystemSection {
+    padding: 60px 20px;
+  }
+  .ecoCardsWrapper {
+    grid-template-columns: 1fr;
+  }
+  .ecosystemTitle {
+    font-size: 80px;
+    margin: 40px 0;
+  }
+}
+
+/* ================== Animações da Sessão Ecossistema ================== */
+
+.ecosystemGrid path {
+  opacity: 0;
+}
+
+.ecosystemGrid .circleMarker {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.animateEcosystem path {
+  animation: fadeLine 0.8s ease-in-out forwards;
+}
+
+/* Stagger mínimo da esquerda para a direita */
+.animateEcosystem path:nth-child(1) { animation-delay: 0s; }
+.animateEcosystem path:nth-child(2) { animation-delay: 0.15s; }
+.animateEcosystem path:nth-child(3) { animation-delay: 0.3s; }
+.animateEcosystem path:nth-child(4) { animation-delay: 0.45s; }
+
+.animateEcosystem .circleMarker {
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Main circle no topo */
+.animateEcosystem .circleMarker:nth-of-type(1) { animation-delay: 0s; }
+/* Círculos aparecem na exata sequência que as linhas surgem */
+.animateEcosystem .circleMarker:nth-of-type(2) { animation-delay: 0.5s; }
+.animateEcosystem .circleMarker:nth-of-type(3) { animation-delay: 0.65s; }
+.animateEcosystem .circleMarker:nth-of-type(4) { animation-delay: 0.8s; }
+.animateEcosystem .circleMarker:nth-of-type(5) { animation-delay: 0.95s; }
+
+@keyframes fadeLine {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes popIn {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}

@@ -1,0 +1,163 @@
+.servicesSection {
+  background-color: var(--color-white);
+  padding: 130px 195px;
+  display: flex;
+  flex-direction: column;
+  gap: 160px;
+}
+
+.servicesHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 29px;
+  width: 100%;
+}
+
+.tagWrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.titleWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 40px;
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 64px;
+  line-height: 1;
+  letter-spacing: -1.28px;
+  color: var(--color-text-body);
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.highlight {
+  color: #88a668;
+}
+
+.sectionDescription {
+  font-family: var(--font-body);
+  font-size: 20px;
+  line-height: 1.5;
+  letter-spacing: -0.4px;
+  color: var(--color-text-body);
+  max-width: 810px;
+  text-align: justify;
+  margin: 0;
+}
+
+.servicesList {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+}
+
+.serviceCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 65px;
+  padding: 40px 40px 40px 85px;
+  height: 355px;
+  width: 100%;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.cardDarkGreen { background-color: #002d22; }
+.cardDarkGreen:hover { border-color: #E1FE00; }
+.cardLightGreen { background-color: #f2ffd9; }
+.cardLightGreen:hover { border-color: rgba(136, 166, 104, 0.4); }
+
+.cardContent {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  width: 100%;
+  max-width: 838px;
+}
+
+.cardTitleLightGreen, .cardTitleDarkGreen {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 70px;
+  letter-spacing: -0.96px;
+  margin: 0;
+  width: 289px;
+  flex-shrink: 0;
+}
+
+.cardTitleLightGreen { color: #b4d590; }
+.cardTitleDarkGreen { color: #627c47; }
+
+.cardTextLightGreen, .cardTextDarkGreen {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 0;
+  width: 283px;
+}
+
+.cardTextLightGreen { color: #88a668; }
+.cardTextDarkGreen { color: #4d6039; }
+
+.cardButton {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 100%;
+  flex: 1;
+}
+
+@media (max-width: 1600px) {
+  .servicesSection {
+    padding: 80px 100px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .servicesSection {
+    padding: 80px 40px;
+  }
+  .titleWrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .sectionTitle {
+    font-size: 48px;
+  }
+  .serviceCard {
+    padding: 40px;
+    border-radius: 40px;
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+  }
+  .cardContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .cardTitleLightGreen, .cardTitleDarkGreen {
+    width: 100%;
+    line-height: 1.2;
+  }
+  .cardTextLightGreen, .cardTextDarkGreen {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .servicesSection {
+    padding: 60px 20px;
+  }
+}

@@ -1,0 +1,73 @@
+.backToTop {
+  position: fixed;
+  bottom: 40px;
+  left: 40px; /* Moved to left side per user request */
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scrollBtn {
+  width: 50px;
+  height: 101px;
+  border-radius: 40px;
+  background-color: rgba(0, 0, 0, 0.75);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: var(--ease-smooth);
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(90deg); /* Rotate standard back arrow 90 degrees to point upwards */
+  transition: var(--ease-smooth);
+}
+
+.arrowIcon {
+  color: #ffffff; /* Base color is white */
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.scrollBtn:hover {
+  transform: scaleX(0.9);
+}
+
+.scrollBtn:hover .iconWrapper {
+  transform: rotate(90deg) scaleY(1.111); /* counter-scale the icon so it doesn't squish */
+}
+
+.scrollBtn:hover .arrowIcon {
+  color: var(--color-primary); /* Interaction turns arrow to brand green */
+}
+
+@media (max-width: 768px) {
+  .backToTop {
+    bottom: 20px;
+    left: 20px;
+  }
+  
+  .scrollBtn {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .arrowIcon {
+    width: 18px;
+    height: 18px;
+  }
+}
