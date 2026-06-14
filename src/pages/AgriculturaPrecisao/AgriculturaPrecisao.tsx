@@ -70,8 +70,10 @@ export default function AgriculturaPrecisao() {
 
         <div className={styles.fullTextRow}>
           <p>
-            Cada experimento é conduzido com acompanhamento técnico e análise detalhada dos resultados obtidos em campo.<br/>
-            Através da pesquisa, conseguimos compreender com mais profundidade o comportamento das culturas e antecipar soluções para os desafios enfrentados pelo produtor. Isso permite gerar informações confiáveis, reduzir riscos e apoiar tomadas de decisão mais assertivas dentro da operação agrícola.<br/>
+            Cada experimento é conduzido com acompanhamento técnico e análise detalhada dos resultados obtidos em campo.
+            <br /><br />
+            Através da pesquisa, conseguimos compreender com mais profundidade o comportamento das culturas e antecipar soluções para os desafios enfrentados pelo produtor. Isso permite gerar informações confiáveis, reduzir riscos e apoiar tomadas de decisão mais assertivas dentro da operação agrícola.
+            <br /><br />
             Nosso compromisso é aproximar inovação e prática de campo, conectando ciência, tecnologia e experiência agronômica para impulsionar resultados sustentáveis no agro.
           </p>
         </div>

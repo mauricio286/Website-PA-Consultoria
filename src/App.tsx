@@ -51,16 +51,25 @@ function App() {
   // Initialize Lenis smooth scroll
   useEffect(() => {
     const lenis = new Lenis({
-      autoRaf: true,
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+      lerp: 0.07, // Menos lerp para suavizar o "travamento" da roda do mouse
+      wheelMultiplier: 1,
+      smoothWheel: true,
+      syncTouch: true // Sincroniza touch/trackpad para evitar saltos
     });
+
+    let rafId: number;
+    function raf(time: number) {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
+    }
+    rafId = requestAnimationFrame(raf);
 
     // Expose to window so BackToTop can trigger native smooth scrolls
     (window as any).lenisInstance = lenis;
 
     return () => {
       lenis.destroy();
+      cancelAnimationFrame(rafId);
       delete (window as any).lenisInstance;
     };
   }, []);

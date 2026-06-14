@@ -319,6 +319,14 @@
   .addressCard {
     padding: 40px;
   }
+
+  .cardTitle {
+    font-size: 30px;
+  }
+
+  .cardText {
+    font-size: 17px;
+  }
 }
 
 @media (max-width: 992px) {

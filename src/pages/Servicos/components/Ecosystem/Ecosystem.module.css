@@ -140,22 +140,28 @@
 
 @media (max-width: 1600px) {
   .ecosystemSection {
-    padding: 0 100px 100px 100px;
+    padding: 0 40px 100px 40px;
   }
-  .svgOverlay {
+  .svgOverlay, .ecosystemGrid .circleMarker {
     display: none;
+  }
+  .ecosystemGrid {
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
   }
   .ecoCardsWrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    justify-items: center;
     gap: 30px;
     height: auto;
-    margin-top: 100px;
+    margin-top: 60px; /* Gap from the title to the start of the cards */
     position: relative;
   }
   .ecoCard {
     width: 100%;
-    max-width: 100% !important;
+    max-width: 415px !important;
     height: 480px;
     transform: none !important;
     position: relative;
@@ -168,41 +174,17 @@
   }
 }
 
-@media (max-width: 1400px) {
-  .ecosystemSection {
-    padding: 0 40px 80px 40px;
-  }
-  .ecosystemGrid {
-    min-height: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-  }
-  .ecoCardsWrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin-top: 0;
-    height: auto;
-  }
-  .ecoCard {
-    width: 100%;
-    max-width: 100% !important;
-    height: auto;
-    margin-top: 0 !important;
-    position: relative;
-    top: 0 !important;
-    left: 0 !important;
-    transform: none !important;
-  }
-}
-
 @media (max-width: 768px) {
   .ecosystemSection {
     padding: 60px 20px;
   }
   .ecoCardsWrapper {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+  }
+  .ecoCard {
+    width: 100%;
   }
   .ecosystemTitle {
     font-size: 80px;

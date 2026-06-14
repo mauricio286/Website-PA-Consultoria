@@ -528,11 +528,17 @@
   .card { padding: 100px 30px; }
   .cardTitle, .cardTitleDark, .cardTitleGreen { font-size: 32px; }
   .videoPlayerWrapper { height: 450px; }
-  .timelineItem { gap: 60px; }
-  .timelineContent { gap: 40px; }
-  .timelineYear { font-size: 100px; }
-  .timelineText { width: 280px; font-size: 16px; }
-  .timelineImageWrapper { width: 300px; height: 300px; }
+  
+  /* Timeline HD fix */
+  .timelineSection {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+  .timelineItem { gap: 40px; justify-content: space-between; }
+  .timelineContent { gap: 40px; flex: 1; justify-content: flex-end; }
+  .timelineYear { font-size: 180px; }
+  .timelineText { width: auto; flex: 1; max-width: 400px; font-size: 18px; line-height: 1.5; }
+  .timelineImageWrapper { width: 340px; height: 340px; flex-shrink: 0; }
   .scrollIndicator { width: 100%; max-width: 521px; }
 }
 
