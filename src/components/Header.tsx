@@ -14,7 +14,7 @@ export default function Header() {
   const [floatingPillStyle, setFloatingPillStyle] = useState({ left: 0, width: 0, opacity: 0 });
 
   const location = useLocation();
-
+  const isSubpage = location.pathname === '/consultoriaagronomica' || location.pathname === '/agriculturaprecisao' || location.pathname === '/gestaocompras' || location.pathname === '/aldbioenergia' || location.pathname.split('/').length > 2;
 
   const handleHashClick = (e: React.MouseEvent<HTMLAnchorElement>, to: string) => {
     if (to.startsWith('/#')) {
@@ -68,13 +68,19 @@ export default function Header() {
       if (!navRef.current) return;
       let activeEl = navRef.current.querySelector('.active') as HTMLElement;
       if (!activeEl) {
-        // Fallback: se não achar ativo (raro), procura o Home
         activeEl = navRef.current.querySelector('[href="/#hero"]') as HTMLElement;
       }
 
       if (activeEl) {
+        let offsetLeft = 0;
+        let currentEl: HTMLElement | null = activeEl;
+        while (currentEl && currentEl !== navRef.current) {
+          offsetLeft += currentEl.offsetLeft;
+          currentEl = currentEl.offsetParent as HTMLElement;
+        }
+
         setPillStyle({
-          left: activeEl.offsetLeft,
+          left: offsetLeft,
           width: activeEl.offsetWidth,
           opacity: 1
         });
@@ -103,13 +109,26 @@ export default function Header() {
         </div>
 
         {/* Desktop Nav Estático — no topo absoluto */}
-        <nav ref={staticNavRef} className={`${styles.nav} ${styles.navStatic}`} data-node-id="80:1511">
+        <nav ref={staticNavRef} className={`${styles.nav} ${styles.navStatic} ${isSubpage ? styles.navSubpage : ''}`} data-node-id="80:1511">
           {/* Pílula mágica estática */}
           <div className={styles.magicPill} style={{ left: `${staticPillStyle.left}px`, width: `${staticPillStyle.width}px`, opacity: staticPillStyle.opacity }} />
           
           <Link to="/#hero" onClick={(e) => handleHashClick(e, '/#hero')} className={`${styles.navLink} ${activeSection === 'hero' && location.pathname === '/' ? 'active ' + styles.active : ''}`}>Home</Link>
           <Link to="/quem-somos" onClick={closeMobile} className={`${styles.navLink} ${location.pathname === '/quem-somos' ? 'active ' + styles.active : ''}`}>Quem somos</Link>
-          <Link to="/servicos" onClick={closeMobile} className={`${styles.navLink} ${location.pathname === '/servicos' ? 'active ' + styles.active : ''}`}>Serviços</Link>
+          <div className={styles.navDropdownWrapper}>
+            <Link to="/servicos" onClick={closeMobile} className={`${styles.navLink} ${(location.pathname === '/servicos' || isSubpage) ? 'active ' + styles.active : ''}`}>
+              Serviços
+              <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.dropdownArrow}>
+                <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </Link>
+            <div className={styles.headerDropdown}>
+              <Link to="/consultoriaagronomica" onClick={closeMobile} className={styles.dropdownLink}>Consultoria Agronômica</Link>
+              <Link to="/unita" onClick={closeMobile} className={styles.dropdownLink}>Unitá</Link>
+              <Link to="/agriculturaprecisao" onClick={closeMobile} className={styles.dropdownLink}>Agricultura de Precisão</Link>
+              <Link to="/gestaocompras" onClick={closeMobile} className={styles.dropdownLink}>Gestão de Compras</Link>
+            </div>
+          </div>
           <Link to="/carreiras" onClick={closeMobile} className={`${styles.navLink} ${location.pathname === '/carreiras' ? 'active ' + styles.active : ''}`}>Carreiras</Link>
           <Link to="/contato" onClick={closeMobile} className={`${styles.navLink} ${location.pathname === '/contato' ? 'active ' + styles.active : ''}`}>Contato</Link>
         </nav>
@@ -121,7 +140,20 @@ export default function Header() {
           
           <Link to="/#hero" onClick={(e) => handleHashClick(e, '/#hero')} className={`${styles.navLink} ${activeSection === 'hero' && location.pathname === '/' ? 'active ' + styles.active : ''}`}>Home</Link>
           <Link to="/quem-somos" onClick={closeMobile} className={`${styles.navLink} ${location.pathname === '/quem-somos' ? 'active ' + styles.active : ''}`}>Quem somos</Link>
-          <Link to="/servicos" onClick={closeMobile} className={`${styles.navLink} ${location.pathname === '/servicos' ? 'active ' + styles.active : ''}`}>Serviços</Link>
+          <div className={styles.navDropdownWrapper}>
+            <Link to="/servicos" onClick={closeMobile} className={`${styles.navLink} ${(location.pathname === '/servicos' || isSubpage) ? 'active ' + styles.active : ''}`}>
+              Serviços
+              <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.dropdownArrow}>
+                <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </Link>
+            <div className={styles.headerDropdown}>
+              <Link to="/consultoriaagronomica" onClick={closeMobile} className={styles.dropdownLink}>Consultoria Agronômica</Link>
+              <Link to="/unita" onClick={closeMobile} className={styles.dropdownLink}>Unitá</Link>
+              <Link to="/agriculturaprecisao" onClick={closeMobile} className={styles.dropdownLink}>Agricultura de Precisão</Link>
+              <Link to="/gestaocompras" onClick={closeMobile} className={styles.dropdownLink}>Gestão de Compras</Link>
+            </div>
+          </div>
           <Link to="/carreiras" onClick={closeMobile} className={`${styles.navLink} ${location.pathname === '/carreiras' ? 'active ' + styles.active : ''}`}>Carreiras</Link>
           <Link to="/contato" onClick={closeMobile} className={`${styles.navLink} ${location.pathname === '/contato' ? 'active ' + styles.active : ''}`}>Contato</Link>
         </nav>
@@ -143,7 +175,15 @@ export default function Header() {
         <nav className={styles.navMobile}>
           <Link to="/#hero" onClick={(e) => handleHashClick(e, '/#hero')} className={styles.mobileNavLink}>Home</Link>
           <Link to="/quem-somos" className={styles.mobileNavLink} onClick={closeMobile}>Quem somos</Link>
-          <Link to="/servicos" className={styles.mobileNavLink} onClick={closeMobile}>Serviços</Link>
+          <div className={styles.mobileNavGroup}>
+            <Link to="/servicos" className={styles.mobileNavLink} onClick={closeMobile}>Serviços</Link>
+            <div className={styles.mobileSublinks}>
+              <Link to="/consultoriaagronomica" className={styles.mobileSublink} onClick={closeMobile}>Consultoria Agronômica</Link>
+              <Link to="/agriculturaprecisao" className={styles.mobileSublink} onClick={closeMobile}>Agricultura de Precisão</Link>
+              <Link to="/gestaocompras" className={styles.mobileSublink} onClick={closeMobile}>Gestão de Compras</Link>
+              <Link to="/aldbioenergia" className={styles.mobileSublink} onClick={closeMobile}>ALD Bioenergia</Link>
+            </div>
+          </div>
           <Link to="/carreiras" className={styles.mobileNavLink} onClick={closeMobile}>Carreiras</Link>
           <Link to="/contato" className={styles.mobileNavLink} onClick={closeMobile}>Contato</Link>
         </nav>

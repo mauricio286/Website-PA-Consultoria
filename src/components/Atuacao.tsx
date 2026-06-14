@@ -46,14 +46,7 @@ export default function Atuacao() {
           <p className={styles.description} data-node-id="36:1295">
             Estamos presentes em mais de 30 municípios, o que totaliza uma área de mais de 394 mil hectares e atuando nas culturas de soja, milho, entre outras.
           </p>
-          <div className={styles.btnWrapper} style={{ marginTop: '10px' }}>
-            <a href="/quem-somos" className="btn-pa white">
-              <span className="btn-label">Ver mais</span>
-              <span className="btn-icon">
-                <span className="material-symbols-rounded" style={{ fontSize: '24px', lineHeight: 1 }}>arrow_back</span>
-              </span>
-            </a>
-          </div>
+
         </div>
 
         <div className={styles.mapWrapper} data-node-id="36:1130">

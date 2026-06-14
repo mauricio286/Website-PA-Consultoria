@@ -4,6 +4,8 @@ import { imgProperty1Default } from '../assets';
 import LogoCarousel from './LogoCarousel';
 import AnimatedText from './AnimatedText';
 
+import { Link } from 'react-router-dom';
+
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
   const parallaxRef = useRef<HTMLDivElement>(null);
@@ -64,8 +66,8 @@ export default function Hero() {
 
             {/* CTA Button — Figma BotaoNossasSolucoes node 54:74 */}
             {/* width: 222px, height: 60px, bg: #fdfdfd, icon: #e1fe00 */}
-            <a
-              href="#intro"
+            <Link
+              to="/servicos"
               className="btn-pa white"
               data-node-id="54:74"
             >
@@ -73,7 +75,7 @@ export default function Hero() {
               <span className="btn-icon">
                 <span className="material-symbols-rounded" style={{ fontSize: '24px', lineHeight: 1 }}>arrow_back</span>
               </span>
-            </a>
+            </Link>
           </div>
 
           {/* Right column: Description text */}

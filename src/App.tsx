@@ -13,6 +13,10 @@ import Servicos from './pages/Servicos/Servicos';
 import Contato from './pages/Contato/Contato';
 
 import Carreiras from './pages/Carreiras/Carreiras';
+import ConsultoriaAgronomica from './pages/ConsultoriaAgronomica/ConsultoriaAgronomica';
+import AgriculturaPrecisao from './pages/AgriculturaPrecisao/AgriculturaPrecisao';
+import GestaoCompras from './pages/GestaoCompras/GestaoCompras';
+import AldBioenergia from './pages/AldBioenergia/AldBioenergia';
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -71,6 +75,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/quem-somos" element={<QuemSomos />} />
           <Route path="/servicos" element={<Servicos />} />
+          <Route path="/consultoriaagronomica" element={<ConsultoriaAgronomica />} />
+          <Route path="/agriculturaprecisao" element={<AgriculturaPrecisao />} />
+          <Route path="/gestaocompras" element={<GestaoCompras />} />
+          <Route path="/aldbioenergia" element={<AldBioenergia />} />
           <Route path="/carreiras" element={<Carreiras />} />
           <Route path="/contato" element={<Contato />} />
         </Routes>

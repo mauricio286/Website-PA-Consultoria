@@ -310,7 +310,7 @@
 }
 
 /* ==================== Responsivo ==================== */
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
   .contactContainer {
     grid-template-columns: 1fr 450px;
     gap: 50px;

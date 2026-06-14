@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from './Footer.module.css';
 import { imgLogoPa } from '../assets';
 
@@ -84,14 +85,30 @@ export default function Footer() {
         </div>
 
         {/* Right Column: Footer Navigation Menu */}
-        <div className={styles.navCol} data-node-id="36:1779">
-          <nav className={styles.footerNav}>
-            <a href="/#hero" className={styles.navLink}>Home</a>
-            <a href="/quem-somos" className={styles.navLink}>Quem somos</a>
-            <a href="/servicos" className={styles.navLink}>Serviços</a>
-            <a href="/carreiras" className={styles.navLink}>Carreiras</a>
-            <a href="/contato" className={styles.navLink}>Contato</a>
-          </nav>
+        <div className={styles.navCol}>
+          <div className={styles.footerNavGroup}>
+            <span className={styles.navGroupTitle}>Institucional</span>
+            <Link to="/#hero" className={styles.navLink}>Home</Link>
+            <Link to="/quem-somos" className={styles.navLink}>Quem somos</Link>
+            <Link to="/carreiras" className={styles.navLink}>Carreiras</Link>
+            <Link to="/contato" className={styles.navLink}>Contato</Link>
+          </div>
+          
+          <div className={styles.footerNavGroup}>
+            <Link to="/servicos" className={styles.navGroupTitleLink}>Serviços</Link>
+            <Link to="/consultoriaagronomica" className={styles.navLink}>Consultoria Agronômica</Link>
+            <Link to="/unita" className={styles.navLink}>Unitá</Link>
+            <Link to="/agriculturaprecisao" className={styles.navLink}>Agricultura de Precisão</Link>
+            <Link to="/gestaocompras" className={styles.navLink}>Gestão de Compras</Link>
+          </div>
+
+          <div className={styles.footerNavGroup}>
+            <Link to="/servicos#ecossistema" className={styles.navGroupTitleLink}>Ecossistema</Link>
+            <Link to="/aldbioenergia" className={styles.navLink}>ALD Bioenergia</Link>
+            <Link to="/lavoura" className={styles.navLink}>Lavoura</Link>
+            <Link to="/centrodepesquisa" className={styles.navLink}>Centro de Pesquisa</Link>
+            <Link to="/eventos" className={styles.navLink}>Eventos</Link>
+          </div>
         </div>
       </div>
 

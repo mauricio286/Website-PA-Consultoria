@@ -27,24 +27,26 @@ export default function Parceria() {
   return (
     <section id="parceria" className={styles.parceria} data-node-id="36:1318">
       <div className={styles.container}>
-        <div className={styles.header} data-node-id="36:1319">
-          <div className="tag-badge dark" style={{ marginBottom: '20px' }} data-node-id="36:1320">
-            parceria
+        <div className={styles.headerWrapper}>
+          <div className={styles.header} data-node-id="36:1319">
+            <div className="tag-badge dark" style={{ marginBottom: '20px' }} data-node-id="36:1320">
+              parceria
+            </div>
+            <h2
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: '40px',
+                fontWeight: 500,
+                lineHeight: '1.2',
+                letterSpacing: '-0.8px',
+                color: '#303030',
+                maxWidth: '650px'
+              }}
+              data-node-id="36:1322"
+            >
+              <AnimatedText text="Nós estamos em movimento constante para levar o melhor da ciência e da inovação até você." delay={0} stagger={0.03} />
+            </h2>
           </div>
-          <h2
-            style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: '40px',
-              fontWeight: 500,
-              lineHeight: '1.2',
-              letterSpacing: '-0.8px',
-              color: '#303030',
-              maxWidth: '650px'
-            }}
-            data-node-id="36:1322"
-          >
-            <AnimatedText text="Nós estamos em movimento constante para levar o melhor da ciência e da inovação até você." delay={0} stagger={0.03} />
-          </h2>
         </div>
 
         {/* Slider Track Wrapper to hide overflow */}

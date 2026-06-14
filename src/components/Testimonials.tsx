@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Testimonials.module.css';
 import {
   imgPerfil,
@@ -98,12 +99,12 @@ export default function Testimonials() {
 
         {/* CTA — Figma BotaoFaleComUmConsultor: w=266px */}
         <div className={styles.ctaWrapper}>
-          <a href="#contact" className="btn-pa dark-green-lg" data-node-id="64:437">
+          <Link to="/contato" className="btn-pa dark-green-lg" data-node-id="64:437">
             <span className="btn-label">Fale com um consultor</span>
             <span className="btn-icon">
               <span className="material-symbols-rounded" style={{ fontSize: '24px', lineHeight: 1 }}>arrow_back</span>
             </span>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

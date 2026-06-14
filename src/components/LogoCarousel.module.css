@@ -11,6 +11,7 @@
   height: 140px;
   display: flex;
   align-items: center;
+  justify-content: center;
   /* Fade edges for smooth transition */
   -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
   mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
@@ -24,6 +25,8 @@
   animation: logo-scroll 30s linear infinite;
   width: max-content;
   padding: 10px;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 @keyframes logo-scroll {

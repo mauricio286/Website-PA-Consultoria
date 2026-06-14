@@ -102,23 +102,44 @@
 .navCol {
   display: flex;
   justify-content: flex-end;
+  gap: 80px; /* space between Institucional and Serviços columns */
 }
 
-.footerNav {
+.footerNavGroup {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  text-align: right;
-  border-left: 1px solid rgba(0, 0, 0, 0.08);
-  padding-left: 30px;
+  gap: 16px;
+}
+
+.navGroupTitle {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin-bottom: 8px;
+}
+
+.navGroupTitleLink {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin-bottom: 8px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.navGroupTitleLink:hover {
+  color: var(--color-primary-dark);
 }
 
 .navLink {
   font-family: var(--font-body);
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 400;
   color: #727272;
   transition: color 0.2s ease;
+  text-decoration: none;
 }
 
 .navLink:hover {
@@ -145,20 +166,16 @@
     grid-template-columns: 1fr;
     gap: 60px;
   }
-  .navCol { justify-content: flex-start; }
-  .footerNav {
-    text-align: left;
-    border-left: none;
+  .navCol { 
+    justify-content: flex-start; 
     border-top: 1px solid rgba(0, 0, 0, 0.08);
-    padding-left: 0;
-    padding-top: 30px;
-    width: 100%;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 30px;
+    padding-top: 40px;
   }
 }
 
 @media (max-width: 580px) {
-  .footerNav { flex-direction: column; gap: 15px; }
+  .navCol { 
+    flex-direction: column; 
+    gap: 40px; 
+  }
 }

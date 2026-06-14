@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from './ServicesList.module.css';
 
 export default function ServicesList() {
@@ -28,10 +29,10 @@ export default function ServicesList() {
             <p className={styles.cardTextLightGreen}>A produtividade de uma lavoura começa muito antes do plantio. Por isso, nossa consultoria agronômica atua de forma próxima...</p>
           </div>
           <div className={styles.cardButton}>
-             <a href="#" className="btn-pa white">
+             <Link to="/consultoriaagronomica" className="btn-pa white">
                <span className="btn-label">Ver mais</span>
                <span className="btn-icon"><span className="material-symbols-rounded">arrow_back</span></span>
-             </a>
+             </Link>
           </div>
         </div>
 
@@ -56,10 +57,10 @@ export default function ServicesList() {
             <p className={styles.cardTextLightGreen}>A pesquisa agronômica é um dos pilares do Grupo PA. Investimos constantemente...</p>
           </div>
           <div className={styles.cardButton}>
-             <a href="#" className="btn-pa white">
+             <Link to="/agriculturaprecisao" className="btn-pa white">
                <span className="btn-label">Ver mais</span>
                <span className="btn-icon"><span className="material-symbols-rounded">arrow_back</span></span>
-             </a>
+             </Link>
           </div>
         </div>
 
@@ -70,10 +71,10 @@ export default function ServicesList() {
             <p className={styles.cardTextDarkGreen}>A gestão de compras vai muito além da negociação de valores. Nosso...</p>
           </div>
           <div className={styles.cardButton}>
-             <a href="#" className="btn-pa dark-green">
+             <Link to="/gestaocompras" className="btn-pa dark-green">
                <span className="btn-label">Ver mais</span>
                <span className="btn-icon"><span className="material-symbols-rounded">arrow_back</span></span>
-             </a>
+             </Link>
           </div>
         </div>
       </div>

@@ -101,7 +101,7 @@ export default function QuemSomos() {
         {/* Card 1 */}
         <div className={`${styles.card} ${styles.cardDark}`}>
           <h3 className={styles.cardTitle}>
-            <AnimatedText text="Nosso compromisso" type="char" delay={0} stagger={0.02} />
+            <AnimatedText text="Nosso compromisso" type="char" delay={0} stagger={0.02} className={styles.centeredAnimatedText} />
           </h3>
           <p className={styles.cardText}>
             Contribuímos com o desenvolvimento do agronegócio, entregando aos nossos clientes as melhores soluções em produtividade, com excelência na prestação de serviços, tecnologia, pesquisa e respeito às pessoas e ao meio ambiente.
@@ -111,7 +111,7 @@ export default function QuemSomos() {
         {/* Card 2 */}
         <div className={`${styles.card} ${styles.cardLime}`}>
           <h3 className={styles.cardTitleDark}>
-            <AnimatedText text="Onde queremos chegar" type="char" delay={0.2} stagger={0.02} />
+            <AnimatedText text="Onde queremos chegar" type="char" delay={0.2} stagger={0.02} className={styles.centeredAnimatedText} />
           </h3>
           <p className={styles.cardTextDark}>
             Buscamos ser referência em consultoria agronômica, pesquisa e agricultura de precisão, levando inovação, resultado e confiança para o produtor rural em cada safra.
@@ -121,7 +121,7 @@ export default function QuemSomos() {
         {/* Card 3 */}
         <div className={`${styles.card} ${styles.cardLight}`}>
           <h3 className={styles.cardTitleGreen}>
-            <AnimatedText text="Os valores que nos movem" type="char" delay={0.4} stagger={0.02} />
+            <AnimatedText text="Os valores que nos movem" type="char" delay={0.4} stagger={0.02} className={styles.centeredAnimatedText} />
           </h3>
           <p className={styles.cardTextGreen}>
             Acreditamos que grandes resultados começam com relações sólidas. Por isso, conduzimos nosso trabalho com honestidade, ética e transparência, valorizando as pessoas, respeitando cada parceria e mantendo a paixão pelo que fazemos em cada desafio do campo.
@@ -145,12 +145,16 @@ export default function QuemSomos() {
           </div>
 
           <div className={styles.videoPlayerWrapper}>
-            <div className={styles.videoThumbOverlay}>
-              <img src={imgImagem} alt="Vídeo thumbnail" className={styles.videoThumb} />
-            </div>
-            <button className={styles.playButton} aria-label="Reproduzir vídeo">
-              <span className={`material-symbols-rounded ${styles.playIcon}`}>play_arrow</span>
-            </button>
+            <iframe 
+              width="100%" 
+              height="100%" 
+              src="https://www.youtube.com/embed/2Val9IbUWHk" 
+              title="YouTube video player" 
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowFullScreen
+              style={{ position: 'absolute', top: 0, left: 0 }}
+            ></iframe>
           </div>
         </div>
       </section>
@@ -202,9 +206,6 @@ export default function QuemSomos() {
                   <div key={idx} className={styles.timelineItemWrapper}>
                     <div className={styles.timelineLine}>
                       <span className="tag-badge light" style={{ background: '#e1fe00', border: 'none', color: '#002d22' }}>{item.tag}</span>
-                      <div className={styles.timelineDottedContainer}>
-                        <div className={styles.timelineDottedCSS}></div>
-                      </div>
                     </div>
                     <div className={styles.timelineItem}>
                       <div className={styles.timelineYearWrapper}>

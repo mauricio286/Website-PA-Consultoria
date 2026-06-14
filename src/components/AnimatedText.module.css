@@ -9,6 +9,7 @@
   display: inline-block;
   overflow: hidden; /* This hides the text before it translates up */
   vertical-align: top;
+  white-space: nowrap;
 }
 
 .word {
@@ -23,4 +24,9 @@
 .word.visible {
   /* Animate to natural position */
   transform: translateY(0);
+}
+
+.spaceWrapper {
+  display: inline-block;
+  white-space: pre;
 }

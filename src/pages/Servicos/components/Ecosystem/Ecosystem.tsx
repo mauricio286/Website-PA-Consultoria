@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import AnimatedText from '../../../../components/AnimatedText';
 import styles from './Ecosystem.module.css';
 import { 
@@ -74,10 +75,10 @@ export default function Ecosystem() {
                </div>
                <h3 className={styles.ecoCardTitle}>ALD Bioenergia</h3>
                <div className={styles.ecoCardButton}>
-                  <a href="#" className="btn-pa white">
+                  <Link to="/aldbioenergia" className="btn-pa white">
                     <span className="btn-label">Ver mais</span>
                     <span className="btn-icon"><span className="material-symbols-rounded">arrow_back</span></span>
-                  </a>
+                  </Link>
                </div>
              </div>
 

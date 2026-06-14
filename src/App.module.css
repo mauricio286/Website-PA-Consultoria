@@ -60,7 +60,7 @@
 /* Figma node 29:895 — Neulis Alt (Outfit) Medium 40px, #ebebeb, tracking -0.8px, line-height 70px */
 .bannerText {
   font-family: var(--font-display);
-  font-size: 40px;
+  font-size: clamp(32px, 3.5vw, 48px);
   font-weight: 500;
   line-height: 1.05;
   letter-spacing: -0.8px;

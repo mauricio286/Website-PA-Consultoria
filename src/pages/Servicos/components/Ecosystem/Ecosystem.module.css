@@ -72,7 +72,6 @@
 }
 
 .ecoCard {
-  position: absolute;
   width: calc(25% - 15px);
   max-width: 415px;
   height: 536px;
@@ -86,10 +85,15 @@
 }
 
 /* Alinhamento geométrico perfeito pelo centro para a linha conectar exato */
-.ecoCard:nth-child(1) { left: 12.5%; transform: translateX(-50%); top: 0; }
-.ecoCard:nth-child(2) { left: 37.5%; transform: translateX(-50%); top: 50px; }
-.ecoCard:nth-child(3) { left: 62.5%; transform: translateX(-50%); top: 0; }
-.ecoCard:nth-child(4) { left: 87.5%; transform: translateX(-50%); top: 50px; }
+@media (min-width: 1601px) {
+  .ecoCard {
+    position: absolute;
+  }
+  .ecoCard:nth-child(1) { left: 12.5%; transform: translateX(-50%); top: 0; }
+  .ecoCard:nth-child(2) { left: 37.5%; transform: translateX(-50%); top: 50px; }
+  .ecoCard:nth-child(3) { left: 62.5%; transform: translateX(-50%); top: 0; }
+  .ecoCard:nth-child(4) { left: 87.5%; transform: translateX(-50%); top: 50px; }
+}
 
 .cardGreen { background-color: #88a668; }
 .cardDarkGreen { background-color: #002d22; }
@@ -109,8 +113,6 @@
   object-fit: cover;
 }
 
-/* Imagens com zoom sutil para matching do figma */
-.ecoCard:nth-child(1) .ecoImageWrapper img { transform: scale(1.1); }
 .ecoCard:nth-child(2) .ecoImageWrapper img { transform: scale(1.15); }
 .ecoCard:nth-child(3) .ecoImageWrapper img { transform: scale(1.2); }
 .ecoCard:nth-child(4) .ecoImageWrapper img { transform: scale(1.1); }
@@ -140,26 +142,33 @@
   .ecosystemSection {
     padding: 0 100px 100px 100px;
   }
-  .ecoCard {
-    width: 100%;
-    height: 480px;
-    transform: none;
+  .svgOverlay {
+    display: none;
+  }
+  .ecoCardsWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    height: auto;
+    margin-top: 100px;
     position: relative;
   }
-  .ecoCard:nth-child(even) {
-    top: 0;
-    margin-top: 30px;
+  .ecoCard {
+    width: 100%;
+    max-width: 100% !important;
+    height: 480px;
+    transform: none !important;
+    position: relative;
+    top: 0 !important;
+    left: 0 !important;
+    margin-top: 0 !important;
   }
-  .ecoCard:nth-child(1) { left: 0; }
-  .ecoCard:nth-child(2) { left: 0; }
-  .ecoCard:nth-child(3) { left: 0; }
-  .ecoCard:nth-child(4) { left: 0; }
   .ecoImageWrapper {
     height: 250px;
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
   .ecosystemSection {
     padding: 0 40px 80px 40px;
   }
@@ -178,11 +187,13 @@
   }
   .ecoCard {
     width: 100%;
+    max-width: 100% !important;
     height: auto;
     margin-top: 0 !important;
     position: relative;
+    top: 0 !important;
     left: 0 !important;
-    transform: none;
+    transform: none !important;
   }
 }
 

@@ -147,6 +147,11 @@
   line-height: 1.2;
   letter-spacing: -0.8px;
   margin: 0;
+  text-align: center;
+}
+
+.centeredAnimatedText {
+  justify-content: center;
 }
 
 .cardText, .cardTextDark, .cardTextGreen {
@@ -359,10 +364,15 @@
   align-items: center;
   gap: 10px;
   width: 100%;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-130px);
   z-index: 10;
+}
+
+@media (min-width: 1201px) {
+  .timelineLine {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-130px);
+  }
 }
 
 .timelineDottedContainer {
@@ -419,6 +429,7 @@
   justify-content: space-between;
   align-items: center;
   transition: opacity 0.4s ease;
+  gap: 60px;
 }
 
 .timelineItemFaded {
@@ -429,6 +440,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .timelineYear {
@@ -449,6 +461,7 @@
   display: flex;
   gap: 85px;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .timelineText {
@@ -515,26 +528,30 @@
   .card { padding: 100px 30px; }
   .cardTitle, .cardTitleDark, .cardTitleGreen { font-size: 32px; }
   .videoPlayerWrapper { height: 450px; }
-  .timelineItem, .timelineContent { gap: 40px; }
-  .timelineYear { font-size: 140px; }
-  .timelineText { width: 300px; font-size: 18px; }
-  .timelineImageWrapper { width: 350px; height: 350px; }
+  .timelineItem { gap: 60px; }
+  .timelineContent { gap: 40px; }
+  .timelineYear { font-size: 100px; }
+  .timelineText { width: 280px; font-size: 16px; }
+  .timelineImageWrapper { width: 300px; height: 300px; }
   .scrollIndicator { width: 100%; max-width: 521px; }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
+  .cardsSection {
+    flex-direction: column;
+  }
+  .card {
+    padding: 80px 40px;
+  }
+}
+
+@media (max-width: 1200px) {
   .introContainer {
     flex-direction: column;
     gap: 40px;
   }
   .introLeft {
     width: 100%;
-  }
-  .cardsSection {
-    flex-direction: column;
-  }
-  .card {
-    padding: 80px 40px;
   }
   .timelineItems {
     --timeline-gap: 40px;
@@ -543,13 +560,20 @@
   }
   .timelineItem {
     flex-direction: column;
-    gap: 40px;
+    gap: 60px;
     align-items: flex-start;
   }
   .timelineContent {
     flex-direction: column;
     gap: 40px;
     align-items: flex-start;
+  }
+  .timelineLine {
+    margin-bottom: 20px;
+  }
+  .timelineYear {
+    font-size: 60px;
+    letter-spacing: -2px;
   }
   .timelineText {
     width: 100%;

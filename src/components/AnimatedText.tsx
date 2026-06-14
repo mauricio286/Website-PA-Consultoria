@@ -64,25 +64,50 @@ export default function AnimatedText({
     };
   }, []);
 
-  const items = type === 'char' ? text.split('') : text.split(' ');
+  const words = text.split(' ');
+
+  let globalCharIndex = 0;
 
   return (
     <span ref={ref} className={`${styles.animatedTextWrapper} ${className}`}>
-      {items.map((item, index) => {
-        const isSpace = item === ' ';
+      {words.map((word, wordIndex) => {
+        const chars = word.split('');
+        
         return (
-          <span key={index} className={styles.wordWrapper}>
-            <span 
-              className={`${styles.word} ${isVisible ? styles.visible : ''}`}
-              style={{ 
-                transitionDelay: isVisible ? `${delay + (index * stagger)}s` : '0s',
-                transitionDuration: isVisible ? '' : '0s',
-                animationDelay: isVisible ? `${delay + (index * stagger)}s` : '0s'
-              }}
-            >
-              {isSpace ? '\u00A0' : item}
-            </span>
-            {type === 'word' && index < items.length - 1 && '\u00A0'}
+          <span key={wordIndex} className={styles.wordWrapper}>
+            {type === 'char' ? (
+              chars.map((char, charIndex) => {
+                const currentIndex = globalCharIndex++;
+                return (
+                  <span 
+                    key={charIndex}
+                    className={`${styles.word} ${isVisible ? styles.visible : ''}`}
+                    style={{ 
+                      transitionDelay: isVisible ? `${delay + (currentIndex * stagger)}s` : '0s',
+                      transitionDuration: isVisible ? '' : '0s',
+                      animationDelay: isVisible ? `${delay + (currentIndex * stagger)}s` : '0s'
+                    }}
+                  >
+                    {char}
+                  </span>
+                );
+              })
+            ) : (
+              <span 
+                className={`${styles.word} ${isVisible ? styles.visible : ''}`}
+                style={{ 
+                  transitionDelay: isVisible ? `${delay + (wordIndex * stagger)}s` : '0s',
+                  transitionDuration: isVisible ? '' : '0s',
+                  animationDelay: isVisible ? `${delay + (wordIndex * stagger)}s` : '0s'
+                }}
+              >
+                {word}
+              </span>
+            )}
+            {/* Add space after the word unless it's the last word */}
+            {wordIndex < words.length - 1 && (
+              <span className={styles.spaceWrapper}> </span>
+            )}
           </span>
         );
       })}

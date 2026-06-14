@@ -10,6 +10,8 @@
 
 .container {
   width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -112,9 +114,7 @@
 
 
 .carouselWrapper {
-  margin-left: calc(-1 * var(--container-px));
-  margin-right: calc(-1 * var(--container-px));
   margin-bottom: calc(-1 * var(--section-py));
   margin-top: 60px;
-  width: 100vw;
+  width: 100%;
 }

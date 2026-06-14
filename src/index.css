@@ -66,9 +66,17 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Global Scale Reduction (90%) for Desktop */
+@media (min-width: 1025px) {
+  html {
+    zoom: 0.9;
+  }
+}
+
 body {
-  overflow-x: hidden;
   width: 100%;
+  overflow-x: hidden;
+  background-color: var(--color-bg-white);
   min-height: 100vh;
 }
 
@@ -94,11 +102,10 @@ img {
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--color-bg-dark); }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-primary-dark);
+  background: var(--color-primary);
   border: 2px solid var(--color-bg-dark);
   border-radius: 10px;
 }
-::-webkit-scrollbar-thumb:hover { background: var(--color-primary); }
 
 
 /* Material Symbols adjustments for exact weight and rounding */
@@ -298,9 +305,15 @@ img {
 }
 
 /* ── Responsive Container ─────────────────────── */
+@media (max-width: 1600px) {
+  :root {
+    --container-px: 68px;
+  }
+}
+
 @media (max-width: 1400px) {
   :root {
-    --container-px: 80px;
+    --container-px: 50px;
     --section-py: 90px;
   }
 }
@@ -314,7 +327,7 @@ img {
 
 @media (max-width: 768px) {
   :root {
-    --container-px: 24px;
+    --container-px: 20px;
     --section-py: 60px;
   }
 }
@@ -341,6 +354,39 @@ img {
 }
 
 /* Animação Global de Troca de Páginas */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+/* ==========================================================================
+   Sophisticated Entrance Animations
+   ========================================================================== */
+@keyframes sophisticatedZoomOut {
+  from { transform: scale(1.15); }
+  to { transform: scale(1); }
+}
+
+@keyframes sophisticatedSlideUp {
+  from { transform: translateX(-50%) translateY(40px); opacity: 0; }
+  to { transform: translateX(-50%) translateY(0); opacity: 1; }
+}
+
+.animate-bg-zoom {
+  animation: sophisticatedZoomOut 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.animate-wrapper-slide {
+  animation: sophisticatedSlideUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
 @keyframes pageFadeIn {
   0% {
     opacity: 0;

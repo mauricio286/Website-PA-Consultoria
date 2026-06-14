@@ -91,3 +91,29 @@ export const imgBgContato = imgBgContatoUrl;
 export const imgIconMail = imgIconMailUrl;
 export const imgIconCall = imgIconCallUrl;
 export const imgIconWhereToVote = imgIconWhereToVoteUrl;
+
+import imgBgConsultoriaAgronomicaUrl from './assets/images/bg_consultoria_agronomica.png';
+import imgConsultoriaAgronomicaUrl from './assets/images/img_consultoria_agronomica.png';
+
+export const imgBgConsultoriaAgronomica = imgBgConsultoriaAgronomicaUrl;
+export const imgConsultoriaAgronomica = imgConsultoriaAgronomicaUrl;
+
+import imgBgAgriculturaPrecisaoUrl from './assets/images/bg_agricultura_precisao.png';
+import imgAgriculturaPrecisaoUrl from './assets/images/img_agricultura_precisao.png';
+
+export const imgBgAgriculturaPrecisao = imgBgAgriculturaPrecisaoUrl;
+export const imgAgriculturaPrecisao = imgAgriculturaPrecisaoUrl;
+
+import imgBgGestaoComprasUrl from './assets/images/bg_gestao_compras.png';
+import imgGestaoComprasUrl from './assets/images/img_gestao_compras.png';
+
+export const imgBgGestaoCompras = imgBgGestaoComprasUrl;
+export const imgGestaoCompras = imgGestaoComprasUrl;
+
+import imgBgAldUrl from './assets/images/bg_ald.png';
+import imgAld1Url from './assets/images/img_ald_1.png';
+import imgAld2Url from './assets/images/img_ald_2.png';
+
+export const imgBgAld = imgBgAldUrl;
+export const imgAld1 = imgAld1Url;
+export const imgAld2 = imgAld2Url;
