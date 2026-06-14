@@ -14,8 +14,21 @@ export default function BackToTop() {
       }
     };
 
-    window.addEventListener('scroll', toggleVisibility);
-    return () => window.removeEventListener('scroll', toggleVisibility);
+    let ticking = false;
+    const scrollListener = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          toggleVisibility();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', scrollListener, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', scrollListener);
+    };
   }, []);
 
   const scrollToTop = (e: React.MouseEvent) => {

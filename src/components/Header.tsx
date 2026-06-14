@@ -57,9 +57,21 @@ export default function Header() {
       setActiveSection(currentSection);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // chamada inicial
-    return () => window.removeEventListener('scroll', handleScroll);
+    let ticking = false;
+    const scrollListener = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', scrollListener, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', scrollListener);
   }, [location.pathname]);
 
   // Atualiza a posição da pílula quando a seção ativa ou a rota muda

@@ -51,10 +51,11 @@ function App() {
   // Initialize Lenis smooth scroll
   useEffect(() => {
     const lenis = new Lenis({
-      lerp: 0.07, // Menos lerp para suavizar o "travamento" da roda do mouse
+      duration: 1.2, // Usa tempo real (duration) no lugar de lerp para sincronizar a animação entre 60hz, 100hz e 144hz.
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Curva suave idêntica em qualquer refresh rate
       wheelMultiplier: 1,
       smoothWheel: true,
-      syncTouch: true // Sincroniza touch/trackpad para evitar saltos
+      syncTouch: true
     });
 
     let rafId: number;
