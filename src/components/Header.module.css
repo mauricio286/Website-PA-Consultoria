@@ -225,11 +225,17 @@
   border-radius: 14px;
   text-decoration: none;
   transition: background-color 0.2s, color 0.2s;
+  outline: none;
+  border: none;
+  box-shadow: none;
 }
 
-.dropdownLink:hover {
-  background-color: #f7f7f7;
+.dropdownLink:hover, .dropdownLink:focus, .dropdownLink:active {
+  background-color: #c5e404;
   color: var(--color-primary-dark);
+  outline: none;
+  border: none;
+  box-shadow: none;
 }
 
 .dropdownArrow {
