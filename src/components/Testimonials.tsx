@@ -58,17 +58,42 @@ export default function Testimonials() {
   const gridRef = useRef<HTMLDivElement>(null);
   const autoPlayRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
+  const handleTouchStart = () => {
+    // Pause auto-play when user touches the carousel
+    if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+  };
+
+  const handleScrollEvent = () => {
+    if (gridRef.current) {
+      const { scrollLeft } = gridRef.current;
+      const cardElement = gridRef.current.querySelector(`.${styles.card}`) as HTMLElement;
+      const gap = 15;
+      const cardWidth = cardElement ? cardElement.offsetWidth + gap : gridRef.current.clientWidth * 0.85;
+      
+      const newIndex = Math.round(scrollLeft / cardWidth);
+      if (newIndex !== activeIndex && newIndex >= 0 && newIndex < testimonials.length) {
+        setActiveIndex(newIndex);
+        setSelectedId(testimonials[newIndex].id);
+      }
+    }
+  };
+
   useEffect(() => {
     const startAutoPlay = () => {
       autoPlayRef.current = setInterval(() => {
         if (gridRef.current && window.innerWidth <= 991) {
           const { scrollLeft, scrollWidth, clientWidth } = gridRef.current;
+          
+          const cardElement = gridRef.current.querySelector(`.${styles.card}`) as HTMLElement;
+          const gap = 15;
+          const cardWidth = cardElement ? cardElement.offsetWidth + gap : clientWidth * 0.85;
+
           // If we reached the end, scroll back to start
           if (scrollLeft + clientWidth >= scrollWidth - 10) {
             gridRef.current.scrollTo({ left: 0, behavior: 'smooth' });
           } else {
-            // Scroll by one card width (85vw roughly)
-            gridRef.current.scrollBy({ left: clientWidth * 0.85, behavior: 'smooth' });
+            // Scroll by one exact card width
+            gridRef.current.scrollBy({ left: cardWidth, behavior: 'smooth' });
           }
         }
       }, 3500); // 3.5 seconds
@@ -80,21 +105,6 @@ export default function Testimonials() {
       if (autoPlayRef.current) clearInterval(autoPlayRef.current);
     };
   }, []);
-
-  const handleTouchStart = () => {
-    // Pause auto-play when user touches the carousel
-    if (autoPlayRef.current) clearInterval(autoPlayRef.current);
-  };
-
-  const handleScroll = () => {
-    if (gridRef.current) {
-      const { scrollLeft, clientWidth } = gridRef.current;
-      const newIndex = Math.round(scrollLeft / (clientWidth * 0.85));
-      if (newIndex !== activeIndex) {
-        setActiveIndex(newIndex);
-      }
-    }
-  };
 
   return (
     <section id="testimonials" className={styles.testimonials} data-node-id="36:1348">
@@ -118,7 +128,8 @@ export default function Testimonials() {
           className={styles.grid} 
           ref={gridRef}
           onTouchStart={handleTouchStart}
-          onScroll={handleScroll}
+          onScroll={handleScrollEvent}
+          data-lenis-prevent="true"
         >
           {testimonials.map((dep) => (
             <div

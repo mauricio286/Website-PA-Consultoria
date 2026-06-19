@@ -159,9 +159,17 @@
     flex-wrap: nowrap;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    padding-bottom: 5px;
+    padding-bottom: 20px;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none; /* Firefox */
+    touch-action: pan-x pan-y;
+    gap: 15px;
+    
+    /* Make the carousel edge-to-edge on mobile to prevent clipping */
+    margin-left: calc(-1 * var(--container-px));
+    margin-right: calc(-1 * var(--container-px));
+    padding-left: var(--container-px);
+    padding-right: var(--container-px);
   }
   .grid::-webkit-scrollbar {
     display: none; /* Chrome */
