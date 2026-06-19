@@ -394,7 +394,7 @@
   border: 1px solid #c2c2c2;
   border-radius: 14px;
   font-family: var(--font-body);
-  font-size: 15px;
+  font-size: 16px; /* iOS requires at least 16px to prevent auto-zoom on focus */
   font-weight: 300;
   letter-spacing: -0.45px;
   color: #707070;

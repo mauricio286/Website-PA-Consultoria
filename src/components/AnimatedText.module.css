@@ -13,16 +13,18 @@
 
 .word {
   display: inline-block;
-  /* Start pushed completely below its own bounding box */
-  transform: translateY(115%);
+  /* Pushed further down (140%) to bypass the 0.25em padding-bottom completely */
+  transform: translateY(140%);
+  opacity: 0;
   /* Luxury easing curve: fast start, super slow finish */
-  transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
-  will-change: transform;
+  transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.4s ease;
+  will-change: transform, opacity;
 }
 
 .word.visible {
   /* Animate to natural position */
   transform: translateY(0);
+  opacity: 1;
 }
 
 .spaceWrapper {
