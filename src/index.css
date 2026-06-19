@@ -39,6 +39,25 @@
   --ease-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ── Responsividade de Gaps Laterais ── */
+@media (max-width: 1400px) {
+  :root {
+    --container-px: 80px;
+  }
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --container-px: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --container-px: 24px;
+  }
+}
+
 /* ── Mapeamento de Fonte Local ────────────────── */
 /* Mapeia a fonte "Neulis Alt Medium" instalada no Windows para o peso 500,
    evitando que o navegador aplique "falso negrito" ao usar font-weight: 500 */

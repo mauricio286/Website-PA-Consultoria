@@ -33,7 +33,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: rotate(90deg); /* Rotate standard back arrow 90 degrees to point upwards */
   transition: var(--ease-smooth);
 }
 
@@ -48,7 +47,7 @@
 }
 
 .scrollBtn:hover .iconWrapper {
-  transform: rotate(90deg) scaleY(1.111); /* counter-scale the icon so it doesn't squish */
+  transform: scaleX(1.111) translateY(-4px); /* counter-scale to prevent squish and push up */
 }
 
 .scrollBtn:hover .arrowIcon {
@@ -63,11 +62,6 @@
   
   .scrollBtn {
     width: 44px;
-    height: 44px;
-  }
-  
-  .arrowIcon {
-    width: 18px;
-    height: 18px;
+    height: 85px; /* Keep it as an elongated pill like desktop */
   }
 }

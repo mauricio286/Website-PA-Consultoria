@@ -1,8 +1,5 @@
 .animatedTextWrapper {
-  display: inline-flex;
-  flex-wrap: wrap;
-  /* Ensure it flows with text naturally */
-  vertical-align: top;
+  display: inline;
 }
 
 .wordWrapper {
@@ -10,6 +7,8 @@
   overflow: hidden; /* This hides the text before it translates up */
   vertical-align: top;
   white-space: nowrap;
+  padding-bottom: 0.25em; /* Prevent clipping of descenders like ç */
+  margin-bottom: -0.25em;
 }
 
 .word {

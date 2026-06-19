@@ -30,6 +30,7 @@
   line-height: 1.05;
   letter-spacing: -0.8px;
   color: var(--color-text-body);
+  text-wrap: balance; /* Elegant natural wrapping on mobile */
 }
 
 .titleAccent {
@@ -89,7 +90,7 @@
 .profile {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; /* Centered on Web */
   gap: 10px;
   margin-top: 24px;
 }
@@ -153,11 +154,60 @@
 }
 
 @media (max-width: 991px) {
-  .grid { grid-template-columns: 1fr; }
-  .card { min-height: auto; }
+  .grid { 
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 5px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+  }
+  .grid::-webkit-scrollbar {
+    display: none; /* Chrome */
+  }
+  .card { 
+    flex: 0 0 85vw;
+    scroll-snap-align: center;
+    min-height: auto; 
+  }
+  .profile {
+    justify-content: flex-start; /* Left-aligned on Mobile */
+  }
 }
 
 @media (max-width: 580px) {
   .quoteText { font-size: 17px; }
-  .title { font-size: 32px; line-height: 1.3; }
+  .title { font-size: clamp(34px, 10vw, 40px); line-height: 1.1; }
+  .desktopBreak { display: none; } /* Remove hard break so text-wrap: balance works */
+}
+
+.paginationDots {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.2); /* Use dark gray for contrast on white bg */
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.dotActive {
+  background-color: var(--color-primary);
+  width: 24px;
+  border-radius: 4px;
+}
+
+@media (max-width: 991px) {
+  .paginationDots { display: flex; }
+  .ctaWrapper { margin-top: 40px; }
 }

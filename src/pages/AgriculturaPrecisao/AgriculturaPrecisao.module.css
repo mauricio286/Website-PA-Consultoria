@@ -64,6 +64,9 @@
   font-family: 'DM Sans', sans-serif;
   font-size: 13px;
   text-transform: uppercase;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
 }
 
 .breadcrumbLink {
@@ -197,7 +200,7 @@
     flex: auto;
   }
   .heroTitle {
-    font-size: 48px;
+    font-size: 56px;
   }
   .heroBgWrapper {
     width: 95%;
@@ -205,21 +208,56 @@
 }
 
 @media (max-width: 768px) {
-  .heroTitle {
-    font-size: 36px;
+  .heroSection {
+    padding-top: 138px;
+  }
+  .titleContainer {
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+  }
+  .breadcrumb {
+    font-size: 11px;
+    line-height: 1.2;
+    padding: 6px 12px;
   }
   .heroBgWrapper {
-    height: 350px;
-    border-radius: 24px;
+    top: 138px;
+    height: 377px;
+    border-radius: 46px;
+    width: calc(100% - 30px);
   }
   .heroContent {
-    height: 350px;
+    height: 377px;
+  }
+  .heroTitle {
+    font-size: clamp(28px, 8vw, 36px);
+    text-align: center;
+    line-height: 1.1;
+    word-break: break-word;
+    padding: 0 20px;
+    width: 100%;
   }
   .scrollDownWrapper {
     left: 50%;
     transform: translateX(-50%);
+    top: calc(138px + 377px - 25px);
+  }
+  .imageWrapper {
+    width: 100%;
+    height: 200px;
+    border-radius: 20px;
+  }
+  .textContent, .fullTextRow {
+    font-size: 16px;
+    text-align: justify;
   }
   .contentSection {
-    padding-top: 60px;
+    padding-top: 45px;
+    gap: 30px;
+  }
+  .imageTextRow {
+    flex-direction: column;
+    gap: 30px;
   }
 }

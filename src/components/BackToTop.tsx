@@ -63,7 +63,7 @@ export default function BackToTop() {
       >
         <div className={styles.iconWrapper}>
           <span className={`material-symbols-rounded ${styles.arrowIcon}`} style={{ fontSize: '24px' }}>
-            arrow_back
+            arrow_upward
           </span>
         </div>
       </button>

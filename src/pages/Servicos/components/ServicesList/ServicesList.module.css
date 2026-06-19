@@ -159,5 +159,37 @@
 @media (max-width: 768px) {
   .servicesSection {
     padding: 60px 20px;
+    gap: 80px;
+  }
+}
+
+@media (max-width: 580px) {
+  .servicesSection {
+    padding: 60px var(--container-px);
+    gap: 60px;
+  }
+  .sectionTitle {
+    font-size: clamp(34px, 10vw, 48px);
+  }
+  .sectionDescription {
+    font-size: 17px;
+  }
+  .serviceCard {
+    padding: 40px 25px;
+    border-radius: 30px;
+    gap: 20px;
+  }
+  .cardTitleLightGreen, .cardTitleDarkGreen {
+    font-size: clamp(30px, 8vw, 36px);
+    line-height: 1.1;
+  }
+  .cardContent {
+    gap: 20px;
+  }
+  .cardTextLightGreen, .cardTextDarkGreen {
+    font-size: 17px;
+  }
+  .tagWrapper {
+    margin-bottom: 0px;
   }
 }

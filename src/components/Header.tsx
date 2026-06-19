@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'motion/react';
 import styles from './Header.module.css';
 import { imgLogoPa1 } from '../assets';
 
@@ -112,7 +113,7 @@ export default function Header() {
   const toggleMobile = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   return (
-    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`} data-node-id="1:1179">
+    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''} ${isSubpage ? styles.headerSubpage : ''}`} data-node-id="1:1179">
       <div className={styles.inner}>
         <div className={styles.logoArea} data-node-id="12:505">
           <Link to="/" className={styles.logoLink}>
@@ -135,6 +136,7 @@ export default function Header() {
               </svg>
             </Link>
             <div className={styles.headerDropdown}>
+              <Link to="/servicos" onClick={closeMobile} className={styles.dropdownLink}>Ecossistema (Geral)</Link>
               <Link to="/consultoriaagronomica" onClick={closeMobile} className={styles.dropdownLink}>Consultoria Agronômica</Link>
               <Link to="/unita" onClick={closeMobile} className={styles.dropdownLink}>Unitá</Link>
               <Link to="/agriculturaprecisao" onClick={closeMobile} className={styles.dropdownLink}>Agricultura de Precisão</Link>
@@ -160,6 +162,7 @@ export default function Header() {
               </svg>
             </Link>
             <div className={styles.headerDropdown}>
+              <Link to="/servicos" onClick={closeMobile} className={styles.dropdownLink}>Ecossistema (Geral)</Link>
               <Link to="/consultoriaagronomica" onClick={closeMobile} className={styles.dropdownLink}>Consultoria Agronômica</Link>
               <Link to="/unita" onClick={closeMobile} className={styles.dropdownLink}>Unitá</Link>
               <Link to="/agriculturaprecisao" onClick={closeMobile} className={styles.dropdownLink}>Agricultura de Precisão</Link>
@@ -182,24 +185,49 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Drawer */}
-      <div className={`${styles.mobileMenu} ${isMobileMenuOpen ? styles.mobileMenuOpen : ''}`}>
-        <nav className={styles.navMobile}>
-          <Link to="/#hero" onClick={(e) => handleHashClick(e, '/#hero')} className={styles.mobileNavLink}>Home</Link>
-          <Link to="/quem-somos" className={styles.mobileNavLink} onClick={closeMobile}>Quem somos</Link>
-          <div className={styles.mobileNavGroup}>
-            <Link to="/servicos" className={styles.mobileNavLink} onClick={closeMobile}>Serviços</Link>
-            <div className={styles.mobileSublinks}>
-              <Link to="/consultoriaagronomica" className={styles.mobileSublink} onClick={closeMobile}>Consultoria Agronômica</Link>
-              <Link to="/agriculturaprecisao" className={styles.mobileSublink} onClick={closeMobile}>Agricultura de Precisão</Link>
-              <Link to="/gestaocompras" className={styles.mobileSublink} onClick={closeMobile}>Gestão de Compras</Link>
-              <Link to="/aldbioenergia" className={styles.mobileSublink} onClick={closeMobile}>ALD Bioenergia</Link>
-            </div>
-          </div>
-          <Link to="/carreiras" className={styles.mobileNavLink} onClick={closeMobile}>Carreiras</Link>
-          <Link to="/contato" className={styles.mobileNavLink} onClick={closeMobile}>Contato</Link>
-        </nav>
-      </div>
+      {/* Mobile Drawer (Framer Motion) */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div 
+            className={styles.mobileMenu}
+            variants={{
+              closed: {
+                opacity: 0,
+                y: -20,
+                scale: 0.95,
+                transition: { duration: 0.2, ease: "easeIn", staggerChildren: 0.05, staggerDirection: -1 }
+              },
+              open: {
+                opacity: 1,
+                y: 10,
+                scale: 1,
+                transition: { duration: 0.3, ease: "easeOut", staggerChildren: 0.05, delayChildren: 0.1 }
+              }
+            }}
+            initial="closed"
+            animate="open"
+            exit="closed"
+          >
+            <nav className={styles.navMobile}>
+              <motion.div variants={{ closed: { opacity: 0, x: -10 }, open: { opacity: 1, x: 0 } }} className="w-full">
+                <Link to="/#hero" onClick={(e) => handleHashClick(e, '/#hero')} className={styles.mobileNavLink}>Home</Link>
+              </motion.div>
+              <motion.div variants={{ closed: { opacity: 0, x: -10 }, open: { opacity: 1, x: 0 } }} className="w-full">
+                <Link to="/quem-somos" className={styles.mobileNavLink} onClick={closeMobile}>Quem somos</Link>
+              </motion.div>
+              <motion.div variants={{ closed: { opacity: 0, x: -10 }, open: { opacity: 1, x: 0 } }} className="w-full">
+                <Link to="/servicos" className={styles.mobileNavLink} onClick={closeMobile}>Serviços</Link>
+              </motion.div>
+              <motion.div variants={{ closed: { opacity: 0, x: -10 }, open: { opacity: 1, x: 0 } }} className="w-full">
+                <Link to="/carreiras" className={styles.mobileNavLink} onClick={closeMobile}>Carreiras</Link>
+              </motion.div>
+              <motion.div variants={{ closed: { opacity: 0, x: -10 }, open: { opacity: 1, x: 0 } }} className="w-full">
+                <Link to="/contato" className={styles.mobileNavLink} onClick={closeMobile}>Contato</Link>
+              </motion.div>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

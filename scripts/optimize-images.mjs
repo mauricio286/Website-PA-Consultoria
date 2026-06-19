@@ -8,40 +8,43 @@ const optimizeImage = async (filePath) => {
   try {
     const ext = path.extname(filePath).toLowerCase();
     
+    // Only process jpg and png, ignore existing webp
     if (!['.jpg', '.jpeg', '.png'].includes(ext)) return;
     
     const stats = fs.statSync(filePath);
     const sizeMB = stats.size / (1024 * 1024);
     
-    // Only optimize images larger than 500KB to save time, or we can just optimize all.
-    // Given the massive files, let's optimize anything over 500KB to be safe.
-    if (sizeMB < 0.5) return;
+    // Convert anything above 100KB to webp for massive savings
+    if (sizeMB < 0.1) return;
 
-    console.log(`Optimizing: ${filePath} (${sizeMB.toFixed(2)} MB)`);
+    console.log(`Optimizing & Converting to WebP: ${filePath} (${sizeMB.toFixed(2)} MB)`);
 
     const fileBuffer = fs.readFileSync(filePath);
     const image = sharp(fileBuffer);
     const metadata = await image.metadata();
 
-    // Resize if wider than 2560px (to preserve quality on large monitors)
+    // Resize if wider than 2560px
     if (metadata.width > 2560) {
       image.resize(2560, null, { withoutEnlargement: true });
     }
 
-    // Compress based on format
-    if (ext === '.png') {
-      image.png({ quality: 90, compressionLevel: 9 });
-    } else {
-      image.jpeg({ quality: 90, progressive: true });
-    }
+    // Convert to webp
+    image.webp({ quality: 80, effort: 6 });
+
+    // Output file path
+    const parsedPath = path.parse(filePath);
+    const outputPath = path.join(parsedPath.dir, `${parsedPath.name}.webp`);
 
     const buffer = await image.toBuffer();
-    fs.writeFileSync(filePath, buffer);
+    fs.writeFileSync(outputPath, buffer);
     
-    const newStats = fs.statSync(filePath);
+    // Delete the original file to clean up the assets folder
+    fs.unlinkSync(filePath);
+    
+    const newStats = fs.statSync(outputPath);
     const newSizeMB = newStats.size / (1024 * 1024);
     
-    console.log(`✅ Reduced from ${sizeMB.toFixed(2)}MB to ${newSizeMB.toFixed(2)}MB`);
+    console.log(`✅ Converted to WebP. Reduced from ${sizeMB.toFixed(2)}MB to ${newSizeMB.toFixed(2)}MB`);
   } catch (err) {
     console.error(`Error optimizing ${filePath}:`, err);
   }

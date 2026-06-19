@@ -16,9 +16,9 @@
   height: 597px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; /* Center horizontally */
   overflow: hidden;
-  text-align: center;
+  text-align: center; /* Center text */
   padding: 120px var(--container-px);
 }
 
@@ -52,8 +52,9 @@
 .bannerContent {
   position: relative;
   z-index: 2;
-  max-width: 1535px;
+  max-width: var(--container-max);
   margin: 0 auto;
+  width: 100%;
 }
 
 /* Figma node 29:895 — Neulis Alt (Outfit) Medium 40px, #ebebeb, tracking -0.8px, line-height 70px */
@@ -64,20 +65,27 @@
   line-height: 1.05;
   letter-spacing: -0.8px;
   color: var(--color-near-white);
+  text-align: center;
+  max-width: 100%;
+  margin: 0 auto;
+  white-space: nowrap; /* Force one line on desktop */
 }
 
 /* "melhor conosco!" in #e1fe00 */
 .bannerTextAccent {
   color: var(--color-primary);
+  white-space: nowrap;
 }
+
 
 /* Responsive */
 @media (max-width: 1024px) {
   .middleBanner { height: 420px; }
-  .bannerText { font-size: 32px; line-height: 1.4; }
+  .bannerText { font-size: 32px; line-height: 1.4; white-space: normal; }
 }
 
 @media (max-width: 580px) {
-  .middleBanner { height: 300px; }
-  .bannerText { font-size: 24px; line-height: 1.4; }
+  .middleBanner { height: 450px; } /* Increased vertical height for impact */
+  .bannerText { font-size: clamp(30px, 8vw, 36px); line-height: 1.15; width: 100%; text-align: center; white-space: normal; }
+  .bannerContent { justify-content: center; }
 }

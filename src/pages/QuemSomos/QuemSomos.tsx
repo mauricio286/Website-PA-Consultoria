@@ -171,7 +171,7 @@ export default function QuemSomos() {
                 <AnimatedText text="Nossa história" type="word" />
               </h2>
             </div>
-            <div className={styles.timelineControls}>
+            <div className={`${styles.timelineControls} ${styles.desktopControls}`}>
               <button onClick={() => scrollByAmount('prev')} className={styles.controlBtn} aria-label="Voltar no tempo">
                 <span className="material-symbols-rounded">chevron_left</span>
               </button>
@@ -182,6 +182,15 @@ export default function QuemSomos() {
           </div>
 
           <div className={styles.timelineScroller}>
+            {/* Mobile Controls absolute positioned next to the Year */}
+            <div className={`${styles.timelineControls} ${styles.mobileControls}`}>
+              <button onClick={() => scrollByAmount('prev')} className={styles.controlBtn} aria-label="Voltar no tempo">
+                <span className="material-symbols-rounded">chevron_left</span>
+              </button>
+              <button onClick={() => scrollByAmount('next')} className={styles.controlBtn} aria-label="Avançar no tempo">
+                <span className="material-symbols-rounded">chevron_right</span>
+              </button>
+            </div>
             <div className={styles.timelineTrack}>
               <div 
                 className={`${styles.timelineItems} ${isDragging ? styles.dragging : ''}`} 

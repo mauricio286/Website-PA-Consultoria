@@ -137,7 +137,7 @@
   flex: 1;
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1400px) and (min-width: 768px) {
   .ecosystemSection {
     padding: 0 40px 100px 40px;
   }
@@ -151,45 +151,85 @@
   }
   .ecoCardsWrapper {
     display: grid;
-    grid-template-columns: minmax(0, 415px) minmax(0, 415px);
+    grid-template-columns: minmax(0, 360px) minmax(0, 360px);
     justify-content: center;
     gap: 30px;
     height: auto;
-    margin-top: 100px; /* Gap from the title to the start of the cards */
+    margin-top: 60px;
     position: relative;
   }
   .ecoCard {
     width: 100%;
-    max-width: 415px !important;
-    height: 100%;
+    max-width: 360px;
+    height: auto;
     min-height: 480px;
-    transform: none !important;
     position: relative;
-    top: 0 !important;
-    left: 0 !important;
-    margin-top: 0 !important;
+    top: 0;
+    left: 0;
   }
   .ecoImageWrapper {
     height: 250px;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .ecosystemSection {
     padding: 60px 20px;
+  }
+  .svgOverlay, .ecosystemGrid .circleMarker {
+    display: none;
   }
   .ecoCardsWrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 60px;
+    height: auto;
+    gap: 30px;
   }
   .ecoCard {
     width: 100%;
+    height: auto;
+    min-height: auto;
   }
   .ecosystemTitle {
     font-size: 80px;
     margin: 40px 0;
+  }
+}
+
+@media (max-width: 580px) {
+  .ecosystemSection {
+    padding: 60px var(--container-px);
+  }
+  .tagWrapperCenter {
+    /* To not clash with the huge title, let's keep it relative or above */
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .ecosystemTitle {
+    font-size: clamp(45px, 15vw, 80px);
+    margin: 10px 0 30px 0;
+    line-height: 1;
+    letter-spacing: -1.5px;
+  }
+  .ecoCardsWrapper {
+    margin-top: 30px;
+    gap: 30px;
+  }
+  .ecoCard {
+    padding: 20px;
+    border-radius: 40px;
+    height: auto;
+    min-height: auto;
+  }
+  .ecoImageWrapper {
+    height: 200px;
+    border-radius: 20px; /* Outer 40px - Padding 20px = Inner 20px */
   }
 }
 

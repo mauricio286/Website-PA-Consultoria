@@ -80,9 +80,9 @@ export default function Home() {
         </div>
         <div className={styles.bannerContent}>
           <p className={styles.bannerText} data-node-id="29:895">
-            <AnimatedText text="Sua próxima safra, pode ser ainda" type="char" delay={0} stagger={0.02} />{' '}
+            <AnimatedText text="Sua próxima safra, pode ser ainda " type="word" delay={0} stagger={0.05} />
             <span className={styles.bannerTextAccent}>
-              <AnimatedText text="melhor conosco!" type="char" delay={0.3} stagger={0.02} />
+              <AnimatedText text="melhor conosco!" type="word" delay={0.4} stagger={0.05} />
             </span>
           </p>
         </div>

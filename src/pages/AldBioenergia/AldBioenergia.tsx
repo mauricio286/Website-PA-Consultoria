@@ -1,55 +1,25 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import AnimatedCounter from '../../components/AnimatedCounter';
 import styles from './AldBioenergia.module.css';
 import { imgBgAld, imgAld1, imgAld2 } from '../../assets';
-import AnimatedText from '../../components/AnimatedText';
+import SubpageHero from '../../components/SubpageHero';
 
 export default function AldBioenergia() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const handleScroll = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const lenis = (window as any).lenisInstance;
-    if (lenis) {
-      lenis.scrollTo('#content', { offset: -50, immediate: false });
-    } else {
-      const el = document.getElementById('content');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+
 
   return (
     <main className="page-transition-enter" style={{ width: '100%', backgroundColor: 'var(--color-bg-white)' }}>
       
       {/* Hero Section */}
-      <section className={styles.heroSection}>
-        <div className={`${styles.heroBgWrapper} animate-wrapper-slide`}>
-          <div className={styles.heroBgOverlay}></div>
-          <img className={`${styles.heroBg} animate-bg-zoom`} src={imgBgAld} alt="Background ALD Bioenergia" />
-        </div>
-        
-        <div className={styles.heroContent}>
-          <div className={styles.titleContainer}>
-            <div className={styles.breadcrumb}>
-              <Link to="/servicos" className={styles.breadcrumbLink}>Serviços</Link>
-              <span className={styles.breadcrumbCurrent}>{` > ALD Bioenergia`}</span>
-            </div>
-            
-            <h1 className={styles.heroTitle}>
-              <AnimatedText text="ALD Bioenergia" type="char" delay={0.2} stagger={0.03} />
-            </h1>
-          </div>
-        </div>
-
-        <div className={styles.scrollDownWrapper}>
-          <a href="#content" onClick={handleScroll} className={styles.scrollDownButton}>
-            <span className={`material-symbols-rounded ${styles.scrollDownIcon}`} style={{ transform: 'rotate(-90deg)' }}>arrow_back</span>
-          </a>
-        </div>
-      </section>
+      <SubpageHero 
+        title="Ald Bioenergia" 
+        bgImage={imgBgAld} 
+        breadcrumbCurrent="Ald Bioenergia" 
+      />
 
       {/* Content Section */}
       <section id="content" className={styles.contentSection}>

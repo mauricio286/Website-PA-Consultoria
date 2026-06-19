@@ -66,27 +66,32 @@ export default function Hero() {
           <div className={styles.leftCol}>
             {/* Title — Figma node 80:1652 / 80:1707 (text animation SVGs) */}
             {/* Rendered as styled text for the web */}
-            <h1>
+            <h1 className={styles.titleWrapper}>
               <span className={styles.titleLine1}>
-                <AnimatedText text="Resultados que o" type="char" delay={0.6} stagger={0.02} sessionOnce={true} sessionKey="heroHome1" />
+                <AnimatedText text="Resultados" type="char" delay={0.6} stagger={0.02} sessionOnce={true} sessionKey="heroHome1" />
               </span>
               <span className={styles.titleLine2}>
-                <AnimatedText text="campo comprova!" type="char" delay={0.9} stagger={0.02} sessionOnce={true} sessionKey="heroHome2" />
+                <AnimatedText text="que o campo" type="char" delay={0.8} stagger={0.02} sessionOnce={true} sessionKey="heroHome2" />
+              </span>
+              <span className={styles.titleLine3}>
+                <AnimatedText text="comprova!" type="char" delay={1.0} stagger={0.02} sessionOnce={true} sessionKey="heroHome3" />
               </span>
             </h1>
 
             {/* CTA Button — Figma BotaoNossasSolucoes node 54:74 */}
             {/* width: 222px, height: 60px, bg: #fdfdfd, icon: #e1fe00 */}
-            <Link
-              to="/servicos"
-              className="btn-pa white"
-              data-node-id="54:74"
-            >
-              <span className="btn-label">Nossas soluções</span>
-              <span className="btn-icon">
-                <span className="material-symbols-rounded" style={{ fontSize: '24px', lineHeight: 1 }}>arrow_back</span>
-              </span>
-            </Link>
+            <div className={styles.ctaWrapper}>
+              <Link
+                to="/servicos"
+                className="btn-pa white"
+                data-node-id="54:74"
+              >
+                <span className="btn-label">Nossas soluções</span>
+                <span className="btn-icon">
+                  <span className="material-symbols-rounded" style={{ fontSize: '24px', lineHeight: 1 }}>arrow_back</span>
+                </span>
+              </Link>
+            </div>
           </div>
 
           {/* Right column: Description text */}

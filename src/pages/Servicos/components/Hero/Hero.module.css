@@ -54,3 +54,16 @@
   font-size: 24px;
   color: var(--color-primary-dark);
 }
+
+@media (max-width: 991px) {
+  .scrollDownWrapper {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 580px) {
+  .heroSection {
+    height: 400px;
+  }
+}

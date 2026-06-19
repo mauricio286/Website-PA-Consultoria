@@ -5,7 +5,8 @@
   color: var(--color-near-white);
   overflow: hidden;
   position: relative;
-  /* border-top removed */
+  margin-top: -1px; /* FIX: Prevent 1px subpixel gap line on mobile devices */
+  z-index: 2;
 }
 
 .container {
@@ -62,6 +63,9 @@
   width: 100%;
   height: 100%;
   display: block;
+  transform: translate(3.5%, 1.5%); /* Centers MT based on viewBox coordinates */
+  transform-origin: center center;
+  transition: transform 0.3s ease;
 }
 
 .stateLabel {
@@ -109,6 +113,14 @@
   .atuacao {
     padding-left: 24px;
     padding-right: 24px;
+  }
+  .mapContainer {
+    /* Focus on MT by zooming the map container */
+    overflow: hidden;
+    height: 380px;
+  }
+  .mapSvg {
+    transform: translate(8%, 1.5%) scale(2.5); /* Zoom in directly on the centered MT, shifted slightly right */
   }
 }
 

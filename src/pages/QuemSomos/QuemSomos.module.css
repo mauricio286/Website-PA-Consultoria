@@ -325,6 +325,14 @@
   margin-left: auto; /* Push controls to the right if in flex */
 }
 
+.mobileControls {
+  display: none;
+}
+
+.desktopControls {
+  display: flex;
+}
+
 .controlBtn {
   width: 50px;
   height: 50px;
@@ -449,9 +457,11 @@
   font-size: 200px;
   letter-spacing: -4px;
   line-height: 1;
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0;
 }
 
-.timelineYear span {
+.timelineYear > span > span > span {
   background: linear-gradient(to bottom, #002d22, rgba(0,45,34,0.64));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -565,17 +575,57 @@
     /* Keep flex-direction: row for horizontal scroll on mobile */
   }
   .timelineItem {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
+    row-gap: 10px;
+    align-items: stretch;
+  }
+  .timelineYearWrapper {
+    grid-column: 1;
+    grid-row: 1;
+    justify-content: flex-start;
+  }
+  .timelineContent {
+    display: contents;
+  }
+  .timelineLine {
+    margin-bottom: 20px;
+  }
+  .timelineYear {
+    font-size: 150px;
+    letter-spacing: -3px;
+    line-height: 0.9;
+  }
+  .timelineText {
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 18px;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+  .timelineImageWrapper {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    margin: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .timelineItem {
+    display: flex;
     flex-direction: column;
     gap: 60px;
     align-items: flex-start;
   }
   .timelineContent {
+    display: flex;
     flex-direction: column;
     gap: 40px;
     align-items: flex-start;
-  }
-  .timelineLine {
-    margin-bottom: 20px;
   }
   .timelineYear {
     font-size: 60px;
@@ -583,8 +633,105 @@
   }
   .timelineText {
     width: 100%;
+    font-size: 16px;
   }
   .timelineImageWrapper {
     width: 100%;
+    height: 300px;
+  }
+}
+
+@media (max-width: 991px) {
+  .scrollDownWrapper {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .desktopControls {
+    display: none;
+  }
+  
+  .mobileControls {
+    display: flex;
+    position: absolute;
+    right: 0;
+    top: 40px; /* Aligned vertically near the center of the Year indicator */
+    z-index: 20;
+    gap: 10px; /* slightly tighter on mobile */
+  }
+
+  .timelineScroller {
+    position: relative;
+  }
+
+  .controlBtn {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (max-width: 580px) {
+  /* Hero Banner */
+  .heroSection {
+    height: 400px;
+  }
+  
+  /* Intro Section */
+  .introTitle {
+    font-size: clamp(34px, 10vw, 48px);
+  }
+  .introDescription {
+    font-size: 17px;
+  }
+
+  /* Cards Section */
+  .card {
+    padding: 60px 30px;
+    gap: 20px;
+  }
+  .cardTitle, .cardTitleDark, .cardTitleGreen {
+    font-size: clamp(30px, 8vw, 36px);
+  }
+
+  /* Video Section */
+  .videoTitle {
+    font-size: clamp(34px, 10vw, 48px);
+    margin: 0 0 30px 0;
+  }
+  .videoPlayerWrapper {
+    height: 250px;
+    border-radius: 30px;
+  }
+  .playIcon {
+    font-size: 60px;
+  }
+
+  /* Timeline Section */
+  .timelineSection {
+    padding-left: var(--container-px);
+    padding-right: var(--container-px);
+  }
+  .timelineTitle {
+    font-size: clamp(34px, 10vw, 48px);
+  }
+  .timelineHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .timelineControls {
+    margin-left: 0;
+  }
+  .timelineYear {
+    font-size: clamp(80px, 25vw, 130px);
+  }
+  .timelineImageWrapper {
+    height: 280px;
+  }
+  .timelineItem {
+    gap: 30px;
+  }
+  .timelineContent {
+    gap: 30px;
   }
 }

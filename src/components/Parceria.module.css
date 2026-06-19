@@ -32,6 +32,16 @@
   width: 100%;
 }
 
+.title {
+  font-family: var(--font-body);
+  font-size: clamp(28px, 6vw, 40px); /* Scales down on mobile */
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.8px;
+  color: #303030;
+  max-width: 650px;
+}
+
 .sliderTrack {
   display: flex;
   gap: 24px;
@@ -114,5 +124,12 @@
   .slideCard {
     width: 320px;
     height: 420px;
+  }
+}
+
+@media (max-width: 580px) {
+  .slideCard {
+    width: 80vw;
+    height: 110vw;
   }
 }

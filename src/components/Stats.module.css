@@ -133,6 +133,8 @@
 }
 
 @media (max-width: 1024px) {
+  .headingRow { flex-direction: column; gap: 20px; }
+  .titleAccent { display: block; }
   .card {
     padding: 30px 15px; /* Less padding to fit 4 cards better on tablets */
   }
@@ -144,7 +146,6 @@
     align-items: flex-start;
   }
   .inner { flex-direction: column; gap: 40px; }
-  .headingRow { flex-direction: column; gap: 20px; }
   .title { font-size: 36px; line-height: 1.2; }
   
   .grid {
@@ -162,6 +163,8 @@
 @media (max-width: 580px) {
   .card {
     flex: 1 1 100%;
+    padding: 40px 20px; /* Thicker cards vertically, like print */
+    border-radius: 20px; /* Slightly softer corners for mobile cards */
   }
-  .value { font-size: 32px; }
+  .value { font-size: clamp(38px, 10vw, 48px); } /* Larger numbers like print */
 }

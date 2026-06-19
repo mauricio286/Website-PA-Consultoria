@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Testimonials.module.css';
 import {
@@ -54,6 +54,47 @@ const testimonials: Testimonial[] = [
 
 export default function Testimonials() {
   const [selectedId, setSelectedId] = useState<string>('dep-3'); // default selected
+  const [activeIndex, setActiveIndex] = useState(0);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const autoPlayRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+    const startAutoPlay = () => {
+      autoPlayRef.current = setInterval(() => {
+        if (gridRef.current && window.innerWidth <= 991) {
+          const { scrollLeft, scrollWidth, clientWidth } = gridRef.current;
+          // If we reached the end, scroll back to start
+          if (scrollLeft + clientWidth >= scrollWidth - 10) {
+            gridRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            // Scroll by one card width (85vw roughly)
+            gridRef.current.scrollBy({ left: clientWidth * 0.85, behavior: 'smooth' });
+          }
+        }
+      }, 3500); // 3.5 seconds
+    };
+
+    startAutoPlay();
+
+    return () => {
+      if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+    };
+  }, []);
+
+  const handleTouchStart = () => {
+    // Pause auto-play when user touches the carousel
+    if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+  };
+
+  const handleScroll = () => {
+    if (gridRef.current) {
+      const { scrollLeft, clientWidth } = gridRef.current;
+      const newIndex = Math.round(scrollLeft / (clientWidth * 0.85));
+      if (newIndex !== activeIndex) {
+        setActiveIndex(newIndex);
+      }
+    }
+  };
 
   return (
     <section id="testimonials" className={styles.testimonials} data-node-id="36:1348">
@@ -64,16 +105,21 @@ export default function Testimonials() {
             depoimentos
           </span>
           <h2 className={styles.title} data-node-id="36:1352">
-            <AnimatedText text="A escolha dos líderes" type="char" delay={0} stagger={0.02} />
-            <br />
+            <AnimatedText text="A escolha dos líderes " type="char" delay={0} stagger={0.02} />
+            <br className={styles.desktopBreak} />
             <span className={styles.titleAccent}>
               <AnimatedText text="que inovam no campo" type="char" delay={0.3} stagger={0.02} />
             </span>
           </h2>
         </div>
 
-        {/* 2x2 Grid */}
-        <div className={styles.grid}>
+        {/* 2x2 Grid or Mobile Carousel */}
+        <div 
+          className={styles.grid} 
+          ref={gridRef}
+          onTouchStart={handleTouchStart}
+          onScroll={handleScroll}
+        >
           {testimonials.map((dep) => (
             <div
               key={dep.id}
@@ -94,6 +140,27 @@ export default function Testimonials() {
                 </div>
               </div>
             </div>
+          ))}
+        </div>
+
+        {/* Mobile Pagination Dots */}
+        <div className={styles.paginationDots}>
+          {testimonials.map((_, index) => (
+            <button
+              key={index}
+              className={`${styles.dot} ${index === activeIndex ? styles.dotActive : ''}`}
+              onClick={() => {
+                if (gridRef.current) {
+                  gridRef.current.scrollTo({
+                    left: index * gridRef.current.clientWidth * 0.85,
+                    behavior: 'smooth'
+                  });
+                  setActiveIndex(index);
+                  if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+                }
+              }}
+              aria-label={`Go to slide ${index + 1}`}
+            />
           ))}
         </div>
 

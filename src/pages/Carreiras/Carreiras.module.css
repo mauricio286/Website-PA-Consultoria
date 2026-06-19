@@ -635,6 +635,9 @@
 }
 
 @media (max-width: 1024px) {
+  .introTitle {
+    font-size: 56px;
+  }
   .vagaCard {
     flex: 0 0 300px;
     min-height: 360px;
@@ -648,51 +651,63 @@
   }
 
   .form {
-    max-width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 991px) {
+  .scrollDownWrapper {
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
 @media (max-width: 768px) {
-  .heroSection {
-    height: 340px;
-  }
-
-  .introTitle {
-    font-size: 30px;
-  }
-
   .introText {
     font-size: 16px;
   }
-
   .vagaCard {
-    flex: 0 0 260px;
+    flex: 0 0 280px;
     min-height: 330px;
   }
-
   .vagaDetalheTitulo {
     font-size: 26px;
   }
-
   .vagaDetalheDesc {
     font-size: 16px;
   }
-
   .vagaReqAtrib {
     padding: 24px;
   }
-
   .formRow2 {
     flex-direction: column;
   }
-
   .formRow2 > .formInput {
     flex: none;
     width: 100%;
   }
-
   .formularioWrapper {
     margin-top: 50px;
     gap: 36px;
+  }
+}
+
+@media (max-width: 580px) {
+  .heroSection {
+    height: 400px;
+  }
+  .introTitle {
+    font-size: clamp(34px, 10vw, 48px);
+  }
+  .introText {
+    font-size: 17px;
+  }
+  .vagaDetalheTitulo {
+    font-size: clamp(30px, 8vw, 36px);
+  }
+  .vagaReqAtrib {
+    padding: 20px;
+    border-radius: 20px;
   }
 }
