@@ -1,0 +1,229 @@
+.container {
+  width: 100%;
+  background-color: var(--color-bg-white);
+  position: relative;
+  padding: 40px var(--container-px) 180px var(--container-px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contentRow {
+  display: flex;
+  width: 100%;
+  max-width: 1400px;
+  align-items: center;
+  justify-content: center;
+  gap: 160px;
+}
+
+/* Ciclo Column */
+.cycleColumn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+}
+
+.cycleRingWrapper {
+  width: 676px;
+  height: 676px;
+  position: relative;
+  transform-origin: center center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cycleCenterIcon {
+  position: absolute;
+  z-index: 2;
+  font-size: 90px;
+  color: #002d22;
+  background: linear-gradient(180deg, #002D22 0%, rgba(0, 45, 34, 0.6) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cycleSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Text Column */
+.textColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  height: 676px;
+}
+
+.stepTextContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.stepBadge {
+  width: 50px;
+  height: 50px;
+  background-color: #e1fe00;
+  color: #002d22;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 20px;
+  margin-bottom: 24px;
+}
+
+.stepTitle {
+  font-family: var(--font-display);
+  font-size: 64px;
+  font-weight: 500;
+  margin: 0 0 24px 0;
+  letter-spacing: -1.28px;
+  line-height: 1.1;
+}
+
+.titleDark {
+  color: #011c15;
+}
+
+.titleLight {
+  color: #88a668;
+}
+
+.stepDesc {
+  font-family: var(--font-body);
+  font-size: 20px;
+  line-height: 1.5;
+  color: #303030;
+  margin: 0 0 40px 0;
+  max-width: 520px;
+  letter-spacing: -0.4px;
+}
+
+/* Controles */
+.controls {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-top: 10px; /* Mais próximo da descrição */
+}
+
+.controlBtn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.1);
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-body);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.controlBtn:hover:not(:disabled) {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-primary-dark);
+}
+
+.controlBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.controlBtn span {
+  font-size: 24px;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 40px var(--container-px) 100px var(--container-px);
+  }
+  .contentRow {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+  .cycleColumn {
+    justify-content: center;
+    order: -1; /* Traz o ciclo visual para cima do texto no mobile */
+  }
+  .stepTextContainer {
+    align-items: center;
+  }
+  .stepDesc {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 0 15px;
+  }
+  .controls {
+    justify-content: center;
+    margin-top: 0;
+  }
+  .cycleRingWrapper {
+    width: 320px;
+    height: 320px;
+  }
+  .cycleCenterIcon {
+    font-size: 50px;
+  }
+  .stepTitle {
+    font-size: 40px;
+    margin-bottom: 15px;
+  }
+  .stepBadge {
+    margin-bottom: 15px;
+  }
+  .textColumn {
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .stepTitle {
+    font-size: 32px;
+  }
+  .stepDesc {
+    font-size: 16px;
+    padding: 0;
+  }
+  .cycleRingWrapper {
+    width: 280px;
+    height: 280px;
+  }
+  .cycleCenterIcon {
+    font-size: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cycleRingWrapper {
+    width: 250px;
+    height: 250px;
+  }
+  .cycleCenterIcon {
+    font-size: 40px;
+  }
+  .stepTitle {
+    font-size: 28px;
+  }
+}

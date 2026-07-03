@@ -28,14 +28,14 @@ export default function Methodology() {
     {
       id: 'estrategia' as TabId,
       title: 'Estratégia',
-      description: 'Decisões embasadas em dados, clima e mercado para mitigar riscos antes mesmo do plantio.',
+      description: 'Decisões orientadas por pesquisa, objetivos e visão de longo prazo, transformando informações agronômicas em ações práticas que maximizam a produtividade, a rentabilidade e a sustentabilidade dos sistemas produtivos.',
       icon: imgChessKnight,
       nodeId: '21:716'
     },
     {
       id: 'execucao' as TabId,
       title: 'Execução',
-      description: 'Acompanhamento técnico rigoroso e presencial para garantir que cada etapa saia conforme o planejado.',
+      description: 'Decisões embasadas em dados, clima e mercado para mitigar riscos antes mesmo do plantio.',
       icon: imgAvgTime,
       nodeId: '21:837'
     },

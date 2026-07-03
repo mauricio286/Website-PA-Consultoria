@@ -138,17 +138,20 @@
 .imageTextRow {
   display: flex;
   gap: 85px;
-  align-items: flex-start;
+  align-items: stretch;
 }
 
 .imageWrapper {
   flex: 0 0 689px;
   border-radius: 25px;
   overflow: hidden;
-  height: 254px;
+  position: relative;
 }
 
 .imageWrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -186,22 +189,8 @@
   .imageWrapper {
     flex: 0 0 400px;
   }
-  .fullTextRow {
-    gap: 30px;
-  }
-}
-
-.mobileImage {
-  display: none;
-}
-
-@media (max-width: 1024px) {
-  .desktopImage {
-    display: none;
-  }
-  .mobileImage {
-    display: block;
-    margin: 30px 0;
+  .imageTextRow {
+    gap: 40px;
   }
 }
 

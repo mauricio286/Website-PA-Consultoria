@@ -10,8 +10,10 @@
   max-width: var(--container-max);
   margin: 0 auto;
   display: flex;
-  gap: 85px;
-  align-items: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center; /* Better vertical alignment */
+  gap: 40px;
   min-height: 419px; /* 659 - 120*2 */
 }
 
@@ -20,7 +22,8 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  /* Figma: h=350px, flexible */
+  width: 825px;
+  max-width: 100%;
 }
 
 /* Main paragraph — Figma node 16:525 */
@@ -28,11 +31,11 @@
 .mainText {
   font-family: var(--font-body);
   font-weight: 400;
-  font-size: 32px;
-  line-height: 39px;
-  letter-spacing: -0.64px;
+  font-size: 28px; /* Reduced from 32px */
+  line-height: 1.3;
+  letter-spacing: -0.5px;
   color: var(--color-text-body);
-  max-width: 973px;
+  max-width: 100%;
   margin-top: 10px;
 }
 
@@ -44,20 +47,39 @@
 }
 
 /* Right: Symbol Logo — Figma node 122:1934 */
-/* Figma: flex-col, items-center, pt:49px */
 .rightCol {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 49px;
-  flex: 1;
-  min-width: 140px;
+  width: 720px;
+  max-width: 100%;
+  /* Perspective required for 3D tilt effect */
+  perspective: 1200px;
 }
 
-/* Figma node 193:1192: w=144px, h=215px */
-.symbol {
-  width: 144px;
-  height: 215px;
+/* Wrapper that receives the 3D rotation via direct style (no framer-motion) */
+.imageWrapper3D {
+  width: 100%;
+  /* Initial state — flat */
+  transform: perspective(1200px) rotateX(0deg) rotateY(0deg);
+  /* CSS transition handles smooth return to flat on mouseleave */
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: default;
+}
+
+/* Intermediate layer: handles scale + position.
+   will-change here (not on the wrapper) ensures it's rasterized
+   at the SCALED resolution — so no GPU upscaling blur. */
+.imageScaler {
+  transform: scale(1.35) translateX(100px);
+  transform-origin: center right;
+  will-change: transform;
+}
+
+/* Figma node 677:894 */
+.image {
+  width: 100%;
+  height: auto;
   object-fit: contain;
   display: block;
 }

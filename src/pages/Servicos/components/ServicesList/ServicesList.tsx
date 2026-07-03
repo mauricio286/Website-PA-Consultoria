@@ -26,7 +26,7 @@ export default function ServicesList() {
         <div className={`${styles.serviceCard} ${styles.cardDarkGreen}`}>
           <div className={styles.cardContent}>
             <h3 className={styles.cardTitleLightGreen}>Consultoria<br />Agronômica</h3>
-            <p className={styles.cardTextLightGreen}>A produtividade de uma lavoura começa muito antes do plantio. Por isso, nossa consultoria agronômica atua de forma próxima...</p>
+            <p className={styles.cardTextLightGreen}>A PA Consultoria nasceu do campo e construiu sua reputação entregando aquilo que realmente...</p>
           </div>
           <div className={styles.cardButton}>
              <Link to="/consultoriaagronomica" className="btn-pa white">
@@ -43,10 +43,10 @@ export default function ServicesList() {
             <p className={styles.cardTextDarkGreen}> </p>
           </div>
           <div className={styles.cardButton}>
-             <a href="#" className="btn-pa dark-green">
+             <Link to="/unita" className="btn-pa dark-green">
                <span className="btn-label">Ver mais</span>
                <span className="btn-icon"><span className="material-symbols-rounded">arrow_back</span></span>
-             </a>
+             </Link>
           </div>
         </div>
 
@@ -72,6 +72,20 @@ export default function ServicesList() {
           </div>
           <div className={styles.cardButton}>
              <Link to="/gestaocompras" className="btn-pa dark-green">
+               <span className="btn-label">Ver mais</span>
+               <span className="btn-icon"><span className="material-symbols-rounded">arrow_back</span></span>
+             </Link>
+          </div>
+        </div>
+
+        {/* Card 5 */}
+        <div className={`${styles.serviceCard} ${styles.cardDarkGreen}`}>
+          <div className={styles.cardContent}>
+            <h3 className={styles.cardTitleLightGreen}>Pesquisa<br />Agronômica</h3>
+            <p className={styles.cardTextLightGreen}>A pesquisa agronômica é um dos pilares do Grupo PA. Investimos constantemente...</p>
+          </div>
+          <div className={styles.cardButton}>
+             <Link to="/pesquisaagronomica" className="btn-pa white">
                <span className="btn-label">Ver mais</span>
                <span className="btn-icon"><span className="material-symbols-rounded">arrow_back</span></span>
              </Link>

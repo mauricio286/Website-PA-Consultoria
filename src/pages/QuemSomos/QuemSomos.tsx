@@ -202,15 +202,14 @@ export default function QuemSomos() {
                 onMouseMove={handleMouseMove}
               >
                 {[
-                  { tag: "o início", year: "1993", text: "O grupo PA teve o início de sua história no Mato Grosso em 1993, através da aquisição da Faz. São Paulo, no distrito de Deciolândia, para o cultivo de soja e milho. Ainda hoje é a principal Fazenda do grupo e onde são localizados nosso campo de pesquisa." },
-                  { tag: "consultoria", year: "2002", text: "No ano de 2002, nosso fundador Paulo Asunção, a convite de um vizinho de terra, começou a prestar serviços de consultoria agronômica. Este foi o primeiro cliente da empresa." },
-                  { tag: "tecnologia", year: "2009", text: "Em 2009, a PA Consultoria passou a disponibilizar os serviços de agricultura de precisão, sendo uma das primeiras empresas do estado a ofertarem este serviço." },
-                  { tag: "pesquisa", year: "2011", text: "Iniciamos os trabalhos de Pesquisa Agronômica que hoje conta com uma área de 60 hectares dedicados ao desenvolvimento, gerando resultados importantes para a construção da melhor estratégia produtiva." },
-                  { tag: "reconhecimento", year: "2015", text: "O CEO e fundador do Grupo PA, Paulo Asunção, recebeu o prêmio de Excelência Agronômica concedido pelo Rally da Safra, um marco importante na sua carreira. Expansão agrícola através da aquisição da Faz. São Miguel." },
-                  { tag: "destaque", year: "2018", text: "O Grupo PA foi novamente citado pelo Rally da Safra como uma das redes de serviços de consultoria técnica em destaque no setor." },
-                  { tag: "expansão", year: "2020", text: "O Grupo PA deu início a um novo investimento através de sua participação como acionista na Usina ALD Bioenergia, indústria de produção de biocombustíveis." },
-                  { tag: "inovação", year: "2021", text: "O trabalho de pesquisa do Grupo PA foi reconhecido como o melhor trabalho da região Cerrado Oeste na 2ª edição do Desafio Microbioma Brasil, apresentado na Escócia." },
-                  { tag: "evolução", year: "Atual", text: "Início das operações da PA Máquinas Agrícolas, negócio organizado para avaliar e negociar a aquisição de maquinários e demais equipamentos para nossos clientes." }
+                  { tag: "o início", year: "1993", text: "O Grupo PA teve o início de sua história no Mato Grosso em 1993, através da aquisição da Faz. São Paulo, em Diamantino - MT, para o cultivo de soja e milho. Ainda hoje é a principal Fazenda do grupo e onde está localizado nosso campo de pesquisa." },
+                  { tag: "consultoria", year: "2002", text: "No ano de 2002, nosso fundador Paulo Asunção, a convite de um vizinho de terra, começou a prestar serviços de consultoria agronômica. Este foi o primeiro cliente da empresa e segue conosco até hoje." },
+                  { tag: "tecnologia", year: "2009", text: "Em 2009, a PA Consultoria passou a disponibilizar os serviços de agricultura de precisão, sendo uma das primeiras empresas do estado a oferecer este serviço." },
+                  { tag: "pesquisa", year: "2011", text: "Iniciamos os trabalhos de Pesquisa Agronômica que hoje conta com uma área de 60 ha e mais de 2.000 tratamentos dedicados ao desenvolvimento, gerando resultados importantes para a construção da melhor estratégia produtiva." },
+                  { tag: "evento", year: "2013", text: "A PA Pesquisa realizou seu primeiro dia de campo em seu campo de pesquisa na Faz. São Paulo, reunindo cerca de 30 produtores." },
+                  { tag: "novas culturas", year: "2023", text: "A PA Consultoria passou a atender a cultura do algodão." },
+                  { tag: "expansão", year: "2024", text: "Comprometidos com nossa missão em contribuir com o desenvolvimento do agronegócio, expandimos e passamos a atender a região do Nortão Mato-Grossense." },
+                  { tag: "investimento", year: "2026", text: "O Grupo PA segue investindo no agro e no Mato Grosso. Como acionistas da ALD Bioenergia, realizamos novos investimentos para a triplicação da planta." }
                 ].map((item, idx) => (
                   <div key={idx} className={styles.timelineItemWrapper}>
                     <div className={styles.timelineLine}>

@@ -146,19 +146,24 @@
   color: var(--color-primary-dark);
 }
 
-/* Copyright bar */
 .copyrightBar {
   border-top: 1px solid rgba(0, 0, 0, 0.08);
   padding-top: 30px;
   max-width: var(--container-max);
   margin: 0 auto;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.copyrightText {
+.copyrightText, .studioText {
   font-family: var(--font-body);
   font-size: 14px;
   color: #808080;
+  margin: 0;
 }
 
 @media (max-width: 1024px) {

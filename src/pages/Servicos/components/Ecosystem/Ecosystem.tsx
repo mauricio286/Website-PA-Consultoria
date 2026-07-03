@@ -88,10 +88,10 @@ export default function Ecosystem() {
                </div>
                <h3 className={styles.ecoCardTitle}>Lavoura</h3>
                <div className={styles.ecoCardButton}>
-                  <a href="#" className="btn-pa white">
+                  <Link to="/lavoura" className="btn-pa white">
                     <span className="btn-label">Ver mais</span>
                     <span className="btn-icon"><span className="material-symbols-rounded">arrow_back</span></span>
-                  </a>
+                  </Link>
                </div>
              </div>
 
@@ -101,23 +101,23 @@ export default function Ecosystem() {
                </div>
                <h3 className={styles.ecoCardTitle}>Centro de Pesquisa</h3>
                <div className={styles.ecoCardButton}>
-                  <a href="#" className="btn-pa white">
+                  <Link to="/centropesquisa" className="btn-pa white">
                     <span className="btn-label">Ver mais</span>
                     <span className="btn-icon"><span className="material-symbols-rounded">arrow_back</span></span>
-                  </a>
+                  </Link>
                </div>
              </div>
 
              <div className={`${styles.ecoCard} ${styles.cardGreen}`}>
                <div className={styles.ecoImageWrapper}>
-                 <img src={imgEventos} alt="Eventos" />
+                 <img src={imgEventos} alt="Palestras e Eventos" />
                </div>
-               <h3 className={styles.ecoCardTitle}>Eventos</h3>
+               <h3 className={styles.ecoCardTitle}>Palestras e Eventos</h3>
                <div className={styles.ecoCardButton}>
-                  <a href="#" className="btn-pa white">
+                  <Link to="/palestras" className="btn-pa white">
                     <span className="btn-label">Ver mais</span>
                     <span className="btn-icon"><span className="material-symbols-rounded">arrow_back</span></span>
-                  </a>
+                  </Link>
                </div>
              </div>
           </div>

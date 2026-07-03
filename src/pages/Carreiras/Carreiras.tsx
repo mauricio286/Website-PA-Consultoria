@@ -312,13 +312,17 @@ export default function Carreiras() {
               <AnimatedText text="da PA" type="word" delay={0.15} />
             </span>
           </h2>
-          <p className={styles.introText} ref={alignRef}>
-            Faça parte do Grupo PA e cresça junto com quem transforma o agronegócio todos os dias.
-            Valorizamos pessoas comprometidas, inovadoras e apaixonadas pelo que fazem. Aqui,
-            acreditamos no desenvolvimento profissional, no trabalho em equipe e na construção de
-            relações sólidas, tanto no campo quanto dentro da nossa equipe. Venha construir o
-            futuro do agro com a gente.
-          </p>
+            <div className={styles.introText} ref={alignRef}>
+              <p style={{ marginBottom: '16px' }}>
+                No Grupo PA, entendemos que as melhores oportunidades não são necessariamente as mais fáceis, mas aquelas que desafiam, desenvolvem e permitem crescimento profissional e pessoal.
+              </p>
+              <p style={{ marginBottom: '16px' }}>
+                Buscamos pessoas comprometidas, curiosas e dispostas a evoluir todos os dias. Pessoas que valorizam o trabalho em equipe, assumem responsabilidades e enxergam os desafios como oportunidades de aprendizado.
+              </p>
+              <p>
+                Seja na consultoria, na pesquisa, na produção agrícola ou nos demais negócios do Grupo PA, trabalhamos para construir uma equipe forte, preparada e apaixonada pelo que faz.
+              </p>
+            </div>
         </div>
 
         {/* ── Carrossel de Vagas ─────────────────────────────────────────── */}

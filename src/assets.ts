@@ -37,6 +37,10 @@ export const imgPerfil2 = imgPerfil2Url;
 export const imgPerfil3 = imgPerfil3Url;
 export const imgImagem = imgImagemUrl;
 export const imgSessao4 = imgSessao4Url;
+
+import imgIntroducaoUrl from './assets/images/img_introducao.png';
+export const imgIntroducao = imgIntroducaoUrl;
+
 import imgLogoPaUrl from './assets/images/logo_pa.svg';
 export const imgLogoPa = imgLogoPaUrl;
 import imgMatoGrossoUrl from './assets/images/Mato Grosso Mapa.svg';
@@ -67,7 +71,7 @@ export const imgVerified = imgVerifiedUrl;
 import imgSimbol1Url from './assets/images/SimbolFilled.svg';
 export const imgSimbol1 = imgSimbol1Url;
 export const imgLogoPa1 = imgLogoPaUrl;
-import imgBgQuemSomosUrl from './assets/Sessão Hero - Quem somos.webp';
+import imgBgQuemSomosUrl from './assets/images/Sessão Hero - Quem somos.webp';
 export const imgBg = imgBgQuemSomosUrl;
 
 import imgLavouraUrl from './assets/images/lavoura.webp';
@@ -75,7 +79,7 @@ import imgEventosUrl from './assets/images/eventos.webp';
 import imgCentroPesquisaUrl from './assets/images/centro_pesquisa.webp';
 import imgAldBioenergiaUrl from './assets/images/ald_bioenergia.webp';
 import imgBgServicosUrl from './assets/images/bg_servicos.webp';
-import imgBgCarreirasUrl from './assets/images/bg_carreiras.webp';
+import imgBgCarreirasUrl from './assets/images/bg_carreiras_novo.png';
 import imgBgContatoUrl from './assets/images/bg_contato.webp';
 import imgIconMailUrl from './assets/icons/icon_mail.svg';
 import imgIconCallUrl from './assets/icons/icon_call.svg';

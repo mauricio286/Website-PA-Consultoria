@@ -29,11 +29,11 @@ export default function Parceria() {
       <div className={styles.container}>
         <div className={styles.headerWrapper}>
           <div className={styles.header} data-node-id="36:1319">
-            <div className="tag-badge dark" style={{ marginBottom: '20px' }} data-node-id="36:1320">
+            <div className="tag-badge dark" data-node-id="36:1320">
               parceria
             </div>
             <h2 className={styles.title} data-node-id="36:1322">
-              <AnimatedText text="Nós estamos em movimento constante para levar o melhor da ciência e da inovação até você." delay={0} stagger={0.03} />
+              <AnimatedText text="Nós estamos em movimento constante para levar o melhor da pesquisa e inovação até o produtor." delay={0} stagger={0.03} type="word" />
             </h2>
           </div>
         </div>

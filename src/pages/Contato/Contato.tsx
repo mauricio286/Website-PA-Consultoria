@@ -53,7 +53,7 @@ export default function Contato() {
     },
     {
       title: "Sinop",
-      address: "---",
+      address: "Galeria Trivium – Sala 01, Rua das Andirobas, 223, Setor Comercial, CEP: 78550-000",
       phone: "---",
       email: "---"
     }
@@ -83,8 +83,8 @@ export default function Contato() {
           <div className={styles.leftColumn}>
             <h2 className={styles.introTitle}>Fale conosco</h2>
             <p className={styles.introDesc}>
-              Mais do que estatísticas, esses dados refletem o nosso compromisso diário com o sucesso de quem produz. Cada dígito representa solo transformado, riscos mitigados e a rentabilidade real que entregamos lado a lado com o produtor no campo.
-            </p>
+              Nosso time está à disposição para esclarecer dúvidas, apresentar nossos serviços e ajudar você a encontrar as melhores soluções para sua realidade. Entre em contato conosco. Será um prazer conversar com você.
+              </p>
 
             <div className={styles.formWrapper}>
               {!submitted ? (

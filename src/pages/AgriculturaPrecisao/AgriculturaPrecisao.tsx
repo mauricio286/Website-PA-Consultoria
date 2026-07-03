@@ -2,13 +2,12 @@ import { useEffect } from 'react';
 import styles from './AgriculturaPrecisao.module.css';
 import { imgBgAgriculturaPrecisao, imgAgriculturaPrecisao } from '../../assets';
 import SubpageHero from '../../components/SubpageHero';
+import CicloPrecisao from './components/CicloPrecisao/CicloPrecisao';
 
 export default function AgriculturaPrecisao() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-
 
   return (
     <main className="page-transition-enter" style={{ width: '100%', backgroundColor: 'var(--color-bg-white)' }}>
@@ -25,12 +24,10 @@ export default function AgriculturaPrecisao() {
         <div className={styles.imageTextRow}>
           <div className={styles.textContent}>
             <p>
-              A pesquisa agronômica é um dos pilares do Grupo PA. Investimos constantemente em estudos e validações a campo para desenvolver soluções mais eficientes, sustentáveis e alinhadas à realidade do produtor rural.
+              Cada lavoura possui características próprias. Diferenças de solo, fertilidade, relevo e histórico produtivo fazem com que uma mesma área responda de formas diferentes ao longo da safra. Entender essas variações é o primeiro passo para produzir melhor.
             </p>
             <p>
-              Nosso objetivo é transformar dados e experimentos em estratégias práticas que contribuam para o aumento da produtividade e da rentabilidade das lavouras.
-              <br/>
-              Atualmente, contamos com mais de 60 hectares destinados exclusivamente à pesquisa, onde realizamos testes envolvendo cultivares, fertilidade, manejo fitossanitário, posicionamento de insumos, interferências climáticas e novas tecnologias aplicadas à agricultura.
+              A Agricultura de Precisão da PA foi desenvolvida para ajudar nossos clientes a conhecerem sua propriedade em detalhes e tomarem decisões mais assertivas. Por meio de amostragens georreferenciadas, mapas, análises e acompanhamento técnico, identificamos oportunidades de correção, manejo e investimento dentro de cada talhão.
             </p>
           </div>
           <div className={styles.imageWrapper}>
@@ -40,14 +37,19 @@ export default function AgriculturaPrecisao() {
 
         <div className={styles.fullTextRow}>
           <p>
-            Cada experimento é conduzido com acompanhamento técnico e análise detalhada dos resultados obtidos em campo.
-            <br /><br />
-            Através da pesquisa, conseguimos compreender com mais profundidade o comportamento das culturas e antecipar soluções para os desafios enfrentados pelo produtor. Isso permite gerar informações confiáveis, reduzir riscos e apoiar tomadas de decisão mais assertivas dentro da operação agrícola.
-            <br /><br />
-            Nosso compromisso é aproximar inovação e prática de campo, conectando ciência, tecnologia e experiência agronômica para impulsionar resultados sustentáveis no agro.
+            Nosso objetivo não é apenas gerar mapas, mas transformar informações em ações práticas no campo. Os dados coletados são interpretados pela equipe técnica da PA e utilizados para direcionar recomendações que contribuam para o melhor aproveitamento dos insumos, maior eficiência operacional e construção da fertilidade do solo ao longo dos anos.
+          </p>
+          <p>
+            Por ser uma ferramenta integrada ao trabalho de consultoria, a Agricultura de Precisão permite que cada recomendação seja construída considerando a realidade da propriedade, o histórico das áreas e os objetivos de cada produtor.
+          </p>
+          <p>
+            Esse é um serviço exclusivo para clientes da PA Consultoria, reforçando nosso compromisso de entregar informações cada vez mais precisas para extrair ao máximo o que o campo pode nos oferecer.
           </p>
         </div>
       </section>
+
+      {/* Ciclo Animado */}
+      <CicloPrecisao />
       
     </main>
   );

@@ -53,8 +53,16 @@
 }
 
 .navSubpage {
-  background-color: #f0f0f0; /* Darker gray to stand out on white background */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03); /* Subtle shadow for depth */
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* Make logo dark on subpages since background is white */
+.headerSubpage .logo {
+  filter: brightness(0) saturate(100%) invert(12%) sepia(35%) saturate(3015%) hue-rotate(137deg) brightness(96%) contrast(104%);
 }
 
 /* Nav flutuante (escondido no topo até o scroll) */

@@ -1,0 +1,50 @@
+.notFoundSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 80vh;
+  padding: 180px var(--container-px) var(--section-py);
+  background-color: var(--color-bg-white);
+}
+
+.contentWrapper {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.error404 {
+  font-family: var(--font-display);
+  font-size: clamp(80px, 15vw, 150px);
+  font-weight: 700;
+  color: var(--color-green-accent);
+  margin: 0;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 5vw, 40px);
+  font-weight: 500;
+  color: var(--color-text-body);
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+.description {
+  font-family: var(--font-body);
+  font-size: clamp(16px, 2vw, 18px);
+  font-weight: 400;
+  color: #727272;
+  line-height: 1.5;
+  margin: 0 0 16px 0;
+}
+
+.btnWrapper {
+  margin-top: 10px;
+}

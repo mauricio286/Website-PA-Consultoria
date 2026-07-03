@@ -114,12 +114,8 @@ export default function Testimonials() {
           <span className="tag-badge dark" data-node-id="36:1350">
             depoimentos
           </span>
-          <h2 className={styles.title} data-node-id="36:1352">
-            <AnimatedText text="A escolha dos líderes " type="char" delay={0} stagger={0.02} />
-            <br className={styles.desktopBreak} />
-            <span className={styles.titleAccent}>
-              <AnimatedText text="que inovam no campo" type="char" delay={0.3} stagger={0.02} />
-            </span>
+          <h2 className={`${styles.title} ${styles.animatedTitle}`} data-node-id="36:1352">
+            <AnimatedText text="Parcerias que comprovam resultados" delay={0} stagger={0.03} type="word" />
           </h2>
         </div>
 
@@ -129,7 +125,6 @@ export default function Testimonials() {
           ref={gridRef}
           onTouchStart={handleTouchStart}
           onScroll={handleScrollEvent}
-          data-lenis-prevent="true"
         >
           {testimonials.map((dep) => (
             <div

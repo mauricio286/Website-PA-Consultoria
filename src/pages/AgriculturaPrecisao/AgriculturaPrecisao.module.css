@@ -128,7 +128,7 @@
 }
 
 .contentSection {
-  padding: 120px max(calc((100% - 1530px) / 2), 5%);
+  padding: 120px max(calc((100% - 1530px) / 2), 5%) 60px;
   display: flex;
   flex-direction: column;
   gap: 85px;
@@ -254,6 +254,7 @@
   }
   .contentSection {
     padding-top: 45px;
+    padding-bottom: 120px;
     gap: 30px;
   }
   .imageTextRow {

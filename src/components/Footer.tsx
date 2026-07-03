@@ -117,6 +117,9 @@ export default function Footer() {
         <p className={styles.copyrightText} data-node-id="36:1571">
           &copy; {new Date().getFullYear()} PA Consultoria. Todos os direitos reservados.
         </p>
+        <p className={styles.studioText}>
+          Criado e desenvolvido pelo Studio 65
+        </p>
       </div>
     </footer>
   );

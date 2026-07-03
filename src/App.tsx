@@ -5,6 +5,7 @@ import 'lenis/dist/lenis.css'; // Recommended base styles for lenis
 import Header from './components/Header';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
+import Preloader from './components/Preloader'; // Import Preloader
 import styles from './App.module.css';
 
 import Home from './pages/Home';
@@ -17,6 +18,12 @@ import ConsultoriaAgronomica from './pages/ConsultoriaAgronomica/ConsultoriaAgro
 import AgriculturaPrecisao from './pages/AgriculturaPrecisao/AgriculturaPrecisao';
 import GestaoCompras from './pages/GestaoCompras/GestaoCompras';
 import AldBioenergia from './pages/AldBioenergia/AldBioenergia';
+import Unita from './pages/Unita/Unita';
+import Lavoura from './pages/Lavoura/Lavoura';
+import Palestras from './pages/Palestras/Palestras';
+import CentroPesquisa from './pages/CentroPesquisa/CentroPesquisa';
+import PesquisaAgronomica from './pages/PesquisaAgronomica/PesquisaAgronomica';
+import NotFound from './pages/NotFound/NotFound'; // Import NotFound
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -75,8 +82,14 @@ function App() {
     };
   }, []);
 
+  // Called by Preloader when its exit animation completes
+  const handlePreloaderDone = () => {
+    document.body.classList.add('app-ready');
+  };
+
   return (
     <Router>
+      <Preloader onDone={handlePreloaderDone} />
       <ScrollToTop />
       <div className={styles.appContainer}>
         <Header />
@@ -89,8 +102,14 @@ function App() {
           <Route path="/agriculturaprecisao" element={<AgriculturaPrecisao />} />
           <Route path="/gestaocompras" element={<GestaoCompras />} />
           <Route path="/aldbioenergia" element={<AldBioenergia />} />
+          <Route path="/unita" element={<Unita />} />
+          <Route path="/lavoura" element={<Lavoura />} />
+          <Route path="/palestras" element={<Palestras />} />
+          <Route path="/centropesquisa" element={<CentroPesquisa />} />
+          <Route path="/pesquisaagronomica" element={<PesquisaAgronomica />} />
           <Route path="/carreiras" element={<Carreiras />} />
           <Route path="/contato" element={<Contato />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
 
         <Footer />

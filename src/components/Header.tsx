@@ -15,7 +15,18 @@ export default function Header() {
   const [floatingPillStyle, setFloatingPillStyle] = useState({ left: 0, width: 0, opacity: 0 });
 
   const location = useLocation();
-  const isSubpage = location.pathname === '/consultoriaagronomica' || location.pathname === '/agriculturaprecisao' || location.pathname === '/gestaocompras' || location.pathname === '/aldbioenergia' || location.pathname.split('/').length > 2;
+  const subpages = [
+    '/consultoriaagronomica', 
+    '/agriculturaprecisao', 
+    '/gestaocompras', 
+    '/aldbioenergia',
+    '/unita',
+    '/lavoura',
+    '/palestras',
+    '/centropesquisa',
+    '/pesquisaagronomica'
+  ];
+  const isSubpage = subpages.includes(location.pathname) || location.pathname.split('/').length > 2;
 
   const handleHashClick = (e: React.MouseEvent<HTMLAnchorElement>, to: string) => {
     if (to.startsWith('/#')) {
