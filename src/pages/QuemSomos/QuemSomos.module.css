@@ -140,6 +140,12 @@
   text-align: center;
 }
 
+.cardIcon {
+  font-size: 56px;
+  line-height: 1;
+  margin-bottom: -10px; /* Adjust gap between icon and title slightly */
+}
+
 .cardTitle, .cardTitleDark, .cardTitleGreen {
   font-family: var(--font-display);
   font-weight: 500;
@@ -172,6 +178,9 @@
 .cardDark .cardText {
   color: var(--color-primary);
 }
+.cardDark .cardIcon {
+  color: var(--color-primary);
+}
 
 .cardLime {
   background-color: var(--color-primary);
@@ -180,6 +189,9 @@
   color: var(--color-primary-dark);
 }
 .cardLime .cardTextDark {
+  color: var(--color-primary-dark);
+}
+.cardLime .cardIcon {
   color: var(--color-primary-dark);
 }
 
@@ -191,6 +203,9 @@
 }
 .cardLight .cardTextGreen {
   color: #596d43;
+}
+.cardLight .cardIcon {
+  color: #4c7043;
 }
 
 /* ================== Sessão 4: Vídeo ================== */

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { motion } from 'motion/react';
 import AnimatedText from '../../components/AnimatedText';
 import styles from './QuemSomos.module.css';
 
@@ -100,6 +101,15 @@ export default function QuemSomos() {
       <section className={styles.cardsSection}>
         {/* Card 1 */}
         <div className={`${styles.card} ${styles.cardDark}`}>
+          <motion.span 
+            className={`material-symbols-rounded ${styles.cardIcon}`}
+            initial={{ opacity: 0, scale: 0.5, y: 20 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
+          >
+            handshake
+          </motion.span>
           <h3 className={styles.cardTitle}>
             <AnimatedText text="Nosso compromisso" type="char" delay={0} stagger={0.02} className={styles.centeredAnimatedText} />
           </h3>
@@ -110,6 +120,15 @@ export default function QuemSomos() {
 
         {/* Card 2 */}
         <div className={`${styles.card} ${styles.cardLime}`}>
+          <motion.span 
+            className={`material-symbols-rounded ${styles.cardIcon}`}
+            initial={{ opacity: 0, scale: 0.5, y: 20 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
+          >
+            rocket_launch
+          </motion.span>
           <h3 className={styles.cardTitleDark}>
             <AnimatedText text="Onde queremos chegar" type="char" delay={0.2} stagger={0.02} className={styles.centeredAnimatedText} />
           </h3>
@@ -120,6 +139,15 @@ export default function QuemSomos() {
 
         {/* Card 3 */}
         <div className={`${styles.card} ${styles.cardLight}`}>
+          <motion.span 
+            className={`material-symbols-rounded ${styles.cardIcon}`}
+            initial={{ opacity: 0, scale: 0.5, y: 20 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: [0.19, 1, 0.22, 1] }}
+          >
+            diamond
+          </motion.span>
           <h3 className={styles.cardTitleGreen}>
             <AnimatedText text="Os valores que nos movem" type="char" delay={0.4} stagger={0.02} className={styles.centeredAnimatedText} />
           </h3>

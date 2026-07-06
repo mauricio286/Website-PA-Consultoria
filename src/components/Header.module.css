@@ -161,6 +161,10 @@
   color: var(--color-primary-dark);
 }
 
+.navLink:hover:not(.active) {
+  color: var(--color-text-dark);
+}
+
 /* Quando na nav flutuante, o fundo é escuro, então o texto é claro */
 .navFloating .navLink {
   color: var(--color-near-white);
