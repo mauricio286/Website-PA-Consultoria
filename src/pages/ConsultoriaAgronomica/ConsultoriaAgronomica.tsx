@@ -4,20 +4,22 @@ import { imgBgConsultoriaAgronomica, imgConsultoriaAgronomica } from '../../asse
 import SubpageHero from '../../components/SubpageHero';
 import LexicalRenderer from '../../components/LexicalRenderer';
 import { api, type Service } from '../../services/api';
+import { useLanguage } from '../../i18n';
 
 export default function ConsultoriaAgronomica() {
   const [service, setService] = useState<Service | null>(null);
+  const { locale, t } = useLanguage();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    api.getServiceBySlug('consultoria-agronomica')
+    api.getServiceBySlug('consultoria-agronomica', locale)
       .then(data => {
         setService(data);
       })
       .catch(err => {
         console.error('Erro ao carregar dados do serviço:', err);
       });
-  }, []);
+  }, [locale]);
 
   const bgImage = service?.coverImage ? api.getMediaUrl(service.coverImage) : imgBgConsultoriaAgronomica;
   const contentImage = service?.illustrationImage ? api.getMediaUrl(service.illustrationImage) : imgConsultoriaAgronomica;
@@ -42,15 +44,16 @@ export default function ConsultoriaAgronomica() {
   } : null;
 
   const showIllustration = service ? service.showIllustration !== false : true;
+  const serviceTitle = service?.title?.replace(/\r?\n/g, ' ') || t.consultoriaPage.title;
 
   return (
     <main className="page-transition-enter" style={{ width: '100%', backgroundColor: 'var(--color-bg-white)' }}>
       
       {/* Hero Section */}
       <SubpageHero 
-        title={service?.title?.replace(/\r?\n/g, ' ') || "Consultoria Agronômica"} 
+        title={serviceTitle} 
         bgImage={bgImage} 
-        breadcrumbCurrent={service?.title?.replace(/\r?\n/g, ' ') || "Consultoria Agronômica"} 
+        breadcrumbCurrent={serviceTitle} 
       />
 
       {/* Content Section */}
@@ -58,7 +61,7 @@ export default function ConsultoriaAgronomica() {
         <div className={styles.imageTextRow}>
           {showIllustration && (
             <div className={`${styles.imageWrapper} ${styles.desktopImage}`}>
-              <img src={contentImage} alt={service?.title || "Consultoria Agronômica"} />
+              <img src={contentImage} alt={serviceTitle} />
             </div>
           )}
           <div className={styles.textContent}>
@@ -67,25 +70,25 @@ export default function ConsultoriaAgronomica() {
                 <LexicalRenderer content={firstPartContent} />
                 {showIllustration && (
                   <div className={`${styles.imageWrapper} ${styles.mobileImage}`}>
-                    <img src={contentImage} alt={service?.title || "Consultoria Agronômica"} />
+                    <img src={contentImage} alt={serviceTitle} />
                   </div>
                 )}
               </>
             ) : (
               <>
                 <p>
-                  A PA Consultoria nasceu do campo e construiu sua reputação entregando aquilo que realmente importa ao produtor: informação confiável para tomada de decisão.
+                  {t.consultoriaPage.p1}
                 </p>
                 {showIllustration && (
                   <div className={`${styles.imageWrapper} ${styles.mobileImage}`}>
-                    <img src={contentImage} alt="Consultoria Agronômica" />
+                    <img src={contentImage} alt={serviceTitle} />
                   </div>
                 )}
                 <p>
-                  Por trás da empresa existe uma família produtora que, há mais de três décadas, vive os desafios da agricultura na prática. E essa essência permanece até hoje. Além de consultores e pesquisadores, continuamos sendo produtores, enfrentando os mesmos desafios, oportunidades e riscos de cada safra.
+                  {t.consultoriaPage.p2}
                 </p>
                 <p>
-                  Foi essa vivência que moldou nossa forma de trabalhar. Acreditamos que uma recomendação só tem valor quando funciona dentro da realidade da fazenda. Por isso, combinamos experiência prática, pesquisa agronômica e acompanhamento técnico para transformar conhecimento em resultados.
+                  {t.consultoriaPage.p3}
                 </p>
               </>
             )}
@@ -98,10 +101,10 @@ export default function ConsultoriaAgronomica() {
           ) : !service ? (
             <>
               <p>
-                Com uma sólida estrutura de pesquisa, geramos informações próprias. Esse conhecimento é validado em campo e aplicado diretamente na realidade dos nossos clientes, garantindo recomendações independentes, seguras e alinhadas às necessidades de cada propriedade.
+                {t.consultoriaPage.p4}
               </p>
               <p>
-                Ao longo de nossa trajetória, conquistamos a confiança de centenas de produtores e nos tornamos referência em consultoria agronômica, pesquisa e geração de conhecimento para o agronegócio. Nossa credibilidade é resultado de um trabalho construído com proximidade, seriedade e compromisso com resultados. Mais do que uma consultoria, somos parceiros estratégicos de quem busca produzir mais, com eficiência, sustentabilidade e segurança nas decisões.
+                {t.consultoriaPage.p5}
               </p>
             </>
           ) : null}

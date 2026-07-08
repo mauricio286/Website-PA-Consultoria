@@ -2,41 +2,45 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import styles from './CicloPrecisao.module.css';
 import AnimatedText from '../../../../components/AnimatedText';
-
-const steps = [
-  {
-    id: 1,
-    titleDark: "Preparo do ",
-    titleLight: "Solo",
-    desc: "Diagnóstico da fertilidade, correção em taxa variável e práticas de integração para potencializar o desempenho da área.",
-    icon: "agriculture"
-  },
-  {
-    id: 2,
-    titleDark: "Plantio",
-    titleLight: "",
-    desc: "Planejamento estratégico da área com rotação de culturas e implantação escalonada do plantio direto.",
-    icon: "eco"
-  },
-  {
-    id: 3,
-    titleDark: "Manejo",
-    titleLight: "",
-    desc: "Monitoramento inteligente da lavoura, manejo biológico e aplicações localizadas para maior eficiência operacional.",
-    icon: "biotech"
-  },
-  {
-    id: 4,
-    titleDark: "Colheita",
-    titleLight: "",
-    desc: "Colheita planejada e geração de mapas de produtividade que orientam decisões para os próximos ciclos.",
-    icon: "warehouse"
-  }
-];
+import { useLanguage } from '../../../../i18n';
 
 export default function CicloPrecisao() {
+  const { t } = useLanguage();
   const [activeStep, setActiveStep] = useState(0);
   const [rotationStep, setRotationStep] = useState(0);
+
+  const steps = [
+    {
+      id: 1,
+      titleDark: t.cicloPrecisao.step1TitleDark,
+      titleLight: t.cicloPrecisao.step1TitleLight,
+      desc: t.cicloPrecisao.step1Desc,
+      icon: "agriculture"
+    },
+    {
+      id: 2,
+      titleDark: t.cicloPrecisao.step2TitleDark,
+      titleLight: t.cicloPrecisao.step2TitleLight,
+      desc: t.cicloPrecisao.step2Desc,
+      icon: "eco"
+    },
+    {
+      id: 3,
+      titleDark: t.cicloPrecisao.step3TitleDark,
+      titleLight: t.cicloPrecisao.step3TitleLight,
+      desc: t.cicloPrecisao.step3Desc,
+      icon: "biotech"
+    },
+    {
+      id: 4,
+      titleDark: t.cicloPrecisao.step4TitleDark,
+      titleLight: t.cicloPrecisao.step4TitleLight,
+      desc: t.cicloPrecisao.step4Desc,
+      icon: "warehouse"
+    }
+  ];
+
+
 
   const handlePrev = () => {
     setActiveStep((prev) => (prev > 0 ? prev - 1 : steps.length - 1));

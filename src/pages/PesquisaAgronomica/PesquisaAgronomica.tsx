@@ -1,10 +1,13 @@
 import { useEffect } from 'react';
 import styles from './PesquisaAgronomica.module.css';
 import { imgBgServicos, imgCentroPesquisa } from '../../assets';
+import { useLanguage } from '../../i18n';
 
 import SubpageHero from '../../components/SubpageHero';
 
 export default function PesquisaAgronomica() {
+  const { t } = useLanguage();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -14,9 +17,9 @@ export default function PesquisaAgronomica() {
       
       {/* Hero Section */}
       <SubpageHero 
-        title="Pesquisa Agronômica" 
+        title={t.pesquisaAgroPage.title} 
         bgImage={imgBgServicos} 
-        breadcrumbCurrent="Pesquisa Agronômica" 
+        breadcrumbCurrent={t.pesquisaAgroPage.title} 
       />
 
       {/* Content Section */}
@@ -24,23 +27,23 @@ export default function PesquisaAgronomica() {
         <div className={styles.imageTextRow}>
           <div className={styles.textContent}>
             <p>
-              A pesquisa faz parte da história do Grupo PA. Ela nasceu da vontade de entender melhor o campo, testar novas tecnologias e encontrar respostas para os desafios que fazem parte da rotina de todo produtor rural. Desde 2011, contamos com uma estação experimental própria, onde avaliamos cultivares, produtos, manejos e novas tecnologias nas culturas de soja, milho, algodão, entre outras.
+              {t.pesquisaAgroPage.p1}
             </p>
             <p>
-              São mais de 60 hectares dedicados exclusivamente à pesquisa, gerando informações em condições reais de campo. A cada safra, milhares de tratamentos passam por avaliação. Somente na última temporada foram mais de 2.000 tratamentos conduzidos por nossa equipe. Todo esse trabalho gera um dos patrimônios mais valiosos do Grupo PA: conhecimento construído ao longo de anos de observação, comparação e validação prática.
+              {t.pesquisaAgroPage.p2}
             </p>
           </div>
           <div className={styles.imageWrapper}>
-            <img src={imgCentroPesquisa} alt="Pesquisa Agronômica" />
+            <img src={imgCentroPesquisa} alt={t.pesquisaAgroPage.title} />
           </div>
         </div>
 
         <div className={styles.fullTextRow}>
           <p>
-            Foi essa seriedade que aproximou o Grupo PA das principais empresas do agronegócio mundial, que utilizam nosso serviço para avaliar tecnologias e gerar informações que ajudam a direcionar o futuro da agricultura. A pesquisa não termina na coleta de dados, ela ganha valor quando se transforma em informação útil para quem está produzindo. Os resultados dos experimentos são compartilhados com produtores e empresas parceiras, contribuindo para decisões mais seguras e manejos mais eficientes.
+            {t.pesquisaAgroPage.p3}
           </p>
           <p>
-            Todas as informações que chegam aos nossos clientes e aos participantes do PA Summit passaram primeiro pelos nossos campos de pesquisa. Antes de recomendar, preferimos testar. Antes de opinar, buscamos dados. E antes de levar uma tecnologia ao produtor, queremos entender como ela realmente se comporta no campo. A pesquisa é uma das formas que encontramos de continuar evoluindo e ajudando a agricultura a evoluir junto conosco.
+            {t.pesquisaAgroPage.p4}
           </p>
         </div>
       </section>

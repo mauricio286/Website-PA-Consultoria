@@ -1,10 +1,13 @@
 import { useEffect } from 'react';
 import styles from './Palestras.module.css';
 import { imgBgServicos, imgEventos } from '../../assets'; // Palestras/Eventos image
+import { useLanguage } from '../../i18n';
 
 import SubpageHero from '../../components/SubpageHero';
 
 export default function Palestras() {
+  const { t } = useLanguage();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -14,9 +17,9 @@ export default function Palestras() {
       
       {/* Hero Section */}
       <SubpageHero 
-        title="Palestras e Eventos" 
+        title={t.palestrasPage.title} 
         bgImage={imgBgServicos} 
-        breadcrumbCurrent="Palestras e Eventos" 
+        breadcrumbCurrent={t.palestrasPage.title} 
       />
 
       {/* Content Section */}
@@ -24,23 +27,23 @@ export default function Palestras() {
         <div className={styles.imageTextRow}>
           <div className={styles.textContent}>
             <p>
-              Ao longo dos anos, as informações geradas pela consultoria, pela pesquisa agronômica e pela experiência prática no campo passaram a ser compartilhadas por meio de palestras, treinamentos, dias de campo e eventos técnicos voltados a produtores rurais, equipes técnicas e empresas do agronegócio.
+              {t.palestrasPage.p1}
             </p>
             <p>
-              Os temas abordados acompanham os principais desafios da agricultura, incluindo manejo de doenças, pragas, fertilidade do solo, cultivares, tecnologia de aplicação, cenário climático e tendências para as principais culturas da região.
+              {t.palestrasPage.p2}
             </p>
             <p>
-              Além dos treinamentos realizados para empresas e equipes técnicas, o Grupo PA promove anualmente o PA Summit, um dos principais eventos do agronegócio regional.
+              {t.palestrasPage.p3}
             </p>
             <p>
-              Em sua 13ª edição, o evento reúne produtores, pesquisadores, consultores, empresas e lideranças do setor para a apresentação de resultados de pesquisa, novas tecnologias, networking e troca de experiências.
+              {t.palestrasPage.p4}
             </p>
             <p>
-              Esses encontros são oportunidades para propagar o conhecimento gerado no campo para quem toma decisões diariamente dentro de suas propriedades.
+              {t.palestrasPage.p5}
             </p>
           </div>
           <div className={styles.imageWrapper}>
-            <img src={imgEventos} alt="Palestras e Eventos" />
+            <img src={imgEventos} alt={t.palestrasPage.title} />
           </div>
         </div>
       </section>

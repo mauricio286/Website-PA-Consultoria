@@ -9,6 +9,7 @@ import {
   imgCentroPesquisa,
   imgAldBioenergia
 } from '../../../../assets';
+import { useLanguage } from '../../../../i18n';
 
 interface EcosystemProps {
   data?: ServicesPageData | null;
@@ -17,6 +18,7 @@ interface EcosystemProps {
 export default function Ecosystem({ data }: EcosystemProps) {
   const gridRef = useRef<HTMLDivElement>(null);
   const [isGridVisible, setIsGridVisible] = useState(false);
+  const { locale, t } = useLanguage();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -36,28 +38,28 @@ export default function Ecosystem({ data }: EcosystemProps) {
     return () => observer.disconnect();
   }, []);
 
-  const badge = data?.ecosystemBadge || "nossa força no campo";
-  const titleNormal = data?.ecosystemTitle ?? (data ? "" : "sistema");
-  const titleAccent = data?.ecosystemSubtitle ?? (data ? "" : "Eco");
+  const badge = data?.ecosystemBadge || t.servicos.ecosistemaTag;
+  const titleNormal = data?.ecosystemTitle || t.servicos.ecosistemaTitle2;
+  const titleAccent = data?.ecosystemSubtitle || t.servicos.ecosistemaTitle1;
 
   const staticCards = [
     {
-      title: "ALD Bioenergia",
+      title: t.servicos.aldBioenergia || "ALD Bioenergia",
       image: imgAldBioenergia,
       link: "/aldbioenergia",
     },
     {
-      title: "Lavoura",
+      title: t.servicos.lavoura || "Lavoura",
       image: imgLavoura,
       link: "/lavoura",
     },
     {
-      title: "Centro de Pesquisa",
+      title: t.servicos.centroPesquisa || "Centro de Pesquisa",
       image: imgCentroPesquisa,
       link: "/centropesquisa",
     },
     {
-      title: "Palestras e Eventos",
+      title: t.servicos.palestrasEventos || "Palestras e Eventos",
       image: imgEventos,
       link: "/palestras",
     },
@@ -71,25 +73,25 @@ export default function Ecosystem({ data }: EcosystemProps) {
     <section className={styles.ecosystemSection}>
       <div className={styles.ecosystemContainer}>
         <div className={styles.tagWrapperCenter}>
-           <span className="tag-badge dark" style={{ borderColor: '#88a668', color: '#455336', backgroundColor: 'transparent' }}>
-             {badge}
-           </span>
+          <span className="tag-badge dark" style={{ borderColor: '#88a668', color: '#455336', backgroundColor: 'transparent' }}>
+            {badge}
+          </span>
         </div>
 
         <h2 className={styles.ecosystemTitle}>
           {titleAccent && (
             <span className={styles.highlight}>
-              <AnimatedText text={titleAccent} type="word" />
+              <AnimatedText key={`eco1-${locale}-${titleAccent}`} text={titleAccent} type="word" />
               {" "}
             </span>
           )}
           {titleNormal && (
-            <AnimatedText text={titleNormal} type="word" delay={titleAccent ? 0.1 : 0} />
+            <AnimatedText key={`eco2-${locale}-${titleNormal}`} text={titleNormal} type="word" delay={titleAccent ? 0.1 : 0} />
           )}
         </h2>
 
         <div ref={gridRef} className={`${styles.ecosystemGrid} ${isGridVisible ? styles.animateEcosystem : ''}`} style={{ marginTop: '0px' }}>
-          {/* SVG Lines Overlay (Desktop only ideally) */}
+          {/* SVG Lines Overlay (Desktop only) */}
           <div className={styles.svgOverlay}>
             <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
               {/* To Card 1 */}
@@ -110,7 +112,7 @@ export default function Ecosystem({ data }: EcosystemProps) {
             <div className={styles.circleMarker} style={{ left: '87.5%', top: '80%' }} />
           </div>
 
-          {/* Cards do ecossistema */}
+          {/* Ecosystem Cards */}
           <div className={styles.ecoCardsWrapper}>
             {cardsToRender.map((card: any, idx: number) => {
               const isEven = idx % 2 === 0;
@@ -137,12 +139,12 @@ export default function Ecosystem({ data }: EcosystemProps) {
                   <div className={styles.ecoCardButton}>
                     {isExternal ? (
                       <a href={linkUrl} target="_blank" rel="noopener noreferrer" className="btn-pa white">
-                        <span className="btn-label">Ver mais</span>
+                        <span className="btn-label">{t.common?.verMais || 'Ver mais'}</span>
                         <span className="btn-icon"><span className="material-symbols-rounded">arrow_back</span></span>
                       </a>
                     ) : (
                       <Link to={linkUrl} className="btn-pa white">
-                        <span className="btn-label">Ver mais</span>
+                        <span className="btn-label">{t.common?.verMais || 'Ver mais'}</span>
                         <span className="btn-icon"><span className="material-symbols-rounded">arrow_back</span></span>
                       </Link>
                     )}

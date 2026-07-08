@@ -3,6 +3,7 @@ import styles from './Contato.module.css';
 import { imgBgContato, imgIconWhereToVote, imgIconCall, imgIconMail } from '../../assets';
 import { api } from '../../services/api';
 import type { ContactSettingsData } from '../../services/api';
+import { useLanguage } from '../../i18n';
 
 export default function Contato() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -15,12 +16,13 @@ export default function Contato() {
     assunto: '',
     mensagem: ''
   });
+  const { locale, t } = useLanguage();
 
   useEffect(() => {
-    api.getContactSettings()
+    api.getContactSettings(locale)
       .then(data => setCmsData(data))
       .catch(err => console.error("Erro ao carregar dados de contato:", err));
-  }, []);
+  }, [locale]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -35,12 +37,11 @@ export default function Contato() {
     }
   };
 
-  // Manipulador de envio do formulário
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulando um delay de envio (ex: API call)
+    // Simulating message submit delay
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitted(true);
@@ -92,9 +93,9 @@ export default function Contato() {
           
           {/* Left Column: Título e Formulário */}
           <div className={styles.leftColumn}>
-            <h2 className={styles.introTitle}>{cmsData?.formTitle || "Fale conosco"}</h2>
+            <h2 className={styles.introTitle}>{cmsData?.formTitle || t.contato.title}</h2>
             <p className={styles.introDesc}>
-              {cmsData?.formDescription || "Nosso time está à disposição para esclarecer dúvidas, apresentar nossos serviços e ajudar você a encontrar as melhores soluções para sua realidade. Entre em contato conosco. Será um prazer conversar com você."}
+              {cmsData?.formDescription || t.contato.description}
             </p>
 
             <div className={styles.formWrapper}>
@@ -105,7 +106,7 @@ export default function Contato() {
                     name="nome"
                     value={formData.nome}
                     onChange={handleChange}
-                    placeholder="Nome" 
+                    placeholder={t.contato.nome} 
                     className={styles.formInput} 
                     required 
                     minLength={3}
@@ -117,7 +118,7 @@ export default function Contato() {
                       name="celular"
                       value={formData.celular}
                       onChange={handleChange}
-                      placeholder="Celular ou Fixo" 
+                      placeholder={t.contato.celular} 
                       className={styles.formInput} 
                       required 
                       minLength={14}
@@ -128,7 +129,7 @@ export default function Contato() {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="E-mail" 
+                      placeholder={t.contato.email} 
                       className={styles.formInput} 
                       required 
                     />
@@ -139,7 +140,7 @@ export default function Contato() {
                     name="assunto"
                     value={formData.assunto}
                     onChange={handleChange}
-                    placeholder="Assunto" 
+                    placeholder={t.contato.assunto} 
                     className={styles.formInput} 
                     required 
                     minLength={3}
@@ -149,7 +150,7 @@ export default function Contato() {
                     name="mensagem"
                     value={formData.mensagem}
                     onChange={handleChange}
-                    placeholder="Sua mensagem" 
+                    placeholder={t.contato.mensagem} 
                     className={`${styles.formInput} ${styles.formTextarea}`} 
                     required 
                     minLength={10}
@@ -158,12 +159,12 @@ export default function Contato() {
                   <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
                     {isSubmitting ? (
                       <>
-                        Enviando...
+                        {t.contato.enviando}
                         <div className={styles.spinner}></div>
                       </>
                     ) : (
                       <>
-                        Enviar
+                        {t.contato.enviar}
                         <span className={`material-symbols-rounded ${styles.btnIcon}`}>send</span>
                       </>
                     )}
@@ -174,8 +175,8 @@ export default function Contato() {
                   <span className={`material-symbols-rounded ${styles.successIcon}`}>
                     check_circle
                   </span>
-                  <h3>Mensagem enviada!</h3>
-                  <p>Agradecemos o seu contato. Em breve, um de nossos especialistas retornará para você.</p>
+                  <h3>{t.contato.sucesso}</h3>
+                  <p>{t.contato.sucessoDesc}</p>
                 </div>
               )}
             </div>

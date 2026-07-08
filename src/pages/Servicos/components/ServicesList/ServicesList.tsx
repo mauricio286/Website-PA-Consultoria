@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from './ServicesList.module.css';
 import { type Service, type ServicesPageData } from '../../../../services/api';
+import { useLanguage } from '../../../../i18n';
 
 interface ServicesListProps {
   data?: ServicesPageData | null;
@@ -9,43 +10,51 @@ interface ServicesListProps {
 
 function getServicePath(slug?: string): string {
   if (!slug) return '#';
-  const clean = slug.replace(/-/g, '');
-  return `/${clean}`;
+  const clean = slug.trim().toLowerCase();
+  if (clean.startsWith('/')) return clean;
+  if (clean === "consultoria-agronomica" || clean === "consultoriaagronomica") return "/consultoriaagronomica";
+  if (clean === "agricultura-de-precisao" || clean === "agriculturaprecisao") return "/agriculturaprecisao";
+  if (clean === "gestao-de-compras" || clean === "gestaocompras") return "/gestaocompras";
+  if (clean === "pesquisa-agronomica" || clean === "pesquisaagronomica") return "/pesquisaagronomica";
+  if (clean === "unita") return "/unita";
+  return `/${clean.replace(/-/g, '')}`;
 }
 
 export default function ServicesList({ data, list }: ServicesListProps) {
+  const { t } = useLanguage();
+
   // Safe fallbacks for headers
-  const badge = data?.servicesBadge || "eixos de atuação";
-  const titleNormal = data?.servicesTitle ?? (data ? "" : "Nossos");
-  const titleAccent = data?.servicesSubtitle ?? (data ? "" : "serviços");
-  const description = data?.servicesDescription || "Do planejamento ao pós-colheita, atuamos de forma estratégica para que cada decisão no campo seja mais eficiente e rentável. Nossos serviços unem acompanhamento técnico, agricultura de precisão, pesquisa e análise de dados para otimizar produtividade, reduzir perdas e gerar resultados consistentes em cada safra.";
+  const badge = data?.servicesBadge || t.servicos.tag;
+  const titleNormal = data?.servicesTitle || t.servicos.title1;
+  const titleAccent = data?.servicesSubtitle || t.servicos.titleHighlight;
+  const description = data?.servicesDescription || t.servicos.description;
 
   // Static fallback list if CMS has no published services
   const staticServices = [
     {
-      title: "Consultoria\nAgronômica",
-      shortDescription: "A PA Consultoria nasceu do campo e construiu sua reputação entregando aquilo que realmente...",
-      slug: "consultoria-agronomica"
+      title: t.servicos.consultoriaTitle || "Consultoria\nAgronômica",
+      shortDescription: t.servicos.consultoriaDesc || "A PA Consultoria nasceu do campo...",
+      slug: "consultoriaagronomica"
     },
     {
-      title: "Unitá",
+      title: t.servicos.unitaTitle || "Unitá",
       shortDescription: "",
       slug: "unita"
     },
     {
-      title: "Agricultura\nde Precisão",
-      shortDescription: "A pesquisa agronômica é um dos pilares do Grupo PA. Investimos constantemente...",
-      slug: "agricultura-de-precisao"
+      title: t.servicos.agriculturaTitle || "Agricultura\nde Precisão",
+      shortDescription: t.servicos.agriculturaDesc || "A pesquisa agronômica é um dos pilares...",
+      slug: "agriculturaprecisao"
     },
     {
-      title: "Gestão\nde Compras",
-      shortDescription: "A gestão de compras vai muito além da negociação de valores. Nosso...",
-      slug: "gestao-de-compras"
+      title: t.servicos.gestaoTitle || "Gestão\nde Compras",
+      shortDescription: t.servicos.gestaoDesc || "A gestão de compras vai muito além...",
+      slug: "gestaocompras"
     },
     {
-      title: "Pesquisa\nAgronômica",
-      shortDescription: "A pesquisa agronômica é um dos pilares do Grupo PA. Investimos constantemente...",
-      slug: "pesquisa-agronomica"
+      title: t.servicos.pesquisaTitle || "Pesquisa\nAgronômica",
+      shortDescription: t.servicos.pesquisaDesc || "A pesquisa agronômica é um dos pilares...",
+      slug: "pesquisaagronomica"
     }
   ];
 
@@ -100,7 +109,7 @@ export default function ServicesList({ data, list }: ServicesListProps) {
               </div>
               <div className={styles.cardButton}>
                 <Link to={path} className={btnClass}>
-                  <span className="btn-label">Ver mais</span>
+                  <span className="btn-label">{t.servicos.verMais || 'Ver mais'}</span>
                   <span className="btn-icon"><span className="material-symbols-rounded">arrow_back</span></span>
                 </Link>
               </div>

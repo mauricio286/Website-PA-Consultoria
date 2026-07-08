@@ -1,5 +1,14 @@
 const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:3000';
 
+function getLocaleUrl(path: string, locale?: string): string {
+  const url = `${API_URL}${path}`;
+  if (locale) {
+    const separator = url.includes('?') ? '&' : '?';
+    return `${url}${separator}locale=${locale}`;
+  }
+  return url;
+}
+
 // Tipo genérico para imagens/mídias retornadas pelo Payload
 export interface Media {
   id: string;
@@ -254,79 +263,79 @@ export const api = {
   },
 
   // Globals
-  async getHomePage(): Promise<HomePageData> {
-    const res = await fetch(`${API_URL}/api/globals/home-page`);
+  async getHomePage(locale?: string): Promise<HomePageData> {
+    const res = await fetch(getLocaleUrl('/api/globals/home-page', locale));
     if (!res.ok) throw new Error('Erro ao buscar dados da HomePage');
     return res.json();
   },
 
-  async getAboutPage(): Promise<AboutPageData> {
-    const res = await fetch(`${API_URL}/api/globals/about-page`);
+  async getAboutPage(locale?: string): Promise<AboutPageData> {
+    const res = await fetch(getLocaleUrl('/api/globals/about-page', locale));
     if (!res.ok) throw new Error('Erro ao buscar dados da AboutPage');
     return res.json();
   },
 
-  async getServicesPage(): Promise<ServicesPageData> {
-    const res = await fetch(`${API_URL}/api/globals/services-page`);
+  async getServicesPage(locale?: string): Promise<ServicesPageData> {
+    const res = await fetch(getLocaleUrl('/api/globals/services-page', locale));
     if (!res.ok) throw new Error('Erro ao buscar dados da ServicesPage');
     return res.json();
   },
 
-  async getCareersPage(): Promise<CareersPageData> {
-    const res = await fetch(`${API_URL}/api/globals/careers-page`);
+  async getCareersPage(locale?: string): Promise<CareersPageData> {
+    const res = await fetch(getLocaleUrl('/api/globals/careers-page', locale));
     if (!res.ok) throw new Error('Erro ao buscar dados da página Carreiras');
     return res.json();
   },
 
-  async getContactSettings(): Promise<ContactSettingsData> {
-    const res = await fetch(`${API_URL}/api/globals/contact-settings`);
+  async getContactSettings(locale?: string): Promise<ContactSettingsData> {
+    const res = await fetch(getLocaleUrl('/api/globals/contact-settings', locale));
     if (!res.ok) throw new Error('Erro ao buscar dados de ContactSettings');
     return res.json();
   },
 
-  async getSiteSettings(): Promise<SiteSettingsData> {
-    const res = await fetch(`${API_URL}/api/globals/site-settings`);
+  async getSiteSettings(locale?: string): Promise<SiteSettingsData> {
+    const res = await fetch(getLocaleUrl('/api/globals/site-settings', locale));
     if (!res.ok) throw new Error('Erro ao buscar dados de SiteSettings');
     return res.json();
   },
 
-  async getFooterSettings(): Promise<FooterSettingsData> {
-    const res = await fetch(`${API_URL}/api/globals/footer-settings`);
+  async getFooterSettings(locale?: string): Promise<FooterSettingsData> {
+    const res = await fetch(getLocaleUrl('/api/globals/footer-settings', locale));
     if (!res.ok) throw new Error('Erro ao buscar dados de FooterSettings');
     return res.json();
   },
 
   // Collections
-  async getServices(): Promise<Service[]> {
-    const res = await fetch(`${API_URL}/api/services?sort=order&where[published][equals]=true`);
+  async getServices(locale?: string): Promise<Service[]> {
+    const res = await fetch(getLocaleUrl('/api/services?sort=order&where[published][equals]=true', locale));
     if (!res.ok) throw new Error('Erro ao buscar serviços');
     const data = await res.json();
     return data.docs;
   },
 
-  async getServiceBySlug(slug: string): Promise<Service | null> {
-    const res = await fetch(`${API_URL}/api/services?where[slug][equals]=${slug}`);
+  async getServiceBySlug(slug: string, locale?: string): Promise<Service | null> {
+    const res = await fetch(getLocaleUrl(`/api/services?where[slug][equals]=${slug}`, locale));
     if (!res.ok) throw new Error('Erro ao buscar serviço por slug');
     const data = await res.json();
     return data.docs[0] || null;
   },
 
-  async getJobs(): Promise<Job[]> {
-    const res = await fetch(`${API_URL}/api/jobs?sort=order&where[visible][equals]=true`);
+  async getJobs(locale?: string): Promise<Job[]> {
+    const res = await fetch(getLocaleUrl('/api/jobs?sort=order&where[visible][equals]=true', locale));
     if (!res.ok) throw new Error('Erro ao buscar vagas');
     const data = await res.json();
     return data.docs;
   },
 
-  async getMapLocations(): Promise<MapLocation[]> {
-    const res = await fetch(`${API_URL}/api/map-locations?limit=100&sort=order&where[published][equals]=true`);
+  async getMapLocations(locale?: string): Promise<MapLocation[]> {
+    const res = await fetch(getLocaleUrl('/api/map-locations?limit=100&sort=order&where[published][equals]=true', locale));
     if (!res.ok) throw new Error('Erro ao buscar localizações do mapa');
     const data = await res.json();
     return data.docs;
   },
 
-  async getTestimonials(): Promise<TestimonialDoc[]> {
-    const res = await fetch(`${API_URL}/api/testimonials?limit=100&sort=order&where[published][equals]=true`);
+  async getTestimonials(locale?: string): Promise<TestimonialDoc[]> {
+    const res = await fetch(getLocaleUrl('/api/testimonials?limit=100&sort=order&where[published][equals]=true', locale));
     if (!res.ok) throw new Error('Erro ao buscar depoimentos');
     const data = await res.json();
     return data.docs;

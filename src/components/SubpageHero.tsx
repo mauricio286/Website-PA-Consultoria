@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import AnimatedText from './AnimatedText';
 import styles from './SubpageHero.module.css';
+import { useLanguage } from '../i18n';
 
 interface SubpageHeroProps {
   title: string;
@@ -10,6 +11,8 @@ interface SubpageHeroProps {
 }
 
 export default function SubpageHero({ title, bgImage, breadcrumbCurrent }: SubpageHeroProps) {
+  const { t } = useLanguage();
+
   const handleScroll = (e: React.MouseEvent) => {
     e.preventDefault();
     const lenis = (window as any).lenisInstance;
@@ -31,7 +34,7 @@ export default function SubpageHero({ title, bgImage, breadcrumbCurrent }: Subpa
       <div className={styles.heroContent}>
         <div className={styles.titleContainer}>
           <div className={styles.breadcrumb}>
-            <Link to="/servicos" className={styles.breadcrumbLink}>Serviços</Link>
+            <Link to="/servicos" className={styles.breadcrumbLink}>{t.subpageHero.breadcrumb}</Link>
             <span className={styles.breadcrumbCurrent}>{` > ${breadcrumbCurrent}`}</span>
           </div>
           

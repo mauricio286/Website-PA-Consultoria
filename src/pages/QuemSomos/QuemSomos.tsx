@@ -1,9 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 import AnimatedText from '../../components/AnimatedText';
 import styles from './QuemSomos.module.css';
 import { api } from '../../services/api';
 import type { AboutPageData } from '../../services/api';
 import LexicalRenderer from '../../components/LexicalRenderer';
+import { motion } from 'motion/react';
+import { useLanguage } from '../../i18n';
 
 // Import images from assets
 import { 
@@ -15,7 +17,6 @@ import {
 function getYouTubeEmbedUrl(url?: string): string {
   if (!url) return "https://www.youtube.com/embed/2Val9IbUWHk";
   const trimmed = url.trim();
-  // Match standard and mobile watch URLs, short youtu.be, embed, etc. and extract the 11-char ID
   const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
   const match = trimmed.match(regExp);
   if (match && match[2].length === 11) {
@@ -30,6 +31,7 @@ function getYouTubeEmbedUrl(url?: string): string {
 export default function QuemSomos() {
   const timelineRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const { locale, t } = useLanguage();
   
   // Drag to scroll state
   const [isDragging, setIsDragging] = useState(false);
@@ -41,14 +43,14 @@ export default function QuemSomos() {
   // Ensure we start at the top of the page when navigating here and fetch CMS data
   useEffect(() => {
     window.scrollTo(0, 0);
-    api.getAboutPage()
+    api.getAboutPage(locale)
       .then((res) => {
         setAboutData(res);
       })
       .catch((err) => {
         console.error('Error fetching AboutPage data:', err);
       });
-  }, []);
+  }, [locale]);
 
   const handleScroll = () => {
     if (timelineRef.current) {
@@ -85,36 +87,35 @@ export default function QuemSomos() {
     }
   };
 
-  const videoMainTitle = aboutData 
-    ? (aboutData.videoSectionTitle || "") 
-    : "Vídeo";
-  const videoHighlightTitle = aboutData 
-    ? (aboutData.videoSectionTitleAccent || "") 
-    : "Institucional";
-  const staticTimelineItems = [
-    { tag: "o início", year: "1993", text: "O Grupo PA teve o início de sua história no Mato Grosso em 1993, através da aquisição da Faz. São Paulo, em Diamantino - MT, para o cultivo de soja e milho. Ainda hoje é a principal Fazenda do grupo e onde está localizado nosso campo de pesquisa.", image: imgImagem },
-    { tag: "consultoria", year: "2002", text: "No ano de 2002, nosso fundador Paulo Asunção, a convite de um vizinho de terra, começou a prestar serviços de consultoria agronômica. Este foi o primeiro cliente da empresa e segue conosco até hoje.", image: imgImagem },
-    { tag: "tecnologia", year: "2009", text: "Em 2009, a PA Consultoria passou a disponibilizar os serviços de agricultura de precisão, sendo uma das primeiras empresas do estado a oferecer este serviço.", image: imgImagem },
-    { tag: "pesquisa", year: "2011", text: "Iniciamos os trabalhos de Pesquisa Agronômica que hoje conta com uma área de 60 ha e mais de 2.000 tratamentos dedicados ao desenvolvimento, gerando resultados importantes para a construção da melhor estratégia produtiva.", image: imgImagem },
-    { tag: "evento", year: "2013", text: "A PA Pesquisa realizou seu primeiro dia de campo em seu campo de pesquisa na Faz. São Paulo, reunindo cerca de 30 produtores.", image: imgImagem },
-    { tag: "novas culturas", year: "2023", text: "A PA Consultoria passou a atender a cultura do algodão.", image: imgImagem },
-    { tag: "expansão", year: "2024", text: "Comprometidos com nossa missão em contribuir com o desenvolvimento do agronegócio, expandimos e passamos a atender a região do Nortão Mato-Grossense.", image: imgImagem },
-    { tag: "investimento", year: "2026", text: "O Grupo PA segue investindo no agro e no Mato Grosso. Como acionistas da ALD Bioenergia, realizamos novos investimentos para a triplicação da planta.", image: imgImagem }
-  ];
+  const videoMainTitle = aboutData?.videoSectionTitle || t.quemSomos.videoTitle1 || "Vídeo";
+  const videoHighlightTitle = aboutData?.videoSectionTitleAccent || t.quemSomos.videoTitle2 || "Institucional";
 
-  const timelineItemsToRender = aboutData?.timeline && aboutData.timeline.length > 0
-    ? aboutData.timeline.map((item) => ({
-        tag: item.tag,
-        year: item.year,
-        textNode: <LexicalRenderer content={item.text} />,
-        imageSrc: api.getMediaUrl(item.image) || imgImagem,
-      }))
-    : staticTimelineItems.map((item) => ({
-        tag: item.tag,
-        year: item.year,
-        textNode: <>{item.text}</>,
-        imageSrc: item.image,
-      }));
+  const staticTimelineItems = useMemo(() => [
+    { tag: t.quemSomos.timeline[0]?.tag || "o início", year: "1993", text: t.quemSomos.timeline[0]?.text || "O Grupo PA teve o início de sua história...", image: imgImagem },
+    { tag: t.quemSomos.timeline[1]?.tag || "consultoria", year: "2002", text: t.quemSomos.timeline[1]?.text || "No ano de 2002, nosso fundador Paulo Asunção...", image: imgImagem },
+    { tag: t.quemSomos.timeline[2]?.tag || "tecnologia", year: "2009", text: t.quemSomos.timeline[2]?.text || "Em 2009, a PA Consultoria passou a disponibilizar...", image: imgImagem },
+    { tag: t.quemSomos.timeline[3]?.tag || "pesquisa", year: "2011", text: t.quemSomos.timeline[3]?.text || "Iniciamos os trabalhos de Pesquisa Agronômica...", image: imgImagem },
+    { tag: t.quemSomos.timeline[4]?.tag || "evento", year: "2013", text: t.quemSomos.timeline[4]?.text || "A PA Pesquisa realizou seu primeiro dia de campo...", image: imgImagem },
+    { tag: t.quemSomos.timeline[5]?.tag || "novas culturas", year: "2023", text: t.quemSomos.timeline[5]?.text || "A PA Consultoria passou a atender a cultura...", image: imgImagem },
+    { tag: t.quemSomos.timeline[6]?.tag || "expansão", year: "2024", text: t.quemSomos.timeline[6]?.text || "Comprometidos com nossa missão em contribuir...", image: imgImagem },
+    { tag: t.quemSomos.timeline[7]?.tag || "investimento", year: "2026", text: t.quemSomos.timeline[7]?.text || "O Grupo PA segue investindo no agro...", image: imgImagem }
+  ], [t]);
+
+  const timelineItemsToRender = useMemo(() => {
+    return aboutData?.timeline && aboutData.timeline.length > 0
+      ? aboutData.timeline.map((item) => ({
+          tag: item.tag,
+          year: item.year,
+          textNode: <div className={styles.timelineText}><LexicalRenderer content={item.text} /></div>,
+          imageSrc: api.getMediaUrl(item.image) || imgImagem,
+        }))
+      : staticTimelineItems.map((item) => ({
+          tag: item.tag,
+          year: item.year,
+          textNode: <p className={styles.timelineText}>{item.text}</p>,
+          imageSrc: item.image,
+        }));
+  }, [aboutData, staticTimelineItems]);
 
   return (
     <main className={`${styles.quemSomosPage} page-transition-enter`}>
@@ -137,15 +138,15 @@ export default function QuemSomos() {
         <div className={styles.introContainer}>
           <div className={styles.introLeft}>
             <span className="tag-badge dark">
-              quem somos
+              {t.quemSomos.tag}
             </span>
             <h2 className={styles.introTitle} style={{ whiteSpace: 'pre-line' }}>
-              {aboutData?.title || "Nossa gente "}
-              {aboutData?.subtitle && (
+              {aboutData?.title || t.quemSomos.introTitle1}
+              {(aboutData?.subtitle || t.quemSomos.introHighlight) && (
                 <>
                   <br />
                   <span className={styles.highlight}>
-                    {aboutData.subtitle}
+                    {aboutData?.subtitle || t.quemSomos.introHighlight}
                   </span>
                 </>
               )}
@@ -156,13 +157,9 @@ export default function QuemSomos() {
               <LexicalRenderer content={aboutData.introText} />
             ) : (
               <>
-                <p>
-                  Sediado em Tangará da Serra (MT), o <strong>Grupo PA</strong> une consultoria agronômica especializada e atendimento próximo para <strong>impulsionar a produtividade do produtor</strong>. Com um campo experimental próprio, transformamos pesquisas e estudos práticos em dados reais para eliminar o achismo e otimizar os resultados da sua safra.
-                </p>
+                <p dangerouslySetInnerHTML={{ __html: t.quemSomos.introP1 }} />
                 <br />
-                <p>
-                  Simplificamos sua rotina cuidando de toda a gestão de compras de insumos, negociando os melhores preços, prazos e fornecedores do mercado. Pioneiros em agricultura de precisão, usamos GPS e sensoriamento remoto para coletar dados exatos e maximizar o desempenho de cada hectare. <strong>Somos a parceria sólida e lucrativa que você busca para o campo</strong>. Conte com o Grupo PA para elevar o patamar da sua produção.
-                </p>
+                <p dangerouslySetInnerHTML={{ __html: t.quemSomos.introP2 }} />
               </>
             )}
           </div>
@@ -173,48 +170,69 @@ export default function QuemSomos() {
       <section className={styles.cardsSection}>
         {/* Card 1 */}
         <div className={`${styles.card} ${styles.cardDark}`}>
+          <motion.span 
+            className={`material-symbols-rounded ${styles.cardIcon}`}
+            initial={{ opacity: 0, scale: 0.5, y: 20 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
+          >
+            handshake
+          </motion.span>
           <h3 className={styles.cardTitle}>
-            <AnimatedText text={aboutData?.commitment?.title || "Nosso compromisso"} type="char" delay={0} stagger={0.02} className={styles.centeredAnimatedText} />
+            <AnimatedText key={`comp-${locale}`} text={aboutData?.commitment?.title || t.quemSomos.compromissoTitle} type="char" delay={0} stagger={0.02} className={styles.centeredAnimatedText} />
           </h3>
           <div className={styles.cardText}>
             {aboutData?.commitment?.text ? (
               <LexicalRenderer content={aboutData.commitment.text} />
             ) : (
-              <p>
-                Contribuímos com o desenvolvimento do agronegócio, entregando aos nossos clientes as melhores soluções em produtividade, com excelência na prestação de serviços, tecnologia, pesquisa e respeito às pessoas e ao meio ambiente.
-              </p>
+              <p>{t.quemSomos.compromissoText}</p>
             )}
           </div>
         </div>
 
         {/* Card 2 */}
         <div className={`${styles.card} ${styles.cardLime}`}>
+          <motion.span 
+            className={`material-symbols-rounded ${styles.cardIcon}`}
+            initial={{ opacity: 0, scale: 0.5, y: 20 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
+          >
+            rocket_launch
+          </motion.span>
           <h3 className={styles.cardTitleDark}>
-            <AnimatedText text={aboutData?.vision?.title || "Onde queremos chegar"} type="char" delay={0.2} stagger={0.02} className={styles.centeredAnimatedText} />
+            <AnimatedText key={`visao-${locale}`} text={aboutData?.vision?.title || t.quemSomos.visaoTitle} type="char" delay={0.2} stagger={0.02} className={styles.centeredAnimatedText} />
           </h3>
           <div className={styles.cardTextDark}>
             {aboutData?.vision?.text ? (
               <LexicalRenderer content={aboutData.vision.text} />
             ) : (
-              <p>
-                Buscamos ser referência em consultoria agronômica, pesquisa e agricultura de precisão, levando inovação, resultado e confiança para o produtor rural em cada safra.
-              </p>
+              <p>{t.quemSomos.visaoText}</p>
             )}
           </div>
         </div>
 
         {/* Card 3 */}
         <div className={`${styles.card} ${styles.cardLight}`}>
+          <motion.span 
+            className={`material-symbols-rounded ${styles.cardIcon}`}
+            initial={{ opacity: 0, scale: 0.5, y: 20 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: [0.19, 1, 0.22, 1] }}
+          >
+            diamond
+          </motion.span>
           <h3 className={styles.cardTitleGreen}>
-            <AnimatedText text={aboutData?.values?.title || "Os valores que nos movem"} type="char" delay={0.4} stagger={0.02} className={styles.centeredAnimatedText} />
+            <AnimatedText key={`valores-${locale}`} text={aboutData?.values?.title || t.quemSomos.valoresTitle} type="char" delay={0.4} stagger={0.02} className={styles.centeredAnimatedText} />
           </h3>
           <div className={styles.cardTextGreen}>
             {aboutData?.values?.text ? (
               <LexicalRenderer content={aboutData.values.text} />
             ) : (
-              <p>
-                Acreditamos que grandes resultados começam com relações sólidas. Por isso, conduzimos nosso trabalho com honestidade, ética e transparência, valorizando as pessoas, respeitando cada parceria e mantendo a paixão pelo que fazemos em cada desafio do campo.
-              </p>
+              <p>{t.quemSomos.valoresText}</p>
             )}
           </div>
         </div>
@@ -225,14 +243,14 @@ export default function QuemSomos() {
         <div className={styles.videoContainer}>
           <div className={styles.videoHeader}>
             <span className="tag-badge dark">
-              institucional
+              {t.quemSomos.institucionalTag}
             </span>
             <h2 className={styles.videoTitle}>
-              <AnimatedText text={videoMainTitle} type="word" />
+              <AnimatedText key={`vid1-${locale}-${videoMainTitle}`} text={videoMainTitle} type="word" />
               {videoMainTitle && videoHighlightTitle && ' '}
               {videoHighlightTitle && (
                 <span className={styles.highlight}>
-                  <AnimatedText text={videoHighlightTitle} type="word" delay={0.1} />
+                  <AnimatedText key={`vid2-${locale}-${videoHighlightTitle}`} text={videoHighlightTitle} type="word" delay={0.1} />
                 </span>
               )}
             </h2>
@@ -259,10 +277,10 @@ export default function QuemSomos() {
           <div className={styles.timelineHeader}>
             <div>
               <span className="tag-badge dark">
-                timeline
+                {t.quemSomos.timelineTag}
               </span>
               <h2 className={styles.timelineTitle}>
-                <AnimatedText text={aboutData?.timelineTitle || "Nossa história"} type="word" />
+                <AnimatedText key={`hist-${locale}-${aboutData?.timelineTitle}`} text={aboutData?.timelineTitle || t.quemSomos.timelineTitle} type="word" />
               </h2>
             </div>
             <div className={`${styles.timelineControls} ${styles.desktopControls}`}>
@@ -294,6 +312,7 @@ export default function QuemSomos() {
                 onMouseLeave={handleMouseLeave}
                 onMouseUp={handleMouseUp}
                 onMouseMove={handleMouseMove}
+                data-lenis-prevent="true"
               >
                 {timelineItemsToRender.map((item, idx) => (
                   <div key={idx} className={styles.timelineItemWrapper}>
@@ -303,13 +322,11 @@ export default function QuemSomos() {
                     <div className={styles.timelineItem}>
                       <div className={styles.timelineYearWrapper}>
                         <span className={styles.timelineYear}>
-                          <AnimatedText text={item.year} type="char" delay={0} stagger={0.05} once={false} />
+                          <AnimatedText key={`year-${idx}-${locale}`} text={item.year} type="char" delay={0} stagger={0.05} once={false} />
                         </span>
                       </div>
                       <div className={styles.timelineContent}>
-                        <div className={styles.timelineText}>
-                          {item.textNode}
-                        </div>
+                        {item.textNode}
                         <div className={styles.timelineImageWrapper}>
                           <img src={item.imageSrc} alt={`História em ${item.year}`} className={styles.timelineImage} />
                         </div>

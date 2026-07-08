@@ -5,20 +5,22 @@ import SubpageHero from '../../components/SubpageHero';
 import CicloPrecisao from './components/CicloPrecisao/CicloPrecisao';
 import LexicalRenderer from '../../components/LexicalRenderer';
 import { api, type Service } from '../../services/api';
+import { useLanguage } from '../../i18n';
 
 export default function AgriculturaPrecisao() {
   const [service, setService] = useState<Service | null>(null);
+  const { locale, t } = useLanguage();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    api.getServiceBySlug('agricultura-de-precisao')
+    api.getServiceBySlug('agricultura-de-precisao', locale)
       .then(data => {
         setService(data);
       })
       .catch(err => {
         console.error('Erro ao carregar dados do serviço:', err);
       });
-  }, []);
+  }, [locale]);
 
   const bgImage = service?.coverImage ? api.getMediaUrl(service.coverImage) : imgBgAgriculturaPrecisao;
   const contentImage = service?.illustrationImage ? api.getMediaUrl(service.illustrationImage) : imgAgriculturaPrecisao;
@@ -43,15 +45,16 @@ export default function AgriculturaPrecisao() {
   } : null;
 
   const showIllustration = service ? service.showIllustration !== false : true;
+  const serviceTitle = service?.title?.replace(/\r?\n/g, ' ') || t.agriculturaPage.title;
 
   return (
     <main className="page-transition-enter" style={{ width: '100%', backgroundColor: 'var(--color-bg-white)' }}>
       
       {/* Hero Section */}
       <SubpageHero 
-        title={service?.title?.replace(/\r?\n/g, ' ') || "Agricultura de Precisão"} 
+        title={serviceTitle} 
         bgImage={bgImage} 
-        breadcrumbCurrent={service?.title?.replace(/\r?\n/g, ' ') || "Agricultura de Precisão"} 
+        breadcrumbCurrent={serviceTitle} 
       />
 
       {/* Content Section */}
@@ -63,29 +66,29 @@ export default function AgriculturaPrecisao() {
                 <LexicalRenderer content={firstPartContent} />
                 {showIllustration && (
                   <div className={`${styles.imageWrapper} ${styles.mobileImage}`}>
-                    <img src={contentImage} alt={service?.title || "Agricultura de Precisão"} />
+                    <img src={contentImage} alt={serviceTitle} />
                   </div>
                 )}
               </>
             ) : (
               <>
                 <p>
-                  Cada lavoura possui características próprias. Diferenças de solo, fertilidade, relevo e histórico produtivo fazem com que uma mesma área responda de formas diferentes ao longo da safra. Entender essas variações é o primeiro passo para produzir melhor.
+                  {t.agriculturaPage.p1}
                 </p>
                 {showIllustration && (
                   <div className={`${styles.imageWrapper} ${styles.mobileImage}`}>
-                    <img src={contentImage} alt="Agricultura de Precisão" />
+                    <img src={contentImage} alt={serviceTitle} />
                   </div>
                 )}
                 <p>
-                  A Agricultura de Precisão da PA foi desenvolvida para ajudar nossos clientes a conhecerem sua propriedade em detalhes e tomarem decisões mais assertivas. Por meio de amostragens georreferenciadas, mapas, análises e acompanhamento técnico, identificamos oportunidades de correção, manejo e investimento dentro de cada talhão.
+                  {t.agriculturaPage.p2}
                 </p>
               </>
             )}
           </div>
           {showIllustration && (
             <div className={`${styles.imageWrapper} ${styles.desktopImage}`}>
-              <img src={contentImage} alt={service?.title || "Agricultura de Precisão"} />
+              <img src={contentImage} alt={serviceTitle} />
             </div>
           )}
         </div>
@@ -96,13 +99,13 @@ export default function AgriculturaPrecisao() {
           ) : !service ? (
             <>
               <p>
-                Nosso objetivo não é apenas gerar mapas, mas transformar informações em ações práticas no campo. Os dados coletados são interpretados pela equipe técnica da PA e utilizados para direcionar recomendações que contribuam para o melhor aproveitamento dos insumos, maior eficiência operacional e construção da fertilidade do solo ao longo dos anos.
+                {t.agriculturaPage.p3}
               </p>
               <p>
-                Por ser uma ferramenta integrada ao trabalho de consultoria, a Agricultura de Precisão permite que cada recomendação seja construída considerando a realidade da propriedade, o histórico das áreas e os objetivos de cada produtor.
+                {t.agriculturaPage.p4}
               </p>
               <p>
-                Esse é um serviço exclusivo para clientes da PA Consultoria, reforçando nosso compromisso de entregar informações cada vez mais precisas para extrair ao máximo o que o campo pode nos oferecer.
+                {t.agriculturaPage.p5}
               </p>
             </>
           ) : null}

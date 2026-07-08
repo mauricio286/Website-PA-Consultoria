@@ -5,6 +5,7 @@ import { api } from '../services/api';
 import type { HomePageData } from '../services/api';
 import LexicalRenderer from './LexicalRenderer';
 import { Link, useNavigate } from 'react-router-dom';
+import { useT } from '../i18n';
 
 interface IntroductionProps {
   data?: HomePageData | null;
@@ -14,6 +15,7 @@ export default function Introduction({ data }: IntroductionProps) {
   const navigate = useNavigate();
   const containerRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const t = useT();
 
   useEffect(() => {
     const container = containerRef.current;
@@ -28,20 +30,17 @@ export default function Introduction({ data }: IntroductionProps) {
       const rect = container.getBoundingClientRect();
       const xPct = (e.clientX - rect.left) / rect.width - 0.5;
       const yPct = (e.clientY - rect.top) / rect.height - 0.5;
-      // Direct DOM update — no React re-render, no framer-motion compositing layer
       wrapper.style.transform =
         `perspective(1200px) rotateX(${yPct * -5}deg) rotateY(${xPct * 5}deg)`;
     };
 
     const handleMouseEnter = () => {
-      // 200ms delay before effect activates
       activationTimer = setTimeout(() => { isHovering = true; }, 200);
     };
 
     const handleMouseLeave = () => {
       clearTimeout(activationTimer);
       isHovering = false;
-      // CSS transition handles the smooth return to flat
       wrapper.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
     };
 
@@ -58,14 +57,12 @@ export default function Introduction({ data }: IntroductionProps) {
   }, []);
 
   // Dados do CMS ou fallbacks
-  const badgeTitle = data?.introTitle || 'Introdução';
-  
+  const badgeTitle = data?.introTitle || t.intro.tag;
   const hasRichText = data?.introText && data.introText.root && data.introText.root.children && data.introText.root.children.length > 0;
-  
   const rightImageSrc = api.getMediaUrl(data?.introImage) || imgIntroducao;
-  const rightImageAlt = (data?.introImage && typeof data.introImage === 'object') ? data.introImage.alt : "Introdução";
+  const rightImageAlt = (data?.introImage && typeof data.introImage === 'object') ? data.introImage.alt : badgeTitle;
 
-  const ctaLabel = data?.introCtaLabel || 'Ver mais';
+  const ctaLabel = data?.introCtaLabel || t.intro.cta;
   const ctaUrl = data?.introCtaUrl || '/quem-somos';
   const isHash = ctaUrl.startsWith('#');
 
@@ -81,7 +78,6 @@ export default function Introduction({ data }: IntroductionProps) {
         target.scrollIntoView({ behavior: 'smooth' });
       }
     } else {
-      // Anchor not found on this page — treat the hash as a route
       navigate(ctaUrl.replace(/^#/, '/'));
     }
   };
@@ -101,7 +97,7 @@ export default function Introduction({ data }: IntroductionProps) {
               <LexicalRenderer content={data.introText} />
             ) : (
               <p>
-                No campo, resultado não acontece por acaso. Ele nasce de experiência, estratégia e decisões bem tomadas. Há mais de 20 anos, o Grupo PA caminha ao lado do produtor rural, unindo consultoria técnica, agricultura de precisão e gestão para transformar conhecimento em produtividade.
+                {t.intro.text}
               </p>
             )}
           </div>

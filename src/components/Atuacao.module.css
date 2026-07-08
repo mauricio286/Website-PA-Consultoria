@@ -35,6 +35,118 @@
   opacity: 0.85;
 }
 
+/* Info Panel (Apenas um container flex) */
+.infoPanel {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10px;
+  z-index: 10;
+}
+
+/* Custom Dropdown (Substituindo o select nativo) */
+.selectWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+}
+
+.selectButton {
+  width: 100%;
+  height: 50px;
+  background-color: #fdfdfd;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px 0 24px;
+  cursor: pointer;
+  color: #727272;
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.51px;
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+.selectButton:hover, .selectButton.isOpen {
+  color: var(--color-primary-dark);
+}
+
+.selectIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.selectButton.isOpen .selectIcon {
+  transform: rotate(180deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 0 15px 45px rgba(0,0,0,0.12);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 10px;
+  z-index: 100;
+  max-height: 300px;
+  overflow-y: auto;
+  
+  /* Force light scrollbar to overwrite global dark themes */
+  scrollbar-color: #cccccc transparent;
+  scrollbar-width: thin;
+}
+
+.dropdownMenu::-webkit-scrollbar {
+  width: 6px;
+}
+.dropdownMenu::-webkit-scrollbar-track {
+  background: transparent;
+}
+.dropdownMenu::-webkit-scrollbar-thumb {
+  background: #cccccc;
+  border-radius: 10px;
+}
+
+.dropdownOption {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text-dark);
+  padding: 12px 18px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  text-align: left;
+  border: none;
+  background: transparent;
+  width: 100%;
+}
+
+.dropdownOption:hover {
+  background-color: #f5f5f5;
+  color: var(--color-text-dark);
+}
+
+.dropdownOption.isActive {
+  background-color: #c5e404;
+  color: var(--color-primary-dark);
+}
+
 /* Map Wrapper & Container */
 .mapWrapper {
   display: flex;
@@ -54,6 +166,14 @@
   border: none;
   overflow: visible;
   pointer-events: none; /* Let hover pass through to pins */
+}
+
+.mapMasker {
+  width: 100%;
+  height: 100%;
+  /* Soft transition mask for the focus to be the center of the map */
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
 }
 
 .mapSvg {
@@ -86,8 +206,8 @@
 }
 
 .pinIconSvg {
-  transition: transform 0.25s ease, opacity 0.25s ease;
-  opacity: 0.6;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.7;
   transform-origin: center;
   transform-box: fill-box;
 }
@@ -157,12 +277,133 @@
   }
 }
 
+.starBorderContainer {
+  position: relative;
+  display: inline-flex;
+  border-radius: 50px;
+  border: 1px solid rgba(225, 254, 0, 0.25);
+  background: rgba(70, 126, 63, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transform: translateZ(0); /* Force GPU layer to prevent blur disappearing during parent animation */
+  will-change: transform;
+}
+
+.starBorderMask {
+  position: absolute;
+  inset: -1px;
+  border-radius: 50px;
+  padding: 1px; /* Espessura do traço animado */
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 3;
+}
+
+.borderGradientBottom {
+  position: absolute;
+  width: 300%;
+  height: 50%;
+  opacity: 0.7;
+  bottom: -12px;
+  right: -250%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #e1fe00, transparent 10%);
+  animation: starMovementBottom 5s linear infinite alternate;
+  z-index: 0;
+}
+
+.borderGradientTop {
+  position: absolute;
+  opacity: 0.7;
+  width: 300%;
+  height: 50%;
+  top: -12px;
+  left: -250%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #e1fe00, transparent 10%);
+  animation: starMovementTop 5s linear infinite alternate;
+  z-index: 0;
+}
+
+@keyframes starMovementBottom {
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-100%, 0%);
+    opacity: 0;
+  }
+}
+
+@keyframes starMovementTop {
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100%, 0%);
+    opacity: 0;
+  }
+}
+
+.pinTooltipInner {
+  position: relative;
+  border-radius: 50px;
+  height: 34px;
+  padding-left: 19px;
+  padding-right: 14px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.pinTooltipCity {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 17px;
+  color: white;
+  letter-spacing: -0.51px;
+}
+
+.pinTooltipArea {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 17px;
+  color: #e1fe00;
+  letter-spacing: -0.51px;
+}
+
+.tooltipWrapper {
+  position: absolute;
+  z-index: 20;
+}
+
 /* Responsive configurations */
 @media (max-width: 1024px) {
   .container {
     gap: 40px;
   }
   
+  .infoPanel {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 16px;
+  }
+  
+  .selectWrapper {
+    max-width: 100%;
+  }
+
   .mapContainer {
     max-width: 900px;
   }
@@ -173,16 +414,57 @@
     padding-left: 24px;
     padding-right: 24px;
   }
+  
+  .topCol {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .topCol :global(.tag-badge) {
+    align-self: center;
+  }
+  
+  .areaValueWrapper {
+    font-size: 32px;
+  }
+  
+  .tooltipWrapper {
+    left: 50% !important;
+    top: 30px !important;
+    transform: translate(-50%, 0) !important;
+    width: 90%;
+    max-width: 320px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .pinTooltipInner {
+    height: auto;
+    min-height: 34px;
+    padding: 8px 16px;
+    flex-wrap: wrap;
+    white-space: normal;
+    text-align: center;
+    border-radius: 24px;
+  }
+  
+  .starBorderContainer {
+    border-radius: 24px;
+  }
+  
+  .starBorderMask {
+    border-radius: 24px;
+  }
+
   .mapContainer {
     /* Focus on MT by zooming the map container */
     overflow: hidden;
     height: 380px;
   }
   .mapSvg {
-    transform: translate(8%, 1.5%) scale(2.5); /* Zoom in directly on the centered MT, shifted slightly right */
+    transform: translate(0, 0); /* Zoom is handled by viewBox now */
   }
 }
-
 
 .carouselWrapper {
   margin-bottom: calc(-1 * var(--section-py));

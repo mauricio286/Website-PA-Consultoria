@@ -8,8 +8,8 @@ import Methodology from '../components/Methodology';
 import Atuacao from '../components/Atuacao';
 import Parceria from '../components/Parceria';
 import Testimonials from '../components/Testimonials';
-
-
+import AnimatedText from '../components/AnimatedText';
+import { useLanguage } from '../i18n';
 
 import { imgSessao4 } from '../assets';
 import styles from '../App.module.css';
@@ -18,16 +18,17 @@ export default function Home() {
   const [homeData, setHomeData] = useState<HomePageData | null>(null);
   const bannerRef = useRef<HTMLElement>(null);
   const bannerImgRef = useRef<HTMLImageElement>(null);
+  const { locale, t } = useLanguage();
 
   useEffect(() => {
-    api.getHomePage()
+    api.getHomePage(locale)
       .then((res) => {
         setHomeData(res);
       })
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [locale]);
 
   useEffect(() => {
     // Banner Parallax (Zoom suave com delay)
@@ -69,8 +70,8 @@ export default function Home() {
   }, []);
 
   // Banner central — CMS or static fallback
-  const bannerText = homeData?.bannerText || 'Sua próxima safra, pode ser ainda ';
-  const bannerTextAccent = homeData?.bannerTextAccent || 'melhor conosco!';
+  const bannerText = homeData?.bannerText || t.banner.text;
+  const bannerTextAccent = homeData?.bannerTextAccent || t.banner.accent;
   const bannerBgSrc = api.getMediaUrl(homeData?.bannerImage) || imgSessao4;
 
   return (
@@ -103,8 +104,10 @@ export default function Home() {
             data-node-id="29:895"
             style={{ textAlign: homeData?.bannerTextAlign || 'center', whiteSpace: 'pre-line' }}
           >
-            {bannerText}
-            <span className={styles.bannerTextAccent}>{bannerTextAccent}</span>
+            <AnimatedText key={`banner1-${locale}-${bannerText}`} text={bannerText} type="word" delay={0} stagger={0.05} />
+            <span className={styles.bannerTextAccent}>
+              <AnimatedText key={`banner2-${locale}-${bannerTextAccent}`} text={bannerTextAccent} type="word" delay={0.4} stagger={0.05} />
+            </span>
           </p>
         </div>
       </section>

@@ -6,6 +6,7 @@ import AnimatedText from './AnimatedText';
 import { Link, useNavigate } from 'react-router-dom';
 import { api } from '../services/api';
 import type { HomePageData } from '../services/api';
+import { useLanguage } from '../i18n';
 
 interface HeroProps {
   data?: HomePageData | null;
@@ -15,11 +16,12 @@ export default function Hero({ data }: HeroProps) {
   const heroRef = useRef<HTMLElement>(null);
   const parallaxRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+  const { locale, t } = useLanguage();
 
   // Computação dos dados dinâmicos do CMS ou fallbacks
   const bgImageUrl = api.getMediaUrl(data?.heroImage) || imgProperty1Default;
-  const subtitle = data?.heroSubtitle || "Consultoria agronômica especializada para produtores que buscam excelência, rentabilidade e segurança em cada hectare plantado.";
-  const ctaLabel = data?.heroCtaLabel || "Nossas soluções";
+  const subtitle = data?.heroSubtitle || t.hero.description;
+  const ctaLabel = data?.heroCtaLabel || t.hero.cta;
   const ctaUrl = data?.heroCtaUrl || "/servicos";
   const isHash = ctaUrl.startsWith('#');
 
@@ -41,7 +43,7 @@ export default function Hero({ data }: HeroProps) {
   };
 
   // Dividir o título pelas quebras de linha definidas no CMS (\n)
-  let lines = ['Resultados que o', 'campo comprova!'];
+  let lines = [t.hero.line1, t.hero.line2, t.hero.line3].filter(Boolean);
 
   if (data?.heroTitle) {
     let rawTitle = data.heroTitle;
@@ -112,15 +114,16 @@ export default function Hero({ data }: HeroProps) {
               {lines.map((line, i) => (
                 <span 
                   key={i} 
-                  className={styles.titleLine}
+                  className={styles[`titleLine${i + 1}`] || styles.titleLine}
                 >
                   <AnimatedText 
+                    key={`heroLine-${i}-${locale}-${line}`}
                     text={line} 
                     type="char" 
                     delay={0.6 + i * 0.2} 
                     stagger={0.02} 
                     sessionOnce={true} 
-                    sessionKey={`heroHomeLine-${i}-${line}`} 
+                    sessionKey={`heroHomeLine-${i}-${locale}-${line}`} 
                   />
                 </span>
               ))}

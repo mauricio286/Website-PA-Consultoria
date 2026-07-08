@@ -4,20 +4,22 @@ import { imgBgGestaoCompras, imgGestaoCompras } from '../../assets';
 import SubpageHero from '../../components/SubpageHero';
 import LexicalRenderer from '../../components/LexicalRenderer';
 import { api, type Service } from '../../services/api';
+import { useLanguage } from '../../i18n';
 
 export default function GestaoCompras() {
   const [service, setService] = useState<Service | null>(null);
+  const { locale, t } = useLanguage();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    api.getServiceBySlug('gestao-de-compras')
+    api.getServiceBySlug('gestao-de-compras', locale)
       .then(data => {
         setService(data);
       })
       .catch(err => {
         console.error('Erro ao carregar dados do serviço:', err);
       });
-  }, []);
+  }, [locale]);
 
   const bgImage = service?.coverImage ? api.getMediaUrl(service.coverImage) : imgBgGestaoCompras;
   const contentImage = service?.illustrationImage ? api.getMediaUrl(service.illustrationImage) : imgGestaoCompras;
@@ -43,15 +45,16 @@ export default function GestaoCompras() {
   } : null;
 
   const showIllustration = service ? service.showIllustration !== false : true;
+  const serviceTitle = service?.title?.replace(/\r?\n/g, ' ') || t.gestaoPage.title;
 
   return (
     <main className="page-transition-enter" style={{ width: '100%', backgroundColor: 'var(--color-bg-white)' }}>
       
       {/* Hero Section */}
       <SubpageHero 
-        title={service?.title?.replace(/\r?\n/g, ' ') || "Gestão de Compras"} 
+        title={serviceTitle} 
         bgImage={bgImage} 
-        breadcrumbCurrent={service?.title?.replace(/\r?\n/g, ' ') || "Gestão de Compras"} 
+        breadcrumbCurrent={serviceTitle} 
       />
 
       {/* Content Section */}
@@ -63,29 +66,29 @@ export default function GestaoCompras() {
                 <LexicalRenderer content={firstPartContent} />
                 {showIllustration && (
                   <div className={`${styles.imageWrapper} ${styles.mobileImage}`}>
-                    <img src={contentImage} alt={service?.title || "Gestão de Compras"} />
+                    <img src={contentImage} alt={serviceTitle} />
                   </div>
                 )}
               </>
             ) : (
               <>
                 <p>
-                  A gestão de compras vai muito além da negociação de valores. Nosso trabalho é desenvolver estratégias que tragam mais eficiência, segurança e rentabilidade para o produtor rural, analisando o melhor momento de compra, fornecedores, oportunidades de mercado e o custo-benefício de cada investimento realizado.
+                  {t.gestaoPage.p1}
                 </p>
                 {showIllustration && (
                   <div className={`${styles.imageWrapper} ${styles.mobileImage}`}>
-                    <img src={contentImage} alt="Gestão de Compras" />
+                    <img src={contentImage} alt={serviceTitle} />
                   </div>
                 )}
                 <p>
-                  Utilizamos as informações geradas pela consultoria e pelos trabalhos de pesquisa para avaliar a viabilidade técnica de produtos, tecnologias e manejos. Dessa forma, cada decisão de compra está alinhada às necessidades da propriedade, ao planejamento da safra e aos objetivos de cada produtor.
+                  {t.gestaoPage.p2}
                 </p>
               </>
             )}
           </div>
           {showIllustration && (
             <div className={`${styles.imageWrapper} ${styles.desktopImage}`}>
-              <img src={contentImage} alt={service?.title || "Gestão de Compras"} />
+              <img src={contentImage} alt={serviceTitle} />
             </div>
           )}
         </div>
@@ -96,10 +99,10 @@ export default function GestaoCompras() {
           ) : !service ? (
             <>
               <p>
-                Além da análise comercial, acompanhamos tendências de mercado, oscilações de preços e novas tecnologias disponíveis, permitindo mais clareza e segurança na hora de investir. A gestão de compras também simplifica a rotina do produtor. Ao centralizar negociações e acompanhar o mercado de forma contínua, ajudamos a economizar tempo, organizar processos e garantir que os insumos necessários estejam disponíveis para que o manejo recomendado pela consultoria seja executado no momento correto.
+                {t.gestaoPage.p3}
               </p>
               <p>
-                Hoje, o Grupo PA movimenta milhões de reais em compras de insumos agrícolas, construindo relações sólidas com parceiros e fornecedores para gerar oportunidades e condições competitivas aos produtores atendidos. Este é um serviço exclusivo para clientes da PA Consultoria. Isso garante que as decisões de compra estejam conectadas ao planejamento agronômico da propriedade, unindo estratégia, viabilidade técnica e eficiência econômica. Mais do que negociar insumos, trabalhamos para que o produtor tenha acesso às melhores ferramentas para executar seu planejamento e alcançar melhores resultados dentro da porteira.
+                {t.gestaoPage.p4}
               </p>
             </>
           ) : null}

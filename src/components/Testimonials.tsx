@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Testimonials.module.css';
 import {
@@ -6,12 +6,11 @@ import {
   imgPerfil1,
   imgPerfil2,
   imgPerfil3,
-
-  imgImagem as _imgImagem
 } from '../assets';
 import AnimatedText from './AnimatedText';
 import { api } from '../services/api';
 import type { HomePageData, TestimonialDoc } from '../services/api';
+import { useLanguage } from '../i18n';
 
 interface Testimonial {
   id: string;
@@ -20,39 +19,6 @@ interface Testimonial {
   text: string;
   avatar: string;
 }
-
-// Design Depoimentos — 4 cards in 2x2 grid
-// Top-left and bottom-right are dark (#002d22), others light (#eee)
-const staticTestimonials: Testimonial[] = [
-  {
-    id: 'dep-3',
-    name: 'Ricardo Mantovani',
-    location: 'Grupo Mantovani • Sorriso - MT',
-    text: 'O que eu mais gosto na equipe é que eles não são consultores de escritório. Estão sempre aqui na fazenda, entram no talhão, olham a praga de perto e discutem o manejo comigo no pátio. É um suporte técnico que dá muita segurança para decidir.',
-    avatar: imgPerfil3,
-  },
-  {
-    id: 'dep-1',
-    name: 'Aline Albuquerque',
-    location: 'Agropecuária Albuquerque • Rio Verde - GO',
-    text: 'A gente comprou maquinário novo e várias ferramentas digitais, mas faltava braço e treinamento para fazer tudo rodar. O pessoal da PA destravou isso aqui dentro, gerando os mapas de aplicação que a gente precisava para economizar insumo.',
-    avatar: imgPerfil,
-  },
-  {
-    id: 'dep-2',
-    name: 'Geraldo Augusto',
-    location: 'Fazenda Santa Maria • Cristalina - GO',
-    text: 'A gente já colhia bem, mas a parte de custos era meio bagunçada, tudo na cabeça ou em caderneta. Eles ajudaram a organizar os números da safra e a enxergar para onde estava indo o dinheiro. Hoje a fazenda roda muito mais profissional.',
-    avatar: imgPerfil2,
-  },
-  {
-    id: 'dep-4',
-    name: 'José Carlos Junqueira',
-    location: 'Fazenda Primavera • Uberaba - MG',
-    text: 'Trabalhar com a PA me tirou uma preocupação grande da cabeça. Sei que a parte de recomendação, perfil de solo e o monitoramento técnico estão bem assistidos por quem entende do assunto, aí consigo focar em outras frentes do negócio.',
-    avatar: imgPerfil1,
-  },
-];
 
 interface TestimonialsProps {
   data?: HomePageData | null;
@@ -64,26 +30,76 @@ export default function Testimonials({ data }: TestimonialsProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const gridRef = useRef<HTMLDivElement>(null);
   const autoPlayRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const { locale, t } = useLanguage();
 
-  const ctaText = data?.ctaText;
-  const ctaLabel = data?.ctaButtonLabel || "Fale com um consultor";
-  const ctaUrl = data?.ctaButtonUrl || "/contato";
+  // Figma Depoimentos — 4 cards in 2x2 grid
+  // Top-left and bottom-right are dark (#002d22), others light (#eee)
+  const staticTestimonials: Testimonial[] = useMemo(() => [
+    {
+      id: 'dep-3',
+      name: t.testimonials.dep3Name,
+      location: t.testimonials.dep3Location,
+      text: t.testimonials.dep3Text,
+      avatar: imgPerfil3,
+    },
+    {
+      id: 'dep-1',
+      name: t.testimonials.dep1Name,
+      location: t.testimonials.dep1Location,
+      text: t.testimonials.dep1Text,
+      avatar: imgPerfil,
+    },
+    {
+      id: 'dep-2',
+      name: t.testimonials.dep2Name,
+      location: t.testimonials.dep2Location,
+      text: t.testimonials.dep2Text,
+      avatar: imgPerfil2,
+    },
+    {
+      id: 'dep-4',
+      name: t.testimonials.dep4Name,
+      location: t.testimonials.dep4Location,
+      text: t.testimonials.dep4Text,
+      avatar: imgPerfil1,
+    },
+  ], [t]);
 
-  const isHash = ctaUrl.startsWith('#');
-  const isExternal = ctaUrl.startsWith('http://') || ctaUrl.startsWith('https://');
+  const itemsToRender = useMemo(() => {
+    return (dbTestimonials.length > 0
+      ? dbTestimonials.map((t) => ({
+          id: t.id,
+          name: t.authorName,
+          location: t.authorDescription,
+          text: t.quote,
+          avatar: api.getMediaUrl(t.photo) || imgPerfil,
+        }))
+      : staticTestimonials).slice(0, 6);
+  }, [dbTestimonials, staticTestimonials]);
 
-  const itemsToRender = (dbTestimonials.length > 0
-    ? dbTestimonials.map((t) => ({
-        id: t.id,
-        name: t.authorName,
-        location: t.authorDescription,
-        text: t.quote,
-        avatar: api.getMediaUrl(t.photo) || imgPerfil,
-      }))
-    : staticTestimonials).slice(0, 6);
+  const startAutoPlay = () => {
+    if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+    autoPlayRef.current = setInterval(() => {
+      if (gridRef.current && window.innerWidth <= 991) {
+        const { scrollLeft, scrollWidth, clientWidth } = gridRef.current;
+        
+        const cardElement = gridRef.current.querySelector(`.${styles.card}`) as HTMLElement;
+        const gap = 15;
+        const cardWidth = cardElement ? cardElement.offsetWidth + gap : clientWidth * 0.85;
+
+        // If we reached the end, scroll back to start
+        if (scrollLeft + clientWidth >= scrollWidth - 10) {
+          gridRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          // Scroll by one exact card width
+          gridRef.current.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        }
+      }
+    }, 3500);
+  };
 
   useEffect(() => {
-    api.getTestimonials()
+    api.getTestimonials(locale)
       .then((res) => {
         setDbTestimonials(res);
         if (res.length > 0) {
@@ -93,14 +109,21 @@ export default function Testimonials({ data }: TestimonialsProps) {
       .catch((err) => {
         console.error('Error fetching testimonials:', err);
       });
-  }, []);
+  }, [locale]);
+
+  const ctaText = data?.ctaText;
+  const ctaLabel = data?.ctaButtonLabel || t.testimonials.cta || "Fale com um consultor";
+  const ctaUrl = data?.ctaButtonUrl || "/contato";
+
+  const isHash = ctaUrl.startsWith('#');
+  const isExternal = ctaUrl.startsWith('http://') || ctaUrl.startsWith('https://');
 
   const handleCtaClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (isHash) {
       e.preventDefault();
       const target = document.querySelector(ctaUrl);
       if (target) {
-        const lenis = (window as any).lenis;
+        const lenis = (window as any).lenisInstance;
         if (lenis) {
           lenis.scrollTo(ctaUrl, { offset: -50 });
         } else {
@@ -111,8 +134,11 @@ export default function Testimonials({ data }: TestimonialsProps) {
   };
 
   const handleTouchStart = () => {
-    // Pause auto-play when user touches the carousel
     if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+  };
+
+  const handleTouchEnd = () => {
+    startAutoPlay();
   };
 
   const handleScrollEvent = () => {
@@ -131,26 +157,6 @@ export default function Testimonials({ data }: TestimonialsProps) {
   };
 
   useEffect(() => {
-    const startAutoPlay = () => {
-      autoPlayRef.current = setInterval(() => {
-        if (gridRef.current && window.innerWidth <= 991) {
-          const { scrollLeft, scrollWidth, clientWidth } = gridRef.current;
-          
-          const cardElement = gridRef.current.querySelector(`.${styles.card}`) as HTMLElement;
-          const gap = 15;
-          const cardWidth = cardElement ? cardElement.offsetWidth + gap : clientWidth * 0.85;
-
-          // If we reached the end, scroll back to start
-          if (scrollLeft + clientWidth >= scrollWidth - 10) {
-            gridRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-          } else {
-            // Scroll by one exact card width
-            gridRef.current.scrollBy({ left: cardWidth, behavior: 'smooth' });
-          }
-        }
-      }, 3500); // 3.5 seconds
-    };
-
     startAutoPlay();
 
     return () => {
@@ -158,8 +164,8 @@ export default function Testimonials({ data }: TestimonialsProps) {
     };
   }, [itemsToRender.length]);
 
-  const titleNormal = data?.testimonialsTitle || "Parcerias que comprovam";
-  const titleAccent = data?.testimonialsTitleAccent || "resultados";
+  const titleNormal = data?.testimonialsTitle || t.testimonials.title || "Parcerias que comprovam";
+  const titleAccent = data?.testimonialsTitleAccent || "";
 
   return (
     <section id="testimonials" className={styles.testimonials} data-node-id="36:1348">
@@ -167,13 +173,13 @@ export default function Testimonials({ data }: TestimonialsProps) {
         {/* Header */}
         <div className={styles.header}>
           <span className="tag-badge dark" data-node-id="36:1350">
-            depoimentos
+            {t.testimonials.tag}
           </span>
           <h2 className={`${styles.title} ${styles.animatedTitle}`} data-node-id="36:1352">
-            <AnimatedText text={titleNormal} delay={0} stagger={0.03} type="word" />{' '}
+            <AnimatedText key={`testimonials-${locale}-${titleNormal}`} text={titleNormal} delay={0} stagger={0.03} type="word" />{' '}
             {titleAccent && (
               <span className={styles.titleAccent}>
-                <AnimatedText text={titleAccent} delay={0.2} stagger={0.03} type="word" />
+                <AnimatedText key={`testimonials-accent-${locale}-${titleAccent}`} text={titleAccent} delay={0.2} stagger={0.03} type="word" />
               </span>
             )}
           </h2>
@@ -184,7 +190,9 @@ export default function Testimonials({ data }: TestimonialsProps) {
           className={styles.grid} 
           ref={gridRef}
           onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
           onScroll={handleScrollEvent}
+          data-lenis-prevent="true"
         >
           {itemsToRender.map((dep) => (
             <div

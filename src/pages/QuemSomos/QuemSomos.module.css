@@ -140,6 +140,12 @@
   text-align: center;
 }
 
+.cardIcon {
+  font-size: 56px;
+  line-height: 1;
+  margin-bottom: -10px; /* Adjust gap between icon and title slightly */
+}
+
 .cardTitle, .cardTitleDark, .cardTitleGreen {
   font-family: var(--font-display);
   font-weight: 500;
@@ -172,6 +178,9 @@
 .cardDark .cardText {
   color: var(--color-primary);
 }
+.cardDark .cardIcon {
+  color: var(--color-primary);
+}
 
 .cardLime {
   background-color: var(--color-primary);
@@ -180,6 +189,9 @@
   color: var(--color-primary-dark);
 }
 .cardLime .cardTextDark {
+  color: var(--color-primary-dark);
+}
+.cardLime .cardIcon {
   color: var(--color-primary-dark);
 }
 
@@ -191,6 +203,9 @@
 }
 .cardLight .cardTextGreen {
   color: #596d43;
+}
+.cardLight .cardIcon {
+  color: #4c7043;
 }
 
 /* ================== Sessão 4: Vídeo ================== */
@@ -221,7 +236,7 @@
 .videoPlayerWrapper {
   position: relative;
   width: 100%;
-  height: 594px;
+  aspect-ratio: 16 / 9;
   border-radius: 46px;
   overflow: hidden;
   display: flex;
@@ -537,7 +552,7 @@
   .introDescription { font-size: 18px; }
   .card { padding: 100px 30px; }
   .cardTitle, .cardTitleDark, .cardTitleGreen { font-size: 32px; }
-  .videoPlayerWrapper { height: 450px; }
+  .videoPlayerWrapper { aspect-ratio: 16 / 9; }
   
   /* Timeline HD fix */
   .timelineSection {
@@ -699,7 +714,7 @@
     margin: 0 0 30px 0;
   }
   .videoPlayerWrapper {
-    height: 250px;
+    aspect-ratio: 16 / 9;
     border-radius: 30px;
   }
   .playIcon {

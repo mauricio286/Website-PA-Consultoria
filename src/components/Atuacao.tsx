@@ -1,77 +1,121 @@
-import { useEffect, useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import styles from './Atuacao.module.css';
 import { imgMapaCompleto, imgMatoGrosso, imgPin } from '../assets';
 import AnimatedText from './AnimatedText';
 import LogoCarousel from './LogoCarousel';
 import { api } from '../services/api';
 import type { HomePageData, MapLocation } from '../services/api';
+import { motion, AnimatePresence } from 'motion/react';
+import { useLanguage } from '../i18n';
 
 interface AtuacaoProps {
   data?: HomePageData | null;
 }
 
+interface CityData {
+  name: string;
+  area: string | number;
+  top: number;
+  left: number;
+}
+
 export default function Atuacao({ data }: AtuacaoProps) {
+  const { locale, t } = useLanguage();
   const [locations, setLocations] = useState<MapLocation[]>([]);
-  const [activePinId, setActivePinId] = useState<string | null>(null);
-  const [hoveredPinId, setHoveredPinId] = useState<string | null>(null);
-  const mapRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    api.getMapLocations()
+    api.getMapLocations(locale)
       .then((res) => {
         setLocations(res);
       })
       .catch((err) => {
         console.error("Erro ao buscar localizações do mapa:", err);
       });
-  }, []);
+  }, [locale]);
 
-  // Close active pin badge when clicking anywhere outside of any pin
-  useEffect(() => {
-    const handleAnywhereClick = (event: MouseEvent) => {
-      const target = event.target as HTMLElement;
-      const clickedPin = target.closest(`.${styles.pinGroup}`);
-      if (!clickedPin) {
-        setActivePinId(null);
-      }
-    };
-
-    document.addEventListener('click', handleAnywhereClick);
-    return () => {
-      document.removeEventListener('click', handleAnywhereClick);
-    };
-  }, []);
-
-  // Auto-dismiss active pin after 10 seconds
-  useEffect(() => {
-    if (!activePinId) return;
-
-    const timer = setTimeout(() => {
-      setActivePinId(null);
-    }, 10000);
-
-    return () => clearTimeout(timer);
-  }, [activePinId]);
-
-  const fallbackLocations: MapLocation[] = [
-    { id: '1', title: 'Bom Jesus do Araguaia - MT', area: '3.450 Hac.', positionY: 448, positionX: 650 },
-    { id: '2', title: 'Tangará da Serra - MT', area: '12.100 Hac.', positionY: 550.7, positionX: 468.3 },
-    { id: '3', title: 'Diamantino - MT', area: '9.300 Hac.', positionY: 535.0, positionX: 495.9 },
-    { id: '4', title: 'Lucas do Rio Verde - MT', area: '8.500 Hac.', positionY: 517.4, positionX: 525.4 },
-    { id: '5', title: 'Sorriso - MT', area: '15.600 Hac.', positionY: 474.2, positionX: 480.4 },
-    { id: '6', title: 'Querência - MT', area: '6.200 Hac.', positionY: 550.7, positionX: 556.9 },
-    { id: '7', title: 'Nova Mutum - MT', area: '7.800 Hac.', positionY: 572.2, positionX: 530.4 },
-    { id: '8', title: 'Primavera do Leste - MT', area: '5.400 Hac.', positionY: 593.7, positionX: 500.8 }
+  const cities: CityData[] = [
+    { name: "Arenápolis - MT", area: 3153.11, top: 565, left: 528 },
+    { name: "Barra do Bugres - MT", area: 550, top: 585, left: 525 },
+    { name: "Brasnorte - MT", area: 7667.74, top: 490, left: 475 },
+    { name: "Campo Novo do Parecis - MT", area: 43235.51, top: 535, left: 505 },
+    { name: "Cláudia - MT", area: 3329, top: 450, left: 590 },
+    { name: "Comodoro - MT", area: 12755, top: 537, left: 415 },
+    { name: "Diamantino - MT", area: 51300.05, top: 550, left: 550 },
+    { name: "Ipiranga do Norte - MT", area: 5206.60, top: 485, left: 570 },
+    { name: "Juara - MT", area: 3275, top: 455, left: 505 },
+    { name: "Marcelândia - MT", area: 3519.79, top: 440, left: 605 },
+    { name: "Nortelândia - MT", area: 491.57, top: 565, left: 520 },
+    { name: "Nova Marilândia - MT", area: 755.54, top: 562, left: 520 },
+    { name: "Nova Maringá - MT", area: 26184.70, top: 500, left: 495 },
+    { name: "Nova Mutum - MT", area: 4420.70, top: 535, left: 570 },
+    { name: "Nova Olímpia - MT", area: 3006.70, top: 578, left: 515 },
+    { name: "Novo Progresso - PA", area: 555.70, top: 265, left: 465 },
+    { name: "Porto dos Gaúchos - MT", area: 1420, top: 465, left: 515 },
+    { name: "Salto do Céu - MT", area: 2018.55, top: 615, left: 475 },
+    { name: "Santa Rita do Trivelato - MT", area: 1400.31, top: 535, left: 590 },
+    { name: "Santo Afonso - MT", area: 6049.70, top: 560, left: 515 },
+    { name: "São José do Rio Claro - MT", area: 7107.81, top: 520, left: 540 },
+    { name: "Sapezal - MT", area: 3509.80, top: 520, left: 450 },
+    { name: "Sinop - MT", area: 4284.67, top: 455, left: 570 },
+    { name: "Tabaporã - MT", area: 7260.70, top: 440, left: 540 },
+    { name: "Tangará da Serra - MT", area: 21289.57, top: 565, left: 515 },
+    { name: "União do Sul - MT", area: 2059.13, top: 440, left: 595 }
   ];
 
-  const activeLocations = locations.length > 0 ? locations : fallbackLocations;
+  const activeLocations: CityData[] = locations.length > 0
+    ? locations.map(loc => ({
+        name: loc.title,
+        area: loc.area || '',
+        top: loc.positionY,
+        left: loc.positionX
+      }))
+    : cities;
 
-  const mapTitle = data?.mapTitle || "Onde estamos";
-  const mapDescription = data?.mapDescription || "Estamos presentes em mais de 30 municípios, o que totaliza uma área de mais de 394 mil hectares e atuando nas culturas de soja, milho, entre outras.";
+  const sortedCities = [...activeLocations].sort((a, b) => a.name.localeCompare(b.name));
 
-  const handlePinClick = (id: string, e: React.MouseEvent) => {
-    e.stopPropagation();
-    setActivePinId(prev => prev === id ? null : id);
+  const [selectedCityName, setSelectedCityName] = useState<string>("Diamantino - MT");
+  const selectedCity = sortedCities.find(c => c.name === selectedCityName) || sortedCities[0] || { name: '', area: '', top: 0, left: 0 };
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  useEffect(() => {
+    if (sortedCities.length > 0 && !sortedCities.some(c => c.name === selectedCityName)) {
+      setSelectedCityName(sortedCities[0].name);
+    }
+  }, [sortedCities, selectedCityName]);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 580);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (isDropdownOpen && dropdownRef.current) {
+      setTimeout(() => {
+        const activeOption = dropdownRef.current?.querySelector(`.${styles.isActive}`);
+        if (activeOption) {
+          activeOption.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
+      }, 50);
+    }
+  }, [isDropdownOpen]);
+
+  const mapTitle = data?.mapTitle || t.atuacao.title;
+  const mapDescription = data?.mapDescription || t.atuacao.description;
+
+  const renderAreaText = (city: CityData) => {
+    const areaVal = city.area;
+    if (!areaVal) return '';
+    if (typeof areaVal === 'number') {
+      return `${t.atuacao.areaLabel} ${areaVal.toLocaleString(locale === 'en' ? 'en-US' : 'pt-BR')} ${t.atuacao.areaUnit}`;
+    }
+    if (/[a-zA-Z]/.test(areaVal)) {
+      return `${t.atuacao.areaLabel} ${areaVal}`;
+    }
+    return `${t.atuacao.areaLabel} ${areaVal} ${t.atuacao.areaUnit}`;
   };
 
   return (
@@ -79,7 +123,7 @@ export default function Atuacao({ data }: AtuacaoProps) {
       <div className={styles.container}>
         <div className={styles.topCol}>
           <div className="tag-badge light" data-node-id="36:1102">
-            Atuação
+            {t.atuacao.tag}
           </div>
           <h2
             style={{
@@ -92,98 +136,150 @@ export default function Atuacao({ data }: AtuacaoProps) {
             }}
             data-node-id="36:1104"
           >
-            <AnimatedText text={mapTitle} type="char" delay={0} stagger={0.02} />
+            <AnimatedText key={`atuacao-${locale}`} text={mapTitle} type="char" delay={0} stagger={0.02} />
           </h2>
           <p className={styles.description} data-node-id="36:1295" style={{ whiteSpace: 'pre-line' }}>
             {mapDescription}
           </p>
+          <div className={styles.infoPanel}>
+            <div className={styles.selectWrapper}>
+              <button 
+                className={`${styles.selectButton} ${isDropdownOpen ? styles.isOpen : ''}`}
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              >
+                <span>{selectedCity?.name}</span>
+                <div className={styles.selectIcon}>
+                  <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+              </button>
+              
+              <AnimatePresence>
+                {isDropdownOpen && (
+                  <motion.div 
+                    ref={dropdownRef}
+                    className={styles.dropdownMenu}
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                    data-lenis-prevent
+                  >
+                    {sortedCities.map((city) => (
+                      <button
+                        key={city.name}
+                        className={`${styles.dropdownOption} ${city.name === selectedCityName ? styles.isActive : ''}`}
+                        onClick={() => {
+                          setSelectedCityName(city.name);
+                          setIsDropdownOpen(false);
+                        }}
+                      >
+                        {city.name}
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </div>
         </div>
 
-        <div className={styles.mapWrapper} data-node-id="36:1130" ref={mapRef}>
+        <div className={styles.mapWrapper} data-node-id="36:1130">
           <div className={styles.mapContainer} data-node-id="36:1131">
-            <svg viewBox="0 0 1195 1031" className={styles.mapSvg} preserveAspectRatio="xMidYMid meet">
-              <defs>
-                <filter id="filter_pin_shadow" x="0" y="0" width="30" height="30" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                  <feFlood floodOpacity="0" result="BackgroundImageFix"/>
-                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                  <feOffset/>
-                  <feGaussianBlur stdDeviation="2.1"/>
-                  <feComposite in2="hardAlpha" operator="out"/>
-                  <feColorMatrix type="matrix" values="0 0 0 0 0.37 0 0 0 0 0.82 0 0 0 0 0.27 0 0 0 1 0"/>
-                  <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
-                  <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
-                </filter>
-                <filter id="filter_tooltip_shadow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feDropShadow dx="0" dy="8" stdDeviation="6" floodColor="#000000" floodOpacity="0.4" />
-                </filter>
-              </defs>
+            <div className={styles.mapMasker}>
+              <svg 
+                viewBox={isMobile ? "250 200 600 600" : "0 0 1195 1031"} 
+                className={styles.mapSvg} 
+                preserveAspectRatio="xMidYMid meet"
+              >
+                <image href={imgMapaCompleto} x="0" y="0" width="1195" height="1031" />
+                
+                <image href={imgMatoGrosso} x="373.5" y="329" width="368" height="348" />
 
-              <image href={imgMapaCompleto} x="0" y="0" width="1195" height="1031" />
-              
-              {/* Mato Grosso highlighted layer positioned exactly as in Design */}
-              <image href={imgMatoGrosso} x="373.5" y="329" width="368" height="348" />
-
-              {activeLocations.map((loc) => {
-                const isPinActive = activePinId === loc.id;
-                const isPinHovered = hoveredPinId === loc.id;
-                return (
-                  <g 
-                    key={loc.id} 
-                    className={`${styles.pinGroup} ${isPinActive || isPinHovered ? styles.activePin : ''}`} 
-                    transform={`translate(${loc.positionX}, ${loc.positionY})`}
-                    onClick={(e) => handlePinClick(loc.id, e)}
-                    onMouseEnter={() => setHoveredPinId(loc.id)}
-                    onMouseLeave={() => setHoveredPinId(null)}
-                  >
-                    <g transform="translate(0, -14)">
-                      <g className={styles.pinIconSvg}>
-                        <image href={imgPin} x="-14" y="-14" width="28" height="28" />
-                      </g>
-                    </g>
-                    <circle 
-                      cx="0" 
-                      cy="-14" 
-                      r="24" 
-                      fill="transparent" 
-                      className={styles.pinHitArea} 
-                      aria-label={loc.title}
-                    />
-                  </g>
-                );
-              })}
-
-              {/* Render the active or hovered tooltip on top of all pins */}
-              {activeLocations.map((loc) => {
-                const isPinActive = activePinId === loc.id;
-                const isPinHovered = hoveredPinId === loc.id;
-                if (!isPinActive && !isPinHovered) return null;
-                return (
-                  <g 
-                    key={`tooltip-${loc.id}`}
-                    transform={`translate(${loc.positionX}, ${loc.positionY})`}
-                    style={{ pointerEvents: 'none' }}
-                  >
-                    <foreignObject 
-                      x="20" 
-                      y="-39" 
-                      width="550" 
-                      height="50" 
-                      className={styles.tooltipForeignObject}
+                {sortedCities.map((city) => {
+                  const isSelected = city.name === selectedCity?.name;
+                  return (
+                    <motion.g 
+                      key={city.name}
+                      initial={false}
+                      animate={{ 
+                        opacity: isSelected ? 1 : 0, 
+                        scale: isSelected ? 1 : 0.5,
+                        x: city.left,
+                        y: city.top
+                      }}
+                      style={{ pointerEvents: 'auto' }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                      className={styles.pinGroup} 
+                      onClick={() => {
+                        setSelectedCityName(city.name);
+                        setIsDropdownOpen(false);
+                      }}
                     >
-                      <div className={styles.tooltipWrapper}>
-                        <div className={styles.tooltipBadge}>
-                          <span className={styles.tooltipTitle}>{loc.title}</span>
-                          {loc.area && (
-                            <span className={styles.tooltipArea}>Área: {loc.area}</span>
-                          )}
-                        </div>
+                      <g className={styles.pinIconSvg}>
+                        {isSelected && (
+                          <motion.circle
+                            r="12"
+                            fill="#e1fe00"
+                            initial={{ opacity: 0.8, scale: 1 }}
+                            animate={{ opacity: 0, scale: 3.5 }}
+                            transition={{ repeat: Infinity, duration: 1.5, ease: "easeOut" }}
+                          />
+                        )}
+                        <g opacity={isSelected ? "1" : "0"}>
+                          <image href={imgPin} width="50" height="50" x="-25" y="-25" />
+                        </g>
+                      </g>
+                      <circle 
+                        cx="0" 
+                        cy="0" 
+                        r="24" 
+                        fill="transparent" 
+                        className={styles.pinHitArea} 
+                        aria-label={city.name}
+                      />
+                    </motion.g>
+                  );
+                })}
+              </svg>
+            </div>
+
+            {/* HTML Overlay for Tooltips (avoids SVG foreignObject bugs) */}
+            {selectedCity?.name && (
+              <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', transform: 'translate(3.5%, 1.5%)' }}>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={selectedCity.name}
+                    className={styles.tooltipWrapper}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.15 }}
+                    style={{
+                      left: `${(selectedCity.left / 1195) * 100}%`,
+                      top: `${(selectedCity.top / 1031) * 100}%`,
+                      transform: 'translate(-50%, calc(-100% - 30px))',
+                    }}
+                  >
+                    <div className={styles.starBorderContainer}>
+                      <div className={styles.starBorderMask}>
+                        <div className={styles.borderGradientBottom}></div>
+                        <div className={styles.borderGradientTop}></div>
                       </div>
-                    </foreignObject>
-                  </g>
-                );
-              })}
-            </svg>
-            <div className={styles.stateLabel}>MT</div>
+                      <div className={styles.pinTooltipInner}>
+                        <div className={styles.pinTooltipCity}>{selectedCity.name}</div>
+                        {selectedCity.area && (
+                          <div className={styles.pinTooltipArea}>
+                            {renderAreaText(selectedCity)}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            )}
           </div>
         </div>
       </div>

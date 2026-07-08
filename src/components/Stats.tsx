@@ -1,5 +1,4 @@
 import styles from './Stats.module.css';
-
 import AnimatedText from './AnimatedText';
 import AnimatedCounter from './AnimatedCounter';
 import { api } from '../services/api';
@@ -10,51 +9,7 @@ import {
   imgAgriculture,
   imgVerified
 } from '../assets';
-
-// Layout — Sessão 4 (Resultados)
-// Cards: Peach (#ffd087), DarkGreen (#002d22), Lime (#e1fe00), PaleGreen (#f2ffd9)
-const staticCards = [
-  {
-    id: 'stat-hectares',
-    cardCls: styles.cardPeach,
-    icon: imgForYou,
-    counterValue: 1.5,
-    counterPrefix: '',
-    counterSuffix: 'B',
-    label: 'Hectares atendidos',
-    nodeId: '29:913',
-  },
-  {
-    id: 'stat-pull',
-    cardCls: styles.cardDark,
-    icon: imgPaid,
-    counterValue: 3500,
-    counterPrefix: '+',
-    counterSuffix: '',
-    label: 'Tratamentos no campo de pesquisa',
-    nodeId: '29:926',
-  },
-  {
-    id: 'stat-fazendas',
-    cardCls: styles.cardLime,
-    icon: imgAgriculture,
-    counterValue: 160,
-    counterPrefix: '+',
-    counterSuffix: '',
-    label: 'Fazendas/Grupos atendidos',
-    nodeId: '29:929',
-  },
-  {
-    id: 'stat-safras',
-    cardCls: styles.cardPaleGreen,
-    icon: imgVerified,
-    counterValue: 70,
-    counterPrefix: '+',
-    counterSuffix: '',
-    label: 'Safras de experiência somada',
-    nodeId: '29:932',
-  }
-];
+import { useLanguage } from '../i18n';
 
 // Card color scheme cycles through the 4 Design colors
 const cardClasses = [
@@ -85,11 +40,54 @@ interface StatsProps {
 }
 
 export default function Stats({ data }: StatsProps) {
-  const subtext = data?.statsSubtext ||
-    'Os números são consequência de um trabalho feito com proximidade, análise e presença no campo. Cada resultado carrega planejamento técnico, acompanhamento constante e a confiança de produtores que crescem junto com a gente.';
+  const { locale, t } = useLanguage();
 
-  const titleNormal = data?.statsTitle || 'Números que';
-  const titleAccent = data?.statsTitleAccent || 'traduzem excelência';
+  const staticCards = [
+    {
+      id: 'stat-hectares',
+      cardCls: styles.cardPeach,
+      icon: imgForYou,
+      counterValue: 1.5,
+      counterPrefix: '',
+      counterSuffix: 'B',
+      label: t.stats.hectares || 'Hectares atendidos',
+      nodeId: '29:913',
+    },
+    {
+      id: 'stat-pull',
+      cardCls: styles.cardDark,
+      icon: imgPaid,
+      counterValue: 3500,
+      counterPrefix: '+',
+      counterSuffix: '',
+      label: t.stats.tratamentos || 'Tratamentos no campo de pesquisa',
+      nodeId: '29:926',
+    },
+    {
+      id: 'stat-fazendas',
+      cardCls: styles.cardLime,
+      icon: imgAgriculture,
+      counterValue: 160,
+      counterPrefix: '+',
+      counterSuffix: '',
+      label: t.stats.fazendas || 'Fazendas/Grupos atendidos',
+      nodeId: '29:929',
+    },
+    {
+      id: 'stat-safras',
+      cardCls: styles.cardPaleGreen,
+      icon: imgVerified,
+      counterValue: 70,
+      counterPrefix: '+',
+      counterSuffix: '',
+      label: t.stats.safras || 'Safras de experiência somada',
+      nodeId: '29:932',
+    }
+  ];
+
+  const subtext = data?.statsSubtext || t.stats.subtext;
+  const titleNormal = data?.statsTitle || t.stats.title1;
+  const titleAccent = data?.statsTitleAccent || t.stats.title2;
 
   // Use CMS stats if available (at least one item), otherwise fall back to static
   const hasCmsStats = data?.stats && data.stats.length > 0;
@@ -142,7 +140,7 @@ export default function Stats({ data }: StatsProps) {
         <div className={styles.textCol}>
           {/* TAG — "resultados" */}
           <span className="tag-badge dark" data-node-id="29:899">
-            resultados
+            {t.stats.tag}
           </span>
 
           {/* Heading row: title + description */}
@@ -153,9 +151,9 @@ export default function Stats({ data }: StatsProps) {
               data-node-id="29:901"
               style={{ textAlign: data?.statsTitleAlign || 'left' }}
             >
-              <AnimatedText text={titleNormal} type="char" delay={0} stagger={0.02} />{' '}
+              <AnimatedText key={`stats1-${locale}-${titleNormal}`} text={titleNormal} type="char" delay={0} stagger={0.02} />{' '}
               <span className={styles.titleAccent}>
-                <AnimatedText text={titleAccent} type="char" delay={0.2} stagger={0.02} />
+                <AnimatedText key={`stats2-${locale}-${titleAccent}`} text={titleAccent} type="char" delay={0.2} stagger={0.02} />
               </span>
             </h2>
 
@@ -175,7 +173,7 @@ export default function Stats({ data }: StatsProps) {
             <div className={styles.carouselContainer}>
               <div className={styles.track}>
                 {[...cards, ...cards].map((card, i) => {
-                  const valStr = card.counterPrefix + Intl.NumberFormat("pt-BR").format(card.counterValue) + card.counterSuffix;
+                  const valStr = card.counterPrefix + Intl.NumberFormat(locale === 'en' ? 'en-US' : 'pt-BR').format(card.counterValue) + card.counterSuffix;
                   const isLong = valStr.length > 8;
                   const isExtraLong = valStr.length > 12;
 
@@ -204,7 +202,7 @@ export default function Stats({ data }: StatsProps) {
             /* Static equal-size grid for <= 4 items */
             <div className={styles.grid} data-node-id="29:902">
               {cards.map((card) => {
-                const valStr = card.counterPrefix + Intl.NumberFormat("pt-BR").format(card.counterValue) + card.counterSuffix;
+                const valStr = card.counterPrefix + Intl.NumberFormat(locale === 'en' ? 'en-US' : 'pt-BR').format(card.counterValue) + card.counterSuffix;
                 const isLong = valStr.length > 8;
                 const isExtraLong = valStr.length > 12;
 

@@ -11,6 +11,7 @@ import {
 import AnimatedText from './AnimatedText';
 import type { HomePageData } from '../services/api';
 import { api } from '../services/api';
+import { useLanguage } from '../i18n';
 
 interface ParceriaProps {
   data?: HomePageData | null;
@@ -18,9 +19,10 @@ interface ParceriaProps {
 
 export default function Parceria({ data }: ParceriaProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
-  
-  const badgeText = data?.galleryTitle || "parceria";
-  const titleText = data?.gallerySubtitle || "Nós estamos em movimento constante para levar o melhor da pesquisa e inovação até o produtor.";
+  const { locale, t } = useLanguage();
+
+  const badgeText = data?.galleryTitle || t.parceria.tag;
+  const titleText = data?.gallerySubtitle || t.parceria.title;
 
   const defaultImages = [
     { id: 'img-1', src: imgRectangle1, label: 'Monitoramento Aéreo' },
@@ -58,7 +60,7 @@ export default function Parceria({ data }: ParceriaProps) {
               {badgeText}
             </div>
             <h2 className={styles.title} data-node-id="36:1322">
-              <AnimatedText text={titleText} delay={0} stagger={0.03} type="word" />
+              <AnimatedText key={`parceria-${locale}-${titleText}`} text={titleText} delay={0} stagger={0.03} type="word" />
             </h2>
           </div>
         </div>

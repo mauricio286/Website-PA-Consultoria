@@ -44,7 +44,7 @@ export const imgIntroducao = imgIntroducaoUrl;
 import imgLogoPaUrl from './assets/images/logo_pa.svg';
 export const imgLogoPa = imgLogoPaUrl;
 import imgMatoGrossoUrl from './assets/images/Mato Grosso Mapa.svg';
-import imgMapaCompletoUrl from './assets/images/Mapa Completo.svg';
+import imgMapaCompletoUrl from './assets/1. Home/5. Session 04/Map Brasil.svg';
 import imgPinUrl from './assets/images/PIN.svg';
 export const imgMatoGrosso = imgMatoGrossoUrl;
 export const imgMapaCompleto = imgMapaCompletoUrl;

@@ -11,6 +11,7 @@ import {
 import AnimatedText from './AnimatedText';
 import { api } from '../services/api';
 import type { HomePageData } from '../services/api';
+import { useLanguage } from '../i18n';
 
 interface MethodologyProps {
   data?: HomePageData | null;
@@ -19,31 +20,31 @@ interface MethodologyProps {
 export default function Methodology({ data }: MethodologyProps) {
   const [activeTabIndex, setActiveTabIndex] = useState<number>(0);
   const containerRef = useRef<HTMLElement>(null);
+  const { locale, t } = useLanguage();
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "center center"]
   });
   
-  // Transform scroll progress to opacity. 0 at the very start of entry, fading up to 0.7 when centered.
   const symbolOpacity = useTransform(scrollYProgress, [0, 1], [0.1, 0.7]);
 
   const fallbackCards = [
     {
-      title: 'Estratégia',
-      description: 'Decisões orientadas por pesquisa, objetivos e visão de longo prazo, transformando informações agronômicas em ações práticas que maximizam a produtividade, a rentabilidade e a sustentabilidade dos sistemas produtivos.',
+      title: t.methodology.estrategia,
+      description: t.methodology.estrategiaDesc,
       icon: imgChessKnight,
       image: imgImagem,
     },
     {
-      title: 'Execução',
-      description: 'Decisões embasadas em dados, clima e mercado para mitigar riscos antes mesmo do plantio.',
+      title: t.methodology.execucao,
+      description: t.methodology.execucaoDesc,
       icon: imgAvgTime,
       image: imgImagem,
     },
     {
-      title: 'Tecnologia',
-      description: 'Uso das melhores ferramentas de agricultura digital para otimizar recursos e monitorar a saúde da sua safra em tempo real.',
+      title: t.methodology.tecnologia,
+      description: t.methodology.tecnologiaDesc,
       icon: imgAutomation,
       image: imgImagem,
     }
@@ -61,8 +62,8 @@ export default function Methodology({ data }: MethodologyProps) {
   const safeActiveIndex = activeTabIndex < cards.length ? activeTabIndex : 0;
   const activeCard = cards[safeActiveIndex];
 
-  const badgeText = data?.methodologyBadge || 'Estrutura';
-  const titleText = data?.methodologyTitle || 'Pilares Metodológicos';
+  const badgeText = data?.methodologyBadge || t.methodology.tag;
+  const titleText = data?.methodologyTitle || t.methodology.title;
   const titleAlign = data?.methodologyTitleAlign || 'left';
 
   // Split title by newline \n
@@ -117,12 +118,13 @@ export default function Methodology({ data }: MethodologyProps) {
                 }}
               >
                 <AnimatedText 
+                  key={`methodologyLine-${i}-${locale}-${line}`}
                   text={line} 
                   type="char" 
                   delay={i * 0.2} 
                   stagger={0.02} 
                   sessionOnce={true} 
-                  sessionKey={`methodologyLine-${i}`} 
+                  sessionKey={`methodologyLine-${i}-${locale}-${line}`} 
                 />
               </span>
             ))}
