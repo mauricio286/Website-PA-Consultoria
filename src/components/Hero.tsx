@@ -20,6 +20,8 @@ export default function Hero({ data }: HeroProps) {
 
   // Computação dos dados dinâmicos do CMS ou fallbacks
   const bgImageUrl = api.getMediaUrl(data?.heroImage) || imgProperty1Default;
+  const bgImageTabletUrl = api.getMediaUrl(data?.heroImageTablet);
+  const bgImageMobileUrl = api.getMediaUrl(data?.heroImageMobile);
   const subtitle = data?.heroSubtitle || t.hero.description;
   const ctaLabel = data?.heroCtaLabel || t.hero.cta;
   const ctaUrl = data?.heroCtaUrl || "/servicos";
@@ -95,11 +97,15 @@ export default function Hero({ data }: HeroProps) {
       {/* Background — Design BgSessaoHero */}
       <div className={styles.bgWrapper} aria-hidden="true">
         <div ref={parallaxRef} className={styles.parallaxWrapper}>
-          <img
-            src={bgImageUrl}
-            alt={(data?.heroImage && typeof data.heroImage === 'object') ? data.heroImage.alt : "Background Hero"}
-            className={styles.bgImage}
-          />
+          <picture style={{ width: '100%', height: '100%' }}>
+            {bgImageMobileUrl && <source media="(max-width: 580px)" srcSet={bgImageMobileUrl} />}
+            {bgImageTabletUrl && <source media="(max-width: 1024px)" srcSet={bgImageTabletUrl} />}
+            <img
+              src={bgImageUrl}
+              alt={(data?.heroImage && typeof data.heroImage === 'object') ? data.heroImage.alt : "Background Hero"}
+              className={styles.bgImage}
+            />
+          </picture>
         </div>
         <div className={styles.overlay} />
       </div>

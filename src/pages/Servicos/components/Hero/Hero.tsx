@@ -8,11 +8,17 @@ interface HeroProps {
 
 export default function Hero({ data }: HeroProps) {
   const bgImage = data?.heroImage ? api.getMediaUrl(data.heroImage) : imgBgServicos;
+  const bgImageTablet = data?.heroImageTablet ? api.getMediaUrl(data.heroImageTablet) : undefined;
+  const bgImageMobile = data?.heroImageMobile ? api.getMediaUrl(data.heroImageMobile) : undefined;
 
   return (
     <section className={styles.heroSection}>
       <div className={styles.heroBgWrapper}>
-        <img src={bgImage} alt="Background da PA - Serviços" className={styles.heroBg} />
+        <picture>
+          {bgImageMobile && <source media="(max-width: 580px)" srcSet={bgImageMobile} />}
+          {bgImageTablet && <source media="(max-width: 1024px)" srcSet={bgImageTablet} />}
+          <img src={bgImage} alt="Background da PA - Serviços" className={styles.heroBg} />
+        </picture>
       </div>
       
       <div className={styles.scrollDownWrapper}>

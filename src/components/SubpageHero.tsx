@@ -7,10 +7,12 @@ import { useLanguage } from '../i18n';
 interface SubpageHeroProps {
   title: string;
   bgImage: string;
+  bgImageTablet?: string;
+  bgImageMobile?: string;
   breadcrumbCurrent: string;
 }
 
-export default function SubpageHero({ title, bgImage, breadcrumbCurrent }: SubpageHeroProps) {
+export default function SubpageHero({ title, bgImage, bgImageTablet, bgImageMobile, breadcrumbCurrent }: SubpageHeroProps) {
   const { t } = useLanguage();
 
   const handleScroll = (e: React.MouseEvent) => {
@@ -28,7 +30,11 @@ export default function SubpageHero({ title, bgImage, breadcrumbCurrent }: Subpa
     <section className={styles.heroSection}>
       <div className={`${styles.heroBgWrapper} animate-wrapper-slide`}>
         <div className={styles.heroBgOverlay}></div>
-        <img className={`${styles.heroBg} animate-bg-zoom`} src={bgImage} alt={`Background ${title}`} />
+        <picture>
+          {bgImageMobile && <source media="(max-width: 580px)" srcSet={bgImageMobile} />}
+          {bgImageTablet && <source media="(max-width: 1024px)" srcSet={bgImageTablet} />}
+          <img className={`${styles.heroBg} animate-bg-zoom`} src={bgImage} alt={`Background ${title}`} />
+        </picture>
       </div>
       
       <div className={styles.heroContent}>

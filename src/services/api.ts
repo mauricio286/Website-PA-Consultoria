@@ -28,6 +28,8 @@ export interface HomePageData {
   heroTitle?: string;
   heroSubtitle?: string;
   heroImage?: Media | string;
+  heroImageTablet?: Media | string;
+  heroImageMobile?: Media | string;
   heroCtaLabel?: string;
   heroCtaUrl?: string;
   heroLogos?: Array<{
@@ -92,6 +94,8 @@ export interface HomePageData {
 
 export interface AboutPageData {
   heroImage?: Media | string;
+  heroImageTablet?: Media | string;
+  heroImageMobile?: Media | string;
   title?: string;
   subtitle?: string;
   introText?: any;
@@ -122,6 +126,8 @@ export interface AboutPageData {
 
 export interface CareersPageData {
   heroImage?: Media | string;
+  heroImageTablet?: Media | string;
+  heroImageMobile?: Media | string;
   title?: string;
   titleHighlight?: string;
   introText?: string;
@@ -129,6 +135,8 @@ export interface CareersPageData {
 
 export interface ServicesPageData {
   heroImage?: Media | string;
+  heroImageTablet?: Media | string;
+  heroImageMobile?: Media | string;
   servicesBadge?: string;
   servicesTitle?: string;
   servicesSubtitle?: string;
@@ -151,6 +159,9 @@ export interface ServicesPageData {
 }
 
 export interface ContactSettingsData {
+  heroImage?: Media | string;
+  heroImageTablet?: Media | string;
+  heroImageMobile?: Media | string;
   mainEmail?: string;
   hrEmail?: string;
   formRecipientEmail?: string;
@@ -195,6 +206,8 @@ export interface Service {
   description?: any; // Lexical JSON
   longDescription?: any; // Keep for safety
   coverImage?: Media | string;
+  coverImageTablet?: Media | string;
+  coverImageMobile?: Media | string;
   illustrationImage?: Media | string;
   showIllustration?: boolean;
 }

@@ -122,7 +122,11 @@ export default function QuemSomos() {
       {/* Sessão 1 — Hero Banner */}
       <section className={styles.heroSection}>
         <div className={styles.heroBgWrapper}>
-          <img src={api.getMediaUrl(aboutData?.heroImage) || imgBg} alt="Background da PA" className={styles.heroBg} />
+          <picture>
+            {aboutData?.heroImageMobile && <source media="(max-width: 580px)" srcSet={api.getMediaUrl(aboutData.heroImageMobile)} />}
+            {aboutData?.heroImageTablet && <source media="(max-width: 1024px)" srcSet={api.getMediaUrl(aboutData.heroImageTablet)} />}
+            <img src={api.getMediaUrl(aboutData?.heroImage) || imgBg} alt="Background da PA" className={styles.heroBg} />
+          </picture>
         </div>
         
         {/* Scroll down button instead of back button */}

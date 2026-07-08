@@ -71,12 +71,20 @@ export default function Contato() {
         }
       ];
 
+  const bgImage = cmsData?.heroImage ? api.getMediaUrl(cmsData.heroImage) : imgBgContato;
+  const bgImageTablet = cmsData?.heroImageTablet ? api.getMediaUrl(cmsData.heroImageTablet) : undefined;
+  const bgImageMobile = cmsData?.heroImageMobile ? api.getMediaUrl(cmsData.heroImageMobile) : undefined;
+
   return (
     <main className={`${styles.contatoPage} page-transition-enter`}>
       {/* ── Sessão 01 — Hero ─────────────────────────────────────────────── */}
       <section className={styles.heroSection}>
         <div className={styles.heroBgWrapper}>
-          <img src={imgBgContato} alt="Banner Contato" className={styles.heroBg} />
+          <picture>
+            {bgImageMobile && <source media="(max-width: 580px)" srcSet={bgImageMobile} />}
+            {bgImageTablet && <source media="(max-width: 1024px)" srcSet={bgImageTablet} />}
+            <img src={bgImage} alt="Banner Contato" className={styles.heroBg} />
+          </picture>
         </div>
         <div className={styles.scrollDownWrapper}>
           <a href="#contato" className={styles.scrollDownButton} aria-label="Rolar para o contato">

@@ -44,6 +44,8 @@ export default function Unita() {
     }
   } : null;
 
+  const bgImageTablet = service?.coverImageTablet ? api.getMediaUrl(service.coverImageTablet) : undefined;
+  const bgImageMobile = service?.coverImageMobile ? api.getMediaUrl(service.coverImageMobile) : undefined;
   const showIllustration = service ? service.showIllustration !== false : true;
   const serviceTitle = service?.title?.replace(/\r?\n/g, ' ') || t.unitaPage.title;
 
@@ -54,6 +56,8 @@ export default function Unita() {
       <SubpageHero 
         title={serviceTitle} 
         bgImage={bgImage} 
+        bgImageTablet={bgImageTablet}
+        bgImageMobile={bgImageMobile}
         breadcrumbCurrent={serviceTitle} 
       />
 

@@ -496,13 +496,19 @@ export default function Carreiras() {
   };
 
   const bgImage = careersPage?.heroImage ? api.getMediaUrl(careersPage.heroImage) : imgBgCarreiras;
+  const bgImageTablet = careersPage?.heroImageTablet ? api.getMediaUrl(careersPage.heroImageTablet) : undefined;
+  const bgImageMobile = careersPage?.heroImageMobile ? api.getMediaUrl(careersPage.heroImageMobile) : undefined;
 
   return (
     <main className={`${styles.carreirasPage} page-transition-enter`}>
       {/* ── Sessão 01 — Hero ─────────────────────────────────────────────── */}
       <section className={styles.heroSection}>
         <div className={styles.heroBgWrapper}>
-          <img src={bgImage} alt="Banner Carreiras" className={styles.heroBg} />
+          <picture>
+            {bgImageMobile && <source media="(max-width: 580px)" srcSet={bgImageMobile} />}
+            {bgImageTablet && <source media="(max-width: 1024px)" srcSet={bgImageTablet} />}
+            <img src={bgImage} alt="Banner Carreiras" className={styles.heroBg} />
+          </picture>
         </div>
         <div className={styles.scrollDownWrapper}>
           <a href="#vagas" className={styles.scrollDownButton} aria-label="Ver vagas">

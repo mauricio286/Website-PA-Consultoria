@@ -209,6 +209,14 @@ export interface Service {
   } | null;
   coverImage?: (number | null) | Media;
   /**
+   * Opcional. Exibida em tablets (telas de até 1024px). Se não informada, usa a de Desktop.
+   */
+  coverImageTablet?: (number | null) | Media;
+  /**
+   * Opcional. Exibida em celulares (telas de até 580px). Se não informada, usa a de Desktop ou Tablet.
+   */
+  coverImageMobile?: (number | null) | Media;
+  /**
    * Imagem exibida ao lado do texto principal da página de detalhes.
    */
   illustrationImage?: (number | null) | Media;
@@ -516,6 +524,8 @@ export interface ServicesSelect<T extends boolean = true> {
   shortDescription?: T;
   description?: T;
   coverImage?: T;
+  coverImageTablet?: T;
+  coverImageMobile?: T;
   illustrationImage?: T;
   showIllustration?: T;
   updatedAt?: T;
@@ -707,6 +717,14 @@ export interface HomePage {
    */
   heroSubtitle?: string | null;
   heroImage?: (number | null) | Media;
+  /**
+   * Opcional. Exibida em tablets (telas de até 1024px). Se não informada, usa a de Desktop.
+   */
+  heroImageTablet?: (number | null) | Media;
+  /**
+   * Opcional. Exibida em celulares (telas de até 580px). Se não informada, usa a de Desktop ou Tablet.
+   */
+  heroImageMobile?: (number | null) | Media;
   heroCtaLabel?: string | null;
   heroCtaUrl?: string | null;
   heroLogos?:
@@ -858,6 +876,14 @@ export interface AboutPage {
   id: number;
   heroImage?: (number | null) | Media;
   /**
+   * Opcional. Exibida em tablets (telas de até 1024px). Se não informada, usa a de Desktop.
+   */
+  heroImageTablet?: (number | null) | Media;
+  /**
+   * Opcional. Exibida em celulares (telas de até 580px). Se não informada, usa a de Desktop ou Tablet.
+   */
+  heroImageMobile?: (number | null) | Media;
+  /**
    * Título principal. Dica: Use Enter para quebras de linha.
    */
   title?: string | null;
@@ -980,6 +1006,14 @@ export interface AboutPage {
 export interface ServicesPage {
   id: number;
   heroImage?: (number | null) | Media;
+  /**
+   * Opcional. Exibida em tablets (telas de até 1024px). Se não informada, usa a de Desktop.
+   */
+  heroImageTablet?: (number | null) | Media;
+  /**
+   * Opcional. Exibida em celulares (telas de até 580px). Se não informada, usa a de Desktop ou Tablet.
+   */
+  heroImageMobile?: (number | null) | Media;
   servicesBadge?: string | null;
   /**
    * Dica: Use Enter para quebras de linha.
@@ -1035,6 +1069,14 @@ export interface CareersPage {
   id: number;
   heroImage?: (number | null) | Media;
   /**
+   * Opcional. Exibida em tablets (telas de até 1024px). Se não informada, usa a de Desktop.
+   */
+  heroImageTablet?: (number | null) | Media;
+  /**
+   * Opcional. Exibida em celulares (telas de até 580px). Se não informada, usa a de Desktop ou Tablet.
+   */
+  heroImageMobile?: (number | null) | Media;
+  /**
    * Exemplo: "Faça parte "
    */
   title?: string | null;
@@ -1055,6 +1097,15 @@ export interface CareersPage {
  */
 export interface ContactSetting {
   id: number;
+  heroImage?: (number | null) | Media;
+  /**
+   * Opcional. Exibida em tablets (telas de até 1024px). Se não informada, usa a de Desktop.
+   */
+  heroImageTablet?: (number | null) | Media;
+  /**
+   * Opcional. Exibida em celulares (telas de até 580px). Se não informada, usa a de Desktop ou Tablet.
+   */
+  heroImageMobile?: (number | null) | Media;
   /**
    * Ex: contato@agropa.com.br
    */
@@ -1122,6 +1173,8 @@ export interface HomePageSelect<T extends boolean = true> {
   heroTitle?: T;
   heroSubtitle?: T;
   heroImage?: T;
+  heroImageTablet?: T;
+  heroImageMobile?: T;
   heroCtaLabel?: T;
   heroCtaUrl?: T;
   heroLogos?:
@@ -1202,6 +1255,8 @@ export interface HomePageSelect<T extends boolean = true> {
  */
 export interface AboutPageSelect<T extends boolean = true> {
   heroImage?: T;
+  heroImageTablet?: T;
+  heroImageMobile?: T;
   title?: T;
   subtitle?: T;
   introText?: T;
@@ -1246,6 +1301,8 @@ export interface AboutPageSelect<T extends boolean = true> {
  */
 export interface ServicesPageSelect<T extends boolean = true> {
   heroImage?: T;
+  heroImageTablet?: T;
+  heroImageMobile?: T;
   servicesBadge?: T;
   servicesTitle?: T;
   servicesSubtitle?: T;
@@ -1279,6 +1336,8 @@ export interface ServicesPageSelect<T extends boolean = true> {
  */
 export interface CareersPageSelect<T extends boolean = true> {
   heroImage?: T;
+  heroImageTablet?: T;
+  heroImageMobile?: T;
   title?: T;
   titleHighlight?: T;
   introText?: T;
@@ -1291,6 +1350,9 @@ export interface CareersPageSelect<T extends boolean = true> {
  * via the `definition` "contact-settings_select".
  */
 export interface ContactSettingsSelect<T extends boolean = true> {
+  heroImage?: T;
+  heroImageTablet?: T;
+  heroImageMobile?: T;
   mainEmail?: T;
   hrEmail?: T;
   formRecipientEmail?: T;

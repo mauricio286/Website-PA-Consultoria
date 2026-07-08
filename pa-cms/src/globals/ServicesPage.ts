@@ -24,6 +24,24 @@ const ServicesPage: GlobalConfig = {
           type: 'upload',
           relationTo: 'media',
         },
+        {
+          name: 'heroImageTablet',
+          label: 'Imagem de fundo (Tablet)',
+          type: 'upload',
+          relationTo: 'media',
+          admin: {
+            description: 'Opcional. Exibida em tablets (telas de até 1024px). Se não informada, usa a de Desktop.',
+          },
+        },
+        {
+          name: 'heroImageMobile',
+          label: 'Imagem de fundo (Mobile)',
+          type: 'upload',
+          relationTo: 'media',
+          admin: {
+            description: 'Opcional. Exibida em celulares (telas de até 580px). Se não informada, usa a de Desktop ou Tablet.',
+          },
+        },
       ],
     },
 

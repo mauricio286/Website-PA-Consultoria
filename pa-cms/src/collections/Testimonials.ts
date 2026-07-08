@@ -27,7 +27,7 @@ const Testimonials: CollectionConfig = {
           const count = await req.payload.count({
             collection: 'testimonials',
           })
-          if (count.total >= 6) {
+          if (count.totalDocs >= 6) {
             throw new Error('Limite máximo de 6 depoimentos atingido. Remova um depoimento antes de cadastrar outro.')
           }
         }
