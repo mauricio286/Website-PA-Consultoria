@@ -28,6 +28,7 @@ export default function Testimonials({ data }: TestimonialsProps) {
   const [dbTestimonials, setDbTestimonials] = useState<TestimonialDoc[]>([]);
   const [selectedId, setSelectedId] = useState<string>('dep-3'); // default selected
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 991);
   const gridRef = useRef<HTMLDivElement>(null);
   const autoPlayRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const { locale, t } = useLanguage();
@@ -157,9 +158,13 @@ export default function Testimonials({ data }: TestimonialsProps) {
   };
 
   useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 991);
+    window.addEventListener('resize', handleResize);
+
     startAutoPlay();
 
     return () => {
+      window.removeEventListener('resize', handleResize);
       if (autoPlayRef.current) clearInterval(autoPlayRef.current);
     };
   }, [itemsToRender.length]);
@@ -192,7 +197,7 @@ export default function Testimonials({ data }: TestimonialsProps) {
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
           onScroll={handleScrollEvent}
-          data-lenis-prevent="true"
+          {...(isMobile ? { 'data-lenis-prevent': 'true' } : {})}
         >
           {itemsToRender.map((dep) => (
             <div
