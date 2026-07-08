@@ -51,6 +51,14 @@ export default function Atuacao() {
   const selectedCity = sortedCities.find(c => c.name === selectedCityName) || sortedCities[0];
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 580);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     if (isDropdownOpen && dropdownRef.current) {
@@ -134,7 +142,11 @@ export default function Atuacao() {
         <div className={styles.mapWrapper} data-node-id="36:1130">
           <div className={styles.mapContainer} data-node-id="36:1131">
             <div className={styles.mapMasker}>
-              <svg viewBox="0 0 1195 1031" className={styles.mapSvg} preserveAspectRatio="xMidYMid meet">
+              <svg 
+                viewBox={isMobile ? "250 200 600 600" : "0 0 1195 1031"} 
+                className={styles.mapSvg} 
+                preserveAspectRatio="xMidYMid meet"
+              >
                 <image href={imgMapaCompleto} x="0" y="0" width="1195" height="1031" />
                 
                 <image href={imgMatoGrosso} x="373.5" y="329" width="368" height="348" />
@@ -217,7 +229,6 @@ export default function Atuacao() {
               </AnimatePresence>
             </div>
 
-            <div className={styles.stateLabel}>MT</div>
           </div>
         </div>
       </div>

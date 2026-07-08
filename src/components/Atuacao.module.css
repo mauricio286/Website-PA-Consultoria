@@ -349,6 +349,15 @@
     padding-right: 24px;
   }
   
+  .topCol {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .topCol :global(.tag-badge) {
+    align-self: center;
+  }
+  
   .areaValueWrapper {
     font-size: 32px;
   }
@@ -387,7 +396,7 @@
     height: 380px;
   }
   .mapSvg {
-    transform: translate(8%, 1.5%) scale(2.5); /* Zoom in directly on the centered MT, shifted slightly right */
+    transform: translate(0, 0); /* Zoom is handled by viewBox now */
   }
 }
 
