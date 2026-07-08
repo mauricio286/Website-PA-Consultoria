@@ -1,16 +1,12 @@
 'use client'
 
 import React, { useRef } from 'react'
-import { useForm, useFormFields } from '@payloadcms/ui'
+import { useField } from '@payloadcms/ui'
 
 export default function MapPicker() {
-  const { setValue } = useForm() as any
-  
-  // Read current position values from form fields
-  const positionXField = useFormFields(([fields]) => fields.positionX)
-  const positionYField = useFormFields(([fields]) => fields.positionY)
-  const x = positionXField?.value as number | undefined
-  const y = positionYField?.value as number | undefined
+  // Use useField hooks for specific positionX and positionY fields
+  const { value: x, setValue: setX } = useField({ path: 'positionX' }) as any
+  const { value: y, setValue: setY } = useField({ path: 'positionY' }) as any
 
   const containerRef = useRef<HTMLDivElement>(null)
 
@@ -27,8 +23,8 @@ export default function MapPicker() {
     const scaledY = Math.round((clickY / rect.height) * 1031)
 
     // Save values in the Payload form fields
-    setValue('positionX', scaledX)
-    setValue('positionY', scaledY)
+    if (setX) setX(scaledX)
+    if (setY) setY(scaledY)
   }
 
   // Draw the indicator pin at current values (convert back to percentages)
