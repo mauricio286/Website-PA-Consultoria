@@ -1,4 +1,4 @@
-/* Hero — Figma node 34:1004 / BgSessaoHero */
+/* Hero — Layout / BgSessaoHero */
 /* Full viewport: 1920x1024 at design scale */
 
 .hero {
@@ -32,7 +32,7 @@
 
 .bgImage {
   position: absolute;
-  /* Figma: left: -7.91%, top: -16.73%, w: 115.77%, h: 144.73% */
+  /* Design: left: -7.91%, top: -16.73%, w: 115.77%, h: 144.73% */
   left: -7.91%;
   top: -16.73%;
   width: 115.77%;
@@ -57,7 +57,7 @@
   }
 }
 
-/* Dark overlay — rgba(0,0,0,0.5) from Figma */
+/* Dark overlay — rgba(0,0,0,0.5) from Design */
 .overlay {
   position: absolute;
   inset: 0;
@@ -87,16 +87,18 @@
   width: 100%;
 }
 
-/* Main content row at ~55% from top */
+/* Main content column at ~55% from top */
 .content {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 32px;
   width: 100%;
+  padding-bottom: clamp(60px, 10vh, 120px); /* Pushed content higher up to match Design alignment */
 }
 
-/* Left col: title + button */
+/* Left col: title + button (kept for mobile display contents structure) */
 .leftCol {
   display: flex;
   flex-direction: column;
@@ -104,25 +106,21 @@
   gap: 32px;
 }
 
-.titleLine1, .titleLine2 {
-  text-align: left;
+.titleWrapper {
+  flex: 1;
+  margin: 0;
 }
 
-/* Title — Figma: font Neulis Alt (Outfit), 70px line-height, color #ebebeb */
-/* The actual text renders as three lines */
-.titleLine1 {
-  font-family: var(--font-display);
-  font-size: clamp(38px, 5vw, 70px);
-  font-weight: 500;
-  line-height: 1.1;
-  letter-spacing: -1.4px;
-  color: var(--color-near-white);
-  display: block;
+.titleDescRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+  gap: 40px;
 }
 
-/* "campo comprova!" comes from the SVG text animation in Figma (Union shapes) */
-/* We render it as static text for the web */
-.titleLine2, .titleLine3 {
+/* Title — Design: font Neulis Alt (Outfit), 70px line-height, color #ebebeb */
+.titleLine {
   font-family: var(--font-display);
   font-size: clamp(38px, 5vw, 70px);
   font-weight: 500;
@@ -131,26 +129,29 @@
   color: var(--color-near-white);
   display: block;
   position: relative;
+  text-align: left;
 }
 
 /* Right col: description text */
 .rightCol {
   max-width: 480px;
   text-align: right;
+  margin-bottom: 0px;
+  flex-shrink: 0;
 }
 
 .description {
   font-family: var(--font-body);
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.6;
   letter-spacing: -0.2px;
   color: var(--color-near-white);
 }
 
 /* CTA Button wrapper */
 .ctaWrapper {
-  /* Button is at top: 575px in Figma */
+  margin-top: 10px;
 }
 
 /* Responsive */
@@ -161,18 +162,19 @@
     gap: 10px;
     padding-bottom: 0;
   }
-  .leftCol {
-    display: contents;
+  .titleDescRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
   }
-  .titleWrapper { order: 1; }
   .rightCol {
-    order: 2;
     text-align: left;
-    margin-top: 20px;
-    margin-bottom: 30px;
+    margin-top: 0;
+    max-width: 100%;
   }
   .ctaWrapper {
-    order: 3;
+    margin-top: 0;
   }
   .description {
     font-size: 18px;
@@ -182,9 +184,7 @@
 @media (max-width: 768px) {
   .contentWrapper { padding: 0 24px; }
 
-  .titleLine1,
-  .titleLine2,
-  .titleLine3 {
+  .titleLine {
     font-size: clamp(40px, 12vw, 54px);
     line-height: 1.05;
     letter-spacing: -1.5px;

@@ -1,10 +1,11 @@
-/* Stats — Figma node 29:897 (Sessão 4) */
+/* Stats — Layout (Sessão 4) */
 /* bg: white, px: 195px, py: 120px, h: 955px, gap: 85px */
 
 .stats {
   background-color: var(--color-bg-white);
   padding: var(--section-py) var(--container-px);
   border-top: 1px solid rgba(0,0,0,0.06);
+  overflow: hidden; /* Prevent horizontal scroll from breakout carousel */
 }
 
 .inner {
@@ -24,7 +25,7 @@
 }
 
 /* Heading row: title + description side by side */
-/* Figma node 35:1006 — h:282px, items-start, justify-between */
+/* Layout — h:282px, items-start, justify-between */
 .headingRow {
   display: flex;
   align-items: flex-start;
@@ -32,7 +33,7 @@
   gap: 40px;
 }
 
-/* Figma node 29:901 — Neulis Alt (Outfit) 48px, tracking -0.96px, #303030 */
+/* Layout — Neulis Alt (Outfit) 48px, tracking -0.96px, #303030 */
 /* "Números que" normal + "traduzem excelência" in #88a668 */
 .title {
   font-family: var(--font-display);
@@ -49,7 +50,7 @@
   color: var(--color-green-accent);
 }
 
-/* Figma node 35:1007 — DM Sans Regular, 20px, tracking -0.4px, #303030 */
+/* Layout — DM Sans Regular, 20px, tracking -0.4px, #303030 */
 .subtext {
   font-family: var(--font-body);
   font-weight: 400;
@@ -61,7 +62,7 @@
 }
 
 /* ── Cards Grid ─────────────────────────────── */
-/* Figma node 29:902/29:912 — flex row, gap 15px, h: 290px */
+/* Layout/29:912 — flex row, gap 15px, h: 290px */
 .grid {
   display: flex;
   gap: 15px;
@@ -69,17 +70,57 @@
   min-height: 290px;
 }
 
+/* Carousel for > 4 indicators (Automatic Infinite Scroll) */
+.carouselContainer {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  margin-left: -50vw;
+  overflow: hidden;
+  margin-top: 30px;
+  /* Fade edges symmetrically for screen-edge breakout - reduced to 5% for softer look */
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.track {
+  display: flex;
+  gap: 15px;
+  animation: stats-scroll 35s linear infinite;
+  width: max-content;
+  padding: 10px 0;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+@keyframes stats-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.track:hover {
+  animation-play-state: paused;
+}
+
+.carouselContainer .card {
+  flex: 0 0 280px; /* Exact same width for all carousel cards */
+  box-sizing: border-box;
+  scroll-snap-align: none;
+}
+
 /* Individual stat card */
 .card {
-  flex: 1 1 0;
+  flex: 1 1 0px;
+  min-width: 0; /* Ensures they all shrink to the same size */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 5px;
-  padding: 55px 30px;
+  padding: 55px 20px; /* Slightly lower padding to handle longer texts */
   border-radius: 30px;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .cardIcon {
@@ -89,16 +130,26 @@
   margin-bottom: 19px;
 }
 
-/* Figma: Neulis Alt (Outfit) 40px, tracking -0.8px */
+/* Design: Neulis Alt (Outfit) 40px, tracking -0.8px */
 .value {
   font-family: var(--font-display);
   font-size: clamp(28px, 2.5vw, 40px);
   font-weight: 500;
   line-height: 1.05;
   letter-spacing: -0.8px;
+  transition: font-size 0.2s ease;
 }
 
-/* Figma: DM Sans Regular, 18px */
+/* Classes para diminuir a fonte se o número for excessivamente longo */
+.value.long {
+  font-size: clamp(20px, 1.8vw, 28px);
+}
+
+.value.extraLong {
+  font-size: clamp(16px, 1.4vw, 22px);
+}
+
+/* Design: DM Sans Regular, 18px */
 .label {
   font-family: var(--font-body);
   font-size: clamp(14px, 1.2vw, 18px);
@@ -165,6 +216,9 @@
     flex: 1 1 100%;
     padding: 40px 20px; /* Thicker cards vertically, like print */
     border-radius: 20px; /* Slightly softer corners for mobile cards */
+  }
+  .carouselContainer .card {
+    flex: 0 0 240px; /* Slightly smaller cards for mobile carousel */
   }
   .value { font-size: clamp(38px, 10vw, 48px); } /* Larger numbers like print */
 }

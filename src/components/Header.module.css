@@ -1,5 +1,5 @@
-/* Header — matches Figma node 1:1179 */
-/* height: 108px, px: 55px (Figma) — adapted with container-px */
+/* Header — matches Layout */
+/* height: 108px, px: 55px (Design) — adapted with container-px */
 
 .header {
   position: absolute; /* Não é mais fixo! Fica no topo e sobe com o scroll */
@@ -22,7 +22,7 @@
   justify-content: space-between;
 }
 
-/* Logo wrapper — Figma: w=220px */
+/* Logo wrapper — Design: w=220px */
 .logoArea {
   display: flex;
   align-items: center;

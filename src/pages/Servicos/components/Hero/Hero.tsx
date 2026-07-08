@@ -1,11 +1,18 @@
 import styles from './Hero.module.css';
 import { imgBgServicos } from '../../../../assets';
+import { api, type ServicesPageData } from '../../../../services/api';
 
-export default function Hero() {
+interface HeroProps {
+  data?: ServicesPageData | null;
+}
+
+export default function Hero({ data }: HeroProps) {
+  const bgImage = data?.heroImage ? api.getMediaUrl(data.heroImage) : imgBgServicos;
+
   return (
     <section className={styles.heroSection}>
       <div className={styles.heroBgWrapper}>
-        <img src={imgBgServicos} alt="Background da PA - Serviços" className={styles.heroBg} />
+        <img src={bgImage} alt="Background da PA - Serviços" className={styles.heroBg} />
       </div>
       
       <div className={styles.scrollDownWrapper}>

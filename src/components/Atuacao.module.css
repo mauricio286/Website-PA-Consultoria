@@ -54,9 +54,6 @@
   border: none;
   overflow: visible;
   pointer-events: none; /* Let hover pass through to pins */
-  /* Soft transition mask for the focus to be the center of the map */
-  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
-  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
 }
 
 .mapSvg {
@@ -66,6 +63,9 @@
   transform: translate(3.5%, 1.5%); /* Centers MT based on viewBox coordinates */
   transform-origin: center center;
   transition: transform 0.3s ease;
+  /* Soft transition mask for the focus to be the center of the map */
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
 }
 
 .stateLabel {
@@ -86,16 +86,75 @@
 }
 
 .pinIconSvg {
-  transition: opacity var(--ease-smooth);
+  transition: transform 0.25s ease, opacity 0.25s ease;
   opacity: 0.6;
+  transform-origin: center;
+  transform-box: fill-box;
 }
 
 .pinHitArea {
   pointer-events: auto;
 }
 
-.pinGroup:hover .pinIconSvg {
+.pinGroup:hover .pinIconSvg,
+.activePin .pinIconSvg {
   opacity: 1;
+  transform: scale(1.15);
+}
+
+.tooltipForeignObject {
+  overflow: visible;
+  animation: tooltipFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  pointer-events: none;
+}
+
+.tooltipWrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: transparent;
+}
+
+.tooltipBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background-color: rgba(1, 28, 21, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--color-primary);
+  border-radius: 9999px;
+  padding: 6px 18px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.tooltipTitle {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-white);
+}
+
+.tooltipArea {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(8px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
 }
 
 /* Responsive configurations */

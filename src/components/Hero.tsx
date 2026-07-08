@@ -3,12 +3,55 @@ import styles from './Hero.module.css';
 import { imgProperty1Default } from '../assets';
 import LogoCarousel from './LogoCarousel';
 import AnimatedText from './AnimatedText';
+import { Link, useNavigate } from 'react-router-dom';
+import { api } from '../services/api';
+import type { HomePageData } from '../services/api';
 
-import { Link } from 'react-router-dom';
+interface HeroProps {
+  data?: HomePageData | null;
+}
 
-export default function Hero() {
+export default function Hero({ data }: HeroProps) {
   const heroRef = useRef<HTMLElement>(null);
   const parallaxRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+
+  // Computação dos dados dinâmicos do CMS ou fallbacks
+  const bgImageUrl = api.getMediaUrl(data?.heroImage) || imgProperty1Default;
+  const subtitle = data?.heroSubtitle || "Consultoria agronômica especializada para produtores que buscam excelência, rentabilidade e segurança em cada hectare plantado.";
+  const ctaLabel = data?.heroCtaLabel || "Nossas soluções";
+  const ctaUrl = data?.heroCtaUrl || "/servicos";
+  const isHash = ctaUrl.startsWith('#');
+
+  // Smart CTA handler: scroll if anchor exists on page, otherwise navigate to route
+  const handleCtaClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const target = document.querySelector(ctaUrl);
+    if (target) {
+      const lenis = (window as any).lenisInstance;
+      if (lenis) {
+        lenis.scrollTo(ctaUrl, { offset: -50 });
+      } else {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // Anchor not found on this page — treat the hash as a route
+      navigate(ctaUrl.replace(/^#/, '/'));
+    }
+  };
+
+  // Dividir o título pelas quebras de linha definidas no CMS (\n)
+  let lines = ['Resultados que o', 'campo comprova!'];
+
+  if (data?.heroTitle) {
+    let rawTitle = data.heroTitle;
+    // Se o título vier sem quebra de linha mas for o texto padrão, inserimos a quebra de linha para ficar idêntico ao Design
+    if (!rawTitle.includes('\n') && rawTitle.toLowerCase().includes('resultados que o campo comprova')) {
+      rawTitle = rawTitle.replace(/(resultados que o)\s+(campo comprova!?)/i, '$1\n$2');
+    }
+    
+    lines = rawTitle.split('\n').map(l => l.trim()).filter(Boolean);
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,12 +90,12 @@ export default function Hero() {
 
   return (
     <section id="hero" className={styles.hero} data-node-id="34:1004" ref={heroRef}>
-      {/* Background — Figma BgSessaoHero */}
+      {/* Background — Design BgSessaoHero */}
       <div className={styles.bgWrapper} aria-hidden="true">
         <div ref={parallaxRef} className={styles.parallaxWrapper}>
           <img
-            src={imgProperty1Default}
-            alt=""
+            src={bgImageUrl}
+            alt={(data?.heroImage && typeof data.heroImage === 'object') ? data.heroImage.alt : "Background Hero"}
             className={styles.bgImage}
           />
         </div>
@@ -62,51 +105,71 @@ export default function Hero() {
       {/* Content */}
       <div className={styles.contentWrapper}>
         <div className={styles.content}>
-          {/* Left column: Heading + CTA */}
-          <div className={styles.leftCol}>
-            {/* Title — Figma node 80:1652 / 80:1707 (text animation SVGs) */}
-            {/* Rendered as styled text for the web */}
+          {/* Top Row: Title on the left, Subtitle on the right */}
+          <div className={styles.titleDescRow}>
+            {/* Title — Layout / 80:1707 (text animation SVGs) */}
             <h1 className={styles.titleWrapper}>
-              <span className={styles.titleLine1}>
-                <AnimatedText text="Resultados" type="char" delay={0.6} stagger={0.02} sessionOnce={true} sessionKey="heroHome1" />
-              </span>
-              <span className={styles.titleLine2}>
-                <AnimatedText text="que o campo" type="char" delay={0.8} stagger={0.02} sessionOnce={true} sessionKey="heroHome2" />
-              </span>
-              <span className={styles.titleLine3}>
-                <AnimatedText text="comprova!" type="char" delay={1.0} stagger={0.02} sessionOnce={true} sessionKey="heroHome3" />
-              </span>
+              {lines.map((line, i) => (
+                <span 
+                  key={i} 
+                  className={styles.titleLine}
+                >
+                  <AnimatedText 
+                    text={line} 
+                    type="char" 
+                    delay={0.6 + i * 0.2} 
+                    stagger={0.02} 
+                    sessionOnce={true} 
+                    sessionKey={`heroHomeLine-${i}-${line}`} 
+                  />
+                </span>
+              ))}
             </h1>
 
-            {/* CTA Button — Figma BotaoNossasSolucoes node 54:74 */}
-            {/* width: 222px, height: 60px, bg: #fdfdfd, icon: #e1fe00 */}
-            <div className={styles.ctaWrapper}>
+            {/* Right column: Description text */}
+            <div className={styles.rightCol}>
+              <p 
+                className={styles.description} 
+                data-node-id="3:487"
+                style={{ whiteSpace: 'pre-line' }}
+              >
+                {subtitle}
+              </p>
+            </div>
+          </div>
+
+          {/* Bottom Row: CTA Button */}
+          <div className={styles.ctaWrapper}>
+            {isHash ? (
+              <a
+                href={ctaUrl}
+                onClick={handleCtaClick}
+                className="btn-pa white"
+              >
+                <span className="btn-label">{ctaLabel}</span>
+                <span className="btn-icon">
+                  <span className="material-symbols-rounded" style={{ fontSize: '24px', lineHeight: 1 }}>arrow_back</span>
+                </span>
+              </a>
+            ) : (
               <Link
-                to="/servicos"
+                to={ctaUrl}
                 className="btn-pa white"
                 data-node-id="54:74"
               >
-                <span className="btn-label">Nossas soluções</span>
+                <span className="btn-label">{ctaLabel}</span>
                 <span className="btn-icon">
                   <span className="material-symbols-rounded" style={{ fontSize: '24px', lineHeight: 1 }}>arrow_back</span>
                 </span>
               </Link>
-            </div>
-          </div>
-
-          {/* Right column: Description text */}
-          {/* Figma node 3:487: font-light, 20px, right aligned, top 436px */}
-          <div className={styles.rightCol}>
-            <p className={styles.description} data-node-id="3:487">
-              Consultoria agronômica especializada para produtores que buscam excelência, rentabilidade e segurança em cada hectare plantado.
-            </p>
+            )}
           </div>
         </div>
       </div>
 
       {/* Logo Carousel sits natively at the bottom of the Hero section */}
       <div className={styles.carouselWrapper}>
-        <LogoCarousel />
+        <LogoCarousel logos={data?.heroLogos} />
       </div>
     </section>
   );

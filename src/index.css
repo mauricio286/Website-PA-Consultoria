@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,300;0,400;0,500;0,700;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
-  /* Figma Design Tokens - exact colors from design */
-  --color-primary: #e1fe00;          /* Lime Green - exact Figma value */
+  /* Design Design Tokens - exact colors from design */
+  --color-primary: #e1fe00;          /* Lime Green - exact Design value */
   --color-primary-dark: #002d22;     /* Forest Dark Green */
   --color-bg-dark: #011c15;          /* Deep dark page background */
   --color-bg-dark2: #01281e;         
   --color-white: #ffffff;
-  --color-near-white: #ebebeb;       /* Figma text-light */
+  --color-near-white: #ebebeb;       /* Design text-light */
   --color-bg-white: #ffffff;
   --color-bg-gray: #eeeeee;          /* Testimonial card bg */
   --color-peach: #ffd087;            /* Stats card 1 bg */
@@ -24,7 +24,7 @@
   --color-green-stat: #4c7043;
   --color-green-stat-label: #596d43;
 
-  /* Typography - Figma uses Neulis Alt, substitute with Outfit */
+  /* Typography - Design uses Neulis Alt, substitute with Outfit */
   --font-display: 'Neulis Alt', 'Outfit', sans-serif;
   --font-body: 'DM Sans', sans-serif;
   --font-quote: 'Chivo', serif;
@@ -194,7 +194,7 @@ img {
   background-color: transparent;
 }
 
-/* Premium Buttons — match Figma exactly with sophisticated fill effect */
+/* Premium Buttons — match Design exactly with sophisticated fill effect */
 .btn-pa {
   display: inline-flex;
   align-items: center;

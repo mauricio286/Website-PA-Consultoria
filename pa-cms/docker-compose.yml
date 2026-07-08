@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+  # Banco de dados PostgreSQL para desenvolvimento local
+  postgres:
+    image: postgres:16-alpine
+    container_name: pa-cms-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: pa_cms
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - pa_cms_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pa_cms_postgres_data:

@@ -1,19 +1,33 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Hero from '../components/Hero';
+import { api } from '../services/api';
+import type { HomePageData } from '../services/api';
 import Introduction from '../components/Introduction';
 import Stats from '../components/Stats';
 import Methodology from '../components/Methodology';
 import Atuacao from '../components/Atuacao';
 import Parceria from '../components/Parceria';
 import Testimonials from '../components/Testimonials';
-import AnimatedText from '../components/AnimatedText';
+
+
 
 import { imgSessao4 } from '../assets';
 import styles from '../App.module.css';
 
 export default function Home() {
+  const [homeData, setHomeData] = useState<HomePageData | null>(null);
   const bannerRef = useRef<HTMLElement>(null);
   const bannerImgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    api.getHomePage()
+      .then((res) => {
+        setHomeData(res);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
   useEffect(() => {
     // Banner Parallax (Zoom suave com delay)
@@ -54,13 +68,18 @@ export default function Home() {
     };
   }, []);
 
+  // Banner central — CMS or static fallback
+  const bannerText = homeData?.bannerText || 'Sua próxima safra, pode ser ainda ';
+  const bannerTextAccent = homeData?.bannerTextAccent || 'melhor conosco!';
+  const bannerBgSrc = api.getMediaUrl(homeData?.bannerImage) || imgSessao4;
+
   return (
     <main>
       {/* Sessão 01 — Hero Banner with Logo Carousel */}
-      <Hero />
+      <Hero data={homeData} />
 
       {/* Sessão 02 — Introdução */}
-      <Introduction />
+      <Introduction data={homeData} />
 
       {/* Sessão 03 — Mid-page Banner */}
       <section 
@@ -71,7 +90,7 @@ export default function Home() {
       >
         <div className={styles.bannerBgWrapper} aria-hidden="true">
           <img
-            src={imgSessao4}
+            src={bannerBgSrc}
             alt=""
             className={styles.bannerBg}
             ref={bannerImgRef}
@@ -79,29 +98,31 @@ export default function Home() {
           <div className={styles.bannerOverlay} />
         </div>
         <div className={styles.bannerContent}>
-          <p className={styles.bannerText} data-node-id="29:895">
-            <AnimatedText text="Sua próxima safra, pode ser ainda " type="word" delay={0} stagger={0.05} />
-            <span className={styles.bannerTextAccent}>
-              <AnimatedText text="melhor conosco!" type="word" delay={0.4} stagger={0.05} />
-            </span>
+          <p 
+            className={styles.bannerText} 
+            data-node-id="29:895"
+            style={{ textAlign: homeData?.bannerTextAlign || 'center', whiteSpace: 'pre-line' }}
+          >
+            {bannerText}
+            <span className={styles.bannerTextAccent}>{bannerTextAccent}</span>
           </p>
         </div>
       </section>
 
       {/* Sessão 04 — Resultados / Stats */}
-      <Stats />
+      <Stats data={homeData} />
 
       {/* Pilares Metodológicos */}
-      <Methodology />
+      <Methodology data={homeData} />
 
       {/* Atuação (Mapa) */}
-      <Atuacao />
+      <Atuacao data={homeData} />
 
       {/* Carrossel de Parceria / Imagens */}
-      <Parceria />
-
+      <Parceria data={homeData} />
+      
       {/* Depoimentos */}
-      <Testimonials />
+      <Testimonials data={homeData} />
     </main>
   );
 }

@@ -35,7 +35,7 @@
 .scrollDownWrapper {
   position: absolute;
   bottom: -30px; /* Halfway over the edge */
-  left: calc(40% + 162px); /* Matched from Figma */
+  left: calc(40% + 162px); /* Matched from Design */
   z-index: 2;
   background-color: var(--color-white);
   padding: 5px;
@@ -82,7 +82,7 @@
 .introLeft {
   display: flex;
   flex-direction: column;
-  gap: 29px; /* From Figma */
+  gap: 29px; /* From Design */
   flex-shrink: 0;
   width: 100%; /* Fill full width */
 }

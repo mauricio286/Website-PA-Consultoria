@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AnimatedText from '../../../../components/AnimatedText';
 import styles from './Ecosystem.module.css';
+import { api, type ServicesPageData } from '../../../../services/api';
 import { 
   imgLavoura,
   imgEventos,
@@ -9,7 +10,11 @@ import {
   imgAldBioenergia
 } from '../../../../assets';
 
-export default function Ecosystem() {
+interface EcosystemProps {
+  data?: ServicesPageData | null;
+}
+
+export default function Ecosystem({ data }: EcosystemProps) {
   const gridRef = useRef<HTMLDivElement>(null);
   const [isGridVisible, setIsGridVisible] = useState(false);
 
@@ -31,18 +36,56 @@ export default function Ecosystem() {
     return () => observer.disconnect();
   }, []);
 
+  const badge = data?.ecosystemBadge || "nossa força no campo";
+  const titleNormal = data?.ecosystemTitle ?? (data ? "" : "sistema");
+  const titleAccent = data?.ecosystemSubtitle ?? (data ? "" : "Eco");
+
+  const staticCards = [
+    {
+      title: "ALD Bioenergia",
+      image: imgAldBioenergia,
+      link: "/aldbioenergia",
+    },
+    {
+      title: "Lavoura",
+      image: imgLavoura,
+      link: "/lavoura",
+    },
+    {
+      title: "Centro de Pesquisa",
+      image: imgCentroPesquisa,
+      link: "/centropesquisa",
+    },
+    {
+      title: "Palestras e Eventos",
+      image: imgEventos,
+      link: "/palestras",
+    },
+  ];
+
+  const cardsToRender = data?.ecosystemCards && data.ecosystemCards.length > 0
+    ? data.ecosystemCards
+    : staticCards;
+
   return (
     <section className={styles.ecosystemSection}>
       <div className={styles.ecosystemContainer}>
         <div className={styles.tagWrapperCenter}>
            <span className="tag-badge dark" style={{ borderColor: '#88a668', color: '#455336', backgroundColor: 'transparent' }}>
-             nossa força no campo
+             {badge}
            </span>
         </div>
 
         <h2 className={styles.ecosystemTitle}>
-          <span className={styles.highlight}><AnimatedText text="Eco" type="word" /></span>
-          <AnimatedText text="sistema" type="word" delay={0.1} />
+          {titleAccent && (
+            <span className={styles.highlight}>
+              <AnimatedText text={titleAccent} type="word" />
+              {" "}
+            </span>
+          )}
+          {titleNormal && (
+            <AnimatedText text={titleNormal} type="word" delay={titleAccent ? 0.1 : 0} />
+          )}
         </h2>
 
         <div ref={gridRef} className={`${styles.ecosystemGrid} ${isGridVisible ? styles.animateEcosystem : ''}`} style={{ marginTop: '0px' }}>
@@ -69,57 +112,44 @@ export default function Ecosystem() {
 
           {/* Cards do ecossistema */}
           <div className={styles.ecoCardsWrapper}>
-             <div className={`${styles.ecoCard} ${styles.cardDarkGreen}`}>
-               <div className={styles.ecoImageWrapper}>
-                 <img src={imgAldBioenergia} alt="ALD Bioenergia" />
-               </div>
-               <h3 className={styles.ecoCardTitle}>ALD Bioenergia</h3>
-               <div className={styles.ecoCardButton}>
-                  <Link to="/aldbioenergia" className="btn-pa white">
-                    <span className="btn-label">Ver mais</span>
-                    <span className="btn-icon"><span className="material-symbols-rounded">arrow_back</span></span>
-                  </Link>
-               </div>
-             </div>
+            {cardsToRender.map((card: any, idx: number) => {
+              const isEven = idx % 2 === 0;
+              const cardClass = isEven ? styles.cardDarkGreen : styles.cardGreen;
+              
+              let imgSource = "";
+              if (card.image && typeof card.image === 'object' && 'url' in card.image) {
+                imgSource = api.getMediaUrl(card.image);
+              } else if (typeof card.image === 'string' && card.image) {
+                imgSource = api.getMediaUrl(card.image);
+              } else {
+                imgSource = staticCards[idx]?.image || "";
+              }
 
-             <div className={`${styles.ecoCard} ${styles.cardGreen}`}>
-               <div className={styles.ecoImageWrapper}>
-                 <img src={imgLavoura} alt="Lavoura" />
-               </div>
-               <h3 className={styles.ecoCardTitle}>Lavoura</h3>
-               <div className={styles.ecoCardButton}>
-                  <Link to="/lavoura" className="btn-pa white">
-                    <span className="btn-label">Ver mais</span>
-                    <span className="btn-icon"><span className="material-symbols-rounded">arrow_back</span></span>
-                  </Link>
-               </div>
-             </div>
+              const isExternal = card.link?.startsWith('http') || card.link?.startsWith('www');
+              const linkUrl = card.link?.startsWith('www') ? `https://${card.link}` : (card.link || '#');
 
-             <div className={`${styles.ecoCard} ${styles.cardDarkGreen}`}>
-               <div className={styles.ecoImageWrapper}>
-                 <img src={imgCentroPesquisa} alt="Centro de Pesquisa" />
-               </div>
-               <h3 className={styles.ecoCardTitle}>Centro de Pesquisa</h3>
-               <div className={styles.ecoCardButton}>
-                  <Link to="/centropesquisa" className="btn-pa white">
-                    <span className="btn-label">Ver mais</span>
-                    <span className="btn-icon"><span className="material-symbols-rounded">arrow_back</span></span>
-                  </Link>
-               </div>
-             </div>
-
-             <div className={`${styles.ecoCard} ${styles.cardGreen}`}>
-               <div className={styles.ecoImageWrapper}>
-                 <img src={imgEventos} alt="Palestras e Eventos" />
-               </div>
-               <h3 className={styles.ecoCardTitle}>Palestras e Eventos</h3>
-               <div className={styles.ecoCardButton}>
-                  <Link to="/palestras" className="btn-pa white">
-                    <span className="btn-label">Ver mais</span>
-                    <span className="btn-icon"><span className="material-symbols-rounded">arrow_back</span></span>
-                  </Link>
-               </div>
-             </div>
+              return (
+                <div key={card.id || idx} className={`${styles.ecoCard} ${cardClass}`}>
+                  <div className={styles.ecoImageWrapper}>
+                    <img src={imgSource} alt={card.title} />
+                  </div>
+                  <h3 className={styles.ecoCardTitle}>{card.title}</h3>
+                  <div className={styles.ecoCardButton}>
+                    {isExternal ? (
+                      <a href={linkUrl} target="_blank" rel="noopener noreferrer" className="btn-pa white">
+                        <span className="btn-label">Ver mais</span>
+                        <span className="btn-icon"><span className="material-symbols-rounded">arrow_back</span></span>
+                      </a>
+                    ) : (
+                      <Link to={linkUrl} className="btn-pa white">
+                        <span className="btn-label">Ver mais</span>
+                        <span className="btn-icon"><span className="material-symbols-rounded">arrow_back</span></span>
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

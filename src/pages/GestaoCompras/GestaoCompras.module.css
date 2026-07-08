@@ -262,3 +262,17 @@
     gap: 30px;
   }
 }
+
+.mobileImage {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .desktopImage {
+    display: none;
+  }
+  .mobileImage {
+    display: block;
+    margin: 30px 0;
+  }
+}

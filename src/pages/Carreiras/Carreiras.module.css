@@ -163,7 +163,7 @@
 }
 
 /* ── Card de Vaga ── */
-/* Figma: 385×409px, borda arredondada */
+/* Design: 385×409px, borda arredondada */
 .vagaCard {
   flex: 0 0 385px;
   min-height: 409px;
@@ -184,7 +184,7 @@
   transform: translateY(-3px);
 }
 
-/* Card selecionado — igual ao Figma: fundo branco + borda verde accent */
+/* Card selecionado — conforme especificações de design: fundo branco + borda verde accent */
 .vagaCardSelected {
   border-color: var(--color-green-accent) !important;
   box-shadow: 0 8px 32px rgba(136, 166, 104, 0.15) !important;
@@ -219,7 +219,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* texto desce para o fundo, como no Figma */
+  justify-content: flex-end; /* texto desce para o fundo, conforme o design */
   gap: 14px;
   padding-bottom: 5px;
 }
@@ -528,7 +528,7 @@
   display: none;
 }
 
-/* Botão Enviar — fundo lime full-width, igual ao Figma */
+/* Botão Enviar — fundo lime full-width, conforme especificações de design */
 .submitBtn {
   width: 100%;
   height: 45px;

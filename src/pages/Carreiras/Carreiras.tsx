@@ -2,134 +2,118 @@ import { useState, useRef, useEffect } from 'react';
 import styles from './Carreiras.module.css';
 import AnimatedText from '../../components/AnimatedText';
 import { imgBgCarreiras } from '../../assets';
+import { api, type CareersPageData, type Job } from '../../services/api';
+import LexicalRenderer from '../../components/LexicalRenderer';
 
-// ─── Dados das Vagas ─────────────────────────────────────────────────────────
-interface Vaga {
-  id: number;
-  data: string;
-  titulo: string;
-  descricaoCurta: string;
-  descricaoCompleta: string;
-  requisitos: string[];
-  atribuicoes: string[];
-}
-
-const vagas: Vaga[] = [
+// ─── Dados de Fallback (caso API esteja vazia) ──────────────────────────────────
+const fallbackVagas: Job[] = [
   {
-    id: 1,
-    data: 'Aberta em 12/03/2027',
-    titulo: 'Analista Administrativo Corporativo',
-    descricaoCurta:
-      'Garantir a organização e a eficiência dos processos financeiros, fiscais e administrativos da empresa...',
-    descricaoCompleta:
-      'Garantir a organização e a eficiência dos processos financeiros, fiscais e administrativos da empresa, assegurando a conformidade com as obrigações legais e fiscais, o controle eficaz das despesas, a gestão de fornecedores e o suporte à coordenação administrativa financeira.',
-    requisitos: [
-      'CNH categoria AB',
-      'Experiência como analista administrativo financeiro',
-      'Graduação em Administração, Ciências Contábeis ou áreas correlatas',
-      'Domínio das rotinas administrativas e financeiras',
-      'Comunicação assertiva com fornecedores e clientes',
-      'Domínio em Excel e conhecimento em Power BI',
-      'Pacote Office em nível intermediário',
+    id: '1',
+    title: 'Analista Administrativo Corporativo',
+    summary: 'Garantir a organização e a eficiência dos processos financeiros, fiscais e administrativos da empresa...',
+    description: null,
+    requirements: [
+      { item: 'CNH categoria AB' },
+      { item: 'Experiência como analista administrativo financeiro' },
+      { item: 'Graduação em Administração, Ciências Contábeis ou áreas correlatas' },
+      { item: 'Domínio das rotinas administrativas e financeiras' },
+      { item: 'Comunicação assertiva com fornecedores e clientes' },
+      { item: 'Domínio em Excel e conhecimento em Power BI' },
+      { item: 'Pacote Office em nível intermediário' },
     ],
-    atribuicoes: [
-      'Realizar a conciliação bancária',
-      'Lançar notas fiscais no sistema',
-      'Emitir notas fiscais conforme necessidade',
-      'Responsável pelas rotinas de contas a pagar e contas a receber',
-      'Organizar o movimento mensal (fluxos e documentos financeiros)',
-      'Manter organizado o arquivo digital e físico de documentos',
+    responsibilities: [
+      { item: 'Realizar a conciliação bancária' },
+      { item: 'Lançar notas fiscais no sistema' },
+      { item: 'Emitir notas fiscais conforme necessidade' },
+      { item: 'Responsável pelas rotinas de contas a pagar e contas a receber' },
+      { item: 'Organizar o movimento mensal (fluxos e documentos financeiros)' },
+      { item: 'Manter organizado o arquivo digital e físico de documentos' },
     ],
+    status: 'open',
+    openingDate: '2027-03-12',
   },
   {
-    id: 2,
-    data: 'Aberta em 12/03/2027',
-    titulo: 'Analista Centro de Operações Agrícolas (COA)',
-    descricaoCurta:
-      'Garantir a organização e a eficiência dos processos financeiros, fiscais e administrativos...',
-    descricaoCompleta:
-      'Responsável por coordenar e monitorar as operações agrícolas no centro de comando, garantindo eficiência operacional e comunicação entre equipes de campo e gestão estratégica.',
-    requisitos: [
-      'Graduação em Agronomia ou áreas correlatas',
-      'Experiência em gestão de operações agrícolas',
-      'Conhecimento em agricultura de precisão',
-      'Habilidade com sistemas de monitoramento remoto',
-      'Pacote Office intermediário/avançado',
+    id: '2',
+    title: 'Analista Centro de Operações Agrícolas (COA)',
+    summary: 'Garantir a organização e a eficiência dos processos financeiros, fiscais e administrativos...',
+    description: null,
+    requirements: [
+      { item: 'Graduação em Agronomia ou áreas correlatas' },
+      { item: 'Experiência em gestão de operações agrícolas' },
+      { item: 'Conhecimento em agricultura de precisão' },
+      { item: 'Habilidade com sistemas de monitoramento remoto' },
+      { item: 'Pacote Office intermediário/avançado' },
     ],
-    atribuicoes: [
-      'Monitorar operações de campo em tempo real',
-      'Coordenar equipes e recursos operacionais',
-      'Elaborar relatórios de desempenho agrícola',
-      'Apoiar decisões estratégicas com dados operacionais',
-      'Garantir conformidade com protocolos de segurança',
+    responsibilities: [
+      { item: 'Monitorar operações de campo em tempo real' },
+      { item: 'Coordenar equipes e recursos operacionais' },
+      { item: 'Elaborar relatórios de desempenho agrícola' },
+      { item: 'Apoiar decisões estratégicas com dados operacionais' },
+      { item: 'Garantir conformidade com protocolos de segurança' },
     ],
+    status: 'open',
+    openingDate: '2027-03-12',
   },
   {
-    id: 3,
-    data: 'Aberta em 12/03/2027',
-    titulo: 'Estágio Obrigatório',
-    descricaoCurta:
-      'Garantir a organização e a eficiência dos processos financeiros, fiscais e administrativos...',
-    descricaoCompleta:
-      'Oportunidade de estágio obrigatório para estudantes de cursos de Agronomia, Administração ou áreas correlatas, com foco em aprendizado prático nas operações do Grupo PA.',
-    requisitos: [
-      'Cursando Agronomia, Administração ou áreas correlatas',
-      'Disponibilidade de 20 a 30 horas semanais',
-      'Interesse no agronegócio',
-      'Boa comunicação e proatividade',
+    id: '3',
+    title: 'Estágio Obrigatório',
+    summary: 'Garantir a organização e a eficiência dos processos financeiros, fiscais e administrativos...',
+    description: null,
+    requirements: [
+      { item: 'Cursando Agronomia, Administração ou áreas correlatas' },
+      { item: 'Disponibilidade de 20 a 30 horas semanais' },
+      { item: 'Interesse no agronegócio' },
+      { item: 'Boa comunicação e proatividade' },
     ],
-    atribuicoes: [
-      'Apoio às atividades administrativas',
-      'Participar de visitas a campo sob supervisão',
-      'Auxiliar na elaboração de relatórios',
-      'Apoio a projetos internos da consultoria',
+    responsibilities: [
+      { item: 'Apoio às atividades administrativas' },
+      { item: 'Participar de visitas a campo sob supervisão' },
+      { item: 'Auxiliar na elaboração de relatórios' },
+      { item: 'Apoio a projetos internos da consultoria' },
     ],
+    status: 'open',
+    openingDate: '2027-03-12',
   },
   {
-    id: 4,
-    data: 'Aberta em 12/03/2027',
-    titulo: 'Trabalhador Volante da Agricultura',
-    descricaoCurta:
-      'Garantir a organização e a eficiência dos processos financeiros, fiscais e administrativos...',
-    descricaoCompleta:
-      'Execução de atividades operacionais no campo, incluindo plantio, colheita e manutenção de lavouras, sob supervisão da equipe técnica do Grupo PA.',
-    requisitos: [
-      'Experiência em atividades rurais',
-      'Disponibilidade para trabalho em campo',
-      'CNH categoria B (desejável)',
-      'Resistência física para atividades ao ar livre',
+    id: '4',
+    title: 'Trabalhador Volante da Agricultura',
+    summary: 'Garantir a organização e a eficiência dos processos financeiros, fiscais e administrativos...',
+    description: null,
+    requirements: [
+      { item: 'Experiência em atividades rurais' },
+      { item: 'Disponibilidade para trabalho em campo' },
+      { item: 'CNH categoria B (desejável)' },
+      { item: 'Resistência física para atividades ao ar livre' },
     ],
-    atribuicoes: [
-      'Realizar atividades de plantio e colheita',
-      'Manutenção de lavouras e equipamentos',
-      'Aplicação de insumos conforme orientação técnica',
-      'Controle e registro de atividades diárias',
+    responsibilities: [
+      { item: 'Realizar atividades de plantio e colheita' },
+      { item: 'Manutenção de lavouras e equipamentos' },
+      { item: 'Aplicação de insumos conforme orientação técnica' },
+      { item: 'Controle e registro de atividades diárias' },
     ],
-  },
-  {
-    id: 5,
-    data: 'Aberta em 12/03/2027',
-    titulo: 'Analista Administrativo Corporativo',
-    descricaoCurta:
-      'Garantir a organização e a eficiência dos processos financeiros, fiscais e administrativos...',
-    descricaoCompleta:
-      'Garantir a organização e a eficiência dos processos financeiros, fiscais e administrativos da empresa, assegurando a conformidade com as obrigações legais e fiscais, o controle eficaz das despesas, a gestão de fornecedores e o suporte à coordenação administrativa financeira.',
-    requisitos: [
-      'CNH categoria AB',
-      'Experiência como analista administrativo financeiro',
-      'Graduação em Administração, Ciências Contábeis ou áreas correlatas',
-      'Domínio das rotinas administrativas e financeiras',
-      'Domínio em Excel e conhecimento em Power BI',
-    ],
-    atribuicoes: [
-      'Realizar a conciliação bancária',
-      'Lançar notas fiscais no sistema',
-      'Responsável pelas rotinas de contas a pagar e contas a receber',
-      'Organizar o movimento mensal',
-      'Manter organizado o arquivo digital e físico de documentos',
-    ],
+    status: 'open',
+    openingDate: '2027-03-12',
   },
 ];
+
+// ─── Auxiliar de Formatação de Data ─────────────────────────────────────────────
+const formatDate = (dateStr?: string) => {
+  if (!dateStr) return 'Aberta';
+  try {
+    const datePart = dateStr.split('T')[0];
+    const parts = datePart.split('-');
+    if (parts.length === 3) {
+      return `Aberta em ${parts[2]}/${parts[1]}/${parts[0]}`;
+    }
+    const d = new Date(dateStr);
+    const day = String(d.getUTCDate()).padStart(2, '0');
+    const month = String(d.getUTCMonth() + 1).padStart(2, '0');
+    const year = d.getUTCFullYear();
+    return `Aberta em ${day}/${month}/${year}`;
+  } catch (e) {
+    return 'Aberta';
+  }
+};
 
 // ─── Formulário ──────────────────────────────────────────────────────────────
 interface FormData {
@@ -162,7 +146,9 @@ const initialForm: FormData = {
 
 // ─── Componente Principal ────────────────────────────────────────────────────
 export default function Carreiras() {
-  const [vagaSelecionada, setVagaSelecionada] = useState<Vaga | null>(null);
+  const [vagas, setVagas] = useState<Job[]>([]);
+  const [careersPage, setCareersPage] = useState<CareersPageData | null>(null);
+  const [vagaSelecionada, setVagaSelecionada] = useState<Job | null>(null);
   const [formData, setFormData] = useState(initialForm);
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -181,6 +167,25 @@ export default function Carreiras() {
   const dragScrollLeft = useRef(0);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+    api.getCareersPage()
+      .then(data => {
+        setCareersPage(data);
+      })
+      .catch(err => {
+        console.error('Erro ao carregar dados da página Carreiras:', err);
+      });
+
+    api.getJobs()
+      .then(data => {
+        setVagas(data);
+      })
+      .catch(err => {
+        console.error('Erro ao carregar vagas:', err);
+      });
+  }, []);
+
+  useEffect(() => {
     const updateAlignment = () => {
       if (alignRef.current) {
         const rect = alignRef.current.getBoundingClientRect();
@@ -191,7 +196,7 @@ export default function Carreiras() {
     updateAlignment();
     window.addEventListener('resize', updateAlignment);
     return () => window.removeEventListener('resize', updateAlignment);
-  }, []);
+  }, [vagas, careersPage]);
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!carouselRef.current) return;
@@ -221,7 +226,7 @@ export default function Carreiras() {
     carouselRef.current.scrollBy({ left: dir === 'next' ? amount : -amount, behavior: 'smooth' });
   };
 
-  const handleSelectVaga = (vaga: Vaga) => {
+  const handleSelectVaga = (vaga: Job) => {
     if (vagaSelecionada?.id === vaga.id) {
       setVagaSelecionada(null);
       setFormData(initialForm);
@@ -277,12 +282,44 @@ export default function Carreiras() {
       alert('Por favor, faça o upload do seu currículo em formato PDF ou Word antes de enviar.');
       return;
     }
+    if (!vagaSelecionada) {
+      alert('Por favor, selecione uma vaga antes de enviar.');
+      return;
+    }
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitted(true);
-    }, 1500);
+
+    const submissionData = new FormData();
+    submissionData.append('jobId', vagaSelecionada.id);
+    submissionData.append('name', formData.nome);
+    submissionData.append('email', formData.email);
+    submissionData.append('phone', formData.celular);
+    submissionData.append('cpf', formData.cpf);
+    submissionData.append('rg', formData.rg);
+    submissionData.append('state', formData.estado);
+    submissionData.append('city', formData.cidade);
+    submissionData.append('education', formData.formacao);
+    submissionData.append('qualifications', formData.qualificacoes);
+    submissionData.append('experience', formData.experiencia);
+    submissionData.append('resume', formData.curriculo);
+
+    api.submitJobApplication(submissionData)
+      .then(res => {
+        setIsSubmitting(false);
+        if (res.success) {
+          setSubmitted(true);
+        } else {
+          alert(res.message || 'Erro ao enviar candidatura.');
+        }
+      })
+      .catch(err => {
+        setIsSubmitting(false);
+        console.error('Erro ao enviar candidatura:', err);
+        alert('Erro de conexão ao enviar candidatura. Tente novamente.');
+      });
   };
+
+  const bgImage = careersPage?.heroImage ? api.getMediaUrl(careersPage.heroImage) : imgBgCarreiras;
+  const displayVagas = vagas.length > 0 ? vagas : fallbackVagas;
 
   return (
     <main className={`${styles.carreirasPage} page-transition-enter`}>
@@ -290,7 +327,7 @@ export default function Carreiras() {
       {/* ── Sessão 01 — Hero ─────────────────────────────────────────────── */}
       <section className={styles.heroSection}>
         <div className={styles.heroBgWrapper}>
-          <img src={imgBgCarreiras} alt="Banner Carreiras" className={styles.heroBg} />
+          <img src={bgImage} alt="Banner Carreiras" className={styles.heroBg} />
         </div>
         <div className={styles.scrollDownWrapper}>
           <a href="#vagas" className={styles.scrollDownButton} aria-label="Ver vagas">
@@ -307,21 +344,31 @@ export default function Carreiras() {
         {/* Intro */}
         <div className={styles.introContainer}>
           <h2 className={styles.introTitle}>
-            <AnimatedText text="Faça parte " type="word" />
+            <AnimatedText text={careersPage?.title || "Faça parte "} type="word" />
             <span className={styles.highlight}>
-              <AnimatedText text="da PA" type="word" delay={0.15} />
+              <AnimatedText text={careersPage?.titleHighlight || "da PA"} type="word" delay={0.15} />
             </span>
           </h2>
             <div className={styles.introText} ref={alignRef}>
-              <p style={{ marginBottom: '16px' }}>
-                No Grupo PA, entendemos que as melhores oportunidades não são necessariamente as mais fáceis, mas aquelas que desafiam, desenvolvem e permitem crescimento profissional e pessoal.
-              </p>
-              <p style={{ marginBottom: '16px' }}>
-                Buscamos pessoas comprometidas, curiosas e dispostas a evoluir todos os dias. Pessoas que valorizam o trabalho em equipe, assumem responsabilidades e enxergam os desafios como oportunidades de aprendizado.
-              </p>
-              <p>
-                Seja na consultoria, na pesquisa, na produção agrícola ou nos demais negócios do Grupo PA, trabalhamos para construir uma equipe forte, preparada e apaixonada pelo que faz.
-              </p>
+              {careersPage?.introText ? (
+                careersPage.introText.split(/\r?\n\r?\n+/).map((para, idx, arr) => (
+                  <p key={idx} style={{ marginBottom: idx < arr.length - 1 ? '16px' : '0px' }}>
+                    {para}
+                  </p>
+                ))
+              ) : (
+                <>
+                  <p style={{ marginBottom: '16px' }}>
+                    No Grupo PA, entendemos que as melhores oportunidades não são necessariamente as mais fáceis, mas aquelas que desafiam, desenvolvem e permitem crescimento profissional e pessoal.
+                  </p>
+                  <p style={{ marginBottom: '16px' }}>
+                    Buscamos pessoas comprometidas, curiosas e dispostas a evoluir todos os dias. Pessoas que valorizam o trabalho em equipe, assumem responsabilidades e enxergam os desafios como oportunidades de aprendizado.
+                  </p>
+                  <p style={{ marginBottom: '0px' }}>
+                    Seja na consultoria, na pesquisa, na produção agrícola ou nos demais negócios do Grupo PA, trabalhamos para construir uma equipe forte, preparada e apaixonada pelo que faz.
+                  </p>
+                </>
+              )}
             </div>
         </div>
 
@@ -346,19 +393,19 @@ export default function Carreiras() {
           </div>
 
           {/* Track scrollável */}
-            <div
-              className={styles.carouselTrack}
-              ref={carouselRef}
-              onMouseDown={handleMouseDown}
-              onMouseUp={handleMouseUp}
-              onMouseLeave={handleMouseUp}
-              onMouseMove={handleMouseMove}
-              style={{ 
-                marginLeft: trackMarginLeft ? `${trackMarginLeft}px` : undefined,
-                width: trackMarginLeft ? `calc(100% - ${trackMarginLeft}px)` : '100%'
-              }}
-            >
-              {vagas.map(vaga => {
+          <div
+            className={styles.carouselTrack}
+            ref={carouselRef}
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+            onMouseMove={handleMouseMove}
+            style={{ 
+              marginLeft: trackMarginLeft ? `${trackMarginLeft}px` : undefined,
+              width: trackMarginLeft ? `calc(100% - ${trackMarginLeft}px)` : '100%'
+            }}
+          >
+            {displayVagas.map(vaga => {
               const isSelected = vagaSelecionada?.id === vaga.id;
               return (
                 <div
@@ -368,13 +415,13 @@ export default function Carreiras() {
                 >
                   {/* Data */}
                   <div className={styles.cardTop}>
-                    <span className={styles.vagaData}>{vaga.data}</span>
+                    <span className={styles.vagaData}>{formatDate(vaga.openingDate)}</span>
                   </div>
 
                   {/* Título + descrição */}
                   <div className={styles.cardBody}>
-                    <h3 className={styles.vagaTitulo}>{vaga.titulo}</h3>
-                    <p className={styles.vagaDescricao}>{vaga.descricaoCurta}</p>
+                    <h3 className={styles.vagaTitulo}>{vaga.title}</h3>
+                    <p className={styles.vagaDescricao}>{vaga.summary}</p>
                   </div>
 
                   {/* Divisória */}
@@ -386,9 +433,16 @@ export default function Carreiras() {
                       className={`btn-pa ${isSelected ? 'green-accent' : 'gray'}`}
                       onClick={() => handleSelectVaga(vaga)}
                       aria-pressed={isSelected}
+                      style={vaga.status !== 'open' && !isSelected ? { opacity: 0.7 } : undefined}
                     >
                       <span className="btn-label">
-                        {isSelected ? 'Aplicando...' : 'Aplicar'}
+                        {isSelected
+                          ? vaga.status === 'open' ? 'Aplicando...' : 'Visualizando...'
+                          : vaga.status === 'open'
+                            ? 'Aplicar'
+                            : vaga.status === 'paused'
+                              ? 'Pausada'
+                              : 'Encerrada'}
                       </span>
                       <span className="btn-icon">
                         <span className={`material-symbols-rounded ${isSelected ? styles.closeIcon : ''}`}>
@@ -409,11 +463,17 @@ export default function Carreiras() {
             {/* Cabeçalho da vaga */}
             <div className={styles.vagaDetalheHeader}>
               <h2 className={styles.vagaDetalheTitulo}>
-                <AnimatedText text={vagaSelecionada.titulo} type="word" once={false} />
+                <AnimatedText text={vagaSelecionada.title} type="word" once={false} />
               </h2>
-              <p className={styles.vagaDetalheDesc}>
-                {vagaSelecionada.descricaoCompleta}
-              </p>
+              {vagaSelecionada.description ? (
+                <div className={styles.vagaDetalheDesc}>
+                  <LexicalRenderer content={vagaSelecionada.description} />
+                </div>
+              ) : (
+                <p className={styles.vagaDetalheDesc}>
+                  {vagaSelecionada.summary}
+                </p>
+              )}
             </div>
 
             {/* Requisitos + Atribuições */}
@@ -421,23 +481,53 @@ export default function Carreiras() {
               <div className={styles.vagaColuna}>
                 <h4 className={styles.vagaColunaTitle}>Requisitos</h4>
                 <ul className={styles.vagaLista}>
-                  {vagaSelecionada.requisitos.map((req, i) => (
-                    <li key={i}>{req}</li>
-                  ))}
+                  {vagaSelecionada.requirements && vagaSelecionada.requirements.length > 0 ? (
+                    vagaSelecionada.requirements.map((req, i) => (
+                      <li key={req.id || i}>{req.item}</li>
+                    ))
+                  ) : (
+                    <li>Nenhum requisito especificado</li>
+                  )}
                 </ul>
               </div>
               <div className={styles.vagaColuna}>
                 <h4 className={styles.vagaColunaTitle}>Atribuições</h4>
                 <ul className={styles.vagaLista}>
-                  {vagaSelecionada.atribuicoes.map((atr, i) => (
-                    <li key={i}>{atr}</li>
-                  ))}
+                  {vagaSelecionada.responsibilities && vagaSelecionada.responsibilities.length > 0 ? (
+                    vagaSelecionada.responsibilities.map((atr, i) => (
+                      <li key={atr.id || i}>{atr.item}</li>
+                    ))
+                  ) : (
+                    <li>Nenhuma atribuição especificada</li>
+                  )}
                 </ul>
               </div>
             </div>
 
             {/* Formulário */}
-            {submitted ? (
+            {vagaSelecionada.status !== 'open' ? (
+              <div className={styles.successMessage} style={{ backgroundColor: 'var(--color-bg-light)', border: '1px solid var(--theme-elevation-200)' }}>
+                <span className="material-symbols-rounded" style={{ fontSize: '3rem', color: 'var(--theme-elevation-400)', marginBottom: '1rem' }}>
+                  info
+                </span>
+                <h3>Inscrições Suspensas</h3>
+                <p>
+                  Esta vaga está temporariamente <strong>{vagaSelecionada.status === 'paused' ? 'Pausada' : 'Encerrada'}</strong> e não está aceitando novas candidaturas no momento.
+                </p>
+                <button
+                  className="btn-pa gray"
+                  onClick={() => {
+                    setVagaSelecionada(null);
+                    setFormData(initialForm);
+                  }}
+                >
+                  <span className="btn-label">Voltar para a listagem</span>
+                  <span className="btn-icon">
+                    <span className="material-symbols-rounded">arrow_back</span>
+                  </span>
+                </button>
+              </div>
+            ) : submitted ? (
               <div className={styles.successMessage}>
                 <span className={`material-symbols-rounded ${styles.successIcon}`}>
                   check_circle
@@ -445,7 +535,7 @@ export default function Carreiras() {
                 <h3>Candidatura enviada!</h3>
                 <p>
                   Recebemos sua candidatura para{' '}
-                  <strong>{vagaSelecionada.titulo}</strong>.{' '}
+                  <strong>{vagaSelecionada.title}</strong>.{' '}
                   Nossa equipe entrará em contato em breve.
                 </p>
                 <button

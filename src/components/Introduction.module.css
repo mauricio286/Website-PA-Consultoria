@@ -1,4 +1,4 @@
-/* Introduction — Figma node 16:522 (Sessão 2) */
+/* Introduction — Layout (Sessão 2) */
 /* bg: white, px: 195px, py: 120px, h: 659px, gap: 85px */
 
 .intro {
@@ -26,7 +26,7 @@
   max-width: 100%;
 }
 
-/* Main paragraph — Figma node 16:525 */
+/* Main paragraph — Layout */
 /* font: DM Sans Medium 32px, tracking: -0.64px, color #303030, line-height: 39px */
 .mainText {
   font-family: var(--font-body);
@@ -39,14 +39,14 @@
   margin-top: 10px;
 }
 
-/* Button wrapper — Figma: bottom of left column, h=84px, justify-end */
+/* Button wrapper — Design: bottom of left column, h=84px, justify-end */
 .btnWrapper {
   display: flex;
   align-items: flex-end;
   height: 84px;
 }
 
-/* Right: Symbol Logo — Figma node 122:1934 */
+/* Right: Symbol Logo — Layout */
 .rightCol {
   display: flex;
   flex-direction: column;
@@ -71,12 +71,12 @@
    will-change here (not on the wrapper) ensures it's rasterized
    at the SCALED resolution — so no GPU upscaling blur. */
 .imageScaler {
-  transform: scale(1.35) translateX(100px);
+  transform: scale(1.65) translateX(150px);
   transform-origin: center right;
   will-change: transform;
 }
 
-/* Figma node 677:894 */
+/* Layout */
 .image {
   width: 100%;
   height: auto;

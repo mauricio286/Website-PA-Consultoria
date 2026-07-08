@@ -1,6 +1,8 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.css';
 import { imgLogoPa } from '../assets';
+import { api, type FooterSettingsData } from '../services/api';
 
 // Standard inline SVGs for perfectly scaled and colored icons
 const IconLinkedIn = () => (
@@ -30,6 +32,31 @@ const IconYouTube = () => (
 );
 
 export default function Footer() {
+  const [footerData, setFooterData] = useState<FooterSettingsData | null>(null);
+
+  useEffect(() => {
+    api.getFooterSettings()
+      .then(res => setFooterData(res))
+      .catch(err => console.error('Erro ao carregar rodapé:', err));
+  }, []);
+
+  const staticAddresses = [
+    {
+      label: "Matriz Tangará",
+      text: "Av. Brasil, 2453 - Jardim Cidade Alta, Tangará da Serra - MT, 78306-157",
+      mapsUrl: "https://www.google.com/maps/place/-14.6335131,-57.5054472"
+    },
+    {
+      label: "Filial Diamantino",
+      text: "Rod. BR-364, KM 724 + 15Km à direita - Zona Rural, Diamantino - MT, 78304-000",
+      mapsUrl: "https://www.google.com/maps/place/-14.053104768419136,-57.302202616270456"
+    }
+  ];
+
+  const addressesToRender = footerData?.addresses && footerData.addresses.length > 0
+    ? footerData.addresses
+    : staticAddresses;
+
   return (
     <footer id="contact" className={styles.footer} data-node-id="36:1511">
       <div className={styles.container} data-node-id="36:1775">
@@ -48,7 +75,6 @@ export default function Footer() {
             </a>
             
 
-
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="Instagram">
               <IconInstagram />
             </a>
@@ -64,23 +90,17 @@ export default function Footer() {
 
           {/* Addresses with maps links */}
           <div className={styles.addresses} data-node-id="36:1599">
-            <a 
-              className={styles.addressLink} 
-              href="https://www.google.com/maps/place/-14.6335131,-57.5054472" 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              <strong>Matriz Tangará:</strong> Av. Brasil, 2453 - Jardim Cidade Alta, Tangará da Serra - MT, 78306-157
-            </a>
-            
-            <a 
-              className={styles.addressLink} 
-              href="https://www.google.com/maps/place/-14.053104768419136,-57.302202616270456" 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              <strong>Filial Diamantino:</strong> Rod. BR-364, KM 724 + 15Km à direita - Zona Rural, Diamantino - MT, 78304-000
-            </a>
+            {addressesToRender.map((addr, idx) => (
+              <a 
+                key={idx}
+                className={styles.addressLink} 
+                href={addr.mapsUrl} 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                <strong>{addr.label}:</strong> {addr.text}
+              </a>
+            ))}
           </div>
         </div>
 

@@ -8,7 +8,7 @@
 }
 
 /* ── Sessão 3 — Mid-page Banner ────────────────────── */
-/* Figma: top: 1683px, h: 597px, px: 195px, py: 120px */
+/* Design: top: 1683px, h: 597px, px: 195px, py: 120px */
 /* Bg: imgSessao4 at h=216.48%, top=-58.21%, overlay rgba(0,0,0,0.5) mix-blend-multiply */
 .middleBanner {
   position: relative;
@@ -29,7 +29,7 @@
   overflow: hidden;
 }
 
-/* Figma: h=216.48%, top=-58.21% */
+/* Design: h=216.48%, top=-58.21% */
 .bannerBg {
   position: absolute;
   left: 0;
@@ -57,35 +57,37 @@
   width: 100%;
 }
 
-/* Figma node 29:895 — Neulis Alt (Outfit) Medium 40px, #ebebeb, tracking -0.8px, line-height 70px */
+/* Layout — Neulis Alt (Outfit) Medium 40px, #ebebeb, tracking -0.8px, line-height 70px */
 .bannerText {
   font-family: var(--font-display);
-  font-size: clamp(32px, 3.5vw, 48px);
+  font-size: clamp(28px, 3vw, 46px);
   font-weight: 500;
-  line-height: 1.05;
+  line-height: 1.25;
   letter-spacing: -0.8px;
   color: var(--color-near-white);
   text-align: center;
-  max-width: 100%;
+  max-width: 900px;
   margin: 0 auto;
-  white-space: nowrap; /* Force one line on desktop */
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 /* "melhor conosco!" in #e1fe00 */
 .bannerTextAccent {
   color: var(--color-primary);
-  white-space: nowrap;
+  display: inline;
 }
 
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .middleBanner { height: 420px; }
-  .bannerText { font-size: 32px; line-height: 1.4; white-space: normal; }
+  .middleBanner { height: 450px; }
+  .bannerText { font-size: clamp(26px, 3.5vw, 38px); line-height: 1.35; }
 }
 
 @media (max-width: 580px) {
-  .middleBanner { height: 450px; } /* Increased vertical height for impact */
-  .bannerText { font-size: clamp(30px, 8vw, 36px); line-height: 1.15; width: 100%; text-align: center; white-space: normal; }
+  .middleBanner { height: 480px; }
+  .bannerText { font-size: clamp(24px, 7vw, 34px); line-height: 1.3; width: 100%; text-align: center; }
   .bannerContent { justify-content: center; }
 }

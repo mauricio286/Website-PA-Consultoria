@@ -17,8 +17,8 @@ import Carreiras from './pages/Carreiras/Carreiras';
 import ConsultoriaAgronomica from './pages/ConsultoriaAgronomica/ConsultoriaAgronomica';
 import AgriculturaPrecisao from './pages/AgriculturaPrecisao/AgriculturaPrecisao';
 import GestaoCompras from './pages/GestaoCompras/GestaoCompras';
-import AldBioenergia from './pages/AldBioenergia/AldBioenergia';
 import Unita from './pages/Unita/Unita';
+import AldBioenergia from './pages/AldBioenergia/AldBioenergia';
 import Lavoura from './pages/Lavoura/Lavoura';
 import Palestras from './pages/Palestras/Palestras';
 import CentroPesquisa from './pages/CentroPesquisa/CentroPesquisa';
@@ -99,6 +99,7 @@ function App() {
           <Route path="/quem-somos" element={<QuemSomos />} />
           <Route path="/servicos" element={<Servicos />} />
           <Route path="/consultoriaagronomica" element={<ConsultoriaAgronomica />} />
+          <Route path="/unita" element={<Unita />} />
           <Route path="/agriculturaprecisao" element={<AgriculturaPrecisao />} />
           <Route path="/gestaocompras" element={<GestaoCompras />} />
           <Route path="/aldbioenergia" element={<AldBioenergia />} />

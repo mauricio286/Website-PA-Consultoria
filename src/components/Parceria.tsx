@@ -9,10 +9,20 @@ import {
   imgRectangle6 
 } from '../assets';
 import AnimatedText from './AnimatedText';
+import type { HomePageData } from '../services/api';
+import { api } from '../services/api';
 
-export default function Parceria() {
+interface ParceriaProps {
+  data?: HomePageData | null;
+}
+
+export default function Parceria({ data }: ParceriaProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const images = [
+  
+  const badgeText = data?.galleryTitle || "parceria";
+  const titleText = data?.gallerySubtitle || "Nós estamos em movimento constante para levar o melhor da pesquisa e inovação até o produtor.";
+
+  const defaultImages = [
     { id: 'img-1', src: imgRectangle1, label: 'Monitoramento Aéreo' },
     { id: 'img-2', src: imgRectangle2, label: 'Análise de Solo' },
     { id: 'img-3', src: imgRectangle3, label: 'Controle de Pragas' },
@@ -21,8 +31,23 @@ export default function Parceria() {
     { id: 'img-6', src: imgRectangle6, label: 'Planejamento de Safra' }
   ];
 
+  const hasCustomImages = data?.galleryImages && data.galleryImages.length > 0;
+  
+  const displayImages = hasCustomImages
+    ? data.galleryImages!.map((item, index) => {
+        const altText = (typeof item.image === 'object' && item.image.alt)
+          ? item.image.alt
+          : `Imagem ${index + 1}`;
+        return {
+          id: item.id || `custom-${index}`,
+          src: api.getMediaUrl(item.image),
+          label: altText
+        };
+      })
+    : defaultImages;
+
   // Duplicate images for infinite seamless scroll
-  const loopedImages = [...images, ...images];
+  const loopedImages = [...displayImages, ...displayImages];
 
   return (
     <section id="parceria" className={styles.parceria} data-node-id="36:1318">
@@ -30,10 +55,10 @@ export default function Parceria() {
         <div className={styles.headerWrapper}>
           <div className={styles.header} data-node-id="36:1319">
             <div className="tag-badge dark" data-node-id="36:1320">
-              parceria
+              {badgeText}
             </div>
             <h2 className={styles.title} data-node-id="36:1322">
-              <AnimatedText text="Nós estamos em movimento constante para levar o melhor da pesquisa e inovação até o produtor." delay={0} stagger={0.03} type="word" />
+              <AnimatedText text={titleText} delay={0} stagger={0.03} type="word" />
             </h2>
           </div>
         </div>

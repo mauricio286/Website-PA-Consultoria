@@ -1,4 +1,4 @@
-/* LogoCarousel — Figma node 3:19 / 64:87 */
+/* LogoCarousel — Layout / 64:87 */
 /* Overlaps the bottom of hero: top 824px of 1024px hero */
 
 .carousel {
@@ -43,7 +43,7 @@
   animation-play-state: paused;
 }
 
-/* Logo items — match Figma sizes */
+/* Logo items — match Design sizes */
 .logo {
   display: block;
   object-fit: contain;
@@ -57,7 +57,7 @@
   opacity: 1;
 }
 
-/* Figma dimensions per brand */
+/* Design dimensions per brand */
 .logoSyngenta { width: 127px; height: 42px; }
 .logoCorteva  { width: 154px; height: 32px; }
 .logoBasf     { width: 87px;  height: 32px; }

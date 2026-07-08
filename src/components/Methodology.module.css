@@ -1,4 +1,4 @@
-/* Methodology — Figma section: dark green bg, 120px py, 195px px */
+/* Methodology — Design section: dark green bg, 120px py, 195px px */
 /* Node 35:1024 (Pilares Metodológicos) */
 
 .methodology {
@@ -54,7 +54,7 @@
   gap: 10px;
 }
 
-/* Figma: Neulis Alt 40px, #ebebeb, tracking -0.8px, line-height 70px */
+/* Design: Neulis Alt 40px, #ebebeb, tracking -0.8px, line-height 70px */
 .title {
   font-family: var(--font-display);
   font-size: 40px;

@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.next/
+.env
+gcs-credentials.json
+
+# Cache do Payload
+.payload/

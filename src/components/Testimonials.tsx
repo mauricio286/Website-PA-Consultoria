@@ -10,6 +10,8 @@ import {
   imgImagem as _imgImagem
 } from '../assets';
 import AnimatedText from './AnimatedText';
+import { api } from '../services/api';
+import type { HomePageData, TestimonialDoc } from '../services/api';
 
 interface Testimonial {
   id: string;
@@ -19,9 +21,9 @@ interface Testimonial {
   avatar: string;
 }
 
-// Figma Depoimentos — 4 cards in 2x2 grid
+// Design Depoimentos — 4 cards in 2x2 grid
 // Top-left and bottom-right are dark (#002d22), others light (#eee)
-const testimonials: Testimonial[] = [
+const staticTestimonials: Testimonial[] = [
   {
     id: 'dep-3',
     name: 'Ricardo Mantovani',
@@ -52,11 +54,61 @@ const testimonials: Testimonial[] = [
   },
 ];
 
-export default function Testimonials() {
+interface TestimonialsProps {
+  data?: HomePageData | null;
+}
+
+export default function Testimonials({ data }: TestimonialsProps) {
+  const [dbTestimonials, setDbTestimonials] = useState<TestimonialDoc[]>([]);
   const [selectedId, setSelectedId] = useState<string>('dep-3'); // default selected
   const [activeIndex, setActiveIndex] = useState(0);
   const gridRef = useRef<HTMLDivElement>(null);
   const autoPlayRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const ctaText = data?.ctaText;
+  const ctaLabel = data?.ctaButtonLabel || "Fale com um consultor";
+  const ctaUrl = data?.ctaButtonUrl || "/contato";
+
+  const isHash = ctaUrl.startsWith('#');
+  const isExternal = ctaUrl.startsWith('http://') || ctaUrl.startsWith('https://');
+
+  const itemsToRender = (dbTestimonials.length > 0
+    ? dbTestimonials.map((t) => ({
+        id: t.id,
+        name: t.authorName,
+        location: t.authorDescription,
+        text: t.quote,
+        avatar: api.getMediaUrl(t.photo) || imgPerfil,
+      }))
+    : staticTestimonials).slice(0, 6);
+
+  useEffect(() => {
+    api.getTestimonials()
+      .then((res) => {
+        setDbTestimonials(res);
+        if (res.length > 0) {
+          setSelectedId(res[0].id);
+        }
+      })
+      .catch((err) => {
+        console.error('Error fetching testimonials:', err);
+      });
+  }, []);
+
+  const handleCtaClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (isHash) {
+      e.preventDefault();
+      const target = document.querySelector(ctaUrl);
+      if (target) {
+        const lenis = (window as any).lenis;
+        if (lenis) {
+          lenis.scrollTo(ctaUrl, { offset: -50 });
+        } else {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+  };
 
   const handleTouchStart = () => {
     // Pause auto-play when user touches the carousel
@@ -71,9 +123,9 @@ export default function Testimonials() {
       const cardWidth = cardElement ? cardElement.offsetWidth + gap : gridRef.current.clientWidth * 0.85;
       
       const newIndex = Math.round(scrollLeft / cardWidth);
-      if (newIndex !== activeIndex && newIndex >= 0 && newIndex < testimonials.length) {
+      if (newIndex !== activeIndex && newIndex >= 0 && newIndex < itemsToRender.length) {
         setActiveIndex(newIndex);
-        setSelectedId(testimonials[newIndex].id);
+        setSelectedId(itemsToRender[newIndex].id);
       }
     }
   };
@@ -104,7 +156,10 @@ export default function Testimonials() {
     return () => {
       if (autoPlayRef.current) clearInterval(autoPlayRef.current);
     };
-  }, []);
+  }, [itemsToRender.length]);
+
+  const titleNormal = data?.testimonialsTitle || "Parcerias que comprovam";
+  const titleAccent = data?.testimonialsTitleAccent || "resultados";
 
   return (
     <section id="testimonials" className={styles.testimonials} data-node-id="36:1348">
@@ -115,7 +170,12 @@ export default function Testimonials() {
             depoimentos
           </span>
           <h2 className={`${styles.title} ${styles.animatedTitle}`} data-node-id="36:1352">
-            <AnimatedText text="Parcerias que comprovam resultados" delay={0} stagger={0.03} type="word" />
+            <AnimatedText text={titleNormal} delay={0} stagger={0.03} type="word" />{' '}
+            {titleAccent && (
+              <span className={styles.titleAccent}>
+                <AnimatedText text={titleAccent} delay={0.2} stagger={0.03} type="word" />
+              </span>
+            )}
           </h2>
         </div>
 
@@ -126,14 +186,14 @@ export default function Testimonials() {
           onTouchStart={handleTouchStart}
           onScroll={handleScrollEvent}
         >
-          {testimonials.map((dep) => (
+          {itemsToRender.map((dep) => (
             <div
               key={dep.id}
               className={`${styles.card} ${selectedId === dep.id ? styles.cardDark : styles.cardLight} ${selectedId === dep.id ? styles.cardSelected : ''}`}
               onClick={() => setSelectedId(dep.id)}
               data-node-id={dep.id}
             >
-              {/* Quote mark — Figma: Chivo 128px */}
+              {/* Quote mark — Design: Chivo 128px */}
               <div className={styles.quoteMark}>''</div>
 
               <p className={styles.quoteText}>{dep.text}</p>
@@ -151,7 +211,7 @@ export default function Testimonials() {
 
         {/* Mobile Pagination Dots */}
         <div className={styles.paginationDots}>
-          {testimonials.map((_, index) => (
+          {itemsToRender.map((_, index) => (
             <button
               key={index}
               className={`${styles.dot} ${index === activeIndex ? styles.dotActive : ''}`}
@@ -170,14 +230,33 @@ export default function Testimonials() {
           ))}
         </div>
 
-        {/* CTA — Figma BotaoFaleComUmConsultor: w=266px */}
+        {/* CTA — Design BotaoFaleComUmConsultor: w=266px */}
         <div className={styles.ctaWrapper}>
-          <Link to="/contato" className="btn-pa dark-green-lg" data-node-id="64:437">
-            <span className="btn-label">Fale com um consultor</span>
-            <span className="btn-icon">
-              <span className="material-symbols-rounded" style={{ fontSize: '24px', lineHeight: 1 }}>arrow_back</span>
-            </span>
-          </Link>
+          {ctaText && (
+            <p className={styles.ctaText}>{ctaText}</p>
+          )}
+          {isExternal ? (
+            <a href={ctaUrl} target="_blank" rel="noopener noreferrer" className="btn-pa dark-green-lg" data-node-id="64:437">
+              <span className="btn-label">{ctaLabel}</span>
+              <span className="btn-icon">
+                <span className="material-symbols-rounded" style={{ fontSize: '24px', lineHeight: 1 }}>arrow_back</span>
+              </span>
+            </a>
+          ) : isHash ? (
+            <a href={ctaUrl} onClick={handleCtaClick} className="btn-pa dark-green-lg" data-node-id="64:437">
+              <span className="btn-label">{ctaLabel}</span>
+              <span className="btn-icon">
+                <span className="material-symbols-rounded" style={{ fontSize: '24px', lineHeight: 1 }}>arrow_back</span>
+              </span>
+            </a>
+          ) : (
+            <Link to={ctaUrl} className="btn-pa dark-green-lg" data-node-id="64:437">
+              <span className="btn-label">{ctaLabel}</span>
+              <span className="btn-icon">
+                <span className="material-symbols-rounded" style={{ fontSize: '24px', lineHeight: 1 }}>arrow_back</span>
+              </span>
+            </Link>
+          )}
         </div>
       </div>
     </section>

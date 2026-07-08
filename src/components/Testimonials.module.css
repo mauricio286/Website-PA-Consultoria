@@ -1,5 +1,5 @@
-/* Testimonials — Figma: white bg, px: 195px, py: 120px */
-/* Grid: 2 columns of cards, gap 15px — Figma 902px x 563px cards */
+/* Testimonials — Design: white bg, px: 195px, py: 120px */
+/* Grid: 2 columns of cards, gap 15px — Design 902px x 563px cards */
 
 .testimonials {
   width: 100%;
@@ -21,7 +21,7 @@
   flex-direction: column;
 }
 
-/* Figma: Neulis Alt (Outfit) 40px */
+/* Design: Neulis Alt (Outfit) 40px */
 .title {
   font-family: var(--font-display);
   font-size: 40px;
@@ -37,18 +37,21 @@
   color: var(--color-green-accent);
 }
 
+/* Removido o seletor frágil pois agora renderizamos a parte destacada via .titleAccent do CMS */
+/*
 .animatedTitle > span > span:nth-last-child(-n+2) {
   color: var(--color-green-accent);
 }
+*/
 
-/* 2-column grid, gap 15px — Figma Depoimentos layout */
+/* 2-column grid, gap 15px — Design Depoimentos layout */
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
 }
 
-/* Card base — Figma: 563px h, 30px rounded, px 25px py 40px */
+/* Card base — Design: 563px h, 30px rounded, px 25px py 40px */
 .card {
   display: flex;
   flex-direction: column;
@@ -69,7 +72,7 @@
   cursor: default;
 }
 
-/* Figma: Chivo Medium 128px, lime yellow (#e1fe00) or #303030 quote mark */
+/* Design: Chivo Medium 128px, lime yellow (#e1fe00) or #303030 quote mark */
 .quoteMark {
   font-family: var(--font-quote);
   font-size: 120px;
@@ -80,7 +83,7 @@
   user-select: none;
 }
 
-/* Figma: DM Sans Regular 24px, tracking -0.48px */
+/* Design: DM Sans Regular 24px, tracking -0.48px */
 .quoteText {
   font-family: var(--font-body);
   font-size: 18px;
@@ -99,7 +102,7 @@
   margin-top: 24px;
 }
 
-/* Figma: 50x51px, border-radius 140px */
+/* Design: 50x51px, border-radius 140px */
 .avatar {
   width: 50px;
   height: 50px;
@@ -115,7 +118,7 @@
   text-align: left;
 }
 
-/* Figma: DM Sans 18px */
+/* Design: DM Sans 18px */
 .profileName {
   font-family: var(--font-body);
   font-size: 17px;
@@ -130,7 +133,7 @@
 }
 
 /* ── Card variants ─────────────────────────────── */
-/* Dark card — Figma: bg #002d22, text white, quoteMark #e1fe00 */
+/* Dark card — Design: bg #002d22, text white, quoteMark #e1fe00 */
 .cardDark {
   background-color: var(--color-primary-dark);
   color: var(--color-white);
@@ -140,7 +143,7 @@
 .cardDark .profileName { color: var(--color-white); }
 .cardDark .profileLocation { color: rgba(255, 255, 255, 0.7); }
 
-/* Light card — Figma: bg #eeeeee, text #303030 */
+/* Light card — Design: bg #eeeeee, text #303030 */
 .cardLight {
   background-color: var(--color-bg-gray);
   color: var(--color-text-body);
@@ -153,9 +156,23 @@
 /* CTA at the bottom */
 .ctaWrapper {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
   justify-content: center;
   margin-top: 20px;
   margin-bottom: 60px; /* Added to push footer further down */
+}
+
+.ctaText {
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--color-text-body);
+  text-align: center;
+  max-width: 600px;
+  line-height: 1.5;
+  margin: 0;
 }
 
 @media (max-width: 991px) {

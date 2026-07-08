@@ -1,4 +1,4 @@
-// Centralized Figma assets mapping for PA Consultoria
+// Centralized Design assets mapping for PA Consultoria
 
 import imgBgHeroUrl from './assets/images/bg_hero.webp';
 export const imgProperty1Default = imgBgHeroUrl;
@@ -121,3 +121,9 @@ import imgAld2Url from './assets/images/img_ald_2.webp';
 export const imgBgAld = imgBgAldUrl;
 export const imgAld1 = imgAld1Url;
 export const imgAld2 = imgAld2Url;
+
+import imgBgUnitaUrl from './assets/images/bg_unita.png';
+import imgUnitaUrl from './assets/images/img_unita.png';
+
+export const imgBgUnita = imgBgUnitaUrl;
+export const imgUnita = imgUnitaUrl;

@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './Contato.module.css';
 import { imgBgContato, imgIconWhereToVote, imgIconCall, imgIconMail } from '../../assets';
+import { api } from '../../services/api';
+import type { ContactSettingsData } from '../../services/api';
 
 export default function Contato() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [cmsData, setCmsData] = useState<ContactSettingsData | null>(null);
   const [formData, setFormData] = useState({
     nome: '',
     celular: '',
@@ -12,6 +15,12 @@ export default function Contato() {
     assunto: '',
     mensagem: ''
   });
+
+  useEffect(() => {
+    api.getContactSettings()
+      .then(data => setCmsData(data))
+      .catch(err => console.error("Erro ao carregar dados de contato:", err));
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -38,26 +47,28 @@ export default function Contato() {
     }, 1500);
   };
 
-  const addressData = [
-    {
-      title: "Grupo PA - Matriz",
-      address: "Av. Brasil, 2453 - Jardim Cidade Alta, Tangará da Serra-MT - 78306-157",
-      phone: "(65) 3016-1203",
-      email: "contato@agropa.com.br"
-    },
-    {
-      title: "Faz. São Paulo",
-      address: "Rod. BR-364 , KM 724 + 15Km à direita - Zona Rural, Diamantino-MT - 78.304-000",
-      phone: "(65) 3325-3129",
-      email: "administrativoagricola@agropa.com.br"
-    },
-    {
-      title: "Sinop",
-      address: "Galeria Trivium – Sala 01, Rua das Andirobas, 223, Setor Comercial, CEP: 78550-000",
-      phone: "---",
-      email: "---"
-    }
-  ];
+  const addressData = (cmsData?.addresses && cmsData.addresses.length > 0)
+    ? cmsData.addresses
+    : [
+        {
+          title: "Grupo PA - Matriz",
+          address: "Av. Brasil, 2453 - Jardim Cidade Alta, Tangará da Serra-MT - 78306-157",
+          phone: "(65) 3016-1203",
+          email: "contato@agropa.com.br"
+        },
+        {
+          title: "Faz. São Paulo",
+          address: "Rod. BR-364 , KM 724 + 15Km à direita - Zona Rural, Diamantino-MT - 78.304-000",
+          phone: "(65) 3325-3129",
+          email: "administrativoagricola@agropa.com.br"
+        },
+        {
+          title: "Sinop",
+          address: "Galeria Trivium – Sala 01, Rua das Andirobas, 223, Setor Comercial, CEP: 78550-000",
+          phone: "---",
+          email: "---"
+        }
+      ];
 
   return (
     <main className={`${styles.contatoPage} page-transition-enter`}>
@@ -81,10 +92,10 @@ export default function Contato() {
           
           {/* Left Column: Título e Formulário */}
           <div className={styles.leftColumn}>
-            <h2 className={styles.introTitle}>Fale conosco</h2>
+            <h2 className={styles.introTitle}>{cmsData?.formTitle || "Fale conosco"}</h2>
             <p className={styles.introDesc}>
-              Nosso time está à disposição para esclarecer dúvidas, apresentar nossos serviços e ajudar você a encontrar as melhores soluções para sua realidade. Entre em contato conosco. Será um prazer conversar com você.
-              </p>
+              {cmsData?.formDescription || "Nosso time está à disposição para esclarecer dúvidas, apresentar nossos serviços e ajudar você a encontrar as melhores soluções para sua realidade. Entre em contato conosco. Será um prazer conversar com você."}
+            </p>
 
             <div className={styles.formWrapper}>
               {!submitted ? (
