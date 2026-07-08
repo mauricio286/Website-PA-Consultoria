@@ -96,6 +96,11 @@ const HomePage: GlobalConfig = {
               type: 'upload',
               relationTo: 'media',
               required: true,
+              admin: {
+                components: {
+                  Description: '@/components/CMSDescriptionTooltip/LogoTooltip',
+                },
+              },
             },
             {
               name: 'alt',
@@ -181,9 +186,9 @@ const HomePage: GlobalConfig = {
         {
           name: 'bannerTextAccent',
           label: 'Texto em destaque (cor diferente)',
-          type: 'text',
+          type: 'textarea',
           localized: true,
-          admin: { description: 'Ex: "melhor conosco!"' },
+          admin: { description: 'Ex: "melhor conosco!". Dica: Use Enter para definir as quebras de linha.' },
         },
         {
           name: 'bannerImage',
@@ -199,6 +204,13 @@ const HomePage: GlobalConfig = {
       type: 'collapsible',
       label: '04 · Números e resultados',
       fields: [
+        {
+          name: 'statsTag',
+          label: 'Título da tag (badge)',
+          type: 'text',
+          localized: true,
+          admin: { description: 'Ex: Resultados' },
+        },
         {
           name: 'statsTitle',
           label: 'Título da seção (parte normal)',
@@ -294,6 +306,11 @@ const HomePage: GlobalConfig = {
               label: 'Ícone',
               type: 'upload',
               relationTo: 'media',
+              admin: {
+                components: {
+                  Description: '@/components/CMSDescriptionTooltip/IconTooltip',
+                },
+              },
             },
             {
               name: 'color',
@@ -378,6 +395,7 @@ const HomePage: GlobalConfig = {
           label: 'Cards / Pilares',
           type: 'array',
           minRows: 1,
+          maxRows: 4,
           labels: {
             singular: 'Pilar',
             plural: 'Pilares',
@@ -402,14 +420,17 @@ const HomePage: GlobalConfig = {
               label: 'Ícone (PNG/SVG)',
               type: 'upload',
               relationTo: 'media',
-              required: true,
+              admin: {
+                components: {
+                  Description: '@/components/CMSDescriptionTooltip/IconTooltip',
+                },
+              },
             },
             {
               name: 'image',
               label: 'Imagem ativa à direita',
               type: 'upload',
               relationTo: 'media',
-              required: true,
             },
           ],
         },
@@ -421,6 +442,13 @@ const HomePage: GlobalConfig = {
       type: 'collapsible',
       label: '06 · Mapa de atuação',
       fields: [
+        {
+          name: 'mapTag',
+          label: 'Título da tag (badge)',
+          type: 'text',
+          localized: true,
+          admin: { description: 'Ex: Atuação' },
+        },
         {
           name: 'mapTitle',
           label: 'Título',
@@ -449,6 +477,11 @@ const HomePage: GlobalConfig = {
               type: 'upload',
               relationTo: 'media',
               required: true,
+              admin: {
+                components: {
+                  Description: '@/components/CMSDescriptionTooltip/LogoTooltip',
+                },
+              },
             },
             {
               name: 'alt',
@@ -468,13 +501,14 @@ const HomePage: GlobalConfig = {
       fields: [
         {
           name: 'galleryTitle',
-          label: 'Título',
+          label: 'Título da tag (badge)',
           type: 'text',
           localized: true,
+          admin: { description: 'Ex: Parceria' },
         },
         {
           name: 'gallerySubtitle',
-          label: 'Subtítulo',
+          label: 'Título principal',
           type: 'text',
           localized: true,
         },
@@ -500,6 +534,13 @@ const HomePage: GlobalConfig = {
       type: 'collapsible',
       label: '08 · Depoimentos',
       fields: [
+        {
+          name: 'testimonialsTag',
+          label: 'Título da tag (badge)',
+          type: 'text',
+          localized: true,
+          admin: { description: 'Ex: Depoimentos' },
+        },
         {
           name: 'testimonialsTitle',
           label: 'Título da seção (parte normal)',

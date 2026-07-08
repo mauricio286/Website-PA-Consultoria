@@ -52,6 +52,13 @@ const AboutPage: GlobalConfig = {
       label: '02 · Introdução',
       fields: [
         {
+          name: 'introTag',
+          label: 'Título da tag (badge)',
+          type: 'text',
+          localized: true,
+          admin: { description: 'Ex: Quem Somos' },
+        },
+        {
           name: 'title',
           label: 'Título',
           type: 'textarea',
@@ -119,6 +126,13 @@ const AboutPage: GlobalConfig = {
       label: '04 · Vídeo institucional',
       fields: [
         {
+          name: 'videoSectionTag',
+          label: 'Título da tag (badge)',
+          type: 'text',
+          localized: true,
+          admin: { description: 'Ex: Vídeo Institucional' },
+        },
+        {
           name: 'videoSectionTitle',
           label: 'Título da seção (parte normal)',
           type: 'text',
@@ -146,6 +160,13 @@ const AboutPage: GlobalConfig = {
       type: 'collapsible',
       label: '05 · Nossa história (Timeline)',
       fields: [
+        {
+          name: 'timelineTag',
+          label: 'Título da tag (badge)',
+          type: 'text',
+          localized: true,
+          admin: { description: 'Ex: Nossa História' },
+        },
         {
           name: 'timelineTitle',
           label: 'Título da timeline',

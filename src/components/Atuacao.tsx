@@ -123,7 +123,7 @@ export default function Atuacao({ data }: AtuacaoProps) {
       <div className={styles.container}>
         <div className={styles.topCol}>
           <div className="tag-badge light" data-node-id="36:1102">
-            {t.atuacao.tag}
+            {data?.mapTag || t.atuacao.tag}
           </div>
           <h2
             style={{

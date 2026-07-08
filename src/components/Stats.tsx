@@ -140,7 +140,7 @@ export default function Stats({ data }: StatsProps) {
         <div className={styles.textCol}>
           {/* TAG — "resultados" */}
           <span className="tag-badge dark" data-node-id="29:899">
-            {t.stats.tag}
+            {data?.statsTag || t.stats.tag}
           </span>
 
           {/* Heading row: title + description */}

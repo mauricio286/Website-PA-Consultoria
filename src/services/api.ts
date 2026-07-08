@@ -46,6 +46,7 @@ export interface HomePageData {
   bannerTextAlign?: 'left' | 'center' | 'right' | 'justify';
   bannerTextAccent?: string;
   bannerImage?: Media | string;
+  statsTag?: string;
   statsTitle?: string;
   statsTitleAccent?: string;
   statsTitleAlign?: 'left' | 'center' | 'right' | 'justify';
@@ -72,6 +73,7 @@ export interface HomePageData {
     icon: Media | string;
     image: Media | string;
   }>;
+  mapTag?: string;
   mapTitle?: string;
   mapDescription?: string;
   mapLogos?: Array<{
@@ -85,6 +87,7 @@ export interface HomePageData {
     id?: string;
     image: Media | string;
   }>;
+  testimonialsTag?: string;
   testimonialsTitle?: string;
   testimonialsTitleAccent?: string;
   ctaText?: string;
@@ -96,6 +99,7 @@ export interface AboutPageData {
   heroImage?: Media | string;
   heroImageTablet?: Media | string;
   heroImageMobile?: Media | string;
+  introTag?: string;
   title?: string;
   subtitle?: string;
   introText?: any;
@@ -111,9 +115,11 @@ export interface AboutPageData {
     title?: string;
     text?: any;
   };
+  videoSectionTag?: string;
   videoSectionTitle?: string;
   videoSectionTitleAccent?: string;
   institutionalVideoUrl?: string;
+  timelineTag?: string;
   timelineTitle?: string;
   timeline?: Array<{
     id?: string;

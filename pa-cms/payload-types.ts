@@ -759,10 +759,14 @@ export interface HomePage {
   bannerText?: string | null;
   bannerTextAlign?: ('left' | 'center' | 'right' | 'justify') | null;
   /**
-   * Ex: "melhor conosco!"
+   * Ex: "melhor conosco!". Dica: Use Enter para definir as quebras de linha.
    */
   bannerTextAccent?: string | null;
   bannerImage?: (number | null) | Media;
+  /**
+   * Ex: Resultados
+   */
+  statsTag?: string | null;
   /**
    * Ex: Números que
    */
@@ -832,11 +836,15 @@ export interface HomePage {
     | {
         title: string;
         description: string;
-        icon: number | Media;
-        image: number | Media;
+        icon?: (number | null) | Media;
+        image?: (number | null) | Media;
         id?: string | null;
       }[]
     | null;
+  /**
+   * Ex: Atuação
+   */
+  mapTag?: string | null;
   mapTitle?: string | null;
   mapDescription?: string | null;
   mapLogos?:
@@ -846,6 +854,9 @@ export interface HomePage {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Ex: Parceria
+   */
   galleryTitle?: string | null;
   gallerySubtitle?: string | null;
   galleryImages?:
@@ -854,6 +865,10 @@ export interface HomePage {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Ex: Depoimentos
+   */
+  testimonialsTag?: string | null;
   /**
    * Ex: A escolha dos líderes
    */
@@ -883,6 +898,10 @@ export interface AboutPage {
    * Opcional. Exibida em celulares (telas de até 580px). Se não informada, usa a de Desktop ou Tablet.
    */
   heroImageMobile?: (number | null) | Media;
+  /**
+   * Ex: Quem Somos
+   */
+  introTag?: string | null;
   /**
    * Título principal. Dica: Use Enter para quebras de linha.
    */
@@ -960,12 +979,20 @@ export interface AboutPage {
       [k: string]: unknown;
     } | null;
   };
+  /**
+   * Ex: Vídeo Institucional
+   */
+  videoSectionTag?: string | null;
   videoSectionTitle?: string | null;
   videoSectionTitleAccent?: string | null;
   /**
    * Cole a URL de embed do YouTube. Ex: https://www.youtube.com/embed/XXXXXXXXX
    */
   institutionalVideoUrl?: string | null;
+  /**
+   * Ex: Nossa História
+   */
+  timelineTag?: string | null;
   timelineTitle?: string | null;
   timeline?:
     | {
@@ -1053,7 +1080,7 @@ export interface ServicesPage {
   ecosystemCards?:
     | {
         title: string;
-        image: number | Media;
+        image?: (number | null) | Media;
         link: string;
         id?: string | null;
       }[]
@@ -1193,6 +1220,7 @@ export interface HomePageSelect<T extends boolean = true> {
   bannerTextAlign?: T;
   bannerTextAccent?: T;
   bannerImage?: T;
+  statsTag?: T;
   statsTitle?: T;
   statsTitleAccent?: T;
   statsTitleAlign?: T;
@@ -1223,6 +1251,7 @@ export interface HomePageSelect<T extends boolean = true> {
         image?: T;
         id?: T;
       };
+  mapTag?: T;
   mapTitle?: T;
   mapDescription?: T;
   mapLogos?:
@@ -1240,6 +1269,7 @@ export interface HomePageSelect<T extends boolean = true> {
         image?: T;
         id?: T;
       };
+  testimonialsTag?: T;
   testimonialsTitle?: T;
   testimonialsTitleAccent?: T;
   ctaText?: T;
@@ -1257,6 +1287,7 @@ export interface AboutPageSelect<T extends boolean = true> {
   heroImage?: T;
   heroImageTablet?: T;
   heroImageMobile?: T;
+  introTag?: T;
   title?: T;
   subtitle?: T;
   introText?: T;
@@ -1278,9 +1309,11 @@ export interface AboutPageSelect<T extends boolean = true> {
         title?: T;
         text?: T;
       };
+  videoSectionTag?: T;
   videoSectionTitle?: T;
   videoSectionTitleAccent?: T;
   institutionalVideoUrl?: T;
+  timelineTag?: T;
   timelineTitle?: T;
   timeline?:
     | T

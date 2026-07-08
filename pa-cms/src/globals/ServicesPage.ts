@@ -169,7 +169,6 @@ const ServicesPage: GlobalConfig = {
               label: 'Imagem',
               type: 'upload',
               relationTo: 'media',
-              required: true,
             },
             {
               name: 'link',

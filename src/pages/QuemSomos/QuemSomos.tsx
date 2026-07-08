@@ -142,7 +142,7 @@ export default function QuemSomos() {
         <div className={styles.introContainer}>
           <div className={styles.introLeft}>
             <span className="tag-badge dark">
-              {t.quemSomos.tag}
+              {aboutData?.introTag || t.quemSomos.tag}
             </span>
             <h2 className={styles.introTitle} style={{ whiteSpace: 'pre-line' }}>
               {aboutData?.title || t.quemSomos.introTitle1}
@@ -247,7 +247,7 @@ export default function QuemSomos() {
         <div className={styles.videoContainer}>
           <div className={styles.videoHeader}>
             <span className="tag-badge dark">
-              {t.quemSomos.institucionalTag}
+              {aboutData?.videoSectionTag || t.quemSomos.institucionalTag}
             </span>
             <h2 className={styles.videoTitle}>
               <AnimatedText key={`vid1-${locale}-${videoMainTitle}`} text={videoMainTitle} type="word" />
@@ -281,7 +281,7 @@ export default function QuemSomos() {
           <div className={styles.timelineHeader}>
             <div>
               <span className="tag-badge dark">
-                {t.quemSomos.timelineTag}
+                {aboutData?.timelineTag || t.quemSomos.timelineTag}
               </span>
               <h2 className={styles.timelineTitle}>
                 <AnimatedText key={`hist-${locale}-${aboutData?.timelineTitle}`} text={aboutData?.timelineTitle || t.quemSomos.timelineTitle} type="word" />

@@ -178,7 +178,7 @@ export default function Testimonials({ data }: TestimonialsProps) {
         {/* Header */}
         <div className={styles.header}>
           <span className="tag-badge dark" data-node-id="36:1350">
-            {t.testimonials.tag}
+            {data?.testimonialsTag || t.testimonials.tag}
           </span>
           <h2 className={`${styles.title} ${styles.animatedTitle}`} data-node-id="36:1352">
             <AnimatedText key={`testimonials-${locale}-${titleNormal}`} text={titleNormal} delay={0} stagger={0.03} type="word" />{' '}
