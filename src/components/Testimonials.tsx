@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Testimonials.module.css';
 import {
@@ -10,6 +10,7 @@ import {
   imgImagem as _imgImagem
 } from '../assets';
 import AnimatedText from './AnimatedText';
+import { useLanguage } from '../i18n';
 
 interface Testimonial {
   id: string;
@@ -19,44 +20,45 @@ interface Testimonial {
   avatar: string;
 }
 
-// Figma Depoimentos — 4 cards in 2x2 grid
-// Top-left and bottom-right are dark (#002d22), others light (#eee)
-const testimonials: Testimonial[] = [
-  {
-    id: 'dep-3',
-    name: 'Ricardo Mantovani',
-    location: 'Grupo Mantovani • Sorriso - MT',
-    text: 'O que eu mais gosto na equipe é que eles não são consultores de escritório. Estão sempre aqui na fazenda, entram no talhão, olham a praga de perto e discutem o manejo comigo no pátio. É um suporte técnico que dá muita segurança para decidir.',
-    avatar: imgPerfil3,
-  },
-  {
-    id: 'dep-1',
-    name: 'Aline Albuquerque',
-    location: 'Agropecuária Albuquerque • Rio Verde - GO',
-    text: 'A gente comprou maquinário novo e várias ferramentas digitais, mas faltava braço e treinamento para fazer tudo rodar. O pessoal da PA destravou isso aqui dentro, gerando os mapas de aplicação que a gente precisava para economizar insumo.',
-    avatar: imgPerfil,
-  },
-  {
-    id: 'dep-2',
-    name: 'Geraldo Augusto',
-    location: 'Fazenda Santa Maria • Cristalina - GO',
-    text: 'A gente já colhia bem, mas a parte de custos era meio bagunçada, tudo na cabeça ou em caderneta. Eles ajudaram a organizar os números da safra e a enxergar para onde estava indo o dinheiro. Hoje a fazenda roda muito mais profissional.',
-    avatar: imgPerfil2,
-  },
-  {
-    id: 'dep-4',
-    name: 'José Carlos Junqueira',
-    location: 'Fazenda Primavera • Uberaba - MG',
-    text: 'Trabalhar com a PA me tirou uma preocupação grande da cabeça. Sei que a parte de recomendação, perfil de solo e o monitoramento técnico estão bem assistidos por quem entende do assunto, aí consigo focar em outras frentes do negócio.',
-    avatar: imgPerfil1,
-  },
-];
-
 export default function Testimonials() {
   const [selectedId, setSelectedId] = useState<string>('dep-3'); // default selected
   const [activeIndex, setActiveIndex] = useState(0);
   const gridRef = useRef<HTMLDivElement>(null);
   const autoPlayRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const { locale, t } = useLanguage();
+
+  // Figma Depoimentos — 4 cards in 2x2 grid
+  // Top-left and bottom-right are dark (#002d22), others light (#eee)
+  const testimonials: Testimonial[] = useMemo(() => [
+    {
+      id: 'dep-3',
+      name: t.testimonials.dep3Name,
+      location: t.testimonials.dep3Location,
+      text: t.testimonials.dep3Text,
+      avatar: imgPerfil3,
+    },
+    {
+      id: 'dep-1',
+      name: t.testimonials.dep1Name,
+      location: t.testimonials.dep1Location,
+      text: t.testimonials.dep1Text,
+      avatar: imgPerfil,
+    },
+    {
+      id: 'dep-2',
+      name: t.testimonials.dep2Name,
+      location: t.testimonials.dep2Location,
+      text: t.testimonials.dep2Text,
+      avatar: imgPerfil2,
+    },
+    {
+      id: 'dep-4',
+      name: t.testimonials.dep4Name,
+      location: t.testimonials.dep4Location,
+      text: t.testimonials.dep4Text,
+      avatar: imgPerfil1,
+    },
+  ], [t]);
 
   const handleTouchStart = () => {
     // Pause auto-play when user touches the carousel
@@ -112,10 +114,10 @@ export default function Testimonials() {
         {/* Header */}
         <div className={styles.header}>
           <span className="tag-badge dark" data-node-id="36:1350">
-            depoimentos
+            {t.testimonials.tag}
           </span>
           <h2 className={`${styles.title} ${styles.animatedTitle}`} data-node-id="36:1352">
-            <AnimatedText text="Parcerias que comprovam resultados" delay={0} stagger={0.03} type="word" />
+            <AnimatedText key={`testimonials-${locale}`} text={t.testimonials.title} delay={0} stagger={0.03} type="word" />
           </h2>
         </div>
 
@@ -173,7 +175,7 @@ export default function Testimonials() {
         {/* CTA — Figma BotaoFaleComUmConsultor: w=266px */}
         <div className={styles.ctaWrapper}>
           <Link to="/contato" className="btn-pa dark-green-lg" data-node-id="64:437">
-            <span className="btn-label">Fale com um consultor</span>
+            <span className="btn-label">{t.testimonials.cta}</span>
             <span className="btn-icon">
               <span className="material-symbols-rounded" style={{ fontSize: '24px', lineHeight: 1 }}>arrow_back</span>
             </span>

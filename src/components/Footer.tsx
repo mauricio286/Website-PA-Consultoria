@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.css';
 import { imgLogoPa } from '../assets';
+import { useLanguage } from '../i18n';
 
 // Standard inline SVGs for perfectly scaled and colored icons
 const IconLinkedIn = () => (
   <svg className={styles.socialIcon} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
   </svg>
 );
 
@@ -30,6 +31,8 @@ const IconYouTube = () => (
 );
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer id="contact" className={styles.footer} data-node-id="36:1511">
       <div className={styles.container} data-node-id="36:1775">
@@ -70,7 +73,7 @@ export default function Footer() {
               target="_blank" 
               rel="noopener noreferrer"
             >
-              <strong>Matriz Tangará:</strong> Av. Brasil, 2453 - Jardim Cidade Alta, Tangará da Serra - MT, 78306-157
+              <strong>{t.footer.matrizTangara}</strong> Av. Brasil, 2453 - Jardim Cidade Alta, Tangará da Serra - MT, 78306-157
             </a>
             
             <a 
@@ -79,7 +82,7 @@ export default function Footer() {
               target="_blank" 
               rel="noopener noreferrer"
             >
-              <strong>Filial Diamantino:</strong> Rod. BR-364, KM 724 + 15Km à direita - Zona Rural, Diamantino - MT, 78304-000
+              <strong>{t.footer.filialDiamantino}</strong> Rod. BR-364, KM 724 + 15Km à direita - Zona Rural, Diamantino - MT, 78304-000
             </a>
           </div>
         </div>
@@ -87,27 +90,27 @@ export default function Footer() {
         {/* Right Column: Footer Navigation Menu */}
         <div className={styles.navCol}>
           <div className={styles.footerNavGroup}>
-            <span className={styles.navGroupTitle}>Institucional</span>
-            <Link to="/#hero" className={styles.navLink}>Home</Link>
-            <Link to="/quem-somos" className={styles.navLink}>Quem somos</Link>
-            <Link to="/carreiras" className={styles.navLink}>Carreiras</Link>
-            <Link to="/contato" className={styles.navLink}>Contato</Link>
+            <span className={styles.navGroupTitle}>{t.footer.institucional}</span>
+            <Link to="/#hero" className={styles.navLink}>{t.header.home}</Link>
+            <Link to="/quem-somos" className={styles.navLink}>{t.header.quemSomos}</Link>
+            <Link to="/carreiras" className={styles.navLink}>{t.header.carreiras}</Link>
+            <Link to="/contato" className={styles.navLink}>{t.header.contato}</Link>
           </div>
           
           <div className={styles.footerNavGroup}>
-            <Link to="/servicos" className={styles.navGroupTitleLink}>Serviços</Link>
-            <Link to="/consultoriaagronomica" className={styles.navLink}>Consultoria Agronômica</Link>
-            <Link to="/unita" className={styles.navLink}>Unitá</Link>
-            <Link to="/agriculturaprecisao" className={styles.navLink}>Agricultura de Precisão</Link>
-            <Link to="/gestaocompras" className={styles.navLink}>Gestão de Compras</Link>
+            <Link to="/servicos" className={styles.navGroupTitleLink}>{t.footer.servicos}</Link>
+            <Link to="/consultoriaagronomica" className={styles.navLink}>{t.footer.consultoriaAgronomica}</Link>
+            <Link to="/unita" className={styles.navLink}>{t.footer.unita}</Link>
+            <Link to="/agriculturaprecisao" className={styles.navLink}>{t.footer.agriculturaPrecisao}</Link>
+            <Link to="/gestaocompras" className={styles.navLink}>{t.footer.gestaoCompras}</Link>
           </div>
 
           <div className={styles.footerNavGroup}>
-            <Link to="/servicos#ecossistema" className={styles.navGroupTitleLink}>Ecossistema</Link>
-            <Link to="/aldbioenergia" className={styles.navLink}>ALD Bioenergia</Link>
-            <Link to="/lavoura" className={styles.navLink}>Lavoura</Link>
-            <Link to="/centrodepesquisa" className={styles.navLink}>Centro de Pesquisa</Link>
-            <Link to="/eventos" className={styles.navLink}>Eventos</Link>
+            <Link to="/servicos#ecossistema" className={styles.navGroupTitleLink}>{t.footer.ecossistema}</Link>
+            <Link to="/aldbioenergia" className={styles.navLink}>{t.footer.aldBioenergia}</Link>
+            <Link to="/lavoura" className={styles.navLink}>{t.footer.lavoura}</Link>
+            <Link to="/centrodepesquisa" className={styles.navLink}>{t.footer.centroPesquisa}</Link>
+            <Link to="/eventos" className={styles.navLink}>{t.footer.eventos}</Link>
           </div>
         </div>
       </div>
@@ -115,10 +118,10 @@ export default function Footer() {
       {/* Copyright Bar */}
       <div className={styles.copyrightBar} data-node-id="36:1556">
         <p className={styles.copyrightText} data-node-id="36:1571">
-          &copy; {new Date().getFullYear()} PA Consultoria. Todos os direitos reservados.
+          &copy; {new Date().getFullYear()} {t.footer.copyright}
         </p>
         <p className={styles.studioText}>
-          Criado e desenvolvido pelo Studio 65
+          {t.footer.studio}
         </p>
       </div>
     </footer>

@@ -40,7 +40,12 @@
   max-width: none;
   object-fit: cover;
   animation: hero-impact-zoom 6.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  animation-play-state: paused;
   transform-origin: center;
+}
+
+:global(.app-ready) .bgImage {
+  animation-play-state: running;
 }
 
 @keyframes hero-impact-zoom {

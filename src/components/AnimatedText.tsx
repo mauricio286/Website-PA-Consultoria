@@ -24,6 +24,7 @@ export default function AnimatedText({
   sessionOnce = false,
   sessionKey = 'animatedText'
 }: AnimatedTextProps) {
+  const [isAppReady, setIsAppReady] = useState(() => document.body.classList.contains('app-ready'));
   const [isVisible, setIsVisible] = useState(() => {
     if (sessionOnce && sessionKey) {
       return globalPlayedAnimations.has(sessionKey);
@@ -31,6 +32,21 @@ export default function AnimatedText({
     return false;
   });
   const ref = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if (isAppReady) return;
+    
+    const observer = new MutationObserver(() => {
+      if (document.body.classList.contains('app-ready')) {
+        setIsAppReady(true);
+        observer.disconnect();
+      }
+    });
+    
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    
+    return () => observer.disconnect();
+  }, [isAppReady]);
 
   useEffect(() => {
     const currentRef = ref.current;
@@ -66,6 +82,8 @@ export default function AnimatedText({
 
   const words = text.split(' ');
 
+  const shouldAnimate = isVisible && isAppReady;
+
   let globalCharIndex = 0;
 
   return (
@@ -81,11 +99,11 @@ export default function AnimatedText({
                 return (
                   <span 
                     key={charIndex}
-                    className={`${styles.word} ${isVisible ? styles.visible : ''}`}
+                    className={`${styles.word} ${shouldAnimate ? styles.visible : ''}`}
                     style={{ 
-                      transitionDelay: isVisible ? `${delay + (currentIndex * stagger)}s` : '0s',
-                      transitionDuration: isVisible ? '' : '0s',
-                      animationDelay: isVisible ? `${delay + (currentIndex * stagger)}s` : '0s'
+                      transitionDelay: shouldAnimate ? `${delay + (currentIndex * stagger)}s` : '0s',
+                      transitionDuration: shouldAnimate ? '' : '0s',
+                      animationDelay: shouldAnimate ? `${delay + (currentIndex * stagger)}s` : '0s'
                     }}
                   >
                     {char}
@@ -94,11 +112,11 @@ export default function AnimatedText({
               })
             ) : (
               <span 
-                className={`${styles.word} ${isVisible ? styles.visible : ''}`}
+                className={`${styles.word} ${shouldAnimate ? styles.visible : ''}`}
                 style={{ 
-                  transitionDelay: isVisible ? `${delay + (wordIndex * stagger)}s` : '0s',
-                  transitionDuration: isVisible ? '' : '0s',
-                  animationDelay: isVisible ? `${delay + (wordIndex * stagger)}s` : '0s'
+                  transitionDelay: shouldAnimate ? `${delay + (wordIndex * stagger)}s` : '0s',
+                  transitionDuration: shouldAnimate ? '' : '0s',
+                  animationDelay: shouldAnimate ? `${delay + (wordIndex * stagger)}s` : '0s'
                 }}
               >
                 {word}

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import AnimatedText from '../../components/AnimatedText';
 import styles from './QuemSomos.module.css';
+import { useLanguage } from '../../i18n';
 
 // Import images from assets
 import { 
@@ -12,6 +13,7 @@ import {
 export default function QuemSomos() {
   const timelineRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const { locale, t } = useLanguage();
   
   // Drag to scroll state
   const [isDragging, setIsDragging] = useState(false);
@@ -79,20 +81,16 @@ export default function QuemSomos() {
         <div className={styles.introContainer}>
           <div className={styles.introLeft}>
             <span className="tag-badge dark">
-              quem somos
+              {t.quemSomos.tag}
             </span>
             <h2 className={styles.introTitle}>
-              Nossa gente <br /><span className={styles.highlight}>faz a diferença</span>
+              {t.quemSomos.introTitle1} <br /><span className={styles.highlight}>{t.quemSomos.introHighlight}</span>
             </h2>
           </div>
           <div className={styles.introDescription}>
-            <p>
-              Sediado em Tangará da Serra (MT), o <strong>Grupo PA</strong> une consultoria agronômica especializada e atendimento próximo para <strong>impulsionar a produtividade do produtor</strong>. Com um campo experimental próprio, transformamos pesquisas e estudos práticos em dados reais para eliminar o achismo e otimizar os resultados da sua safra.
-            </p>
+            <p dangerouslySetInnerHTML={{ __html: t.quemSomos.introP1 }} />
             <br />
-            <p>
-              Simplificamos sua rotina cuidando de toda a gestão de compras de insumos, negociando os melhores preços, prazos e fornecedores do mercado. Pioneiros em agricultura de precisão, usamos GPS e sensoriamento remoto para coletar dados exatos e maximizar o desempenho de cada hectare. <strong>Somos a parceria sólida e lucrativa que você busca para o campo</strong>. Conte com o Grupo PA para elevar o patamar da sua produção.
-            </p>
+            <p dangerouslySetInnerHTML={{ __html: t.quemSomos.introP2 }} />
           </div>
         </div>
       </section>
@@ -111,10 +109,10 @@ export default function QuemSomos() {
             handshake
           </motion.span>
           <h3 className={styles.cardTitle}>
-            <AnimatedText text="Nosso compromisso" type="char" delay={0} stagger={0.02} className={styles.centeredAnimatedText} />
+            <AnimatedText key={`comp-${locale}`} text={t.quemSomos.compromissoTitle} type="char" delay={0} stagger={0.02} className={styles.centeredAnimatedText} />
           </h3>
           <p className={styles.cardText}>
-            Contribuímos com o desenvolvimento do agronegócio, entregando aos nossos clientes as melhores soluções em produtividade, com excelência na prestação de serviços, tecnologia, pesquisa e respeito às pessoas e ao meio ambiente.
+            {t.quemSomos.compromissoText}
           </p>
         </div>
 
@@ -130,10 +128,10 @@ export default function QuemSomos() {
             rocket_launch
           </motion.span>
           <h3 className={styles.cardTitleDark}>
-            <AnimatedText text="Onde queremos chegar" type="char" delay={0.2} stagger={0.02} className={styles.centeredAnimatedText} />
+            <AnimatedText key={`visao-${locale}`} text={t.quemSomos.visaoTitle} type="char" delay={0.2} stagger={0.02} className={styles.centeredAnimatedText} />
           </h3>
           <p className={styles.cardTextDark}>
-            Buscamos ser referência em consultoria agronômica, pesquisa e agricultura de precisão, levando inovação, resultado e confiança para o produtor rural em cada safra.
+            {t.quemSomos.visaoText}
           </p>
         </div>
 
@@ -149,10 +147,10 @@ export default function QuemSomos() {
             diamond
           </motion.span>
           <h3 className={styles.cardTitleGreen}>
-            <AnimatedText text="Os valores que nos movem" type="char" delay={0.4} stagger={0.02} className={styles.centeredAnimatedText} />
+            <AnimatedText key={`valores-${locale}`} text={t.quemSomos.valoresTitle} type="char" delay={0.4} stagger={0.02} className={styles.centeredAnimatedText} />
           </h3>
           <p className={styles.cardTextGreen}>
-            Acreditamos que grandes resultados começam com relações sólidas. Por isso, conduzimos nosso trabalho com honestidade, ética e transparência, valorizando as pessoas, respeitando cada parceria e mantendo a paixão pelo que fazemos em cada desafio do campo.
+            {t.quemSomos.valoresText}
           </p>
         </div>
       </section>
@@ -162,12 +160,12 @@ export default function QuemSomos() {
         <div className={styles.videoContainer}>
           <div className={styles.videoHeader}>
             <span className="tag-badge dark">
-              institucional
+              {t.quemSomos.institucionalTag}
             </span>
             <h2 className={styles.videoTitle}>
-              <AnimatedText text="Vídeo " type="word" />
+              <AnimatedText key={`vid1-${locale}`} text={t.quemSomos.videoTitle1} type="word" />
               <span className={styles.highlight}>
-                <AnimatedText text="Institucional" type="word" delay={0.1} />
+                <AnimatedText key={`vid2-${locale}`} text={t.quemSomos.videoTitle2} type="word" delay={0.1} />
               </span>
             </h2>
           </div>
@@ -193,10 +191,10 @@ export default function QuemSomos() {
           <div className={styles.timelineHeader}>
             <div>
               <span className="tag-badge dark">
-                timeline
+                {t.quemSomos.timelineTag}
               </span>
               <h2 className={styles.timelineTitle}>
-                <AnimatedText text="Nossa história" type="word" />
+                <AnimatedText key={`hist-${locale}`} text={t.quemSomos.timelineTitle} type="word" />
               </h2>
             </div>
             <div className={`${styles.timelineControls} ${styles.desktopControls}`}>
@@ -229,16 +227,7 @@ export default function QuemSomos() {
                 onMouseUp={handleMouseUp}
                 onMouseMove={handleMouseMove}
               >
-                {[
-                  { tag: "o início", year: "1993", text: "O Grupo PA teve o início de sua história no Mato Grosso em 1993, através da aquisição da Faz. São Paulo, em Diamantino - MT, para o cultivo de soja e milho. Ainda hoje é a principal Fazenda do grupo e onde está localizado nosso campo de pesquisa." },
-                  { tag: "consultoria", year: "2002", text: "No ano de 2002, nosso fundador Paulo Asunção, a convite de um vizinho de terra, começou a prestar serviços de consultoria agronômica. Este foi o primeiro cliente da empresa e segue conosco até hoje." },
-                  { tag: "tecnologia", year: "2009", text: "Em 2009, a PA Consultoria passou a disponibilizar os serviços de agricultura de precisão, sendo uma das primeiras empresas do estado a oferecer este serviço." },
-                  { tag: "pesquisa", year: "2011", text: "Iniciamos os trabalhos de Pesquisa Agronômica que hoje conta com uma área de 60 ha e mais de 2.000 tratamentos dedicados ao desenvolvimento, gerando resultados importantes para a construção da melhor estratégia produtiva." },
-                  { tag: "evento", year: "2013", text: "A PA Pesquisa realizou seu primeiro dia de campo em seu campo de pesquisa na Faz. São Paulo, reunindo cerca de 30 produtores." },
-                  { tag: "novas culturas", year: "2023", text: "A PA Consultoria passou a atender a cultura do algodão." },
-                  { tag: "expansão", year: "2024", text: "Comprometidos com nossa missão em contribuir com o desenvolvimento do agronegócio, expandimos e passamos a atender a região do Nortão Mato-Grossense." },
-                  { tag: "investimento", year: "2026", text: "O Grupo PA segue investindo no agro e no Mato Grosso. Como acionistas da ALD Bioenergia, realizamos novos investimentos para a triplicação da planta." }
-                ].map((item, idx) => (
+                {t.quemSomos.timeline.map((item, idx) => (
                   <div key={idx} className={styles.timelineItemWrapper}>
                     <div className={styles.timelineLine}>
                       <span className="tag-badge light" style={{ background: '#e1fe00', border: 'none', color: '#002d22' }}>{item.tag}</span>
@@ -246,7 +235,7 @@ export default function QuemSomos() {
                     <div className={styles.timelineItem}>
                       <div className={styles.timelineYearWrapper}>
                         <span className={styles.timelineYear}>
-                          <AnimatedText text={item.year} type="char" delay={0} stagger={0.05} once={false} />
+                          <AnimatedText key={`year-${idx}-${locale}`} text={item.year} type="char" delay={0} stagger={0.05} once={false} />
                         </span>
                       </div>
                       <div className={styles.timelineContent}>

@@ -1,10 +1,13 @@
 import { useEffect } from 'react';
 import styles from './CentroPesquisa.module.css';
 import { imgBgServicos, imgCentroPesquisa } from '../../assets';
+import { useLanguage } from '../../i18n';
 
 import SubpageHero from '../../components/SubpageHero';
 
 export default function CentroPesquisa() {
+  const { t } = useLanguage();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -14,9 +17,9 @@ export default function CentroPesquisa() {
       
       {/* Hero Section */}
       <SubpageHero 
-        title="Centro de Pesquisa" 
+        title={t.centroPesquisaPage.title} 
         bgImage={imgBgServicos} 
-        breadcrumbCurrent="Centro de Pesquisa" 
+        breadcrumbCurrent={t.centroPesquisaPage.title} 
       />
 
       {/* Content Section */}
@@ -24,23 +27,23 @@ export default function CentroPesquisa() {
         <div className={styles.imageTextRow}>
           <div className={styles.textContent}>
             <p>
-              A pesquisa faz parte do ecossistema do Grupo PA e tem papel fundamental na evolução contínua dos serviços prestados aos nossos clientes.
+              {t.centroPesquisaPage.p1}
             </p>
             <p>
-              A proximidade entre a PA Consultoria e a PA Pesquisa Agronômica permite que dúvidas, desafios e oportunidades observadas nas lavouras se transformem em trabalhos de pesquisa dentro da nossa estação experimental.
+              {t.centroPesquisaPage.p2}
             </p>
             <p>
-              Todos os anos, são conduzidos diversos trabalhos com o objetivo de gerar informações que auxiliem na tomada de decisão dos produtores atendidos pela consultoria.
+              {t.centroPesquisaPage.p3}
             </p>
             <p>
-              Essa integração faz com que muitas das recomendações da equipe técnica sejam apoiadas por dados produzidos dentro da nossa própria estrutura de pesquisa, em condições semelhantes às encontradas na região de atuação dos nossos clientes.
+              {t.centroPesquisaPage.p4}
             </p>
             <p>
-              Além de acompanhar tendências e novas tecnologias, buscamos entender como elas se comportam na prática e qual valor podem agregar ao sistema produtivo.
+              {t.centroPesquisaPage.p5}
             </p>
           </div>
           <div className={styles.imageWrapper}>
-            <img src={imgCentroPesquisa} alt="Centro de Pesquisa" />
+            <img src={imgCentroPesquisa} alt={t.centroPesquisaPage.title} />
           </div>
         </div>
       </section>

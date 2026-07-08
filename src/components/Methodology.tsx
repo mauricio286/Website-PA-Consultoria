@@ -9,12 +9,14 @@ import {
   imgSimbol 
 } from '../assets';
 import AnimatedText from './AnimatedText';
+import { useLanguage } from '../i18n';
 
 type TabId = 'estrategia' | 'execucao' | 'tecnologia';
 
 export default function Methodology() {
   const [activeTab, setActiveTab] = useState<TabId>('execucao'); // default active to match Figma 'Execução/Operação' default
   const containerRef = useRef<HTMLElement>(null);
+  const { locale, t } = useLanguage();
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -27,22 +29,22 @@ export default function Methodology() {
   const tabs = [
     {
       id: 'estrategia' as TabId,
-      title: 'Estratégia',
-      description: 'Decisões orientadas por pesquisa, objetivos e visão de longo prazo, transformando informações agronômicas em ações práticas que maximizam a produtividade, a rentabilidade e a sustentabilidade dos sistemas produtivos.',
+      title: t.methodology.estrategia,
+      description: t.methodology.estrategiaDesc,
       icon: imgChessKnight,
       nodeId: '21:716'
     },
     {
       id: 'execucao' as TabId,
-      title: 'Execução',
-      description: 'Decisões embasadas em dados, clima e mercado para mitigar riscos antes mesmo do plantio.',
+      title: t.methodology.execucao,
+      description: t.methodology.execucaoDesc,
       icon: imgAvgTime,
       nodeId: '21:837'
     },
     {
       id: 'tecnologia' as TabId,
-      title: 'Tecnologia',
-      description: 'Uso das melhores ferramentas de agricultura digital para otimizar recursos e monitorar a saúde da sua safra em tempo real.',
+      title: t.methodology.tecnologia,
+      description: t.methodology.tecnologiaDesc,
       icon: imgAutomation,
       nodeId: '21:851'
     }
@@ -70,10 +72,10 @@ export default function Methodology() {
       <div className={styles.container}>
         <div className={styles.header} data-node-id="21:712">
           <div className="tag-badge light" style={{ marginBottom: '20px' }} data-node-id="35:1082">
-            Estrutura
+            {t.methodology.tag}
           </div>
           <h2 className={styles.title} data-node-id="21:713">
-            <AnimatedText text="Pilares Metodológicos" type="char" delay={0} stagger={0.02} />
+            <AnimatedText key={`methodology-${locale}`} text={t.methodology.title} type="char" delay={0} stagger={0.02} />
           </h2>
         </div>
 

@@ -3,12 +3,14 @@ import styles from './Hero.module.css';
 import { imgProperty1Default } from '../assets';
 import LogoCarousel from './LogoCarousel';
 import AnimatedText from './AnimatedText';
+import { useLanguage } from '../i18n';
 
 import { Link } from 'react-router-dom';
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
   const parallaxRef = useRef<HTMLDivElement>(null);
+  const { locale, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,13 +70,13 @@ export default function Hero() {
             {/* Rendered as styled text for the web */}
             <h1 className={styles.titleWrapper}>
               <span className={styles.titleLine1}>
-                <AnimatedText text="Resultados" type="char" delay={0.6} stagger={0.02} sessionOnce={true} sessionKey="heroHome1" />
+                <AnimatedText key={`hero1-${locale}`} text={t.hero.line1} type="char" delay={0.6} stagger={0.02} sessionOnce={true} sessionKey={`heroHome1-${locale}`} />
               </span>
               <span className={styles.titleLine2}>
-                <AnimatedText text="que o campo" type="char" delay={0.8} stagger={0.02} sessionOnce={true} sessionKey="heroHome2" />
+                <AnimatedText key={`hero2-${locale}`} text={t.hero.line2} type="char" delay={0.8} stagger={0.02} sessionOnce={true} sessionKey={`heroHome2-${locale}`} />
               </span>
               <span className={styles.titleLine3}>
-                <AnimatedText text="comprova!" type="char" delay={1.0} stagger={0.02} sessionOnce={true} sessionKey="heroHome3" />
+                <AnimatedText key={`hero3-${locale}`} text={t.hero.line3} type="char" delay={1.0} stagger={0.02} sessionOnce={true} sessionKey={`heroHome3-${locale}`} />
               </span>
             </h1>
 
@@ -86,7 +88,7 @@ export default function Hero() {
                 className="btn-pa white"
                 data-node-id="54:74"
               >
-                <span className="btn-label">Nossas soluções</span>
+                <span className="btn-label">{t.hero.cta}</span>
                 <span className="btn-icon">
                   <span className="material-symbols-rounded" style={{ fontSize: '24px', lineHeight: 1 }}>arrow_back</span>
                 </span>
@@ -98,7 +100,7 @@ export default function Hero() {
           {/* Figma node 3:487: font-light, 20px, right aligned, top 436px */}
           <div className={styles.rightCol}>
             <p className={styles.description} data-node-id="3:487">
-              Consultoria agronômica especializada para produtores que buscam excelência, rentabilidade e segurança em cada hectare plantado.
+              {t.hero.description}
             </p>
           </div>
         </div>

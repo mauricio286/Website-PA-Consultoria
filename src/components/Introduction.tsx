@@ -1,10 +1,12 @@
 import { useRef, useEffect } from 'react';
 import styles from './Introduction.module.css';
 import { imgIntroducao } from '../assets';
+import { useT } from '../i18n';
 
 export default function Introduction() {
   const containerRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const t = useT();
 
   useEffect(() => {
     const container = containerRef.current;
@@ -54,16 +56,16 @@ export default function Introduction() {
         {/* Left — text and button */}
         <div className={styles.leftCol} data-node-id="16:526">
           <span className="tag-badge dark" data-node-id="16:523">
-            Introdução
+            {t.intro.tag}
           </span>
 
           <p className={styles.mainText} data-node-id="16:525">
-            No campo, resultado não acontece por acaso. Ele nasce de experiência, estratégia e decisões bem tomadas. Há mais de 20 anos, o Grupo PA caminha ao lado do produtor rural, unindo consultoria técnica, agricultura de precisão e gestão para transformar conhecimento em produtividade.
+            {t.intro.text}
           </p>
 
           <div className={styles.btnWrapper} data-node-id="27:878">
             <a href="/quem-somos" className="btn-pa dark-green" data-node-id="54:105">
-              <span className="btn-label">Ver mais</span>
+              <span className="btn-label">{t.intro.cta}</span>
               <span className="btn-icon">
                 <span className="material-symbols-rounded" style={{ fontSize: '24px', lineHeight: 1 }}>arrow_back</span>
               </span>
@@ -81,7 +83,7 @@ export default function Introduction() {
             <div className={styles.imageScaler}>
               <img
                 src={imgIntroducao}
-                alt="Introdução"
+                alt={t.intro.tag}
                 className={styles.image}
                 data-node-id="677:894"
               />

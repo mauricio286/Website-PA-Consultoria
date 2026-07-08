@@ -9,9 +9,12 @@ import {
   imgRectangle6 
 } from '../assets';
 import AnimatedText from './AnimatedText';
+import { useLanguage } from '../i18n';
 
 export default function Parceria() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const { locale, t } = useLanguage();
+
   const images = [
     { id: 'img-1', src: imgRectangle1, label: 'Monitoramento Aéreo' },
     { id: 'img-2', src: imgRectangle2, label: 'Análise de Solo' },
@@ -30,10 +33,10 @@ export default function Parceria() {
         <div className={styles.headerWrapper}>
           <div className={styles.header} data-node-id="36:1319">
             <div className="tag-badge dark" data-node-id="36:1320">
-              parceria
+              {t.parceria.tag}
             </div>
             <h2 className={styles.title} data-node-id="36:1322">
-              <AnimatedText text="Nós estamos em movimento constante para levar o melhor da pesquisa e inovação até o produtor." delay={0} stagger={0.03} type="word" />
+              <AnimatedText key={`parceria-${locale}`} text={t.parceria.title} delay={0} stagger={0.03} type="word" />
             </h2>
           </div>
         </div>

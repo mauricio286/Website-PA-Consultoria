@@ -2,8 +2,11 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './EmDesenvolvimento.module.css';
 import { imgBg, imgLogoPa1 } from '../../assets';
+import { useLanguage } from '../../i18n';
 
 export default function EmDesenvolvimento() {
+  const { t } = useLanguage();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -20,8 +23,8 @@ export default function EmDesenvolvimento() {
           <div className={styles.logoWrapper}>
             <img src={imgLogoPa1} alt="Grupo PA" className={styles.logo} />
           </div>
-          <h1 className={styles.title}>Em Desenvolvimento</h1>
-          <p className={styles.subtitle}>Esta página estará disponível em breve.</p>
+          <h1 className={styles.title}>{t.emDesenvolvimentoPage.title}</h1>
+          <p className={styles.subtitle}>{t.emDesenvolvimentoPage.subtitle}</p>
         </div>
 
         <div className={styles.backButtonWrapper}>

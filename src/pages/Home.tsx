@@ -7,6 +7,7 @@ import Atuacao from '../components/Atuacao';
 import Parceria from '../components/Parceria';
 import Testimonials from '../components/Testimonials';
 import AnimatedText from '../components/AnimatedText';
+import { useLanguage } from '../i18n';
 
 import { imgSessao4 } from '../assets';
 import styles from '../App.module.css';
@@ -14,6 +15,7 @@ import styles from '../App.module.css';
 export default function Home() {
   const bannerRef = useRef<HTMLElement>(null);
   const bannerImgRef = useRef<HTMLImageElement>(null);
+  const { locale, t } = useLanguage();
 
   useEffect(() => {
     // Banner Parallax (Zoom suave com delay)
@@ -80,9 +82,9 @@ export default function Home() {
         </div>
         <div className={styles.bannerContent}>
           <p className={styles.bannerText} data-node-id="29:895">
-            <AnimatedText text="Sua próxima safra, pode ser ainda " type="word" delay={0} stagger={0.05} />
+            <AnimatedText key={`banner1-${locale}`} text={t.banner.text} type="word" delay={0} stagger={0.05} />
             <span className={styles.bannerTextAccent}>
-              <AnimatedText text="melhor conosco!" type="word" delay={0.4} stagger={0.05} />
+              <AnimatedText key={`banner2-${locale}`} text={t.banner.accent} type="word" delay={0.4} stagger={0.05} />
             </span>
           </p>
         </div>

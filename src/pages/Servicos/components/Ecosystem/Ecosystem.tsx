@@ -8,10 +8,12 @@ import {
   imgCentroPesquisa,
   imgAldBioenergia
 } from '../../../../assets';
+import { useLanguage } from '../../../../i18n';
 
 export default function Ecosystem() {
   const gridRef = useRef<HTMLDivElement>(null);
   const [isGridVisible, setIsGridVisible] = useState(false);
+  const { locale, t } = useLanguage();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -36,13 +38,13 @@ export default function Ecosystem() {
       <div className={styles.ecosystemContainer}>
         <div className={styles.tagWrapperCenter}>
            <span className="tag-badge dark" style={{ borderColor: '#88a668', color: '#455336', backgroundColor: 'transparent' }}>
-             nossa força no campo
+             {t.servicos.ecosistemaTag}
            </span>
         </div>
 
         <h2 className={styles.ecosystemTitle}>
-          <span className={styles.highlight}><AnimatedText text="Eco" type="word" /></span>
-          <AnimatedText text="sistema" type="word" delay={0.1} />
+          <span className={styles.highlight}><AnimatedText key={`eco1-${locale}`} text={t.servicos.ecosistemaTitle1} type="word" /></span>
+          <AnimatedText key={`eco2-${locale}`} text={t.servicos.ecosistemaTitle2} type="word" delay={0.1} />
         </h2>
 
         <div ref={gridRef} className={`${styles.ecosystemGrid} ${isGridVisible ? styles.animateEcosystem : ''}`} style={{ marginTop: '0px' }}>
@@ -71,12 +73,12 @@ export default function Ecosystem() {
           <div className={styles.ecoCardsWrapper}>
              <div className={`${styles.ecoCard} ${styles.cardDarkGreen}`}>
                <div className={styles.ecoImageWrapper}>
-                 <img src={imgAldBioenergia} alt="ALD Bioenergia" />
+                 <img src={imgAldBioenergia} alt={t.servicos.aldBioenergia} />
                </div>
-               <h3 className={styles.ecoCardTitle}>ALD Bioenergia</h3>
+               <h3 className={styles.ecoCardTitle}>{t.servicos.aldBioenergia}</h3>
                <div className={styles.ecoCardButton}>
                   <Link to="/aldbioenergia" className="btn-pa white">
-                    <span className="btn-label">Ver mais</span>
+                    <span className="btn-label">{t.common.verMais}</span>
                     <span className="btn-icon"><span className="material-symbols-rounded">arrow_back</span></span>
                   </Link>
                </div>
@@ -84,12 +86,12 @@ export default function Ecosystem() {
 
              <div className={`${styles.ecoCard} ${styles.cardGreen}`}>
                <div className={styles.ecoImageWrapper}>
-                 <img src={imgLavoura} alt="Lavoura" />
+                 <img src={imgLavoura} alt={t.servicos.lavoura} />
                </div>
-               <h3 className={styles.ecoCardTitle}>Lavoura</h3>
+               <h3 className={styles.ecoCardTitle}>{t.servicos.lavoura}</h3>
                <div className={styles.ecoCardButton}>
                   <Link to="/lavoura" className="btn-pa white">
-                    <span className="btn-label">Ver mais</span>
+                    <span className="btn-label">{t.common.verMais}</span>
                     <span className="btn-icon"><span className="material-symbols-rounded">arrow_back</span></span>
                   </Link>
                </div>
@@ -97,12 +99,12 @@ export default function Ecosystem() {
 
              <div className={`${styles.ecoCard} ${styles.cardDarkGreen}`}>
                <div className={styles.ecoImageWrapper}>
-                 <img src={imgCentroPesquisa} alt="Centro de Pesquisa" />
+                 <img src={imgCentroPesquisa} alt={t.servicos.centroPesquisa} />
                </div>
-               <h3 className={styles.ecoCardTitle}>Centro de Pesquisa</h3>
+               <h3 className={styles.ecoCardTitle}>{t.servicos.centroPesquisa}</h3>
                <div className={styles.ecoCardButton}>
                   <Link to="/centropesquisa" className="btn-pa white">
-                    <span className="btn-label">Ver mais</span>
+                    <span className="btn-label">{t.common.verMais}</span>
                     <span className="btn-icon"><span className="material-symbols-rounded">arrow_back</span></span>
                   </Link>
                </div>
@@ -110,12 +112,12 @@ export default function Ecosystem() {
 
              <div className={`${styles.ecoCard} ${styles.cardGreen}`}>
                <div className={styles.ecoImageWrapper}>
-                 <img src={imgEventos} alt="Palestras e Eventos" />
+                 <img src={imgEventos} alt={t.servicos.palestrasEventos} />
                </div>
-               <h3 className={styles.ecoCardTitle}>Palestras e Eventos</h3>
+               <h3 className={styles.ecoCardTitle}>{t.servicos.palestrasEventos}</h3>
                <div className={styles.ecoCardButton}>
                   <Link to="/palestras" className="btn-pa white">
-                    <span className="btn-label">Ver mais</span>
+                    <span className="btn-label">{t.common.verMais}</span>
                     <span className="btn-icon"><span className="material-symbols-rounded">arrow_back</span></span>
                   </Link>
                </div>

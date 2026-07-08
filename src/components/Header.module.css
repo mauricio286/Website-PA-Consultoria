@@ -50,6 +50,11 @@
   /* Animação inicial de load */
   opacity: 0;
   animation: menu-reveal 1.8s cubic-bezier(0.19, 1, 0.22, 1) 0.3s forwards;
+  animation-play-state: paused;
+}
+
+:global(.app-ready) .navStatic {
+  animation-play-state: running;
 }
 
 .navSubpage {
@@ -255,11 +260,140 @@
   color: var(--color-primary);
 }
 
-/* Right side placeholder (mirrors logo width) */
+/* Right side — Language Switcher */
 .rightPlaceholder {
   width: 220px;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+}
+
+.langSwitcher {
+  display: flex;
+  align-items: center;
+  background-color: #fdfdfd;
+  height: 40px;
+  padding: 0 4px;
+  border-radius: 35px;
+  gap: 4px; /* Added small gap for the animated pill */
+  /* Same reveal animation as nav */
+  opacity: 0;
+  animation: menu-reveal 1.8s cubic-bezier(0.19, 1, 0.22, 1) 0.5s forwards;
+  animation-play-state: paused;
+}
+
+:global(.app-ready) .langSwitcher {
+  animation-play-state: running;
+}
+
+.langBtn {
+  position: relative;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #999;
+  background: none;
+  border: none;
+  cursor: pointer;
+  height: 32px;
+  padding: 0 16px;
+  border-radius: 30px;
+  transition: color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.langBtn:hover:not(.langActive) {
+  color: #555;
+}
+
+.langActive {
+  color: var(--color-primary-dark);
+  font-weight: 700;
+}
+
+.langPillBg {
+  position: absolute;
+  inset: 0;
+  background-color: #c5e404;
+  border-radius: 30px;
+  z-index: 0;
+}
+
+.langText {
+  position: relative;
+  z-index: 1;
+}
+
+/* Floating nav — dark variant (only when shown) */
+.navFloating.navFloatingShow ~ .rightPlaceholder .langSwitcher {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.navFloating.navFloatingShow ~ .rightPlaceholder .langBtn {
+  color: rgba(255, 255, 255, 0.5);
+}
+.navFloating.navFloatingShow ~ .rightPlaceholder .langBtn:hover:not(.langActive) {
+  color: rgba(255, 255, 255, 0.8);
+}
+.navFloating.navFloatingShow ~ .rightPlaceholder .langActive {
+  color: var(--color-primary-dark);
+}
+.navFloating.navFloatingShow ~ .rightPlaceholder .langPillBg {
+  background-color: #c5e404;
+}
+
+/* Subpage variant */
+.langSwitcherSubpage {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.langSwitcherSubpage .langBtn {
+  color: #727272 !important;
+}
+
+.langSwitcherSubpage .langBtn:hover:not(.langActive) {
+  color: var(--color-text-dark) !important;
+}
+
+.langSwitcherSubpage .langActive {
+  color: var(--color-primary-dark) !important;
+}
+
+/* Mobile drawer language switcher */
+.mobileLangSwitcher {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 35px;
+  padding: 6px;
+  margin-top: 10px;
+}
+
+.mobileLangSwitcher .langBtn {
+  font-size: 16px;
+  height: 38px;
+  padding: 0 24px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.mobileLangSwitcher .langBtn:hover:not(.langActive) {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.mobileLangSwitcher .langActive {
+  color: var(--color-primary-dark);
+}
+
+.mobileLangSwitcher .langPillBg {
+  background-color: #c5e404;
 }
 
 /* Contact button */

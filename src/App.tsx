@@ -2,10 +2,12 @@ import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Lenis from 'lenis';
 import 'lenis/dist/lenis.css'; // Recommended base styles for lenis
+import { LanguageProvider } from './i18n';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
 import Preloader from './components/Preloader'; // Import Preloader
+import { CookieConsent } from './components/CookieConsent/CookieConsent';
 import styles from './App.module.css';
 
 import Home from './pages/Home';
@@ -88,6 +90,7 @@ function App() {
   };
 
   return (
+    <LanguageProvider>
     <Router>
       <Preloader onDone={handlePreloaderDone} />
       <ScrollToTop />
@@ -114,8 +117,14 @@ function App() {
 
         <Footer />
         <BackToTop />
+        <CookieConsent 
+          message="Utilizamos cookies para melhorar a sua experiência e analisar nosso tráfego. Ao continuar navegando, você concorda com a nossa" 
+          privacyPolicyUrl="/politica-de-privacidade"
+          enabled={true}
+        />
       </div>
     </Router>
+    </LanguageProvider>
   );
 }
 
