@@ -167,7 +167,7 @@
     padding-bottom: 20px;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none; /* Firefox */
-    touch-action: pan-x pan-y;
+    touch-action: pan-y;
     gap: 15px;
     
     /* Make the carousel edge-to-edge on mobile to prevent clipping */

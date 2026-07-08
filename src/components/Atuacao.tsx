@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import styles from './Atuacao.module.css';
 import { imgMapaCompleto, imgMatoGrosso, imgPin } from '../assets';
 import AnimatedText from './AnimatedText';
@@ -47,9 +47,22 @@ export default function Atuacao() {
 
   const sortedCities = [...cities].sort((a, b) => a.name.localeCompare(b.name));
 
-  const [selectedCityName, setSelectedCityName] = useState<string>(sortedCities[0].name);
+  const [selectedCityName, setSelectedCityName] = useState<string>("Diamantino - MT");
   const selectedCity = sortedCities.find(c => c.name === selectedCityName) || sortedCities[0];
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isDropdownOpen && dropdownRef.current) {
+      // Small timeout to allow Framer Motion to render the DOM elements before scrolling
+      setTimeout(() => {
+        const activeOption = dropdownRef.current?.querySelector(`.${styles.isActive}`);
+        if (activeOption) {
+          activeOption.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
+      }, 50);
+    }
+  }, [isDropdownOpen]);
 
   return (
     <section id="atuacao" className={styles.atuacao} data-node-id="36:1100">
@@ -91,6 +104,7 @@ export default function Atuacao() {
               <AnimatePresence>
                 {isDropdownOpen && (
                   <motion.div 
+                    ref={dropdownRef}
                     className={styles.dropdownMenu}
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -119,15 +133,16 @@ export default function Atuacao() {
 
         <div className={styles.mapWrapper} data-node-id="36:1130">
           <div className={styles.mapContainer} data-node-id="36:1131">
-            <svg viewBox="0 0 1195 1031" className={styles.mapSvg} preserveAspectRatio="xMidYMid meet">
-              <image href={imgMapaCompleto} x="0" y="0" width="1195" height="1031" />
-              
-              <image href={imgMatoGrosso} x="373.5" y="329" width="368" height="348" />
+            <div className={styles.mapMasker}>
+              <svg viewBox="0 0 1195 1031" className={styles.mapSvg} preserveAspectRatio="xMidYMid meet">
+                <image href={imgMapaCompleto} x="0" y="0" width="1195" height="1031" />
+                
+                <image href={imgMatoGrosso} x="373.5" y="329" width="368" height="348" />
 
-              {sortedCities.map((city) => {
-                const isSelected = city.name === selectedCity.name;
-                return (
-                  <motion.g 
+                {sortedCities.map((city) => {
+                  const isSelected = city.name === selectedCity.name;
+                  return (
+                    <motion.g 
                     key={city.name}
                     initial={false}
                     animate={{ 
@@ -136,47 +151,56 @@ export default function Atuacao() {
                       x: city.left,
                       y: city.top
                     }}
-                    style={{ pointerEvents: isSelected ? 'auto' : 'none' }}
+                    style={{ pointerEvents: 'auto' }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     className={styles.pinGroup} 
-                    onClick={() => {
-                      setSelectedCityName(city.name);
-                      setIsDropdownOpen(false);
-                    }}
-                  >
-                    <g className={styles.pinIconSvg}>
+                      onClick={() => {
+                        setSelectedCityName(city.name);
+                        setIsDropdownOpen(false);
+                      }}
+                    >
+                      <g className={styles.pinIconSvg}>
+                      {isSelected && (
+                        <motion.circle
+                          r="12"
+                          fill="#e1fe00"
+                          initial={{ opacity: 0.8, scale: 1 }}
+                          animate={{ opacity: 0, scale: 3.5 }}
+                          transition={{ repeat: Infinity, duration: 1.5, ease: "easeOut" }}
+                        />
+                      )}
                       <g opacity={isSelected ? "1" : "0"}>
-                        <image href={imgPin} width="30" height="30" x="-15" y="-15" />
+                        <image href={imgPin} width="50" height="50" x="-25" y="-25" />
                       </g>
                     </g>
-                    <circle 
-                      cx="0" 
-                      cy="0" 
-                      r="24" 
-                      fill="transparent" 
-                      className={styles.pinHitArea} 
-                      aria-label={city.name}
-                    />
-                  </motion.g>
-                );
-              })}
-            </svg>
+                      <circle 
+                        cx="0" 
+                        cy="0" 
+                        r="24" 
+                        fill="transparent" 
+                        className={styles.pinHitArea} 
+                        aria-label={city.name}
+                      />
+                    </motion.g>
+                  );
+                })}
+              </svg>
+            </div>
 
             {/* HTML Overlay for Tooltips (avoids SVG foreignObject bugs) */}
             <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', transform: 'translate(3.5%, 1.5%)' }}>
               <AnimatePresence mode="wait">
                 <motion.div
                   key={selectedCity.name}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className={styles.tooltipWrapper}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.15 }}
                   style={{
-                    position: 'absolute',
                     left: `${(selectedCity.left / 1195) * 100}%`,
                     top: `${(selectedCity.top / 1031) * 100}%`,
-                    transform: 'translate(-50%, calc(-100% - 20px))',
-                    zIndex: 20,
+                    transform: 'translate(-50%, calc(-100% - 30px))',
                   }}
                 >
                   <div className={styles.starBorderContainer}>

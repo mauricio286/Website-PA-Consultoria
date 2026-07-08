@@ -166,6 +166,11 @@
   border: none;
   overflow: visible;
   pointer-events: none; /* Let hover pass through to pins */
+}
+
+.mapMasker {
+  width: 100%;
+  height: 100%;
   /* Soft transition mask for the focus to be the center of the map */
   -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
   mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
@@ -206,7 +211,6 @@
   pointer-events: auto;
 }
 
-/* Pin Tooltip (React Bits StarBorder Effect com Máscara) */
 .starBorderContainer {
   position: relative;
   display: inline-flex;
@@ -215,6 +219,8 @@
   background: rgba(70, 126, 63, 0.45);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  transform: translateZ(0); /* Force GPU layer to prevent blur disappearing during parent animation */
+  will-change: transform;
 }
 
 .starBorderMask {
@@ -310,6 +316,11 @@
   letter-spacing: -0.51px;
 }
 
+.tooltipWrapper {
+  position: absolute;
+  z-index: 20;
+}
+
 /* Responsive configurations */
 @media (max-width: 1024px) {
   .container {
@@ -342,6 +353,34 @@
     font-size: 32px;
   }
   
+  .tooltipWrapper {
+    left: 50% !important;
+    top: 30px !important;
+    transform: translate(-50%, 0) !important;
+    width: 90%;
+    max-width: 320px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .pinTooltipInner {
+    height: auto;
+    min-height: 34px;
+    padding: 8px 16px;
+    flex-wrap: wrap;
+    white-space: normal;
+    text-align: center;
+    border-radius: 24px;
+  }
+  
+  .starBorderContainer {
+    border-radius: 24px;
+  }
+  
+  .starBorderMask {
+    border-radius: 24px;
+  }
+
   .mapContainer {
     /* Focus on MT by zooming the map container */
     overflow: hidden;
