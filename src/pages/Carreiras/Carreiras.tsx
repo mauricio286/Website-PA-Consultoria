@@ -547,6 +547,7 @@ export default function Carreiras() {
               onMouseUp={handleMouseUp}
               onMouseLeave={handleMouseUp}
               onMouseMove={handleMouseMove}
+              data-lenis-prevent="true"
               style={{ 
                 marginLeft: trackMarginLeft ? `${trackMarginLeft}px` : undefined,
                 width: trackMarginLeft ? `calc(100% - ${trackMarginLeft}px)` : '100%'

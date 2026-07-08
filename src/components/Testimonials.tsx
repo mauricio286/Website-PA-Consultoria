@@ -60,9 +60,35 @@ export default function Testimonials() {
     },
   ], [t]);
 
+  const startAutoPlay = () => {
+    if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+    autoPlayRef.current = setInterval(() => {
+      if (gridRef.current && window.innerWidth <= 991) {
+        const { scrollLeft, scrollWidth, clientWidth } = gridRef.current;
+        
+        const cardElement = gridRef.current.querySelector(`.${styles.card}`) as HTMLElement;
+        const gap = 15;
+        const cardWidth = cardElement ? cardElement.offsetWidth + gap : clientWidth * 0.85;
+
+        // If we reached the end, scroll back to start
+        if (scrollLeft + clientWidth >= scrollWidth - 10) {
+          gridRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          // Scroll by one exact card width
+          gridRef.current.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        }
+      }
+    }, 3500); // 3.5 seconds
+  };
+
   const handleTouchStart = () => {
     // Pause auto-play when user touches the carousel
     if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+  };
+
+  const handleTouchEnd = () => {
+    // Resume auto-play after interaction
+    startAutoPlay();
   };
 
   const handleScrollEvent = () => {
@@ -81,26 +107,6 @@ export default function Testimonials() {
   };
 
   useEffect(() => {
-    const startAutoPlay = () => {
-      autoPlayRef.current = setInterval(() => {
-        if (gridRef.current && window.innerWidth <= 991) {
-          const { scrollLeft, scrollWidth, clientWidth } = gridRef.current;
-          
-          const cardElement = gridRef.current.querySelector(`.${styles.card}`) as HTMLElement;
-          const gap = 15;
-          const cardWidth = cardElement ? cardElement.offsetWidth + gap : clientWidth * 0.85;
-
-          // If we reached the end, scroll back to start
-          if (scrollLeft + clientWidth >= scrollWidth - 10) {
-            gridRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-          } else {
-            // Scroll by one exact card width
-            gridRef.current.scrollBy({ left: cardWidth, behavior: 'smooth' });
-          }
-        }
-      }, 3500); // 3.5 seconds
-    };
-
     startAutoPlay();
 
     return () => {
@@ -126,7 +132,9 @@ export default function Testimonials() {
           className={styles.grid} 
           ref={gridRef}
           onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
           onScroll={handleScrollEvent}
+          data-lenis-prevent="true"
         >
           {testimonials.map((dep) => (
             <div

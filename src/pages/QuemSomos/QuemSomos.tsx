@@ -226,6 +226,7 @@ export default function QuemSomos() {
                 onMouseLeave={handleMouseLeave}
                 onMouseUp={handleMouseUp}
                 onMouseMove={handleMouseMove}
+                data-lenis-prevent="true"
               >
                 {t.quemSomos.timeline.map((item, idx) => (
                   <div key={idx} className={styles.timelineItemWrapper}>
