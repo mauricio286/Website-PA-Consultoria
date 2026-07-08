@@ -21,6 +21,7 @@ import { StrikethroughFeatureClient as StrikethroughFeatureClient_e70f5e05f09f93
 import { UnderlineFeatureClient as UnderlineFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { BoldFeatureClient as BoldFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { ItalicFeatureClient as ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
+import { default as default_1bb1b0df9c0a6cd9937fbbf2c17ebd86 } from '@/components/MapPicker/MapPicker'
 import { default as default_d4048015f466832aa056ed6cce3b1c3f } from '@/components/CustomLogo'
 import { default as default_b4adb2dd9e33ad3d73567604a12518b9 } from '@/components/CustomSidebar'
 import { default as default_db9ac62598c46d0f1db201f6af05442e } from '@/components/LogoutButton'
@@ -51,6 +52,7 @@ export const importMap = {
   "@payloadcms/richtext-lexical/client#UnderlineFeatureClient": UnderlineFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@payloadcms/richtext-lexical/client#BoldFeatureClient": BoldFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@payloadcms/richtext-lexical/client#ItalicFeatureClient": ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
+  "@/components/MapPicker/MapPicker#default": default_1bb1b0df9c0a6cd9937fbbf2c17ebd86,
   "@/components/CustomLogo#default": default_d4048015f466832aa056ed6cce3b1c3f,
   "@/components/CustomSidebar#default": default_b4adb2dd9e33ad3d73567604a12518b9,
   "@/components/LogoutButton#default": default_db9ac62598c46d0f1db201f6af05442e,

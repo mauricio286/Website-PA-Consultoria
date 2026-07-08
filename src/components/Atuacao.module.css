@@ -429,9 +429,6 @@
   }
   
   .tooltipWrapper {
-    left: 50% !important;
-    top: 30px !important;
-    transform: translate(-50%, 0) !important;
     width: 90%;
     max-width: 320px;
     display: flex;

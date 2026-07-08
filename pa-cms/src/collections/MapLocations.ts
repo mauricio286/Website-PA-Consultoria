@@ -54,6 +54,17 @@ const MapLocations: CollectionConfig = {
       type: 'textarea',
     },
 
+    // ── Seletor de Posição Visual ──────────────────────────────────────────
+    {
+      name: 'mapPicker',
+      type: 'ui',
+      admin: {
+        components: {
+          Field: '@/components/MapPicker/MapPicker',
+        },
+      },
+    },
+
     // ── Coordenadas SVG ────────────────────────────────────────────────────
     // Valores relativos ao viewBox="0 0 1195 1031" do mapa
     {

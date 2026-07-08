@@ -246,40 +246,50 @@ export default function Atuacao({ data }: AtuacaoProps) {
             </div>
 
             {/* HTML Overlay for Tooltips (avoids SVG foreignObject bugs) */}
-            {selectedCity?.name && (
-              <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', transform: 'translate(3.5%, 1.5%)' }}>
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={selectedCity.name}
-                    className={styles.tooltipWrapper}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.15 }}
-                    style={{
-                      left: `${(selectedCity.left / 1195) * 100}%`,
-                      top: `${(selectedCity.top / 1031) * 100}%`,
-                      transform: 'translate(-50%, calc(-100% - 30px))',
-                    }}
-                  >
-                    <div className={styles.starBorderContainer}>
-                      <div className={styles.starBorderMask}>
-                        <div className={styles.borderGradientBottom}></div>
-                        <div className={styles.borderGradientTop}></div>
+            {selectedCity?.name && (() => {
+              const tooltipLeft = isMobile
+                ? ((selectedCity.left - 250) / 600) * 100
+                : (selectedCity.left / 1195) * 100;
+
+              const tooltipTop = isMobile
+                ? ((selectedCity.top - 200) / 600) * 100
+                : (selectedCity.top / 1031) * 100;
+
+              return (
+                <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', transform: 'translate(3.5%, 1.5%)' }}>
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={selectedCity.name}
+                      className={styles.tooltipWrapper}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.15 }}
+                      style={{
+                        left: `${tooltipLeft}%`,
+                        top: `${tooltipTop}%`,
+                        transform: 'translate(-50%, calc(-100% - 30px))',
+                      }}
+                    >
+                      <div className={styles.starBorderContainer}>
+                        <div className={styles.starBorderMask}>
+                          <div className={styles.borderGradientBottom}></div>
+                          <div className={styles.borderGradientTop}></div>
+                        </div>
+                        <div className={styles.pinTooltipInner}>
+                          <div className={styles.pinTooltipCity}>{selectedCity.name}</div>
+                          {selectedCity.area && (
+                            <div className={styles.pinTooltipArea}>
+                              {renderAreaText(selectedCity)}
+                            </div>
+                          )}
+                        </div>
                       </div>
-                      <div className={styles.pinTooltipInner}>
-                        <div className={styles.pinTooltipCity}>{selectedCity.name}</div>
-                        {selectedCity.area && (
-                          <div className={styles.pinTooltipArea}>
-                            {renderAreaText(selectedCity)}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-            )}
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+              );
+            })()}
           </div>
         </div>
       </div>
