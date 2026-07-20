@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "sync-cms": "node scripts/sync-cms-content.mjs",
+    "build": "npm run sync-cms && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "optimize": "node scripts/optimize-images.mjs"
@@ -28,6 +29,7 @@
     "eslint": "^10.3.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
+    "firebase-tools": "^15.23.0",
     "globals": "^17.6.0",
     "sharp": "^0.34.5",
     "svgo": "^4.0.1",

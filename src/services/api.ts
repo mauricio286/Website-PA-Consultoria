@@ -45,10 +45,12 @@ export interface HomePageData {
   bannerText?: string;
   bannerTextAlign?: 'left' | 'center' | 'right' | 'justify';
   bannerTextAccent?: string;
+  bannerTextAccentColor?: string;
   bannerImage?: Media | string;
   statsTag?: string;
   statsTitle?: string;
   statsTitleAccent?: string;
+  statsTitleAccentColor?: string;
   statsTitleAlign?: 'left' | 'center' | 'right' | 'justify';
   statsSubtext?: string;
   statsSubtextAlign?: 'left' | 'center' | 'right' | 'justify';
@@ -102,6 +104,7 @@ export interface AboutPageData {
   introTag?: string;
   title?: string;
   subtitle?: string;
+  subtitleColor?: string;
   introText?: any;
   commitment?: {
     title?: string;
@@ -118,6 +121,7 @@ export interface AboutPageData {
   videoSectionTag?: string;
   videoSectionTitle?: string;
   videoSectionTitleAccent?: string;
+  videoSectionTitleAccentColor?: string;
   institutionalVideoUrl?: string;
   timelineTag?: string;
   timelineTitle?: string;
@@ -136,6 +140,7 @@ export interface CareersPageData {
   heroImageMobile?: Media | string;
   title?: string;
   titleHighlight?: string;
+  titleHighlightColor?: string;
   introText?: string;
 }
 
@@ -146,6 +151,7 @@ export interface ServicesPageData {
   servicesBadge?: string;
   servicesTitle?: string;
   servicesSubtitle?: string;
+  servicesSubtitleColor?: string;
   servicesDescription?: string;
   servicesCards?: Array<{
     id?: string;
@@ -156,6 +162,7 @@ export interface ServicesPageData {
   ecosystemBadge?: string;
   ecosystemTitle?: string;
   ecosystemSubtitle?: string;
+  ecosystemSubtitleColor?: string;
   ecosystemCards?: Array<{
     id?: string;
     title: string;
@@ -191,6 +198,46 @@ export interface SiteSettingsData {
   footerText?: string;
 }
 
+export interface AldBioenergiaPageData {
+  heroImage?: Media | string;
+  title?: string;
+  leftContent?: any; // Lexical JSON
+  logoImage?: Media | string;
+  indicators?: Array<{
+    id?: string;
+    value: string;
+    description: string;
+    icon: Media | string;
+    theme: 'dark' | 'lime' | 'light';
+  }>;
+  section3Content?: any; // Lexical JSON
+  section3Image?: Media | string;
+  bottomContent?: any; // Lexical JSON;
+}
+
+export interface LavouraPageData {
+  heroImage?: Media | string;
+  title?: string;
+  leftContent?: any; // Lexical JSON
+  image?: Media | string;
+  bottomContent?: any; // Lexical JSON;
+}
+
+export interface CentroPesquisaPageData {
+  heroImage?: Media | string;
+  title?: string;
+  leftContent?: any; // Lexical JSON
+  image?: Media | string;
+}
+
+export interface PalestrasPageData {
+  heroImage?: Media | string;
+  title?: string;
+  leftContent?: any; // Lexical JSON
+  image?: Media | string;
+}
+
+
 export interface FooterSettingsData {
   addresses?: Array<{
     id?: string;
@@ -198,6 +245,10 @@ export interface FooterSettingsData {
     text: string;
     mapsUrl: string;
   }>;
+  linkedinUrl?: string;
+  instagramUrl?: string;
+  facebookUrl?: string;
+  youtubeUrl?: string;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -210,12 +261,25 @@ export interface Service {
   slug?: string;
   shortDescription: string;
   description?: any; // Lexical JSON
+  leftContent?: any; // Lexical JSON
+  bottomContent?: any; // Lexical JSON
   longDescription?: any; // Keep for safety
   coverImage?: Media | string;
   coverImageTablet?: Media | string;
   coverImageMobile?: Media | string;
   illustrationImage?: Media | string;
   showIllustration?: boolean;
+  cycleActive?: boolean;
+  cycleColor?: string;
+  cycleAccentColor?: string;
+  cycleSteps?: Array<{
+    id?: string;
+    stepNumber: string;
+    titleDark: string;
+    titleLight: string;
+    desc: string;
+    icon: string;
+  }>;
 }
 
 export interface Job {
@@ -263,19 +327,36 @@ export interface TestimonialDoc {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// STATIC DATA IMPORTS & HELPER
+// ─────────────────────────────────────────────────────────────────────────────
+
+import cmsPt from '../data/cms/cms-pt.json';
+import cmsEn from '../data/cms/cms-en.json';
+
+const cmsDataMap: Record<string, any> = {
+  pt: cmsPt,
+  en: cmsEn,
+};
+
+function getStaticData(locale?: string) {
+  const lang = locale || 'pt';
+  return cmsDataMap[lang] || cmsPt;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // API METHODS
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const api = {
-  // Helper para formatar a URL da imagem (Payload retorna caminhos relativos na mídia local)
+  // Helper para formatar a URL da imagem
   getMediaUrl(media: Media | string | undefined | null): string {
     if (!media) return '';
     if (typeof media === 'string') {
-      if (media.startsWith('http') || media.startsWith('data:')) return media;
+      if (media.startsWith('http') || media.startsWith('data:') || media.startsWith('/cms-media/')) return media;
       return `${API_URL}${media}`;
     }
     if (media.url) {
-      if (media.url.startsWith('http')) return media.url;
+      if (media.url.startsWith('http') || media.url.startsWith('/cms-media/')) return media.url;
       return `${API_URL}${media.url}`;
     }
     return '';
@@ -283,84 +364,189 @@ export const api = {
 
   // Globals
   async getHomePage(locale?: string): Promise<HomePageData> {
+    const data = getStaticData(locale);
+    const globalData = data.globals?.['home-page'];
+    if (globalData && Object.keys(globalData).length > 0) {
+      return globalData;
+    }
     const res = await fetch(getLocaleUrl('/api/globals/home-page', locale));
     if (!res.ok) throw new Error('Erro ao buscar dados da HomePage');
     return res.json();
   },
 
   async getAboutPage(locale?: string): Promise<AboutPageData> {
+    const data = getStaticData(locale);
+    const globalData = data.globals?.['about-page'];
+    if (globalData && Object.keys(globalData).length > 0) {
+      return globalData;
+    }
     const res = await fetch(getLocaleUrl('/api/globals/about-page', locale));
     if (!res.ok) throw new Error('Erro ao buscar dados da AboutPage');
     return res.json();
   },
 
   async getServicesPage(locale?: string): Promise<ServicesPageData> {
+    const data = getStaticData(locale);
+    const globalData = data.globals?.['services-page'];
+    if (globalData && Object.keys(globalData).length > 0) {
+      return globalData;
+    }
     const res = await fetch(getLocaleUrl('/api/globals/services-page', locale));
     if (!res.ok) throw new Error('Erro ao buscar dados da ServicesPage');
     return res.json();
   },
 
   async getCareersPage(locale?: string): Promise<CareersPageData> {
+    const data = getStaticData(locale);
+    const globalData = data.globals?.['careers-page'];
+    if (globalData && Object.keys(globalData).length > 0) {
+      return globalData;
+    }
     const res = await fetch(getLocaleUrl('/api/globals/careers-page', locale));
     if (!res.ok) throw new Error('Erro ao buscar dados da página Carreiras');
     return res.json();
   },
 
   async getContactSettings(locale?: string): Promise<ContactSettingsData> {
+    const data = getStaticData(locale);
+    const globalData = data.globals?.['contact-settings'];
+    if (globalData && Object.keys(globalData).length > 0) {
+      return globalData;
+    }
     const res = await fetch(getLocaleUrl('/api/globals/contact-settings', locale));
     if (!res.ok) throw new Error('Erro ao buscar dados de ContactSettings');
     return res.json();
   },
 
   async getSiteSettings(locale?: string): Promise<SiteSettingsData> {
+    const data = getStaticData(locale);
+    const globalData = data.globals?.['site-settings'];
+    if (globalData && Object.keys(globalData).length > 0) {
+      return globalData;
+    }
     const res = await fetch(getLocaleUrl('/api/globals/site-settings', locale));
     if (!res.ok) throw new Error('Erro ao buscar dados de SiteSettings');
     return res.json();
   },
 
   async getFooterSettings(locale?: string): Promise<FooterSettingsData> {
+    const data = getStaticData(locale);
+    const globalData = data.globals?.['footer-settings'];
+    if (globalData && Object.keys(globalData).length > 0) {
+      return globalData;
+    }
     const res = await fetch(getLocaleUrl('/api/globals/footer-settings', locale));
     if (!res.ok) throw new Error('Erro ao buscar dados de FooterSettings');
     return res.json();
   },
 
+  async getAldBioenergiaPage(locale?: string): Promise<AldBioenergiaPageData> {
+    const data = getStaticData(locale);
+    const globalData = data.globals?.['ald-bioenergia-page'];
+    if (globalData && Object.keys(globalData).length > 0) {
+      return globalData;
+    }
+    const res = await fetch(getLocaleUrl('/api/globals/ald-bioenergia-page', locale));
+    if (!res.ok) throw new Error('Erro ao buscar dados de AldBioenergiaPage');
+    return res.json();
+  },
+
+  async getLavouraPage(locale?: string): Promise<LavouraPageData> {
+    const data = getStaticData(locale);
+    const globalData = data.globals?.['lavoura-page'];
+    if (globalData && Object.keys(globalData).length > 0) {
+      return globalData;
+    }
+    const res = await fetch(getLocaleUrl('/api/globals/lavoura-page', locale));
+    if (!res.ok) throw new Error('Erro ao buscar dados de LavouraPage');
+    return res.json();
+  },
+
+  async getCentroPesquisaPage(locale?: string): Promise<CentroPesquisaPageData> {
+    const data = getStaticData(locale);
+    const globalData = data.globals?.['centro-pesquisa-page'];
+    if (globalData && Object.keys(globalData).length > 0) {
+      return globalData;
+    }
+    const res = await fetch(getLocaleUrl('/api/globals/centro-pesquisa-page', locale));
+    if (!res.ok) throw new Error('Erro ao buscar dados de CentroPesquisaPage');
+    return res.json();
+  },
+
+  async getPalestrasPage(locale?: string): Promise<PalestrasPageData> {
+    const data = getStaticData(locale);
+    const globalData = data.globals?.['palestras-page'];
+    if (globalData && Object.keys(globalData).length > 0) {
+      return globalData;
+    }
+    const res = await fetch(getLocaleUrl('/api/globals/palestras-page', locale));
+    if (!res.ok) throw new Error('Erro ao buscar dados de PalestrasPage');
+    return res.json();
+  },
+
   // Collections
   async getServices(locale?: string): Promise<Service[]> {
-    const res = await fetch(getLocaleUrl('/api/services?sort=order&where[published][equals]=true', locale));
+    const data = getStaticData(locale);
+    const docs = data.collections?.['services'];
+    if (Array.isArray(docs) && docs.length > 0) {
+      return docs;
+    }
+    const res = await fetch(getLocaleUrl('/api/services?limit=100', locale));
     if (!res.ok) throw new Error('Erro ao buscar serviços');
-    const data = await res.json();
-    return data.docs;
+    const resData = await res.json();
+    return resData.docs;
   },
 
   async getServiceBySlug(slug: string, locale?: string): Promise<Service | null> {
+    const data = getStaticData(locale);
+    const docs = data.collections?.['services'];
+    if (Array.isArray(docs) && docs.length > 0) {
+      const found = docs.find((s: Service) => s.slug === slug);
+      if (found) return found;
+    }
     const res = await fetch(getLocaleUrl(`/api/services?where[slug][equals]=${slug}`, locale));
     if (!res.ok) throw new Error('Erro ao buscar serviço por slug');
-    const data = await res.json();
-    return data.docs[0] || null;
+    const resData = await res.json();
+    return resData.docs[0] || null;
   },
 
   async getJobs(locale?: string): Promise<Job[]> {
+    const data = getStaticData(locale);
+    const docs = data.collections?.['jobs'];
+    if (Array.isArray(docs) && docs.length > 0) {
+      return docs;
+    }
     const res = await fetch(getLocaleUrl('/api/jobs?sort=order&where[visible][equals]=true', locale));
     if (!res.ok) throw new Error('Erro ao buscar vagas');
-    const data = await res.json();
-    return data.docs;
+    const resData = await res.json();
+    return resData.docs;
   },
 
   async getMapLocations(locale?: string): Promise<MapLocation[]> {
+    const data = getStaticData(locale);
+    const docs = data.collections?.['map-locations'];
+    if (Array.isArray(docs) && docs.length > 0) {
+      return docs;
+    }
     const res = await fetch(getLocaleUrl('/api/map-locations?limit=100&sort=order&where[published][equals]=true', locale));
     if (!res.ok) throw new Error('Erro ao buscar localizações do mapa');
-    const data = await res.json();
-    return data.docs;
+    const resData = await res.json();
+    return resData.docs;
   },
 
   async getTestimonials(locale?: string): Promise<TestimonialDoc[]> {
+    const data = getStaticData(locale);
+    const docs = data.collections?.['testimonials'];
+    if (Array.isArray(docs) && docs.length > 0) {
+      return docs;
+    }
     const res = await fetch(getLocaleUrl('/api/testimonials?limit=100&sort=order&where[published][equals]=true', locale));
     if (!res.ok) throw new Error('Erro ao buscar depoimentos');
-    const data = await res.json();
-    return data.docs;
+    const resData = await res.json();
+    return resData.docs;
   },
 
-  // Form Submissions
+  // Form Submissions (Permanece dinâmico via HTTP POST)
   async submitContact(data: {
     name: string;
     email: string;
@@ -377,7 +563,6 @@ export const api = {
   },
 
   async submitJobApplication(formData: FormData): Promise<{ success: boolean; message: string }> {
-    // Note: FormData define automaticamente o cabeçalho 'multipart/form-data' e o boundary correspondente
     const res = await fetch(`${API_URL}/api/job-applications`, {
       method: 'POST',
       body: formData,
@@ -385,3 +570,4 @@ export const api = {
     return res.json();
   },
 };
+
