@@ -344,7 +344,87 @@ function getStaticData(locale?: string) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// API METHODS
+// SWR (STALE-WHILE-REVALIDATE) ENGINE
+// ─────────────────────────────────────────────────────────────────────────────
+
+const swrCache = new Map<string, any>();
+const swrListeners = new Map<string, Set<(data: any) => void>>();
+
+function subscribeSwr(key: string, callback?: (data: any) => void) {
+  if (!callback) return;
+  if (!swrListeners.has(key)) {
+    swrListeners.set(key, new Set());
+  }
+  const set = swrListeners.get(key)!;
+  set.add(callback);
+}
+
+function notifySwr(key: string, data: any) {
+  const set = swrListeners.get(key);
+  if (set) {
+    set.forEach((cb) => {
+      try {
+        cb(data);
+      } catch (e) {
+        console.error('Erro ao notificar listener SWR:', e);
+      }
+    });
+  }
+}
+
+function getSessionCache(key: string): any {
+  try {
+    const raw = sessionStorage.getItem(`cms_swr_${key}`);
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+}
+
+function setSessionCache(key: string, value: any) {
+  try {
+    sessionStorage.setItem(`cms_swr_${key}`, JSON.stringify(value));
+  } catch {}
+}
+
+async function fetchSwr<T>(
+  key: string,
+  fetcher: () => Promise<T>,
+  initialFallback: T | null,
+  onUpdate?: (data: T) => void
+): Promise<T> {
+  if (onUpdate) {
+    subscribeSwr(key, onUpdate as any);
+  }
+
+  // 1. Revalidação em segundo plano (Live API Fetch)
+  fetcher()
+    .then((freshData) => {
+      if (freshData) {
+        swrCache.set(key, freshData);
+        setSessionCache(key, freshData);
+        notifySwr(key, freshData);
+      }
+    })
+    .catch(() => {
+      // Silencioso em ambiente estático/offline
+    });
+
+  // 2. Retorno instantâneo (0ms delay): Cache Memória -> SessionStorage -> Dados Estáticos
+  if (swrCache.has(key)) {
+    return swrCache.get(key);
+  }
+  const sessionData = getSessionCache(key);
+  if (sessionData) {
+    swrCache.set(key, sessionData);
+    return sessionData;
+  }
+
+  return initialFallback as T;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// API METHODS (SWR HYBRID)
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const api = {
@@ -353,197 +433,277 @@ export const api = {
     if (!media) return '';
     if (typeof media === 'string') {
       if (media.startsWith('http') || media.startsWith('data:') || media.startsWith('/cms-media/')) return media;
-      return `${API_URL}${media}`;
+      return `${API_URL}${media.startsWith('/') ? '' : '/'}${media}`;
     }
     if (media.url) {
       if (media.url.startsWith('http') || media.url.startsWith('/cms-media/')) return media.url;
-      return `${API_URL}${media.url}`;
+      return `${API_URL}${media.url.startsWith('/') ? '' : '/'}${media.url}`;
     }
     return '';
   },
 
   // Globals
-  async getHomePage(locale?: string): Promise<HomePageData> {
-    const data = getStaticData(locale);
-    const globalData = data.globals?.['home-page'];
-    if (globalData && Object.keys(globalData).length > 0) {
-      return globalData;
-    }
-    const res = await fetch(getLocaleUrl('/api/globals/home-page', locale));
-    if (!res.ok) throw new Error('Erro ao buscar dados da HomePage');
-    return res.json();
+  async getHomePage(locale?: string, onUpdate?: (data: HomePageData) => void): Promise<HomePageData> {
+    const lang = locale || 'pt';
+    const key = `home-${lang}`;
+    const fallback = getStaticData(lang).globals?.['home-page'] || {};
+    return fetchSwr(
+      key,
+      async () => {
+        const res = await fetch(getLocaleUrl('/api/globals/home-page', lang));
+        if (!res.ok) throw new Error('Erro ao buscar dados da HomePage');
+        return res.json();
+      },
+      fallback,
+      onUpdate
+    );
   },
 
-  async getAboutPage(locale?: string): Promise<AboutPageData> {
-    const data = getStaticData(locale);
-    const globalData = data.globals?.['about-page'];
-    if (globalData && Object.keys(globalData).length > 0) {
-      return globalData;
-    }
-    const res = await fetch(getLocaleUrl('/api/globals/about-page', locale));
-    if (!res.ok) throw new Error('Erro ao buscar dados da AboutPage');
-    return res.json();
+  async getAboutPage(locale?: string, onUpdate?: (data: AboutPageData) => void): Promise<AboutPageData> {
+    const lang = locale || 'pt';
+    const key = `about-${lang}`;
+    const fallback = getStaticData(lang).globals?.['about-page'] || {};
+    return fetchSwr(
+      key,
+      async () => {
+        const res = await fetch(getLocaleUrl('/api/globals/about-page', lang));
+        if (!res.ok) throw new Error('Erro ao buscar dados da AboutPage');
+        return res.json();
+      },
+      fallback,
+      onUpdate
+    );
   },
 
-  async getServicesPage(locale?: string): Promise<ServicesPageData> {
-    const data = getStaticData(locale);
-    const globalData = data.globals?.['services-page'];
-    if (globalData && Object.keys(globalData).length > 0) {
-      return globalData;
-    }
-    const res = await fetch(getLocaleUrl('/api/globals/services-page', locale));
-    if (!res.ok) throw new Error('Erro ao buscar dados da ServicesPage');
-    return res.json();
+  async getServicesPage(locale?: string, onUpdate?: (data: ServicesPageData) => void): Promise<ServicesPageData> {
+    const lang = locale || 'pt';
+    const key = `services-${lang}`;
+    const fallback = getStaticData(lang).globals?.['services-page'] || {};
+    return fetchSwr(
+      key,
+      async () => {
+        const res = await fetch(getLocaleUrl('/api/globals/services-page', lang));
+        if (!res.ok) throw new Error('Erro ao buscar dados da ServicesPage');
+        return res.json();
+      },
+      fallback,
+      onUpdate
+    );
   },
 
-  async getCareersPage(locale?: string): Promise<CareersPageData> {
-    const data = getStaticData(locale);
-    const globalData = data.globals?.['careers-page'];
-    if (globalData && Object.keys(globalData).length > 0) {
-      return globalData;
-    }
-    const res = await fetch(getLocaleUrl('/api/globals/careers-page', locale));
-    if (!res.ok) throw new Error('Erro ao buscar dados da página Carreiras');
-    return res.json();
+  async getCareersPage(locale?: string, onUpdate?: (data: CareersPageData) => void): Promise<CareersPageData> {
+    const lang = locale || 'pt';
+    const key = `careers-${lang}`;
+    const fallback = getStaticData(lang).globals?.['careers-page'] || {};
+    return fetchSwr(
+      key,
+      async () => {
+        const res = await fetch(getLocaleUrl('/api/globals/careers-page', lang));
+        if (!res.ok) throw new Error('Erro ao buscar dados da página Carreiras');
+        return res.json();
+      },
+      fallback,
+      onUpdate
+    );
   },
 
-  async getContactSettings(locale?: string): Promise<ContactSettingsData> {
-    const data = getStaticData(locale);
-    const globalData = data.globals?.['contact-settings'];
-    if (globalData && Object.keys(globalData).length > 0) {
-      return globalData;
-    }
-    const res = await fetch(getLocaleUrl('/api/globals/contact-settings', locale));
-    if (!res.ok) throw new Error('Erro ao buscar dados de ContactSettings');
-    return res.json();
+  async getContactSettings(locale?: string, onUpdate?: (data: ContactSettingsData) => void): Promise<ContactSettingsData> {
+    const lang = locale || 'pt';
+    const key = `contact-${lang}`;
+    const fallback = getStaticData(lang).globals?.['contact-settings'] || {};
+    return fetchSwr(
+      key,
+      async () => {
+        const res = await fetch(getLocaleUrl('/api/globals/contact-settings', lang));
+        if (!res.ok) throw new Error('Erro ao buscar dados de ContactSettings');
+        return res.json();
+      },
+      fallback,
+      onUpdate
+    );
   },
 
-  async getSiteSettings(locale?: string): Promise<SiteSettingsData> {
-    const data = getStaticData(locale);
-    const globalData = data.globals?.['site-settings'];
-    if (globalData && Object.keys(globalData).length > 0) {
-      return globalData;
-    }
-    const res = await fetch(getLocaleUrl('/api/globals/site-settings', locale));
-    if (!res.ok) throw new Error('Erro ao buscar dados de SiteSettings');
-    return res.json();
+  async getSiteSettings(locale?: string, onUpdate?: (data: SiteSettingsData) => void): Promise<SiteSettingsData> {
+    const lang = locale || 'pt';
+    const key = `site-${lang}`;
+    const fallback = getStaticData(lang).globals?.['site-settings'] || {};
+    return fetchSwr(
+      key,
+      async () => {
+        const res = await fetch(getLocaleUrl('/api/globals/site-settings', lang));
+        if (!res.ok) throw new Error('Erro ao buscar dados de SiteSettings');
+        return res.json();
+      },
+      fallback,
+      onUpdate
+    );
   },
 
-  async getFooterSettings(locale?: string): Promise<FooterSettingsData> {
-    const data = getStaticData(locale);
-    const globalData = data.globals?.['footer-settings'];
-    if (globalData && Object.keys(globalData).length > 0) {
-      return globalData;
-    }
-    const res = await fetch(getLocaleUrl('/api/globals/footer-settings', locale));
-    if (!res.ok) throw new Error('Erro ao buscar dados de FooterSettings');
-    return res.json();
+  async getFooterSettings(locale?: string, onUpdate?: (data: FooterSettingsData) => void): Promise<FooterSettingsData> {
+    const lang = locale || 'pt';
+    const key = `footer-${lang}`;
+    const fallback = getStaticData(lang).globals?.['footer-settings'] || {};
+    return fetchSwr(
+      key,
+      async () => {
+        const res = await fetch(getLocaleUrl('/api/globals/footer-settings', lang));
+        if (!res.ok) throw new Error('Erro ao buscar dados de FooterSettings');
+        return res.json();
+      },
+      fallback,
+      onUpdate
+    );
   },
 
-  async getAldBioenergiaPage(locale?: string): Promise<AldBioenergiaPageData> {
-    const data = getStaticData(locale);
-    const globalData = data.globals?.['ald-bioenergia-page'];
-    if (globalData && Object.keys(globalData).length > 0) {
-      return globalData;
-    }
-    const res = await fetch(getLocaleUrl('/api/globals/ald-bioenergia-page', locale));
-    if (!res.ok) throw new Error('Erro ao buscar dados de AldBioenergiaPage');
-    return res.json();
+  async getAldBioenergiaPage(locale?: string, onUpdate?: (data: AldBioenergiaPageData) => void): Promise<AldBioenergiaPageData> {
+    const lang = locale || 'pt';
+    const key = `ald-${lang}`;
+    const fallback = getStaticData(lang).globals?.['ald-bioenergia-page'] || {};
+    return fetchSwr(
+      key,
+      async () => {
+        const res = await fetch(getLocaleUrl('/api/globals/ald-bioenergia-page', lang));
+        if (!res.ok) throw new Error('Erro ao buscar dados de AldBioenergiaPage');
+        return res.json();
+      },
+      fallback,
+      onUpdate
+    );
   },
 
-  async getLavouraPage(locale?: string): Promise<LavouraPageData> {
-    const data = getStaticData(locale);
-    const globalData = data.globals?.['lavoura-page'];
-    if (globalData && Object.keys(globalData).length > 0) {
-      return globalData;
-    }
-    const res = await fetch(getLocaleUrl('/api/globals/lavoura-page', locale));
-    if (!res.ok) throw new Error('Erro ao buscar dados de LavouraPage');
-    return res.json();
+  async getLavouraPage(locale?: string, onUpdate?: (data: LavouraPageData) => void): Promise<LavouraPageData> {
+    const lang = locale || 'pt';
+    const key = `lavoura-${lang}`;
+    const fallback = getStaticData(lang).globals?.['lavoura-page'] || {};
+    return fetchSwr(
+      key,
+      async () => {
+        const res = await fetch(getLocaleUrl('/api/globals/lavoura-page', lang));
+        if (!res.ok) throw new Error('Erro ao buscar dados de LavouraPage');
+        return res.json();
+      },
+      fallback,
+      onUpdate
+    );
   },
 
-  async getCentroPesquisaPage(locale?: string): Promise<CentroPesquisaPageData> {
-    const data = getStaticData(locale);
-    const globalData = data.globals?.['centro-pesquisa-page'];
-    if (globalData && Object.keys(globalData).length > 0) {
-      return globalData;
-    }
-    const res = await fetch(getLocaleUrl('/api/globals/centro-pesquisa-page', locale));
-    if (!res.ok) throw new Error('Erro ao buscar dados de CentroPesquisaPage');
-    return res.json();
+  async getCentroPesquisaPage(locale?: string, onUpdate?: (data: CentroPesquisaPageData) => void): Promise<CentroPesquisaPageData> {
+    const lang = locale || 'pt';
+    const key = `centro-pesquisa-${lang}`;
+    const fallback = getStaticData(lang).globals?.['centro-pesquisa-page'] || {};
+    return fetchSwr(
+      key,
+      async () => {
+        const res = await fetch(getLocaleUrl('/api/globals/centro-pesquisa-page', lang));
+        if (!res.ok) throw new Error('Erro ao buscar dados de CentroPesquisaPage');
+        return res.json();
+      },
+      fallback,
+      onUpdate
+    );
   },
 
-  async getPalestrasPage(locale?: string): Promise<PalestrasPageData> {
-    const data = getStaticData(locale);
-    const globalData = data.globals?.['palestras-page'];
-    if (globalData && Object.keys(globalData).length > 0) {
-      return globalData;
-    }
-    const res = await fetch(getLocaleUrl('/api/globals/palestras-page', locale));
-    if (!res.ok) throw new Error('Erro ao buscar dados de PalestrasPage');
-    return res.json();
+  async getPalestrasPage(locale?: string, onUpdate?: (data: PalestrasPageData) => void): Promise<PalestrasPageData> {
+    const lang = locale || 'pt';
+    const key = `palestras-${lang}`;
+    const fallback = getStaticData(lang).globals?.['palestras-page'] || {};
+    return fetchSwr(
+      key,
+      async () => {
+        const res = await fetch(getLocaleUrl('/api/globals/palestras-page', lang));
+        if (!res.ok) throw new Error('Erro ao buscar dados de PalestrasPage');
+        return res.json();
+      },
+      fallback,
+      onUpdate
+    );
   },
 
   // Collections
-  async getServices(locale?: string): Promise<Service[]> {
-    const data = getStaticData(locale);
-    const docs = data.collections?.['services'];
-    if (Array.isArray(docs) && docs.length > 0) {
-      return docs;
-    }
-    const res = await fetch(getLocaleUrl('/api/services?limit=100', locale));
-    if (!res.ok) throw new Error('Erro ao buscar serviços');
-    const resData = await res.json();
-    return resData.docs;
+  async getServices(locale?: string, onUpdate?: (data: Service[]) => void): Promise<Service[]> {
+    const lang = locale || 'pt';
+    const key = `collection-services-${lang}`;
+    const fallback = getStaticData(lang).collections?.['services'] || [];
+    return fetchSwr(
+      key,
+      async () => {
+        const res = await fetch(getLocaleUrl('/api/services?limit=100', lang));
+        if (!res.ok) throw new Error('Erro ao buscar serviços');
+        const resData = await res.json();
+        return resData.docs;
+      },
+      fallback,
+      onUpdate
+    );
   },
 
-  async getServiceBySlug(slug: string, locale?: string): Promise<Service | null> {
-    const data = getStaticData(locale);
-    const docs = data.collections?.['services'];
-    if (Array.isArray(docs) && docs.length > 0) {
-      const found = docs.find((s: Service) => s.slug === slug);
-      if (found) return found;
-    }
-    const res = await fetch(getLocaleUrl(`/api/services?where[slug][equals]=${slug}`, locale));
-    if (!res.ok) throw new Error('Erro ao buscar serviço por slug');
-    const resData = await res.json();
-    return resData.docs[0] || null;
+  async getServiceBySlug(slug: string, locale?: string, onUpdate?: (data: Service | null) => void): Promise<Service | null> {
+    const lang = locale || 'pt';
+    const key = `service-slug-${slug}-${lang}`;
+    const docs = getStaticData(lang).collections?.['services'] || [];
+    const fallback = docs.find((s: Service) => s.slug === slug) || null;
+    return fetchSwr(
+      key,
+      async () => {
+        const res = await fetch(getLocaleUrl(`/api/services?where[slug][equals]=${slug}`, lang));
+        if (!res.ok) throw new Error('Erro ao buscar serviço por slug');
+        const resData = await res.json();
+        return resData.docs[0] || null;
+      },
+      fallback,
+      onUpdate
+    );
   },
 
-  async getJobs(locale?: string): Promise<Job[]> {
-    const data = getStaticData(locale);
-    const docs = data.collections?.['jobs'];
-    if (Array.isArray(docs) && docs.length > 0) {
-      return docs;
-    }
-    const res = await fetch(getLocaleUrl('/api/jobs?sort=order&where[visible][equals]=true', locale));
-    if (!res.ok) throw new Error('Erro ao buscar vagas');
-    const resData = await res.json();
-    return resData.docs;
+  async getJobs(locale?: string, onUpdate?: (data: Job[]) => void): Promise<Job[]> {
+    const lang = locale || 'pt';
+    const key = `jobs-${lang}`;
+    const fallback = getStaticData(lang).collections?.['jobs'] || [];
+    return fetchSwr(
+      key,
+      async () => {
+        const res = await fetch(getLocaleUrl('/api/jobs?sort=order&where[visible][equals]=true', lang));
+        if (!res.ok) throw new Error('Erro ao buscar vagas');
+        const resData = await res.json();
+        return resData.docs;
+      },
+      fallback,
+      onUpdate
+    );
   },
 
-  async getMapLocations(locale?: string): Promise<MapLocation[]> {
-    const data = getStaticData(locale);
-    const docs = data.collections?.['map-locations'];
-    if (Array.isArray(docs) && docs.length > 0) {
-      return docs;
-    }
-    const res = await fetch(getLocaleUrl('/api/map-locations?limit=100&sort=order&where[published][equals]=true', locale));
-    if (!res.ok) throw new Error('Erro ao buscar localizações do mapa');
-    const resData = await res.json();
-    return resData.docs;
+  async getMapLocations(locale?: string, onUpdate?: (data: MapLocation[]) => void): Promise<MapLocation[]> {
+    const lang = locale || 'pt';
+    const key = `map-locations-${lang}`;
+    const fallback = getStaticData(lang).collections?.['map-locations'] || [];
+    return fetchSwr(
+      key,
+      async () => {
+        const res = await fetch(getLocaleUrl('/api/map-locations?limit=100&sort=order&where[published][equals]=true', lang));
+        if (!res.ok) throw new Error('Erro ao buscar localizações do mapa');
+        const resData = await res.json();
+        return resData.docs;
+      },
+      fallback,
+      onUpdate
+    );
   },
 
-  async getTestimonials(locale?: string): Promise<TestimonialDoc[]> {
-    const data = getStaticData(locale);
-    const docs = data.collections?.['testimonials'];
-    if (Array.isArray(docs) && docs.length > 0) {
-      return docs;
-    }
-    const res = await fetch(getLocaleUrl('/api/testimonials?limit=100&sort=order&where[published][equals]=true', locale));
-    if (!res.ok) throw new Error('Erro ao buscar depoimentos');
-    const resData = await res.json();
-    return resData.docs;
+  async getTestimonials(locale?: string, onUpdate?: (data: TestimonialDoc[]) => void): Promise<TestimonialDoc[]> {
+    const lang = locale || 'pt';
+    const key = `testimonials-${lang}`;
+    const fallback = getStaticData(lang).collections?.['testimonials'] || [];
+    return fetchSwr(
+      key,
+      async () => {
+        const res = await fetch(getLocaleUrl('/api/testimonials?limit=100&sort=order&where[published][equals]=true', lang));
+        if (!res.ok) throw new Error('Erro ao buscar depoimentos');
+        const resData = await res.json();
+        return resData.docs;
+      },
+      fallback,
+      onUpdate
+    );
   },
 
   // Form Submissions (Permanece dinâmico via HTTP POST)
@@ -570,4 +730,5 @@ export const api = {
     return res.json();
   },
 };
+
 

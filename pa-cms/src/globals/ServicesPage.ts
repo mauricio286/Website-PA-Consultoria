@@ -173,6 +173,8 @@ const ServicesPage: GlobalConfig = {
           name: 'ecosystemCards',
           label: 'Cards do Ecossistema',
           type: 'array',
+          minRows: 4,
+          maxRows: 4,
           fields: [
             {
               name: 'title',
