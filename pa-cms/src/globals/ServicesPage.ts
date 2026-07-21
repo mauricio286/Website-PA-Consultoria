@@ -96,7 +96,8 @@ const ServicesPage: GlobalConfig = {
           name: 'servicesCards',
           label: 'Cards dos Serviços',
           type: 'array',
-          minRows: 1,
+          minRows: 5,
+          maxRows: 5,
           fields: [
             {
               name: 'title',
