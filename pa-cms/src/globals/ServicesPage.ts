@@ -75,6 +75,15 @@ const ServicesPage: GlobalConfig = {
           },
         },
         {
+          name: 'servicesSubtitleColor',
+          label: 'Cor do subtítulo em destaque (Hex)',
+          type: 'text',
+          defaultValue: '#88a668',
+          admin: {
+            description: 'Cor em formato Hexadecimal para o texto em destaque. Padrão: #88a668',
+          },
+        },
+        {
           name: 'servicesDescription',
           label: 'Descrição da seção',
           type: 'textarea',
@@ -87,8 +96,7 @@ const ServicesPage: GlobalConfig = {
           name: 'servicesCards',
           label: 'Cards dos Serviços',
           type: 'array',
-          minRows: 4,
-          maxRows: 4,
+          minRows: 1,
           fields: [
             {
               name: 'title',
@@ -115,7 +123,7 @@ const ServicesPage: GlobalConfig = {
               label: 'Slug de destino (URL)',
               type: 'text',
               admin: {
-                readOnly: true,
+                description: 'Ex: consultoria-agronomica, unita, agricultura-de-precisao, gestao-de-compras, pesquisa-agronomica',
               },
             },
           ],
@@ -150,6 +158,15 @@ const ServicesPage: GlobalConfig = {
           localized: true,
           admin: {
             description: 'Dica: Use Enter para quebras de linha.',
+          },
+        },
+        {
+          name: 'ecosystemSubtitleColor',
+          label: 'Cor do subtítulo em destaque (Hex)',
+          type: 'text',
+          defaultValue: '#88a668',
+          admin: {
+            description: 'Cor em formato Hexadecimal para o texto em destaque. Padrão: #88a668',
           },
         },
         {

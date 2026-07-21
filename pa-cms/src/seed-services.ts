@@ -133,11 +133,16 @@ async function seed() {
           title: 'Gestão\nde Compras',
           shortDescription: 'A gestão de compras vai muito além da negociação de valores. Nosso...',
           slug: 'gestao-de-compras'
+        },
+        {
+          title: 'Pesquisa\nAgronômica',
+          shortDescription: 'A pesquisa agronômica é um dos pilares do Grupo PA. Investimos constantemente...',
+          slug: 'pesquisa-agronomica'
         }
       ],
       ecosystemBadge: 'nossa força no campo',
-      ecosystemTitle: 'sistema',
-      ecosystemSubtitle: 'Eco',
+      ecosystemTitle: 'Eco',
+      ecosystemSubtitle: 'sistema',
       ecosystemCards: [
         { title: 'ALD Bioenergia', image: aldCardImageId || undefined, link: '/aldbioenergia' },
         { title: 'Lavoura', image: lavouraCardImageId || undefined, link: '#' },
@@ -157,9 +162,11 @@ async function seed() {
       coverImage: bgConsultoriaId,
       illustrationImage: imgConsultoriaId,
       showIllustration: true,
-      description: buildLexicalParagraphs([
+      leftContent: buildLexicalParagraphs([
         'A produtividade de uma lavoura começa muito antes do plantio. Por isso, nossa consultoria agronômica atua de forma próxima e estratégica em todas as etapas da safra, desenvolvendo recomendações técnicas com foco na rentabilidade, segurança e produtividade da atividade.',
-        'Atuamos com foco no planejamento, escolha de cultivares, manejo fitossanitário e nutricional. Nosso trabalho envolve orientação sobre posicionamento de cultivares, fertilidade do solo, controle de pragas, doenças e plantas daninhas, sempre baseando as decisões em resultados práticos de pesquisa agronômica.',
+        'Atuamos com foco no planejamento, escolha de cultivares, manejo fitossanitário e nutricional. Nosso trabalho envolve orientação sobre posicionamento de cultivares, fertilidade do solo, controle de pragas, doenças and plantas daninhas, sempre baseando as decisões em resultados práticos de pesquisa agronômica.'
+      ]),
+      bottomContent: buildLexicalParagraphs([
         'Mais do que indicar recomendações, buscamos construir relações de confiança com nossos parceiros, que impulsionem desempenho e rentabilidade de ponta. Acreditamos que cada área possui desafios específicos e, por isso, trabalhamos com soluções personalizadas para maximizar produtividade, reduzir perdas e otimizar a rentabilidade do produtor rural.'
       ])
     },
@@ -170,9 +177,11 @@ async function seed() {
       coverImage: bgUnitaId,
       illustrationImage: imgUnitaId,
       showIllustration: true,
-      description: buildLexicalParagraphs([
+      leftContent: buildLexicalParagraphs([
         'A Unitá é a nossa plataforma integrada de monitoramento e inteligência de dados agrícolas. Conectamos sensores, dados climáticos, imagens de satélite e análises laboratoriais em uma única interface inteligente, permitindo decisões em tempo real com embasamento técnico e científico.',
-        'Através da Unitá, o produtor tem acesso ao histórico de manejo, mapas de fertilidade, relatórios operacionais e previsão de anomalias no campo, consolidando toda a gestão da lavoura em relatórios simples, visuais e extremamente operacionais.',
+        'Através da Unitá, o produtor tem acesso ao histórico de manejo, mapas de fertilidade, relatórios operacionais e previsão de anomalias no campo, consolidando toda a gestão da lavoura em relatórios simples, visuais e extremamente operacionais.'
+      ]),
+      bottomContent: buildLexicalParagraphs([
         'A plataforma centraliza a comunicação entre nossos consultores de campo e a gestão da fazenda, garantindo que cada recomendação técnica seja registrada, monitorada e avaliada quanto ao seu impacto econômico e produtivo na safra.',
         'Com o Unitá, eliminamos processos manuais e planilhas desconectadas, unindo a força do monitoramento técnico presencial com a velocidade das melhores tecnologias de análise preditiva no agronegócio.'
       ])
@@ -184,9 +193,11 @@ async function seed() {
       coverImage: bgAgriculturaId,
       illustrationImage: imgAgriculturaId,
       showIllustration: true,
-      description: buildLexicalParagraphs([
+      leftContent: buildLexicalParagraphs([
         'A pesquisa agronômica é um dos pilares do Grupo PA. Investimos constantemente em estudos e validações a campo para desenvolver soluções mais eficientes, sustentáveis e alinhadas à realidade do produtor rural.',
-        'Nosso objetivo é transformar dados e experimentos em estratégias práticas que contribuam para o aumento da produtividade e da rentabilidade das lavouras. Atualmente, contamos com mais de 60 hectares destinados exclusivamente à pesquisa, onde realizamos testes envolvendo cultivares, fertilidade, manejo fitossanitário, posicionamento de insumos, interferências climáticas e novas tecnologias aplicadas à agricultura.',
+        'Nosso objetivo é transformar dados e experimentos em estratégias práticas que contribuam para o aumento da produtividade e da rentabilidade das lavouras. Atualmente, contamos com mais de 60 hectares destinados exclusivamente à pesquisa, onde realizamos testes envolvendo cultivares, fertilidade, manejo fitossanitário, posicionamento de insumos, interferências climáticas e novas tecnologias aplicadas à agricultura.'
+      ]),
+      bottomContent: buildLexicalParagraphs([
         'Cada experimento é conduzido com acompanhamento técnico e análise detalhada dos resultados obtidos em campo. Através da pesquisa, conseguimos compreender com mais profundidade o comportamento das culturas e antecipar soluções para os desafios enfrentados pelo produtor. Isso permite gerar informações confiáveis, reduzir riscos e apoiar tomadas de decisão mais assertivas dentro da operação agrícola. Nosso compromisso é aproximar inovação e prática de campo, conectando ciência, tecnologia e experiência agronômica para impulsionar resultados sustentáveis no agro.'
       ])
     },
@@ -197,11 +208,13 @@ async function seed() {
       coverImage: bgGestaoId,
       illustrationImage: imgGestaoId,
       showIllustration: true,
-      description: buildLexicalParagraphs([
+      leftContent: buildLexicalParagraphs([
         'A gestão de compras vai muito além da negociação de valores. Nosso trabalho é desenvolver estratégias que tragam mais eficiência, segurança e rentabilidade para o produtor rural, analisando o melhor momento de compra, fornecedores, oportunidades de mercado e custo-benefício de cada investimento realizado.',
-        'Atuamos na gestão de aquisição de máquinas, equipamentos e insumos agrícolas, fortalecendo o poder de negociação dos nossos clientes e contribuindo para decisões mais assertivas dentro da operação.',
+        'Atuamos na gestão de aquisição de máquinas, equipamentos e insumos agrícolas, fortalecendo o poder de negociação dos nossos clientes e contribuindo para decisões mais assertivas dentro da operação.'
+      ]),
+      bottomContent: buildLexicalParagraphs([
         'Com conhecimento técnico e visão estratégica do mercado agro, buscamos alternativas que alinhem desempenho operacional, durabilidade e viabilidade econômica.',
-        'Além da análise comercial, acompanhamos tendências de mercado, oscilações de preços e novas tecnologias disponíveis, permitindo que o produtor tenha mais clareza e segurança na hora de investir. Nosso objetivo é transformar a compra em uma ferramenta estratégica para melhorar resultados no campo e otimizar custos da operação agrícola. Hoje, o Grupo PA movimenta milhões em gestão de compras, construindo relações sólidas com parceiros e fornecedores para gerar melhores oportunidades aos produtores atendidos.'
+        'Além da análise comercial, acompanhamos tendências de mercado, osiclações de preços e novas tecnologias disponíveis, permitindo que o produtor tenha mais clareza e segurança na hora de investir. Nosso objetivo é transformar a compra em uma ferramenta estratégica para melhorar resultados no campo e otimizar custos da operação agrícola. Hoje, o Grupo PA movimenta milhões em gestão de compras, construindo relações sólidas com parceiros e fornecedores para gerar melhores oportunidades aos produtores atendidos.'
       ])
     }
   ]

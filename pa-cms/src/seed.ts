@@ -427,7 +427,8 @@ async function seed() {
           { title: 'Consultoria\nAgronômica', shortDescription: 'Acompanhamento do planejamento à colheita para maximizar sua lucratividade.', slug: 'consultoria-agronomica' },
           { title: 'Unitá', shortDescription: 'Plataforma inteligente que conecta dados do campo para tomadas de decisão rápidas.', slug: 'unita' },
           { title: 'Agricultura\nde Precisão', shortDescription: 'Mapeamento detalhado e aplicações localizadas em taxa variável para economizar recursos.', slug: 'agricultura-de-precisao' },
-          { title: 'Gestão\nde Compras', shortDescription: 'Inteligência de mercado e negociação estratégica para a aquisição de insumos agrícolas.', slug: 'gestao-de-compras' }
+          { title: 'Gestão\nde Compras', shortDescription: 'Inteligência de mercado e negociação estratégica para a aquisição de insumos agrícolas.', slug: 'gestao-de-compras' },
+          { title: 'Pesquisa\nAgronômica', shortDescription: 'A pesquisa agronômica é um dos pilares do Grupo PA. Investimos constantemente para validar soluções.', slug: 'pesquisa-agronomica' }
         ],
         ecosystemBadge: 'ECOSSISTEMA',
         ecosystemTitle: 'A força do nosso',
@@ -456,7 +457,8 @@ async function seed() {
           { title: 'Agronomic\nConsulting', shortDescription: 'Monitoring from planning to harvest to maximize your profitability.', slug: 'consultoria-agronomica' },
           { title: 'Unitá', shortDescription: 'Intelligent platform connecting field data for rapid decision making.', slug: 'unita' },
           { title: 'Precision\nAgriculture', shortDescription: 'Detailed mapping and localized variable rate applications to save resources.', slug: 'agricultura-de-precisao' },
-          { title: 'Purchase\nManagement', shortDescription: 'Market intelligence and strategic negotiation for agricultural input acquisition.', slug: 'gestao-de-compras' }
+          { title: 'Purchase\nManagement', shortDescription: 'Market intelligence and strategic negotiation for agricultural input acquisition.', slug: 'gestao-de-compras' },
+          { title: 'Agronomic\nResearch', shortDescription: 'Agronomic research is one of Grupo PA\'s main pillars. We constantly invest to validate solutions.', slug: 'pesquisa-agronomica' }
         ],
         ecosystemBadge: 'ECOSYSTEM',
         ecosystemTitle: 'The strength of our',
