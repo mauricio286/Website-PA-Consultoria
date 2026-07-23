@@ -15,19 +15,19 @@ export default async function CustomSidebar() {
     sort: 'order',
   })
 
-  // Ordenar e formatar a lista de serviços para garantir que correspondam aos subitens 2.3.1 a 2.3.5
+  // Ordenar e formatar a lista de serviços para corresponder aos subitens 2.3.2 a 2.3.6
   const orderedServices = [...services].sort((a, b) => {
-    const getOrderValue = (title?: string) => {
-      if (!title) return 6
-      const t = title.toLowerCase()
-      if (t.includes('ecossistema')) return 1
-      if (t.includes('agronômica') || t.includes('agronomica')) return 2
-      if (t.includes('unitá') || t.includes('unita')) return 3
-      if (t.includes('precisão') || t.includes('precisao')) return 4
-      if (t.includes('compras') || t.includes('gestão') || t.includes('gestao')) return 5
+    const getOrderValue = (title?: string, slug?: string) => {
+      const t = (title || '').toLowerCase()
+      const s = (slug || '').toLowerCase()
+      if (t.includes('consultoria') || s.includes('consultoria')) return 1
+      if (t.includes('unitá') || t.includes('unita') || s.includes('unita')) return 2
+      if (t.includes('precisão') || t.includes('precisao') || s.includes('precisao')) return 3
+      if (t.includes('compras') || t.includes('gestão') || t.includes('gestao') || s.includes('compras')) return 4
+      if (t.includes('pesquisa') || s.includes('pesquisa')) return 5
       return 6
     }
-    return getOrderValue(a.title) - getOrderValue(b.title)
+    return getOrderValue(a.title, a.slug) - getOrderValue(b.title, b.slug)
   })
 
   return (
@@ -90,6 +90,26 @@ export default async function CustomSidebar() {
                   2.3.1. Ecossistema (Geral)
                 </Link>
               </li>
+              <li>
+                <Link href="/admin/globals/ald-bioenergia-page" className="pa-sub-link pa-sidebar-sub-item">
+                  2.3.1.1. ALD Bioenergia
+                </Link>
+              </li>
+              <li>
+                <Link href="/admin/globals/lavoura-page" className="pa-sub-link pa-sidebar-sub-item">
+                  2.3.1.2. Lavoura
+                </Link>
+              </li>
+              <li>
+                <Link href="/admin/globals/centro-pesquisa-page" className="pa-sub-link pa-sidebar-sub-item">
+                  2.3.1.3. Centro de Pesquisa
+                </Link>
+              </li>
+              <li>
+                <Link href="/admin/globals/palestras-page" className="pa-sub-link pa-sidebar-sub-item">
+                  2.3.1.4. Palestras e Eventos
+                </Link>
+              </li>
               {orderedServices.map((svc, index) => (
                 <li key={svc.id}>
                   <Link href={`/admin/collections/services/${svc.id}`} className="pa-sub-link">
@@ -139,7 +159,7 @@ export default async function CustomSidebar() {
 
       {/* ── 3. Conteúdo ──────────────────────────────────────────────────────── */}
       <h4 className="pa-nav-heading">3. Conteúdo</h4>
-      <ul className="pa-nav-list">
+      <ul className="pa-nav-list" style={{ marginBottom: '1.5rem' }}>
         <li>
           <Link href="/admin/collections/media" className="pa-nav-link">
             3.1. Mídias e Imagens
@@ -148,6 +168,16 @@ export default async function CustomSidebar() {
         <li>
           <Link href="/admin/collections/galleries" className="pa-nav-link">
             3.2. Galeria de Fotos
+          </Link>
+        </li>
+      </ul>
+
+      {/* ── 4. Estatísticas ─────────────────────────────────────────────────── */}
+      <h4 className="pa-nav-heading">4. Estatísticas</h4>
+      <ul className="pa-nav-list">
+        <li>
+          <Link href="/admin/analytics" className="pa-nav-link">
+            4.1. Monitoramento de Acessos
           </Link>
         </li>
       </ul>

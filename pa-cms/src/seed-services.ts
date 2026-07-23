@@ -216,6 +216,22 @@ async function seed() {
         'Com conhecimento técnico e visão estratégica do mercado agro, buscamos alternativas que alinhem desempenho operacional, durabilidade e viabilidade econômica.',
         'Além da análise comercial, acompanhamos tendências de mercado, osiclações de preços e novas tecnologias disponíveis, permitindo que o produtor tenha mais clareza e segurança na hora de investir. Nosso objetivo é transformar a compra em uma ferramenta estratégica para melhorar resultados no campo e otimizar custos da operação agrícola. Hoje, o Grupo PA movimenta milhões em gestão de compras, construindo relações sólidas com parceiros e fornecedores para gerar melhores oportunidades aos produtores atendidos.'
       ])
+    },
+    {
+      title: 'Pesquisa\nAgronômica',
+      slug: 'pesquisa-agronomica',
+      shortDescription: 'A pesquisa agronômica é um dos pilares do Grupo PA. Investimos constantemente em estudos e validações a campo...',
+      coverImage: bgAgriculturaId,
+      illustrationImage: imgAgriculturaId,
+      showIllustration: true,
+      leftContent: buildLexicalParagraphs([
+        'A pesquisa agronômica é um dos pilares do Grupo PA. Investimos constantemente em estudos e validações a campo para desenvolver soluções mais eficientes, sustentáveis e alinhadas à realidade do produtor rural.',
+        'Nosso objetivo é transformar dados e experimentos em estratégias práticas que contribuam para o aumento da produtividade e da rentabilidade das lavouras. Atualmente, contamos com mais de 60 hectares destinados exclusivamente à pesquisa, onde realizamos testes envolvendo cultivares, fertilidade, manejo fitossanitário, posicionamento de insumos, interferências climáticas e novas tecnologias aplicadas à agricultura.'
+      ]),
+      bottomContent: buildLexicalParagraphs([
+        'Cada experimento é conduzido com acompanhamento técnico e análise detalhada dos resultados obtidos em campo. Através da pesquisa, conseguimos compreender com mais profundidade o comportamento das culturas e antecipar soluções para os desafios enfrentados pelo produtor.',
+        'Isso permite gerar informações confiáveis, reduzir riscos e apoiar tomadas de decisão mais assertivas dentro da operação agrícola. Nosso compromisso é aproximar inovação e prática de campo, conectando ciência, tecnologia e experiência agronômica para impulsionar resultados sustentáveis no agro.'
+      ])
     }
   ]
 
