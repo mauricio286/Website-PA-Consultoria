@@ -117,6 +117,13 @@ export default async function CustomSidebar() {
                   </Link>
                 </li>
               ))}
+              {!orderedServices.some((s) => (s.slug || '').includes('pesquisa')) && (
+                <li>
+                  <Link href="/admin/collections/services/create" className="pa-sub-link">
+                    2.3.6. Pesquisa Agronômica
+                  </Link>
+                </li>
+              )}
             </ul>
           </details>
         </li>

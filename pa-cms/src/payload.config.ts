@@ -4,6 +4,8 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
 import path from 'path'
 import sharp from 'sharp'
+import { gcsStorage } from '@payloadcms/storage-gcs'
+import fs from 'fs'
 
 
 // Collections
@@ -21,9 +23,16 @@ import { pt } from '@payloadcms/translations/languages/pt'
 import HomePage from './globals/HomePage'
 import AboutPage from './globals/AboutPage'
 import ServicesPage from './globals/ServicesPage'
+import AldBioenergiaPage from './globals/AldBioenergiaPage'
+import LavouraPage from './globals/LavouraPage'
+import CentroPesquisaPage from './globals/CentroPesquisaPage'
+import PalestrasPage from './globals/PalestrasPage'
 import CareersPage from './globals/CareersPage'
 import ContactSettings from './globals/ContactSettings'
 import FooterSettings from './globals/FooterSettings'
+
+// Migrações do banco
+import { migrations } from './migrations'
 
 // Endpoints customizados
 import { contactHandler } from './endpoints/contact'
@@ -31,8 +40,18 @@ import { jobApplicationHandler } from './endpoints/jobApplication'
 
 // Origens permitidas para CORS e CSRF (separadas por vírgula no .env)
 const serverUrl = process.env.NEXT_PUBLIC_SERVER_URL ?? 'http://localhost:3000'
+
+const isProduction = process.env.NODE_ENV === 'production'
+const hasGcsLocalCreds = !!(
+  process.env.GOOGLE_APPLICATION_CREDENTIALS &&
+  fs.existsSync(path.resolve(process.cwd(), process.env.GOOGLE_APPLICATION_CREDENTIALS))
+)
+const useGcs = isProduction || hasGcsLocalCreds
 const corsOrigins = [
   serverUrl,
+  'https://agropa.com.br',
+  'https://painel.agropa.com.br',
+  'https://pa-cms-187712348679.us-central1.run.app',
   ...(process.env.CORS_ORIGIN ?? 'http://localhost:5173')
     .split(',')
     .map((o) => o.trim()),
@@ -50,8 +69,13 @@ const config = buildConfig({
       },
       afterNavLinks: [
         '@/components/CustomSidebar',
-        '@/components/LogoutButton',
       ],
+      views: {
+        analytics: {
+          Component: '@/components/AnalyticsView',
+          path: '/analytics',
+        },
+      },
     },
     meta: {
       titleSuffix: '— PA Consultoria CMS',
@@ -78,6 +102,10 @@ const config = buildConfig({
     HomePage,        // 1. Home
     AboutPage,       // 2. Quem Somos
     ServicesPage,    // 3. Ecossistema (Geral)
+    AldBioenergiaPage,
+    LavouraPage,
+    CentroPesquisaPage,
+    PalestrasPage,
     CareersPage,     // 4. Carreiras
     ContactSettings, // 5. Contato
     FooterSettings,  // 6. Footer
@@ -113,12 +141,27 @@ const config = buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URI,
     },
+    prodMigrations: migrations,
   }),
 
   // ── Upload e armazenamento ─────────────────────────────────────────────────
   // Em desenvolvimento: arquivos salvos em /public/media (pasta local)
-  // Em produção: trocar por gcsStorage do @payloadcms/storage-gcs
-  plugins: [],
+  // Em produção: usar gcsStorage do @payloadcms/storage-gcs
+  plugins: [
+    gcsStorage({
+      collections: {
+        media: true,
+      },
+      bucket: process.env.GCS_BUCKET_MEDIA || 'dummy-bucket',
+      enabled: useGcs,
+      options: {
+        projectId: process.env.GCS_PROJECT_ID || 'pa-consultoria-site',
+        ...(hasGcsLocalCreds
+          ? { keyFilename: path.resolve(process.cwd(), process.env.GOOGLE_APPLICATION_CREDENTIALS!) }
+          : {}),
+      },
+    }),
+  ],
 
   // ── E-mail (Nodemailer / Resend SMTP) ───────────────────────────────────────
   // Configura automaticamente o transporte SMTP da Resend caso RESEND_API_KEY
@@ -180,6 +223,76 @@ const config = buildConfig({
   // ── TypeScript: tipos gerados automaticamente ──────────────────────────────
   typescript: {
     outputFile: path.resolve(process.cwd(), 'payload-types.ts'),
+  },
+
+  // ── Auto-seed na inicialização do servidor ────────────────────────────────
+  onInit: async (payload) => {
+    try {
+      const existing = await payload.find({
+        collection: 'services',
+        where: { slug: { equals: 'pesquisa-agronomica' } },
+      })
+      if (existing.docs.length === 0) {
+        console.log('🌱 Creating Pesquisa Agronomica in services collection...')
+        await payload.create({
+          collection: 'services',
+          data: {
+            title: 'Pesquisa\nAgronômica',
+            slug: 'pesquisa-agronomica',
+            shortDescription: 'A pesquisa agronômica é um dos pilares do Grupo PA. Investimos constantemente...',
+            leftContent: {
+              root: {
+                type: 'root',
+                format: '',
+                indent: 0,
+                version: 1,
+                children: [
+                  {
+                    type: 'paragraph',
+                    format: '',
+                    indent: 0,
+                    version: 1,
+                    children: [
+                      {
+                        type: 'text',
+                        text: 'A pesquisa agronômica é um dos pilares do Grupo PA. Investimos constantemente em estudos e validações a campo para desenvolver soluções mais eficientes, sustentáveis e alinhadas à realidade do produtor rural.',
+                        version: 1,
+                      },
+                    ],
+                  },
+                ],
+              },
+            },
+            bottomContent: {
+              root: {
+                type: 'root',
+                format: '',
+                indent: 0,
+                version: 1,
+                children: [
+                  {
+                    type: 'paragraph',
+                    format: '',
+                    indent: 0,
+                    version: 1,
+                    children: [
+                      {
+                        type: 'text',
+                        text: 'Cada experimento é conduzido com acompanhamento técnico e análise detalhada dos resultados obtidos em campo.',
+                        version: 1,
+                      },
+                    ],
+                  },
+                ],
+              },
+            },
+          },
+        })
+        console.log('✓ Pesquisa Agronomica criada no banco com sucesso!')
+      }
+    } catch (err) {
+      console.error('⚠️ Erro ao verificar/criar Pesquisa Agronomica no banco:', err)
+    }
   },
 
   // ── Diretório raiz para build do Next.js ───────────────────────────────────
