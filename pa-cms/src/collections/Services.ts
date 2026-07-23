@@ -60,13 +60,23 @@ const Services: CollectionConfig = {
       },
     },
     {
-      name: 'description',
-      label: 'Conteúdo completo',
+      name: 'leftContent',
+      label: 'Texto ao lado da imagem (esquerda)',
       type: 'richText',
       localized: true,
       editor: lexicalEditor({}),
       admin: {
-        description: 'Corpo da página de detalhe do serviço.',
+        description: 'Texto principal exibido à esquerda da imagem ilustrativa.',
+      },
+    },
+    {
+      name: 'bottomContent',
+      label: 'Texto abaixo da imagem (fim da página)',
+      type: 'richText',
+      localized: true,
+      editor: lexicalEditor({}),
+      admin: {
+        description: 'Texto secundário exibido abaixo da imagem ilustrativa (largura total).',
       },
     },
 
@@ -110,9 +120,97 @@ const Services: CollectionConfig = {
       type: 'checkbox',
       defaultValue: true,
       admin: {
-        condition: (data) => data?.slug === 'consultoria-agronomica',
         description: 'Se ativado, exibe a imagem ilustrativa ao lado do texto. Se desativado, o texto ocupa a largura total (Layout Sem Imagem).',
       },
+    },
+    // ── Seção de Ciclo de Etapas (Customizável apenas em Agricultura de Precisão) ─
+    {
+      type: 'collapsible',
+      label: '03 · Ciclo de Etapas (Opcional)',
+      admin: {
+        condition: (data) => data?.slug === 'agricultura-de-precisao',
+      },
+      fields: [
+        {
+          name: 'cycleActive',
+          label: 'Ativar Ciclo de Etapas Animado',
+          type: 'checkbox',
+          defaultValue: false,
+          admin: {
+            description: 'Se ativado, renderiza uma seção com o anel animado de etapas no final da página (desenvolvido originalmente para a página de Agricultura de Precisão).',
+          },
+        },
+        {
+          name: 'cycleColor',
+          label: 'Cor Principal do Ciclo (Hex)',
+          type: 'text',
+          defaultValue: '#88a668',
+          admin: {
+            description: 'Cor em formato Hexadecimal para a borda do anel e número da etapa. Padrão: #88a668',
+          },
+        },
+        {
+          name: 'cycleAccentColor',
+          label: 'Cor do Texto em Destaque (Hex)',
+          type: 'text',
+          defaultValue: '#88a668',
+          admin: {
+            description: 'Cor em formato Hexadecimal para o texto em destaque da etapa. Padrão: #88a668',
+          },
+        },
+        {
+          name: 'cycleSteps',
+          label: 'Etapas do Ciclo',
+          type: 'array',
+          fields: [
+            {
+              name: 'stepNumber',
+              label: 'Número / Identificador da etapa',
+              type: 'text',
+              required: true,
+              admin: {
+                description: 'Ex: 1, 2, A, B...',
+              },
+            },
+            {
+              name: 'titleDark',
+              label: 'Título (Parte Escura/Normal)',
+              type: 'text',
+              localized: true,
+              required: true,
+              admin: {
+                description: 'Ex: Preparo do',
+              },
+            },
+            {
+              name: 'titleLight',
+              label: 'Título (Parte Clara/Destaque)',
+              type: 'text',
+              localized: true,
+              required: true,
+              admin: {
+                description: 'Ex: Solo',
+              },
+            },
+            {
+              name: 'desc',
+              label: 'Descrição da etapa',
+              type: 'textarea',
+              localized: true,
+              required: true,
+            },
+            {
+              name: 'icon',
+              label: 'Ícone (Material Symbols)',
+              type: 'text',
+              required: true,
+              admin: {
+                description: 'Nome do ícone do Material Icons (Ex: agriculture, eco, biotech, warehouse, settings). Consulte: https://fonts.google.com/icons',
+              },
+            },
+          ],
+        },
+      ],
     },
   ],
 }
