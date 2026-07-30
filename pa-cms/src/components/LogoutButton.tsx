@@ -11,9 +11,9 @@ export default function CustomSidebar() {
   const handleLogout = async () => {
     try {
       await fetch('/api/users/logout', { method: 'POST', credentials: 'include' })
-      router.push('/admin/login')
+      window.location.href = '/admin/login'
     } catch {
-      router.push('/admin/login')
+      window.location.href = '/admin/login'
     }
   }
 

@@ -13,8 +13,10 @@ const nextConfig = {
   turbopack: {
     root: __dirname,
     // No Next.js 16 o alias precisa estar aqui (o withPayload só configura para Next.js 15)
+    // Usamos caminho relativo com './' para evitar que o Turbopack no Linux/Docker
+    // interprete o caminho absoluto (iniciando com '/') como importação relativa ao servidor.
     resolveAlias: {
-      '@payload-config': payloadConfigPath,
+      '@payload-config': './src/payload.config.ts',
     },
   },
 

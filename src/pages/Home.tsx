@@ -127,7 +127,7 @@ export default function Home() {
                 />
               )}
               {bannerTextLines.length > 0 && bannerAccentLines.length > 0 && ' '}
-              <span className={styles.bannerTextAccent}>
+              <span className={styles.bannerTextAccent} style={homeData?.bannerTextAccentColor ? { color: homeData.bannerTextAccentColor } : undefined}>
                 {bannerAccentLines.length > 0 && (
                   <AnimatedText 
                     key={`banner2-first-${locale}-${bannerAccentLines[0]}`} 
@@ -142,7 +142,11 @@ export default function Home() {
 
             {/* Renderizar quaisquer outras linhas do texto em destaque */}
             {bannerAccentLines.slice(1).map((line, i) => (
-              <span key={`banner-accent-line-${i}`} style={{ display: 'block', width: '100%' }} className={styles.bannerTextAccent}>
+              <span 
+                key={`banner-accent-line-${i}`} 
+                style={{ display: 'block', width: '100%', ...(homeData?.bannerTextAccentColor ? { color: homeData.bannerTextAccentColor } : {}) }} 
+                className={styles.bannerTextAccent}
+              >
                 <AnimatedText key={`banner2-line-${i}-${locale}-${line}`} text={line} type="word" delay={0.4 + i * 0.1} stagger={0.05} />
               </span>
             ))}

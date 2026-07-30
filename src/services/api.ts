@@ -27,6 +27,8 @@ export interface Media {
 export interface HomePageData {
   heroTitle?: string;
   heroSubtitle?: string;
+  heroMediaType?: 'upload' | 'vimeo';
+  heroVimeoUrl?: string;
   heroImage?: Media | string;
   heroImageTablet?: Media | string;
   heroImageMobile?: Media | string;
@@ -39,7 +41,19 @@ export interface HomePageData {
   }>;
   introTitle?: string;
   introText?: any; // Lexical JSON
+  introMediaType?: 'upload' | 'vimeo';
+  introVimeoUrl?: string;
   introImage?: Media | string;
+  introVideoWidth?: number;           // % do container (padrão 80)
+  introVideoMaxWidth?: number;        // largura máxima em px (padrão 460)
+  introVideoAlign?: 'left' | 'center' | 'right'; // alinhamento na coluna
+  introVideoRadius?: number;          // border-radius do container externo
+  introVideoInnerRadius?: number;     // border-radius do clip do vídeo (interno)
+  introVideoAspectRatio?: string;     // ex: '16/9', '1/1', '4/3'
+  introContainerBg?: string;          // cor de fundo hex
+  introContainerPadding?: number;     // padding interno em px
+  introContainerBorder?: boolean;     // exibir borda
+  introContainerBorderColor?: string; // cor da borda hex
   introCtaLabel?: string;
   introCtaUrl?: string;
   bannerText?: string;
@@ -440,6 +454,17 @@ export const api = {
       return `${API_URL}${media.url.startsWith('/') ? '' : '/'}${media.url}`;
     }
     return '';
+  },
+
+  // Helper para formatar a URL de embed do Vimeo (background loop automático sem áudio)
+  getVimeoEmbedUrl(vimeoUrl?: string): string {
+    if (!vimeoUrl) return '';
+    const trimmed = vimeoUrl.trim();
+    // Extrai os dígitos do ID do Vimeo
+    const match = trimmed.match(/(?:vimeo\.com\/(?:video\/)?|player\.vimeo\.com\/video\/)?(\d+)/);
+    const videoId = match ? match[1] : trimmed;
+    if (!videoId || !/^\d+$/.test(videoId)) return '';
+    return `https://player.vimeo.com/video/${videoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&autopause=0&dnt=1`;
   },
 
   // Globals

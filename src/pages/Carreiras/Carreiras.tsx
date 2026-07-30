@@ -267,6 +267,7 @@ const initialForm: FormData = {
 // ─── Componente Principal ────────────────────────────────────────────────────
 export default function Carreiras() {
   const [vagas, setVagas] = useState<Job[]>([]);
+  const [vagasLoaded, setVagasLoaded] = useState(false);
   const [careersPage, setCareersPage] = useState<CareersPageData | null>(null);
   const [vagaSelecionada, setVagaSelecionada] = useState<Job | null>(null);
   const [formData, setFormData] = useState(initialForm);
@@ -301,9 +302,11 @@ export default function Carreiras() {
     api.getJobs(locale)
       .then(data => {
         setVagas(data);
+        setVagasLoaded(true);
       })
       .catch(err => {
         console.error('Erro ao carregar vagas:', err);
+        setVagasLoaded(false); // Deixa fallback em caso de erro real
       });
   }, [locale]);
 
@@ -321,7 +324,9 @@ export default function Carreiras() {
     };
   }), [locale]);
 
-  const displayVagas = vagas.length > 0 ? vagas : fallbackJobs;
+  // Se a API carregou com sucesso, usa o resultado dela (mesmo vazio).
+  // Só usa o fallback se a API falhou com erro.
+  const displayVagas = vagasLoaded ? vagas : fallbackJobs;
 
   useEffect(() => {
     if (vagaSelecionada && displayVagas.length > 0) {
@@ -525,7 +530,7 @@ export default function Carreiras() {
         <div className={styles.introContainer}>
           <h2 className={styles.introTitle}>
             <AnimatedText key={`carr-title1-${locale}-${careersPage?.title}`} text={careersPage?.title || t.carreiras.title1} type="word" />{' '}
-            <span className={styles.highlight}>
+            <span className={styles.highlight} style={careersPage?.titleHighlightColor ? { color: careersPage.titleHighlightColor } : undefined}>
               <AnimatedText key={`carr-title2-${locale}-${careersPage?.titleHighlight}`} text={careersPage?.titleHighlight || t.carreiras.titleHighlight} type="word" delay={0.15} />
             </span>
           </h2>
@@ -579,61 +584,78 @@ export default function Carreiras() {
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
             onMouseMove={handleMouseMove}
-            data-lenis-prevent="true"
             style={{ 
               marginLeft: trackMarginLeft ? `${trackMarginLeft}px` : undefined,
               width: trackMarginLeft ? `calc(100% - ${trackMarginLeft}px)` : '100%'
             }}
           >
-            {displayVagas.map(vaga => {
-              const isSelected = vagaSelecionada?.id === vaga.id;
-              return (
-                <div
-                  key={vaga.id}
-                  data-card
-                  className={`${styles.vagaCard} ${isSelected ? styles.vagaCardSelected : ''}`}
-                >
-                  {/* Data */}
-                  <div className={styles.cardTop}>
-                    <span className={styles.vagaData}>{formatDate(vaga.openingDate, locale)}</span>
-                  </div>
-
-                  {/* Título + descrição */}
-                  <div className={styles.cardBody}>
-                    <h3 className={styles.vagaTitulo}>{vaga.title}</h3>
-                    <p className={styles.vagaDescricao}>{vaga.summary}</p>
-                  </div>
-
-                  {/* Divisória */}
-                  <div className={styles.vagaDivider} />
-
-                  {/* Botão */}
-                  <div className={styles.cardBottom}>
-                    <button
-                      className={`btn-pa ${isSelected ? 'green-accent' : 'gray'}`}
-                      onClick={() => handleSelectVaga(vaga)}
-                      aria-pressed={isSelected}
-                      style={vaga.status !== 'open' && !isSelected ? { opacity: 0.7 } : undefined}
-                    >
-                      <span className="btn-label">
-                        {isSelected
-                          ? t.carreiras.aplicando || (vaga.status === 'open' ? 'Aplicando...' : 'Visualizando...')
-                          : vaga.status === 'open'
-                            ? t.carreiras.aplicar || 'Aplicar'
-                            : vaga.status === 'paused'
-                              ? 'Pausada'
-                              : 'Encerrada'}
-                      </span>
-                      <span className="btn-icon">
-                        <span className={`material-symbols-rounded ${isSelected ? styles.closeIcon : ''}`}>
-                          {isSelected ? 'close' : 'arrow_back'}
-                        </span>
-                      </span>
-                    </button>
-                  </div>
+            {displayVagas.length === 0 && vagasLoaded ? (
+              <div className={styles.vagaCard} style={{ minWidth: '340px', opacity: 0.7 }}>
+                <div className={styles.cardBody} style={{ padding: '40px 20px', textAlign: 'center' }}>
+                  <span className="material-symbols-rounded" style={{ fontSize: '2.5rem', color: 'var(--theme-elevation-400)', display: 'block', marginBottom: '12px' }}>
+                    work_off
+                  </span>
+                  <h3 className={styles.vagaTitulo}>
+                    {locale === 'en' ? 'No open positions' : 'Nenhuma vaga aberta'}
+                  </h3>
+                  <p className={styles.vagaDescricao}>
+                    {locale === 'en'
+                      ? 'There are no open positions at the moment. Check back soon!'
+                      : 'Não há vagas abertas no momento. Volte em breve!'}
+                  </p>
                 </div>
-              );
-            })}
+              </div>
+            ) : (
+              displayVagas.map(vaga => {
+                const isSelected = vagaSelecionada?.id === vaga.id;
+                return (
+                  <div
+                    key={vaga.id}
+                    data-card
+                    className={`${styles.vagaCard} ${isSelected ? styles.vagaCardSelected : ''}`}
+                  >
+                    {/* Data */}
+                    <div className={styles.cardTop}>
+                      <span className={styles.vagaData}>{formatDate(vaga.openingDate, locale)}</span>
+                    </div>
+
+                    {/* Título + descrição */}
+                    <div className={styles.cardBody}>
+                      <h3 className={styles.vagaTitulo}>{vaga.title}</h3>
+                      <p className={styles.vagaDescricao}>{vaga.summary}</p>
+                    </div>
+
+                    {/* Divisória */}
+                    <div className={styles.vagaDivider} />
+
+                    {/* Botão */}
+                    <div className={styles.cardBottom}>
+                      <button
+                        className={`btn-pa ${isSelected ? 'green-accent' : 'gray'}`}
+                        onClick={() => handleSelectVaga(vaga)}
+                        aria-pressed={isSelected}
+                        style={vaga.status !== 'open' && !isSelected ? { opacity: 0.7 } : undefined}
+                      >
+                        <span className="btn-label">
+                          {isSelected
+                            ? t.carreiras.aplicando || (vaga.status === 'open' ? 'Aplicando...' : 'Visualizando...')
+                            : vaga.status === 'open'
+                              ? t.carreiras.aplicar || 'Aplicar'
+                              : vaga.status === 'paused'
+                                ? 'Pausada'
+                                : 'Encerrada'}
+                        </span>
+                        <span className="btn-icon">
+                          <span className={`material-symbols-rounded ${isSelected ? styles.closeIcon : ''}`}>
+                            {isSelected ? 'close' : 'arrow_back'}
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                );
+              })
+            )}
           </div>
         </div>
 

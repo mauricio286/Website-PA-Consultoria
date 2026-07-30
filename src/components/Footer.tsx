@@ -70,19 +70,19 @@ export default function Footer() {
 
           {/* Social Icons List */}
           <div className={styles.socials} data-node-id="36:1759">
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="LinkedIn">
+            <a href={footerData?.linkedinUrl || "https://linkedin.com"} target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="LinkedIn">
               <IconLinkedIn />
             </a>
 
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="Instagram">
+            <a href={footerData?.instagramUrl || "https://instagram.com"} target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="Instagram">
               <IconInstagram />
             </a>
 
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="Facebook">
+            <a href={footerData?.facebookUrl || "https://facebook.com"} target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="Facebook">
               <IconFacebook />
             </a>
 
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="YouTube">
+            <a href={footerData?.youtubeUrl || "https://youtube.com"} target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="YouTube">
               <IconYouTube />
             </a>
           </div>

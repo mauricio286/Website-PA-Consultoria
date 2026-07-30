@@ -101,6 +101,10 @@ export interface Config {
     'home-page': HomePage;
     'about-page': AboutPage;
     'services-page': ServicesPage;
+    'ald-bioenergia-page': AldBioenergiaPage;
+    'lavoura-page': LavouraPage;
+    'centro-pesquisa-page': CentroPesquisaPage;
+    'palestras-page': PalestrasPage;
     'careers-page': CareersPage;
     'contact-settings': ContactSetting;
     'footer-settings': FooterSetting;
@@ -109,6 +113,10 @@ export interface Config {
     'home-page': HomePageSelect<false> | HomePageSelect<true>;
     'about-page': AboutPageSelect<false> | AboutPageSelect<true>;
     'services-page': ServicesPageSelect<false> | ServicesPageSelect<true>;
+    'ald-bioenergia-page': AldBioenergiaPageSelect<false> | AldBioenergiaPageSelect<true>;
+    'lavoura-page': LavouraPageSelect<false> | LavouraPageSelect<true>;
+    'centro-pesquisa-page': CentroPesquisaPageSelect<false> | CentroPesquisaPageSelect<true>;
+    'palestras-page': PalestrasPageSelect<false> | PalestrasPageSelect<true>;
     'careers-page': CareersPageSelect<false> | CareersPageSelect<true>;
     'contact-settings': ContactSettingsSelect<false> | ContactSettingsSelect<true>;
     'footer-settings': FooterSettingsSelect<false> | FooterSettingsSelect<true>;
@@ -190,9 +198,27 @@ export interface Service {
    */
   shortDescription: string;
   /**
-   * Corpo da página de detalhe do serviço.
+   * Texto principal exibido à esquerda da imagem ilustrativa.
    */
-  description?: {
+  leftContent?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Texto secundário exibido abaixo da imagem ilustrativa (largura total).
+   */
+  bottomContent?: {
     root: {
       type: string;
       children: {
@@ -224,6 +250,40 @@ export interface Service {
    * Se ativado, exibe a imagem ilustrativa ao lado do texto. Se desativado, o texto ocupa a largura total (Layout Sem Imagem).
    */
   showIllustration?: boolean | null;
+  /**
+   * Se ativado, renderiza uma seção com o anel animado de etapas no final da página (desenvolvido originalmente para a página de Agricultura de Precisão).
+   */
+  cycleActive?: boolean | null;
+  /**
+   * Cor em formato Hexadecimal para a borda do anel e número da etapa. Padrão: #88a668
+   */
+  cycleColor?: string | null;
+  /**
+   * Cor em formato Hexadecimal para o texto em destaque da etapa. Padrão: #88a668
+   */
+  cycleAccentColor?: string | null;
+  cycleSteps?:
+    | {
+        /**
+         * Ex: 1, 2, A, B...
+         */
+        stepNumber: string;
+        /**
+         * Ex: Preparo do
+         */
+        titleDark: string;
+        /**
+         * Ex: Solo
+         */
+        titleLight: string;
+        desc: string;
+        /**
+         * Nome do ícone do Material Icons (Ex: agriculture, eco, biotech, warehouse, settings). Consulte: https://fonts.google.com/icons
+         */
+        icon: string;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -373,10 +433,13 @@ export interface Gallery {
 export interface MapLocation {
   id: number;
   /**
-   * Ex: Sorriso - MT
+   * Nome na lista
    */
   title: string;
-  city?: string | null;
+  /**
+   * Nome no mapa
+   */
+  city: string;
   state?: string | null;
   /**
    * Ex: 15.600 Hac.
@@ -391,7 +454,6 @@ export interface MapLocation {
    * Eixo vertical no SVG do mapa.
    */
   positionY: number;
-  order?: number | null;
   published?: boolean | null;
   updatedAt: string;
   createdAt: string;
@@ -522,12 +584,26 @@ export interface ServicesSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
   shortDescription?: T;
-  description?: T;
+  leftContent?: T;
+  bottomContent?: T;
   coverImage?: T;
   coverImageTablet?: T;
   coverImageMobile?: T;
   illustrationImage?: T;
   showIllustration?: T;
+  cycleActive?: T;
+  cycleColor?: T;
+  cycleAccentColor?: T;
+  cycleSteps?:
+    | T
+    | {
+        stepNumber?: T;
+        titleDark?: T;
+        titleLight?: T;
+        desc?: T;
+        icon?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }
@@ -657,7 +733,6 @@ export interface MapLocationsSelect<T extends boolean = true> {
   description?: T;
   positionX?: T;
   positionY?: T;
-  order?: T;
   published?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -716,6 +791,14 @@ export interface HomePage {
    * Dica: Use Enter para definir exatamente onde as linhas devem quebrar no site.
    */
   heroSubtitle?: string | null;
+  /**
+   * Escolha se deseja enviar uma imagem/vídeo direto ou utilizar um vídeo em loop do Vimeo.
+   */
+  heroMediaType?: ('upload' | 'vimeo') | null;
+  /**
+   * Cole o link do vídeo do Vimeo (ex: https://vimeo.com/76979871). O vídeo rodará automaticamente em loop contínuo e sem som.
+   */
+  heroVimeoUrl?: string | null;
   heroImage?: (number | null) | Media;
   /**
    * Opcional. Exibida em tablets (telas de até 1024px). Se não informada, usa a de Desktop.
@@ -750,7 +833,55 @@ export interface HomePage {
     };
     [k: string]: unknown;
   } | null;
+  /**
+   * Escolha se deseja enviar uma imagem/vídeo direto ou utilizar um vídeo em loop do Vimeo.
+   */
+  introMediaType?: ('upload' | 'vimeo') | null;
+  /**
+   * Cole o link do vídeo do Vimeo (ex: https://vimeo.com/76979871). O vídeo rodará automaticamente em loop contínuo e sem som.
+   */
+  introVimeoUrl?: string | null;
   introImage?: (number | null) | Media;
+  /**
+   * Porcentagem da coluna ocupada pelo vídeo. Padrão: 80%.
+   */
+  introVideoWidth?: number | null;
+  /**
+   * 0 = sem limite (usa somente o % da coluna). Valores maiores permitem 16:9 mais impactante. Ex: 600 para proporção paisagem.
+   */
+  introVideoMaxWidth?: number | null;
+  /**
+   * Posição do vídeo na coluna direita. "Direita" garante bom afastamento do texto.
+   */
+  introVideoAlign?: ('right' | 'center' | 'left') | null;
+  /**
+   * Formato do vídeo. Define se ele é quadrado, retangular ou vertical.
+   */
+  introVideoAspectRatio?: ('16/9' | '1/1' | '4/5' | '9/16' | '4/3') | null;
+  /**
+   * Raio dos cantos do container externo (borda/fundo). 0 = sem arredondamento.
+   */
+  introVideoRadius?: number | null;
+  /**
+   * Arredonda os cantos do próprio vídeo (clip interno). Independente do container.
+   */
+  introVideoInnerRadius?: number | null;
+  /**
+   * Cor exibida ao redor do vídeo dentro do container. Ex: #f5f5f5. Deixe vazio para transparente.
+   */
+  introContainerBg?: string | null;
+  /**
+   * Espaço entre o vídeo e a borda do container.
+   */
+  introContainerPadding?: number | null;
+  /**
+   * Ativa uma borda visível ao redor do container de vídeo.
+   */
+  introContainerBorder?: boolean | null;
+  /**
+   * Cor da borda do container. Ex: #cccccc.
+   */
+  introContainerBorderColor?: string | null;
   introCtaLabel?: string | null;
   introCtaUrl?: string | null;
   /**
@@ -762,6 +893,10 @@ export interface HomePage {
    * Ex: "melhor conosco!". Dica: Use Enter para definir as quebras de linha.
    */
   bannerTextAccent?: string | null;
+  /**
+   * Cor em formato Hexadecimal para o texto em destaque. Padrão: #e1fe00
+   */
+  bannerTextAccentColor?: string | null;
   bannerImage?: (number | null) | Media;
   /**
    * Ex: Resultados
@@ -775,6 +910,10 @@ export interface HomePage {
    * Ex: traduzem excelência — aparecerá em verde
    */
   statsTitleAccent?: string | null;
+  /**
+   * Cor em formato Hexadecimal para o título destacado. Padrão: #88a668
+   */
+  statsTitleAccentColor?: string | null;
   statsTitleAlign?: ('left' | 'center' | 'right' | 'justify') | null;
   /**
    * Dica: Use Enter para definir as quebras de linha.
@@ -910,6 +1049,10 @@ export interface AboutPage {
    * Subtítulo em destaque. Dica: Use Enter para quebras de linha.
    */
   subtitle?: string | null;
+  /**
+   * Cor em formato Hexadecimal para o texto em destaque. Padrão: #88a668
+   */
+  subtitleColor?: string | null;
   introText?: {
     root: {
       type: string;
@@ -986,6 +1129,10 @@ export interface AboutPage {
   videoSectionTitle?: string | null;
   videoSectionTitleAccent?: string | null;
   /**
+   * Cor em formato Hexadecimal para o título destacado. Padrão: #88a668
+   */
+  videoSectionTitleAccentColor?: string | null;
+  /**
    * Cole a URL de embed do YouTube. Ex: https://www.youtube.com/embed/XXXXXXXXX
    */
   institutionalVideoUrl?: string | null;
@@ -1051,6 +1198,10 @@ export interface ServicesPage {
    */
   servicesSubtitle?: string | null;
   /**
+   * Cor em formato Hexadecimal para o texto em destaque. Padrão: #88a668
+   */
+  servicesSubtitleColor?: string | null;
+  /**
    * Dica: Use Enter para quebras de linha.
    */
   servicesDescription?: string | null;
@@ -1064,6 +1215,9 @@ export interface ServicesPage {
          * Dica: Use Enter para quebras de linha no card.
          */
         shortDescription: string;
+        /**
+         * Ex: consultoria-agronomica, unita, agricultura-de-precisao, gestao-de-compras, pesquisa-agronomica
+         */
         slug?: string | null;
         id?: string | null;
       }[]
@@ -1077,6 +1231,10 @@ export interface ServicesPage {
    * Dica: Use Enter para quebras de linha.
    */
   ecosystemSubtitle?: string | null;
+  /**
+   * Cor em formato Hexadecimal para o texto em destaque. Padrão: #88a668
+   */
+  ecosystemSubtitleColor?: string | null;
   ecosystemCards?:
     | {
         title: string;
@@ -1085,6 +1243,169 @@ export interface ServicesPage {
         id?: string | null;
       }[]
     | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ald-bioenergia-page".
+ */
+export interface AldBioenergiaPage {
+  id: number;
+  heroImage: number | Media;
+  title: string;
+  leftContent: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  logoImage: number | Media;
+  indicators?:
+    | {
+        value: string;
+        description: string;
+        icon: number | Media;
+        theme: 'dark' | 'lime' | 'light';
+        id?: string | null;
+      }[]
+    | null;
+  section3Content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  section3Image: number | Media;
+  bottomContent: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "lavoura-page".
+ */
+export interface LavouraPage {
+  id: number;
+  heroImage: number | Media;
+  title: string;
+  leftContent: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  image: number | Media;
+  bottomContent: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "centro-pesquisa-page".
+ */
+export interface CentroPesquisaPage {
+  id: number;
+  heroImage: number | Media;
+  title: string;
+  leftContent: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  image: number | Media;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "palestras-page".
+ */
+export interface PalestrasPage {
+  id: number;
+  heroImage: number | Media;
+  title: string;
+  leftContent: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  image: number | Media;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1112,6 +1433,10 @@ export interface CareersPage {
    */
   titleHighlight?: string | null;
   /**
+   * Cor em formato Hexadecimal para o texto em destaque. Padrão: #88a668
+   */
+  titleHighlightColor?: string | null;
+  /**
    * Texto exibido logo abaixo do título principal. Dica: Use Enter para quebras de linha.
    */
   introText?: string | null;
@@ -1133,14 +1458,6 @@ export interface ContactSetting {
    * Opcional. Exibida em celulares (telas de até 580px). Se não informada, usa a de Desktop ou Tablet.
    */
   heroImageMobile?: (number | null) | Media;
-  /**
-   * Ex: contato@agropa.com.br
-   */
-  mainEmail?: string | null;
-  /**
-   * Ex: rh@agropa.com.br
-   */
-  hrEmail?: string | null;
   /**
    * Recebe as mensagens enviadas pelo formulário da página Contato.
    */
@@ -1184,11 +1501,18 @@ export interface FooterSetting {
    * Cadastre os endereços e os links correspondentes do Google Maps que serão exibidos no rodapé do site.
    */
   addresses: {
+    /**
+     * Ex: Matriz Tangará
+     */
     label: string;
     text: string;
     mapsUrl: string;
     id?: string | null;
   }[];
+  linkedinUrl?: string | null;
+  instagramUrl?: string | null;
+  facebookUrl?: string | null;
+  youtubeUrl?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1199,6 +1523,8 @@ export interface FooterSetting {
 export interface HomePageSelect<T extends boolean = true> {
   heroTitle?: T;
   heroSubtitle?: T;
+  heroMediaType?: T;
+  heroVimeoUrl?: T;
   heroImage?: T;
   heroImageTablet?: T;
   heroImageMobile?: T;
@@ -1213,16 +1539,30 @@ export interface HomePageSelect<T extends boolean = true> {
       };
   introTitle?: T;
   introText?: T;
+  introMediaType?: T;
+  introVimeoUrl?: T;
   introImage?: T;
+  introVideoWidth?: T;
+  introVideoMaxWidth?: T;
+  introVideoAlign?: T;
+  introVideoAspectRatio?: T;
+  introVideoRadius?: T;
+  introVideoInnerRadius?: T;
+  introContainerBg?: T;
+  introContainerPadding?: T;
+  introContainerBorder?: T;
+  introContainerBorderColor?: T;
   introCtaLabel?: T;
   introCtaUrl?: T;
   bannerText?: T;
   bannerTextAlign?: T;
   bannerTextAccent?: T;
+  bannerTextAccentColor?: T;
   bannerImage?: T;
   statsTag?: T;
   statsTitle?: T;
   statsTitleAccent?: T;
+  statsTitleAccentColor?: T;
   statsTitleAlign?: T;
   statsSubtext?: T;
   statsSubtextAlign?: T;
@@ -1290,6 +1630,7 @@ export interface AboutPageSelect<T extends boolean = true> {
   introTag?: T;
   title?: T;
   subtitle?: T;
+  subtitleColor?: T;
   introText?: T;
   commitment?:
     | T
@@ -1312,6 +1653,7 @@ export interface AboutPageSelect<T extends boolean = true> {
   videoSectionTag?: T;
   videoSectionTitle?: T;
   videoSectionTitleAccent?: T;
+  videoSectionTitleAccentColor?: T;
   institutionalVideoUrl?: T;
   timelineTag?: T;
   timelineTitle?: T;
@@ -1339,6 +1681,7 @@ export interface ServicesPageSelect<T extends boolean = true> {
   servicesBadge?: T;
   servicesTitle?: T;
   servicesSubtitle?: T;
+  servicesSubtitleColor?: T;
   servicesDescription?: T;
   servicesCards?:
     | T
@@ -1351,6 +1694,7 @@ export interface ServicesPageSelect<T extends boolean = true> {
   ecosystemBadge?: T;
   ecosystemTitle?: T;
   ecosystemSubtitle?: T;
+  ecosystemSubtitleColor?: T;
   ecosystemCards?:
     | T
     | {
@@ -1365,6 +1709,71 @@ export interface ServicesPageSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ald-bioenergia-page_select".
+ */
+export interface AldBioenergiaPageSelect<T extends boolean = true> {
+  heroImage?: T;
+  title?: T;
+  leftContent?: T;
+  logoImage?: T;
+  indicators?:
+    | T
+    | {
+        value?: T;
+        description?: T;
+        icon?: T;
+        theme?: T;
+        id?: T;
+      };
+  section3Content?: T;
+  section3Image?: T;
+  bottomContent?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "lavoura-page_select".
+ */
+export interface LavouraPageSelect<T extends boolean = true> {
+  heroImage?: T;
+  title?: T;
+  leftContent?: T;
+  image?: T;
+  bottomContent?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "centro-pesquisa-page_select".
+ */
+export interface CentroPesquisaPageSelect<T extends boolean = true> {
+  heroImage?: T;
+  title?: T;
+  leftContent?: T;
+  image?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "palestras-page_select".
+ */
+export interface PalestrasPageSelect<T extends boolean = true> {
+  heroImage?: T;
+  title?: T;
+  leftContent?: T;
+  image?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "careers-page_select".
  */
 export interface CareersPageSelect<T extends boolean = true> {
@@ -1373,6 +1782,7 @@ export interface CareersPageSelect<T extends boolean = true> {
   heroImageMobile?: T;
   title?: T;
   titleHighlight?: T;
+  titleHighlightColor?: T;
   introText?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -1386,8 +1796,6 @@ export interface ContactSettingsSelect<T extends boolean = true> {
   heroImage?: T;
   heroImageTablet?: T;
   heroImageMobile?: T;
-  mainEmail?: T;
-  hrEmail?: T;
   formRecipientEmail?: T;
   careerRecipientEmail?: T;
   phone?: T;
@@ -1420,6 +1828,10 @@ export interface FooterSettingsSelect<T extends boolean = true> {
         mapsUrl?: T;
         id?: T;
       };
+  linkedinUrl?: T;
+  instagramUrl?: T;
+  facebookUrl?: T;
+  youtubeUrl?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

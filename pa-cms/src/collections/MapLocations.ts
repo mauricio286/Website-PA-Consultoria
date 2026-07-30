@@ -29,12 +29,14 @@ const MapLocations: CollectionConfig = {
       label: 'Nome da cidade',
       type: 'text',
       required: true,
-      admin: { description: 'Ex: Sorriso - MT' },
+      admin: { description: 'Nome na lista' },
     },
     {
       name: 'city',
       label: 'Cidade',
       type: 'text',
+      required: true,
+      admin: { description: 'Nome no mapa' },
     },
     {
       name: 'state',
@@ -93,12 +95,13 @@ const MapLocations: CollectionConfig = {
       ],
     },
 
-    {
-      name: 'order',
-      label: 'Ordem de exibição',
-      type: 'number',
-      defaultValue: 0,
-    },
+    /*   {
+        name: 'order',
+        label: 'Ordem de exibição',
+        type: 'number',
+        defaultValue: 0,
+      },
+    */
     {
       name: 'published',
       label: 'Publicado',

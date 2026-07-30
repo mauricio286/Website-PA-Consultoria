@@ -40,8 +40,16 @@ export const contactHandler: PayloadHandler = async (req) => {
       message: (body.message as string).trim(),
     }
 
-    // Destinatário definido na variável de ambiente ou fallback para settings no banco
-    const recipient = process.env.CONTACT_RECIPIENT ?? 'contato@agropa.com.br'
+    // Destinatário: lê do CMS primeiro, depois env var, depois fallback
+    let recipient = process.env.CONTACT_RECIPIENT ?? 'rh@agropa.com.br'
+    try {
+      const settings = await req.payload.findGlobal({ slug: 'contact-settings' })
+      if (settings?.formRecipientEmail) {
+        recipient = settings.formRecipientEmail as string
+      }
+    } catch {
+      // usa o fallback definido acima
+    }
 
     await req.payload.sendEmail({
       to: recipient,

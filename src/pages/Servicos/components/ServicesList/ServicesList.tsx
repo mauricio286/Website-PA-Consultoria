@@ -77,7 +77,9 @@ export default function ServicesList({ data, list }: ServicesListProps) {
             {titleAccent && (
               <>
                 <br />
-                <span className={styles.highlight}>{titleAccent}</span>
+                <span className={styles.highlight} style={data?.servicesSubtitleColor ? { color: data.servicesSubtitleColor } : undefined}>
+                  {titleAccent}
+                </span>
               </>
             )}
           </h2>

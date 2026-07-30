@@ -73,6 +73,13 @@ const AboutPage: GlobalConfig = {
           admin: { description: 'Subtítulo em destaque. Dica: Use Enter para quebras de linha.' },
         },
         {
+          name: 'subtitleColor',
+          label: 'Cor do subtítulo em destaque (Hex)',
+          type: 'text',
+          defaultValue: '#88a668',
+          admin: { description: 'Cor em formato Hexadecimal para o texto em destaque. Padrão: #88a668' },
+        },
+        {
           name: 'introText',
           label: 'Texto introdutório',
           type: 'richText',
@@ -143,6 +150,13 @@ const AboutPage: GlobalConfig = {
           label: 'Título da seção (parte em destaque)',
           type: 'text',
           localized: true,
+        },
+        {
+          name: 'videoSectionTitleAccentColor',
+          label: 'Cor do título destacado (Hex)',
+          type: 'text',
+          defaultValue: '#88a668',
+          admin: { description: 'Cor em formato Hexadecimal para o título destacado. Padrão: #88a668' },
         },
         {
           name: 'institutionalVideoUrl',

@@ -152,7 +152,7 @@ export default function Stats({ data }: StatsProps) {
               style={{ textAlign: data?.statsTitleAlign || 'left' }}
             >
               <AnimatedText key={`stats1-${locale}-${titleNormal}`} text={titleNormal} type="char" delay={0} stagger={0.02} />{' '}
-              <span className={styles.titleAccent}>
+              <span className={styles.titleAccent} style={data?.statsTitleAccentColor ? { color: data.statsTitleAccentColor } : undefined}>
                 <AnimatedText key={`stats2-${locale}-${titleAccent}`} text={titleAccent} type="char" delay={0.2} stagger={0.02} />
               </span>
             </h2>

@@ -69,6 +69,15 @@ const CareersPage: GlobalConfig = {
           },
         },
         {
+          name: 'titleHighlightColor',
+          label: 'Cor do destaque (Hex)',
+          type: 'text',
+          defaultValue: '#88a668',
+          admin: {
+            description: 'Cor em formato Hexadecimal para o texto em destaque. Padrão: #88a668',
+          },
+        },
+        {
           name: 'introText',
           label: 'Texto de introdução',
           type: 'textarea',

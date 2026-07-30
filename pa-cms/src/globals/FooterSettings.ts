@@ -27,11 +27,14 @@ const FooterSettings: GlobalConfig = {
           fields: [
             {
               name: 'label',
-              label: 'Rótulo / Unidade (ex: Matriz Tangará)',
+              label: 'Rótulo / Unidade',
               type: 'text',
               localized: true,
               required: true,
-              admin: { width: '30%' },
+              admin: { 
+                width: '30%',
+                description: 'Ex: Matriz Tangará',
+              },
             },
             {
               name: 'text',
@@ -48,6 +51,59 @@ const FooterSettings: GlobalConfig = {
           label: 'Link do Google Maps (URL completa para redirecionamento ao clicar)',
           type: 'text',
           required: true,
+        },
+      ],
+    },
+    // ── Redes Sociais ────────────────────────────────────────────────────────
+    {
+      type: 'collapsible',
+      label: 'Redes Sociais',
+      fields: [
+        {
+          type: 'row',
+          fields: [
+            {
+              name: 'linkedinUrl',
+              label: 'Link do LinkedIn',
+              type: 'text',
+              admin: { 
+                width: '50%',
+                placeholder: 'https://linkedin.com/company/agropa',
+              },
+            },
+            {
+              name: 'instagramUrl',
+              label: 'Link do Instagram',
+              type: 'text',
+              admin: { 
+                width: '50%',
+                placeholder: 'https://instagram.com/agropa',
+              },
+            },
+          ],
+        },
+        {
+          type: 'row',
+          fields: [
+            {
+              name: 'facebookUrl',
+              label: 'Link do Facebook',
+              type: 'text',
+              admin: { 
+                width: '50%',
+                placeholder: 'https://facebook.com/agropa',
+              },
+            },
+            {
+              name: 'youtubeUrl',
+              label: 'Link do YouTube',
+              type: 'text',
+              admin: { 
+                width: '50%',
+                placeholder: 'https://youtube.com/@agropa',
+              },
+            },
+          ],
         },
       ],
     },

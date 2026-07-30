@@ -8,7 +8,7 @@
 
 .imageTextRow {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 85px;
 }
 
@@ -29,15 +29,19 @@
 }
 
 .imageWrapper {
-  flex: 0 0 984px;
+  flex: 1 1 984px;
+  max-width: 984px;
   position: relative;
   border-radius: 25px;
   overflow: hidden;
-  height: 306px;
+  min-height: 306px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .imageWrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -59,6 +63,10 @@
   margin-bottom: 20px;
 }
 
+.mobileImage {
+  display: none;
+}
+
 /* 📱 Responsividade 📱 */
 @media (max-width: 1400px) {
   .imageWrapper {
@@ -67,6 +75,13 @@
 }
 
 @media (max-width: 1024px) {
+  .desktopImage {
+    display: none;
+  }
+  .mobileImage {
+    display: block;
+    margin: 30px 0;
+  }
   .imageTextRow {
     flex-direction: column;
     gap: 40px;

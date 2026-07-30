@@ -26,7 +26,8 @@ import { default as default_8b188363d2244cee8a0fe7a9749b5fa5 } from '@/component
 import { default as default_d59016f9ae6dc850e90f220cf7a4b95a } from '@/components/CMSDescriptionTooltip/IconTooltip'
 import { default as default_d4048015f466832aa056ed6cce3b1c3f } from '@/components/CustomLogo'
 import { default as default_b4adb2dd9e33ad3d73567604a12518b9 } from '@/components/CustomSidebar'
-import { default as default_db9ac62598c46d0f1db201f6af05442e } from '@/components/LogoutButton'
+import { GcsClientUploadHandler as GcsClientUploadHandler_06e62ca02c7c441053a9b643e5545934 } from '@payloadcms/storage-gcs/client'
+import { default as default_a2ebd7f2d0986d16fcc3cb126592cbfe } from '@/components/AnalyticsView'
 import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 
 /** @type import('payload').ImportMap */
@@ -59,6 +60,7 @@ export const importMap = {
   "@/components/CMSDescriptionTooltip/IconTooltip#default": default_d59016f9ae6dc850e90f220cf7a4b95a,
   "@/components/CustomLogo#default": default_d4048015f466832aa056ed6cce3b1c3f,
   "@/components/CustomSidebar#default": default_b4adb2dd9e33ad3d73567604a12518b9,
-  "@/components/LogoutButton#default": default_db9ac62598c46d0f1db201f6af05442e,
+  "@payloadcms/storage-gcs/client#GcsClientUploadHandler": GcsClientUploadHandler_06e62ca02c7c441053a9b643e5545934,
+  "@/components/AnalyticsView#default": default_a2ebd7f2d0986d16fcc3cb126592cbfe,
   "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1
 }

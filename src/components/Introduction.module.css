@@ -76,12 +76,53 @@
   will-change: transform;
 }
 
+/* Container para vídeo/Vimeo na introdução: sem zoom, proporcional ao rightCol */
+/* Os estilos visuais (borda, bg, radius, largura) são controlados pelo CMS via inline style */
+.videoCol {
+  display: block;
+  position: relative;
+  aspect-ratio: 16 / 9;
+  /* Sem background, border ou shadow por padrão — container invisível */
+}
+
+/* Wrapper interno que clippa o vídeo ao arredondamento definido no CMS */
+.videoClip {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  /* isolation:isolate + will-change forçam novo stacking context,
+     necessário para border-radius + overflow:hidden funcionar em position:absolute */
+  isolation: isolate;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
 /* Layout */
 .image {
   width: 100%;
   height: auto;
+  aspect-ratio: 1011 / 1024;
   object-fit: contain;
   display: block;
+}
+
+/* Quando a mídia na Introdução for um vídeo (MP4) ou Iframe (Vimeo), aplica a moldura oval exata do símbolo */
+.imageScaler div[class*="videoWrapper"],
+.imageScaler div[class*="vimeoWrapper"] {
+  width: 100%;
+  aspect-ratio: 1011 / 1024;
+  border-radius: 46% 54% 50% 50% / 50% 50% 50% 50%;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.imageScaler video,
+.imageScaler iframe {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
 }
 
 @media (max-width: 1400px) {

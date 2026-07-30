@@ -2,20 +2,87 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './Preloader.module.css';
 import { imgLogoPa } from '../assets';
+import { useLanguage } from '../i18n';
+import { api } from '../services/api';
 
 interface PreloaderProps {
   onDone: () => void;
 }
 
+// Define the loaders for each route to match page-specific API fetches on initial load.
+const loaders: Record<string, {
+  fetchData: (locale: string) => Promise<any>;
+  getHeroImage: (data: any) => any;
+}> = {
+  '/': {
+    fetchData: (locale) => api.getHomePage(locale),
+    getHeroImage: (data) => data?.heroImage,
+  },
+  '/quem-somos': {
+    fetchData: (locale) => api.getAboutPage(locale),
+    getHeroImage: (data) => data?.heroImage,
+  },
+  '/servicos': {
+    fetchData: (locale) => api.getServicesPage(locale),
+    getHeroImage: (data) => data?.heroImage,
+  },
+  '/consultoriaagronomica': {
+    fetchData: (locale) => api.getServiceBySlug('consultoria-agronomica', locale),
+    getHeroImage: (data) => data?.coverImage,
+  },
+  '/unita': {
+    fetchData: (locale) => api.getServiceBySlug('unita', locale),
+    getHeroImage: (data) => data?.coverImage,
+  },
+  '/agriculturaprecisao': {
+    fetchData: (locale) => api.getServiceBySlug('agricultura-de-precisao', locale),
+    getHeroImage: (data) => data?.coverImage,
+  },
+  '/gestaocompras': {
+    fetchData: (locale) => api.getServiceBySlug('gestao-de-compras', locale),
+    getHeroImage: (data) => data?.coverImage,
+  },
+  '/aldbioenergia': {
+    fetchData: (locale) => api.getAldBioenergiaPage(locale),
+    getHeroImage: (data) => data?.heroImage,
+  },
+  '/lavoura': {
+    fetchData: (locale) => api.getLavouraPage(locale),
+    getHeroImage: (data) => data?.heroImage,
+  },
+  '/palestras': {
+    fetchData: (locale) => api.getPalestrasPage(locale),
+    getHeroImage: (data) => data?.heroImage,
+  },
+  '/centropesquisa': {
+    fetchData: (locale) => api.getCentroPesquisaPage(locale),
+    getHeroImage: (data) => data?.heroImage,
+  },
+  '/carreiras': {
+    fetchData: (locale) => api.getCareersPage(locale),
+    getHeroImage: (data) => data?.heroImage,
+  },
+  '/contato': {
+    fetchData: (locale) => api.getContactSettings(locale),
+    getHeroImage: (data) => data?.heroImage,
+  },
+};
+
 export default function Preloader({ onDone }: PreloaderProps) {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
+  const { locale } = useLanguage();
 
   useEffect(() => {
     let currentProgress = 0;
+    let isApiAndImageDone = false;
+    let isMinTimeDone = false;
+    let isWindowLoaded = false;
+    let isFinished = false;
 
     // Slower fill — feels more deliberate and premium
     const interval = setInterval(() => {
+      if (isFinished) return;
       const jump = currentProgress < 60
         ? Math.random() * 8 + 4   // moderate at start
         : Math.random() * 3 + 1;  // very slow near 90%
@@ -25,6 +92,8 @@ export default function Preloader({ onDone }: PreloaderProps) {
     }, 100);
 
     const finishLoading = () => {
+      if (isFinished) return;
+      isFinished = true;
       clearInterval(interval);
       setProgress(100);
       // Pause at 100% so the user can register it
@@ -33,22 +102,95 @@ export default function Preloader({ onDone }: PreloaderProps) {
       }, 500);
     };
 
-    // Max wait: 5 seconds total
-    const maxTimeout = setTimeout(finishLoading, 5000);
+    // Minimum preloader display time (e.g. 2 seconds) for smooth visual experience
+    const minTimer = setTimeout(() => {
+      isMinTimeDone = true;
+      checkAllConditions();
+    }, 2000);
 
+    // Safety timeout of 5 seconds (5000ms) - as requested by the user
+    const safetyTimeout = setTimeout(() => {
+      console.warn("Preloader safety timeout reached. Forcing loading finished.");
+      finishLoading();
+    }, 5000);
+
+    // Check window load state
+    const handleWindowLoad = () => {
+      isWindowLoaded = true;
+      checkAllConditions();
+    };
     if (document.readyState === 'complete') {
-      // Already loaded — show for at least 3.5 seconds regardless
-      setTimeout(finishLoading, 3500);
+      isWindowLoaded = true;
     } else {
-      window.addEventListener('load', finishLoading, { once: true });
+      window.addEventListener('load', handleWindowLoad, { once: true });
+    }
+
+    const checkAllConditions = () => {
+      if (isFinished) return;
+      if (isMinTimeDone && isWindowLoaded && isApiAndImageDone) {
+        clearTimeout(safetyTimeout);
+        finishLoading();
+      }
+    };
+
+    const markApiAndImageDone = () => {
+      isApiAndImageDone = true;
+      checkAllConditions();
+    };
+
+    // Route detection to only load page-specific Hero image
+    const path = window.location.pathname.replace(/\/$/, '') || '/';
+    const loader = loaders[path];
+
+    if (!loader) {
+      // If no CMS loader exists for this path (static pages / not found), mark done
+      isApiAndImageDone = true;
+      checkAllConditions();
+    } else {
+      loader.fetchData(locale)
+        .then((data) => {
+          if (isFinished) return;
+
+          // Determine the correct media URL based on screen size (matching the picture tag queries)
+          const width = window.innerWidth;
+          let selectedMedia = undefined;
+
+          // Check if page data has responsive images (heroImageTablet/heroImageMobile)
+          if (width <= 580) {
+            selectedMedia = data?.heroImageMobile || data?.coverImageMobile;
+          } else if (width <= 1024) {
+            selectedMedia = data?.heroImageTablet || data?.coverImageTablet;
+          }
+
+          if (!selectedMedia) {
+            selectedMedia = loader.getHeroImage(data);
+          }
+
+          const mediaUrl = api.getMediaUrl(selectedMedia);
+
+          if (mediaUrl) {
+            const img = new Image();
+            img.src = mediaUrl;
+            img.onload = markApiAndImageDone;
+            img.onerror = markApiAndImageDone; // Don't block if image loading fails
+          } else {
+            markApiAndImageDone();
+          }
+        })
+        .catch((err) => {
+          console.error("Error fetching page data in preloader:", err);
+          markApiAndImageDone(); // Don't block if API call fails
+        });
     }
 
     return () => {
       clearInterval(interval);
-      clearTimeout(maxTimeout);
-      window.removeEventListener('load', finishLoading);
+      clearTimeout(minTimer);
+      clearTimeout(safetyTimeout);
+      window.removeEventListener('load', handleWindowLoad);
+      isFinished = true;
     };
-  }, []);
+  }, [locale]);
 
   return (
     <AnimatePresence onExitComplete={onDone}>

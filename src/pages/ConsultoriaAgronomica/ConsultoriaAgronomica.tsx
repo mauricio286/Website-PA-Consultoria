@@ -8,6 +8,7 @@ import { useLanguage } from '../../i18n';
 
 export default function ConsultoriaAgronomica() {
   const [service, setService] = useState<Service | null>(null);
+  const [loading, setLoading] = useState(true);
   const { locale, t } = useLanguage();
 
   useEffect(() => {
@@ -15,36 +16,22 @@ export default function ConsultoriaAgronomica() {
     api.getServiceBySlug('consultoria-agronomica', locale)
       .then(data => {
         setService(data);
+        setLoading(false);
       })
       .catch(err => {
         console.error('Erro ao carregar dados do serviço:', err);
+        setLoading(false);
       });
   }, [locale]);
 
-  const bgImage = service?.coverImage ? api.getMediaUrl(service.coverImage) : imgBgConsultoriaAgronomica;
+  const bgImage = loading ? undefined : (service?.coverImage ? api.getMediaUrl(service.coverImage) : imgBgConsultoriaAgronomica);
   const contentImage = service?.illustrationImage ? api.getMediaUrl(service.illustrationImage) : imgConsultoriaAgronomica;
 
-  const description = service?.description;
-  const children = description?.root?.children || [];
-  const firstPartChildren = children.slice(0, 2);
-  const secondPartChildren = children.slice(2);
+  const leftContent = service?.leftContent;
+  const bottomContent = service?.bottomContent;
 
-  const firstPartContent = description && firstPartChildren.length > 0 ? {
-    root: {
-      ...description.root,
-      children: firstPartChildren
-    }
-  } : null;
-
-  const secondPartContent = description && secondPartChildren.length > 0 ? {
-    root: {
-      ...description.root,
-      children: secondPartChildren
-    }
-  } : null;
-
-  const bgImageTablet = service?.coverImageTablet ? api.getMediaUrl(service.coverImageTablet) : undefined;
-  const bgImageMobile = service?.coverImageMobile ? api.getMediaUrl(service.coverImageMobile) : undefined;
+  const bgImageTablet = loading ? undefined : (service?.coverImageTablet ? api.getMediaUrl(service.coverImageTablet) : undefined);
+  const bgImageMobile = loading ? undefined : (service?.coverImageMobile ? api.getMediaUrl(service.coverImageMobile) : undefined);
   const showIllustration = service ? service.showIllustration !== false : true;
   const serviceTitle = service?.title?.replace(/\r?\n/g, ' ') || t.consultoriaPage.title;
 
@@ -69,9 +56,9 @@ export default function ConsultoriaAgronomica() {
             </div>
           )}
           <div className={styles.textContent}>
-            {firstPartContent ? (
+            {leftContent ? (
               <>
-                <LexicalRenderer content={firstPartContent} />
+                <LexicalRenderer content={leftContent} />
                 {showIllustration && (
                   <div className={`${styles.imageWrapper} ${styles.mobileImage}`}>
                     <img src={contentImage} alt={serviceTitle} />
@@ -100,8 +87,8 @@ export default function ConsultoriaAgronomica() {
         </div>
  
         <div className={styles.fullTextRow}>
-          {secondPartContent ? (
-            <LexicalRenderer content={secondPartContent} />
+          {bottomContent ? (
+            <LexicalRenderer content={bottomContent} />
           ) : !service ? (
             <>
               <p>

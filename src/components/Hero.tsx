@@ -8,6 +8,8 @@ import { api } from '../services/api';
 import type { HomePageData } from '../services/api';
 import { useLanguage } from '../i18n';
 
+import MediaContainer from './MediaContainer';
+
 interface HeroProps {
   data?: HomePageData | null;
 }
@@ -19,9 +21,9 @@ export default function Hero({ data }: HeroProps) {
   const { locale, t } = useLanguage();
 
   // Computação dos dados dinâmicos do CMS ou fallbacks
+  const heroMediaType = data?.heroMediaType || 'upload';
+  const heroVimeoUrl = data?.heroVimeoUrl;
   const bgImageUrl = api.getMediaUrl(data?.heroImage) || imgProperty1Default;
-  const bgImageTabletUrl = api.getMediaUrl(data?.heroImageTablet);
-  const bgImageMobileUrl = api.getMediaUrl(data?.heroImageMobile);
   const subtitle = data?.heroSubtitle || t.hero.description;
   const ctaLabel = data?.heroCtaLabel || t.hero.cta;
   const ctaUrl = data?.heroCtaUrl || "/servicos";
@@ -45,16 +47,11 @@ export default function Hero({ data }: HeroProps) {
   };
 
   // Dividir o título pelas quebras de linha definidas no CMS (\n)
+  // Respeita exatamente o que foi digitado no painel de administração
   let lines = [t.hero.line1, t.hero.line2, t.hero.line3].filter(Boolean);
 
   if (data?.heroTitle) {
-    let rawTitle = data.heroTitle;
-    // Se o título vier sem quebra de linha mas for o texto padrão, inserimos a quebra de linha para ficar idêntico ao Design
-    if (!rawTitle.includes('\n') && rawTitle.toLowerCase().includes('resultados que o campo comprova')) {
-      rawTitle = rawTitle.replace(/(resultados que o)\s+(campo comprova!?)/i, '$1\n$2');
-    }
-    
-    lines = rawTitle.split('\n').map(l => l.trim()).filter(Boolean);
+    lines = data.heroTitle.split('\n').map((l: string) => l.trim()).filter(Boolean);
   }
 
   useEffect(() => {
@@ -97,15 +94,17 @@ export default function Hero({ data }: HeroProps) {
       {/* Background — Design BgSessaoHero */}
       <div className={styles.bgWrapper} aria-hidden="true">
         <div ref={parallaxRef} className={styles.parallaxWrapper}>
-          <picture style={{ width: '100%', height: '100%' }}>
-            {bgImageMobileUrl && <source media="(max-width: 580px)" srcSet={bgImageMobileUrl} />}
-            {bgImageTabletUrl && <source media="(max-width: 1024px)" srcSet={bgImageTabletUrl} />}
-            <img
-              src={bgImageUrl}
-              alt={(data?.heroImage && typeof data.heroImage === 'object') ? data.heroImage.alt : "Background Hero"}
-              className={styles.bgImage}
-            />
-          </picture>
+          <MediaContainer
+            mediaType={heroMediaType}
+            vimeoUrl={heroVimeoUrl}
+            media={data?.heroImage || bgImageUrl}
+            mediaTablet={data?.heroImageTablet}
+            mediaMobile={data?.heroImageMobile}
+            defaultFallbackSrc={imgProperty1Default}
+            alt={(data?.heroImage && typeof data.heroImage === 'object') ? data.heroImage.alt : "Background Hero"}
+            className={styles.bgImage}
+            fitMode="cover"
+          />
         </div>
         <div className={styles.overlay} />
       </div>
@@ -157,7 +156,7 @@ export default function Hero({ data }: HeroProps) {
               >
                 <span className="btn-label">{ctaLabel}</span>
                 <span className="btn-icon">
-                  <span className="material-symbols-rounded" style={{ fontSize: '24px', lineHeight: 1 }}>arrow_back</span>
+                  <span className="material-symbols-rounded notranslate" translate="no" style={{ fontSize: '24px', lineHeight: 1 }}>arrow_back</span>
                 </span>
               </a>
             ) : (
@@ -168,7 +167,7 @@ export default function Hero({ data }: HeroProps) {
               >
                 <span className="btn-label">{ctaLabel}</span>
                 <span className="btn-icon">
-                  <span className="material-symbols-rounded" style={{ fontSize: '24px', lineHeight: 1 }}>arrow_back</span>
+                  <span className="material-symbols-rounded notranslate" translate="no" style={{ fontSize: '24px', lineHeight: 1 }}>arrow_back</span>
                 </span>
               </Link>
             )}

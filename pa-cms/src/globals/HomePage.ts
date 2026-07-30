@@ -38,10 +38,35 @@ const HomePage: GlobalConfig = {
           },
         },
         {
+          name: 'heroMediaType',
+          label: 'Tipo de Mídia de Fundo',
+          type: 'select',
+          defaultValue: 'upload',
+          options: [
+            { label: 'Upload de Arquivo (Imagem, GIF ou MP4)', value: 'upload' },
+            { label: 'Vídeo do Vimeo (Link incorporado)', value: 'vimeo' },
+          ],
+          admin: {
+            description: 'Escolha se deseja enviar uma imagem/vídeo direto ou utilizar um vídeo em loop do Vimeo.',
+          },
+        },
+        {
+          name: 'heroVimeoUrl',
+          label: 'Link do Vídeo no Vimeo (Hero)',
+          type: 'text',
+          admin: {
+            condition: (data, siblingData) => siblingData?.heroMediaType === 'vimeo',
+            description: 'Cole o link do vídeo do Vimeo (ex: https://vimeo.com/76979871). O vídeo rodará automaticamente em loop contínuo e sem som.',
+          },
+        },
+        {
           name: 'heroImage',
-          label: 'Imagem de fundo do Hero',
+          label: 'Imagem/Vídeo de fundo do Hero (Desktop)',
           type: 'upload',
           relationTo: 'media',
+          admin: {
+            condition: (data, siblingData) => siblingData?.heroMediaType !== 'vimeo',
+          },
         },
         {
           name: 'heroImageTablet',
@@ -49,6 +74,7 @@ const HomePage: GlobalConfig = {
           type: 'upload',
           relationTo: 'media',
           admin: {
+            condition: (data, siblingData) => siblingData?.heroMediaType !== 'vimeo',
             description: 'Opcional. Exibida em tablets (telas de até 1024px). Se não informada, usa a de Desktop.',
           },
         },
@@ -58,6 +84,7 @@ const HomePage: GlobalConfig = {
           type: 'upload',
           relationTo: 'media',
           admin: {
+            condition: (data, siblingData) => siblingData?.heroMediaType !== 'vimeo',
             description: 'Opcional. Exibida em celulares (telas de até 580px). Se não informada, usa a de Desktop ou Tablet.',
           },
         },
@@ -132,10 +159,192 @@ const HomePage: GlobalConfig = {
           editor: lexicalEditor({}),
         },
         {
+          name: 'introMediaType',
+          label: 'Tipo de Mídia (Símbolo à Direita)',
+          type: 'select',
+          defaultValue: 'upload',
+          options: [
+            { label: 'Upload de Arquivo (Imagem, GIF ou MP4)', value: 'upload' },
+            { label: 'Vídeo do Vimeo (Link incorporado)', value: 'vimeo' },
+          ],
+          admin: {
+            description: 'Escolha se deseja enviar uma imagem/vídeo direto ou utilizar um vídeo em loop do Vimeo.',
+          },
+        },
+        {
+          name: 'introVimeoUrl',
+          label: 'Link do Vídeo no Vimeo (Introdução)',
+          type: 'text',
+          admin: {
+            condition: (data, siblingData) => siblingData?.introMediaType === 'vimeo',
+            description: 'Cole o link do vídeo do Vimeo (ex: https://vimeo.com/76979871). O vídeo rodará automaticamente em loop contínuo e sem som.',
+          },
+        },
+        {
           name: 'introImage',
-          label: 'Imagem (símbolo à direita)',
+          label: 'Imagem/Vídeo (símbolo à direita)',
           type: 'upload',
           relationTo: 'media',
+          admin: {
+            condition: (data, siblingData) => siblingData?.introMediaType !== 'vimeo',
+          },
+        },
+        // ── Configurações visuais do container de vídeo ──
+        {
+          type: 'collapsible',
+          label: '🎨 Aparência do container de vídeo',
+          admin: {
+            condition: (data, siblingData) => siblingData?.introMediaType === 'vimeo',
+            initCollapsed: true,
+          },
+          fields: [
+            {
+              type: 'row',
+              fields: [
+                {
+                  name: 'introVideoWidth',
+                  label: 'Tamanho em relação à coluna (%)',
+                  type: 'number',
+                  defaultValue: 80,
+                  min: 20,
+                  max: 100,
+                  admin: {
+                    width: '50%',
+                    description: 'Porcentagem da coluna ocupada pelo vídeo. Padrão: 80%.',
+                  },
+                },
+                {
+                  name: 'introVideoMaxWidth',
+                  label: 'Largura máxima do vídeo (px)',
+                  type: 'number',
+                  defaultValue: 0,
+                  min: 0,
+                  max: 720,
+                  admin: {
+                    width: '50%',
+                    description: '0 = sem limite (usa somente o % da coluna). Valores maiores permitem 16:9 mais impactante. Ex: 600 para proporção paisagem.',
+                  },
+                },
+              ],
+            },
+            {
+              type: 'row',
+              fields: [
+                {
+                  name: 'introVideoAlign',
+                  label: 'Alinhamento do vídeo na coluna',
+                  type: 'select',
+                  defaultValue: 'right',
+                  options: [
+                    { label: 'Direita (afastado do texto — recomendado)', value: 'right' },
+                    { label: 'Centro', value: 'center' },
+                    { label: 'Esquerda', value: 'left' },
+                  ],
+                  admin: {
+                    width: '50%',
+                    description: 'Posição do vídeo na coluna direita. "Direita" garante bom afastamento do texto.',
+                  },
+                },
+                {
+                  name: 'introVideoAspectRatio',
+                  label: 'Proporção do vídeo (Formato)',
+                  type: 'select',
+                  defaultValue: '16/9',
+                  options: [
+                    { label: 'Paisagem 16:9 (padrão)', value: '16/9' },
+                    { label: 'Quadrado 1:1', value: '1/1' },
+                    { label: 'Retrato 4:5', value: '4/5' },
+                    { label: 'Retrato 9:16', value: '9/16' },
+                    { label: 'Cinema 4:3', value: '4/3' },
+                  ],
+                  admin: {
+                    width: '50%',
+                    description: 'Formato do vídeo. Define se ele é quadrado, retangular ou vertical.',
+                  },
+                },
+              ],
+            },
+            {
+              type: 'row',
+              fields: [
+                {
+                  name: 'introVideoRadius',
+                  label: 'Arredondamento do container (px)',
+                  type: 'number',
+                  defaultValue: 0,
+                  min: 0,
+                  max: 300,
+                  admin: {
+                    width: '50%',
+                    description: 'Raio dos cantos do container externo (borda/fundo). 0 = sem arredondamento.',
+                  },
+                },
+                {
+                  name: 'introVideoInnerRadius',
+                  label: 'Arredondamento do vídeo (px)',
+                  type: 'number',
+                  defaultValue: 0,
+                  min: 0,
+                  max: 300,
+                  admin: {
+                    width: '50%',
+                    description: 'Arredonda os cantos do próprio vídeo (clip interno). Independente do container.',
+                  },
+                },
+              ],
+            },
+            {
+              type: 'row',
+              fields: [
+                {
+                  name: 'introContainerBg',
+                  label: 'Cor de fundo do container (Hex)',
+                  type: 'text',
+                  admin: {
+                    width: '50%',
+                    description: 'Cor exibida ao redor do vídeo dentro do container. Ex: #f5f5f5. Deixe vazio para transparente.',
+                  },
+                },
+                {
+                  name: 'introContainerPadding',
+                  label: 'Espaçamento interno (px)',
+                  type: 'number',
+                  defaultValue: 0,
+                  min: 0,
+                  max: 60,
+                  admin: {
+                    width: '50%',
+                    description: 'Espaço entre o vídeo e a borda do container.',
+                  },
+                },
+              ],
+            },
+            {
+              type: 'row',
+              fields: [
+                {
+                  name: 'introContainerBorder',
+                  label: 'Exibir borda ao redor do container?',
+                  type: 'checkbox',
+                  defaultValue: false,
+                  admin: {
+                    width: '50%',
+                    description: 'Ativa uma borda visível ao redor do container de vídeo.',
+                  },
+                },
+                {
+                  name: 'introContainerBorderColor',
+                  label: 'Cor da borda (Hex)',
+                  type: 'text',
+                  admin: {
+                    width: '50%',
+                    condition: (data, siblingData) => siblingData?.introContainerBorder === true,
+                    description: 'Cor da borda do container. Ex: #cccccc.',
+                  },
+                },
+              ],
+            },
+          ],
         },
         {
           type: 'row',
@@ -191,6 +400,13 @@ const HomePage: GlobalConfig = {
           admin: { description: 'Ex: "melhor conosco!". Dica: Use Enter para definir as quebras de linha.' },
         },
         {
+          name: 'bannerTextAccentColor',
+          label: 'Cor do destaque do banner (Hex)',
+          type: 'text',
+          defaultValue: '#e1fe00',
+          admin: { description: 'Cor em formato Hexadecimal para o texto em destaque. Padrão: #e1fe00' },
+        },
+        {
           name: 'bannerImage',
           label: 'Imagem de fundo do banner',
           type: 'upload',
@@ -224,6 +440,13 @@ const HomePage: GlobalConfig = {
           type: 'text',
           localized: true,
           admin: { description: 'Ex: traduzem excelência — aparecerá em verde' },
+        },
+        {
+          name: 'statsTitleAccentColor',
+          label: 'Cor do título destacado (Hex)',
+          type: 'text',
+          defaultValue: '#88a668',
+          admin: { description: 'Cor em formato Hexadecimal para o título destacado. Padrão: #88a668' },
         },
         {
           name: 'statsTitleAlign',

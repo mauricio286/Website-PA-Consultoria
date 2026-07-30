@@ -4,6 +4,7 @@ import { imgBgContato, imgIconWhereToVote, imgIconCall, imgIconMail } from '../.
 import { api } from '../../services/api';
 import type { ContactSettingsData } from '../../services/api';
 import { useLanguage } from '../../i18n';
+import { message } from 'antd';
 
 export default function Contato() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -41,11 +42,26 @@ export default function Contato() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulating message submit delay
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitted(true);
-    }, 1500);
+    api.submitContact({
+      name: formData.nome,
+      phone: formData.celular,
+      email: formData.email,
+      subject: formData.assunto,
+      message: formData.mensagem
+    })
+      .then(res => {
+        setIsSubmitting(false);
+        if (res.success) {
+          setSubmitted(true);
+        } else {
+          message.error(res.message || (locale === 'en' ? 'Error sending message.' : 'Erro ao enviar mensagem.'));
+        }
+      })
+      .catch(err => {
+        setIsSubmitting(false);
+        console.error('Erro ao enviar mensagem:', err);
+        message.error(locale === 'en' ? 'Connection error. Please try again.' : 'Erro de conexão. Tente novamente.');
+      });
   };
 
   const addressData = (cmsData?.addresses && cmsData.addresses.length > 0)

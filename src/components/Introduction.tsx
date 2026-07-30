@@ -6,6 +6,7 @@ import type { HomePageData } from '../services/api';
 import LexicalRenderer from './LexicalRenderer';
 import { Link, useNavigate } from 'react-router-dom';
 import { useT } from '../i18n';
+import MediaContainer from './MediaContainer';
 
 interface IntroductionProps {
   data?: HomePageData | null;
@@ -59,8 +60,67 @@ export default function Introduction({ data }: IntroductionProps) {
   // Dados do CMS ou fallbacks
   const badgeTitle = data?.introTitle || t.intro.tag;
   const hasRichText = data?.introText && data.introText.root && data.introText.root.children && data.introText.root.children.length > 0;
+  const introMediaType = data?.introMediaType || 'upload';
+  const introVimeoUrl = data?.introVimeoUrl;
   const rightImageSrc = api.getMediaUrl(data?.introImage) || imgIntroducao;
   const rightImageAlt = (data?.introImage && typeof data.introImage === 'object') ? data.introImage.alt : badgeTitle;
+
+  // Verifica se a mídia é um vídeo (seja via link do Vimeo ou upload de arquivo MP4)
+  const mimeType = (typeof data?.introImage === 'object' && data?.introImage?.mimeType) ? data.introImage.mimeType : '';
+  const isVideoMedia = (introMediaType === 'vimeo' && !!introVimeoUrl) ||
+    mimeType.startsWith('video/') ||
+    (/\.(mp4|webm|mov)(\?.*)?$/i.test(rightImageSrc) && rightImageSrc !== imgIntroducao) ||
+    (introVimeoUrl && /\.(mp4|webm|mov)(\?.*)?$/i.test(introVimeoUrl));
+
+  // Estilos dinâmicos do container de vídeo (definidos pelo cliente no CMS)
+  const videoWidth = data?.introVideoWidth ?? 80;
+  const videoMaxWidth = data?.introVideoMaxWidth ?? 460;
+  const videoAlign = data?.introVideoAlign || 'right';
+  const containerRadius = data?.introVideoRadius ?? 0;       // arredonda o container externo (borda/bg)
+  const videoInnerRadius = data?.introVideoInnerRadius ?? 0; // arredonda o clip do próprio vídeo
+  const aspectRatio = data?.introVideoAspectRatio || '16/9';
+  const containerBg = data?.introContainerBg || '';
+  const containerPadding = data?.introContainerPadding ?? 0;
+  const showBorder = data?.introContainerBorder === true;
+  const borderColor = data?.introContainerBorderColor || '#cccccc';
+
+  // Container só é visível (ocupa espaço visual) quando tem fundo, borda ou padding
+  const hasVisibleContainer = !!containerBg || showBorder || containerPadding > 0;
+
+  // rightCol como flex container para controlar alinhamento do vídeo
+  const rightColVideoStyle: React.CSSProperties = {
+    display: 'flex',
+    alignItems: 'flex-start',
+    // Buffer obrigatório para afastar o vídeo do texto — independente do alinhamento
+    paddingLeft: '40px',
+    // Alinhamento dentro do rightCol: direita, centro ou esquerda
+    justifyContent: videoAlign === 'right' ? 'flex-end' : videoAlign === 'left' ? 'flex-start' : 'center',
+    // Garantia de que o vídeo não excede a largura disponível
+    boxSizing: 'border-box',
+    overflow: 'hidden',
+  };
+
+  const videoColStyle: React.CSSProperties = {
+    width: `${videoWidth}%`,
+    // maxWidth só aplicado quando > 0 (0 = sem limite — só o width% controla)
+    ...(videoMaxWidth > 0 ? { maxWidth: `${videoMaxWidth}px` } : {}),
+    aspectRatio,
+    ...(containerRadius > 0 && { borderRadius: `${containerRadius}px` }),
+    ...(containerBg ? { backgroundColor: containerBg } : {}),
+    ...(containerPadding > 0 ? { padding: `${containerPadding}px` } : {}),
+    ...(showBorder ? { border: `1.5px solid ${borderColor}` } : {}),
+    ...(hasVisibleContainer ? { overflow: 'hidden' } : {}),
+  };
+
+  const videoClipStyle: React.CSSProperties = {
+    width: '100%',
+    height: '100%',
+    position: 'relative',
+    overflow: 'hidden',
+    ...(videoInnerRadius > 0 && {
+      borderRadius: `${videoInnerRadius}px`,
+    }),
+  };
 
   const ctaLabel = data?.introCtaLabel || t.intro.cta;
   const ctaUrl = data?.introCtaUrl || '/quem-somos';
@@ -111,36 +171,59 @@ export default function Introduction({ data }: IntroductionProps) {
               >
                 <span className="btn-label">{ctaLabel}</span>
                 <span className="btn-icon">
-                  <span className="material-symbols-rounded" style={{ fontSize: '24px', lineHeight: 1 }}>arrow_back</span>
+                  <span className="material-symbols-rounded notranslate" translate="no" style={{ fontSize: '24px', lineHeight: 1 }}>arrow_back</span>
                 </span>
               </a>
             ) : (
               <Link to={ctaUrl} className="btn-pa dark-green" data-node-id="54:105">
                 <span className="btn-label">{ctaLabel}</span>
                 <span className="btn-icon">
-                  <span className="material-symbols-rounded" style={{ fontSize: '24px', lineHeight: 1 }}>arrow_back</span>
+                  <span className="material-symbols-rounded notranslate" translate="no" style={{ fontSize: '24px', lineHeight: 1 }}>arrow_back</span>
                 </span>
               </Link>
             )}
           </div>
         </div>
 
-        {/* Right — Image with CSS-native 3D effect */}
+        {/* Right — Image or Video */}
         <div
           className={styles.rightCol}
           ref={containerRef}
           data-node-id="122:1934"
+          style={isVideoMedia ? rightColVideoStyle : undefined}
         >
-          <div ref={wrapperRef} className={styles.imageWrapper3D}>
-            <div className={styles.imageScaler}>
-              <img
-                src={rightImageSrc}
-                alt={rightImageAlt}
-                className={styles.image}
-                data-node-id="677:894"
-              />
+          {isVideoMedia ? (
+            /* Para vídeo (Vimeo ou MP4): sem zoom, sem 3D, com recortes de borda precisos */
+            <div className={styles.videoCol} style={videoColStyle}>
+              <div
+                className={styles.videoClip}
+                style={videoClipStyle}
+              >
+                <MediaContainer
+                  mediaType={introMediaType}
+                  vimeoUrl={introVimeoUrl}
+                  media={data?.introImage || rightImageSrc}
+                  defaultFallbackSrc={imgIntroducao}
+                  alt={rightImageAlt}
+                  fitMode="contain"
+                />
+              </div>
             </div>
-          </div>
+          ) : (
+            /* Para imagem estática: mantém o efeito 3D + zoom original */
+            <div ref={wrapperRef} className={styles.imageWrapper3D}>
+              <div className={styles.imageScaler}>
+                <MediaContainer
+                  mediaType={introMediaType}
+                  media={data?.introImage || rightImageSrc}
+                  defaultFallbackSrc={imgIntroducao}
+                  alt={rightImageAlt}
+                  className={styles.image}
+                  fitMode="contain"
+                />
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>

@@ -136,3 +136,10 @@ details[open] > .pa-nav-link-summary::after {
 .nav__scrollContainer > .nav-group {
   display: none !important;
 }
+
+.pa-sidebar-sub-item {
+  padding-left: 2rem !important;
+  font-size: 0.9em !important;
+  opacity: 0.85;
+}
+

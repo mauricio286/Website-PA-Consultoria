@@ -7,6 +7,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
 import Preloader from './components/Preloader'; // Import Preloader
+import BackgroundPrefetcher from './components/BackgroundPrefetcher'; // Import BackgroundPrefetcher
 import { CookieConsent } from './components/CookieConsent/CookieConsent';
 import styles from './App.module.css';
 
@@ -84,6 +85,33 @@ function App() {
     };
   }, []);
 
+  // Global fix to prevent translation engines (like Google Translate) from corrupting Material Symbol ligatures
+  useEffect(() => {
+    const preventIconTranslation = () => {
+      document.querySelectorAll('.material-symbols-rounded').forEach((el) => {
+        if (!el.classList.contains('notranslate')) {
+          el.classList.add('notranslate');
+        }
+        if (el.getAttribute('translate') !== 'no') {
+          el.setAttribute('translate', 'no');
+        }
+      });
+    };
+
+    preventIconTranslation();
+
+    const observer = new MutationObserver(() => {
+      preventIconTranslation();
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   // Called by Preloader when its exit animation completes
   const handlePreloaderDone = () => {
     document.body.classList.add('app-ready');
@@ -93,6 +121,7 @@ function App() {
     <LanguageProvider>
     <Router>
       <Preloader onDone={handlePreloaderDone} />
+      <BackgroundPrefetcher />
       <ScrollToTop />
       <div className={styles.appContainer}>
         <Header />

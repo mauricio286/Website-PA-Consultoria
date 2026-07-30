@@ -5,10 +5,11 @@ WORKDIR /app
 
 # Instala dependências antes de copiar o restante (aproveita cache do Docker)
 COPY package*.json ./
-RUN npm ci
+RUN npm ci --legacy-peer-deps
 
 # Copia o código e faz o build
 COPY . .
+ENV NEXT_PUBLIC_SERVER_URL=https://pa-cms-187712348679.us-central1.run.app
 RUN npm run build
 
 # ── Estágio 2: Produção ───────────────────────────────────────────────────────
@@ -31,5 +32,5 @@ COPY --from=builder /app/src ./src
 # Porta padrão do Cloud Run
 EXPOSE 3000
 
-# Inicia o servidor Next.js em modo produção
-CMD ["npx", "next", "start", "-p", "3000"]
+# Inicia o servidor Next.js em modo produção com limpeza de flag de dev e migração automática via Next.js
+CMD ["sh", "-c", "node src/clean-migration-flag.js && npx next start -p 3000"]

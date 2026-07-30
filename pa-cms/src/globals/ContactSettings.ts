@@ -52,18 +52,6 @@ const ContactSettings: GlobalConfig = {
       label: 'E-mails',
       fields: [
         {
-          name: 'mainEmail',
-          label: 'E-mail principal',
-          type: 'email',
-          admin: { description: 'Ex: contato@agropa.com.br' },
-        },
-        {
-          name: 'hrEmail',
-          label: 'E-mail de RH',
-          type: 'email',
-          admin: { description: 'Ex: rh@agropa.com.br' },
-        },
-        {
           name: 'formRecipientEmail',
           label: 'Destinatário do formulário de contato',
           type: 'email',

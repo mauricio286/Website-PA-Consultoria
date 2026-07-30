@@ -6,7 +6,7 @@ import { useLanguage } from '../i18n';
 
 interface SubpageHeroProps {
   title: string;
-  bgImage: string;
+  bgImage?: string;
   bgImageTablet?: string;
   bgImageMobile?: string;
   breadcrumbCurrent: string;
@@ -30,11 +30,13 @@ export default function SubpageHero({ title, bgImage, bgImageTablet, bgImageMobi
     <section className={styles.heroSection}>
       <div className={`${styles.heroBgWrapper} animate-wrapper-slide`}>
         <div className={styles.heroBgOverlay}></div>
-        <picture>
-          {bgImageMobile && <source media="(max-width: 580px)" srcSet={bgImageMobile} />}
-          {bgImageTablet && <source media="(max-width: 1024px)" srcSet={bgImageTablet} />}
-          <img className={`${styles.heroBg} animate-bg-zoom`} src={bgImage} alt={`Background ${title}`} />
-        </picture>
+        {bgImage && (
+          <picture>
+            {bgImageMobile && <source media="(max-width: 580px)" srcSet={bgImageMobile} />}
+            {bgImageTablet && <source media="(max-width: 1024px)" srcSet={bgImageTablet} />}
+            <img className={`${styles.heroBg} animate-bg-zoom`} src={bgImage} alt={`Background ${title}`} />
+          </picture>
+        )}
       </div>
       
       <div className={styles.heroContent}>
@@ -52,7 +54,7 @@ export default function SubpageHero({ title, bgImage, bgImageTablet, bgImageMobi
 
       <div className={styles.scrollDownWrapper}>
         <a href="#content" onClick={handleScroll} className={styles.scrollDownButton}>
-          <span className={`material-symbols-rounded ${styles.scrollDownIcon}`} style={{ transform: 'rotate(-90deg)' }}>arrow_back</span>
+          <span className={`material-symbols-rounded notranslate ${styles.scrollDownIcon}`} translate="no" style={{ transform: 'rotate(-90deg)' }}>arrow_back</span>
         </a>
       </div>
     </section>

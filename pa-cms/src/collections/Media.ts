@@ -40,6 +40,9 @@ const Media: CollectionConfig = {
       'image/webp',
       'image/svg+xml',
       'image/gif',
+      'video/mp4',
+      'video/webm',
+      'video/quicktime',
     ],
   },
   access: {

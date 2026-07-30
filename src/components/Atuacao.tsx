@@ -255,6 +255,8 @@ export default function Atuacao({ data }: AtuacaoProps) {
                 ? ((selectedCity.top - 200) / 600) * 100
                 : (selectedCity.top / 1031) * 100;
 
+              const translateX = isMobile ? `${-tooltipLeft}%` : '-50%';
+
               return (
                 <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', transform: 'translate(3.5%, 1.5%)' }}>
                   <AnimatePresence mode="wait">
@@ -268,7 +270,7 @@ export default function Atuacao({ data }: AtuacaoProps) {
                       style={{
                         left: `${tooltipLeft}%`,
                         top: `${tooltipTop}%`,
-                        transform: 'translate(-50%, calc(-100% - 30px))',
+                        transform: `translate(${translateX}, calc(-100% - 30px))`,
                       }}
                     >
                       <div className={styles.starBorderContainer}>

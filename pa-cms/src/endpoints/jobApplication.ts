@@ -91,8 +91,16 @@ export const jobApplicationHandler: PayloadHandler = async (req) => {
       })
     }
 
-    // Envia e-mail de notificação para o RH
-    const recipient = process.env.CAREER_RECIPIENT ?? 'rh@agropa.com.br'
+    // Destinatário: lê do CMS primeiro, depois env var, depois fallback
+    let recipient = process.env.CAREER_RECIPIENT ?? 'rh@agropa.com.br'
+    try {
+      const settings = await req.payload.findGlobal({ slug: 'contact-settings' })
+      if (settings?.careerRecipientEmail) {
+        recipient = settings.careerRecipientEmail as string
+      }
+    } catch {
+      // usa o fallback definido acima
+    }
 
     await req.payload.sendEmail({
       to: recipient,

@@ -2,63 +2,190 @@
   "globals": {
     "home-page": {
       "id": 1,
-      "heroTitle": "Results proven\nby the field!",
-      "heroSubtitle": "Agronomic consulting specialized for producers seeking excellence, profitability, and confidence in every hectare cultivated.",
+      "heroTitle": "Results\nproven by\nthe field!",
+      "heroSubtitle": "Specialized agronomic consulting for farmers seeking excellence, profitability, and security in every planted hectare.",
+      "heroMediaType": "vimeo",
+      "heroVimeoUrl": "https://vimeo.com/808678256",
       "heroImage": {
-        "id": 92,
-        "alt": "Agricultura",
-        "updatedAt": "2026-07-10T22:04:53.664Z",
-        "createdAt": "2026-07-10T22:04:53.364Z",
-        "url": "/cms-media/BG_20-_20Sess_C3_A3o_20Hero-1.jpeg",
-        "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BG%20-%20Sess%C3%A3o%20Hero-1-400x300.jpg",
-        "filename": "BG_20-_20Sess_C3_A3o_20Hero-1.jpeg",
-        "mimeType": "image/jpeg",
-        "filesize": 488018,
-        "width": 2560,
-        "height": 1707,
+        "id": 35,
+        "alt": "Ilustração Consultoria Agronômica",
+        "updatedAt": "2026-06-26T18:55:33.252Z",
+        "createdAt": "2026-06-26T18:55:33.252Z",
+        "url": "/cms-media/img_consultoria_agronomica.webp",
+        "thumbnailURL": "http://localhost:3000/api/media/file/img_consultoria_agronomica-400x300.webp",
+        "filename": "img_consultoria_agronomica.webp",
+        "mimeType": "image/webp",
+        "filesize": 417570,
+        "width": 1920,
+        "height": 1080,
         "focalX": 50,
         "focalY": 50,
         "sizes": {
           "thumbnail": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BG%20-%20Sess%C3%A3o%20Hero-1-400x300.jpg",
+            "url": "http://localhost:3000/api/media/file/img_consultoria_agronomica-400x300.webp",
             "width": 400,
             "height": 300,
-            "mimeType": "image/jpeg",
-            "filesize": 16820,
-            "filename": "BG - Sessão Hero-1-400x300.jpg"
+            "mimeType": "image/webp",
+            "filesize": 30874,
+            "filename": "img_consultoria_agronomica-400x300.webp"
           },
           "card": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BG%20-%20Sess%C3%A3o%20Hero-1-768x512.jpg",
+            "url": "http://localhost:3000/api/media/file/img_consultoria_agronomica-768x512.webp",
             "width": 768,
             "height": 512,
-            "mimeType": "image/jpeg",
-            "filesize": 41553,
-            "filename": "BG - Sessão Hero-1-768x512.jpg"
+            "mimeType": "image/webp",
+            "filesize": 95790,
+            "filename": "img_consultoria_agronomica-768x512.webp"
           },
           "hero": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BG%20-%20Sess%C3%A3o%20Hero-1-1920x1080.jpg",
+            "url": "http://localhost:3000/api/media/file/img_consultoria_agronomica-1920x1080.webp",
             "width": 1920,
             "height": 1080,
-            "mimeType": "image/jpeg",
-            "filesize": 157336,
-            "filename": "BG - Sessão Hero-1-1920x1080.jpg"
+            "mimeType": "image/webp",
+            "filesize": 417570,
+            "filename": "img_consultoria_agronomica-1920x1080.webp"
           }
         }
       },
-      "heroImageTablet": null,
-      "heroImageMobile": null,
+      "heroImageTablet": {
+        "id": 56,
+        "alt": "teste",
+        "updatedAt": "2026-07-08T13:43:39.334Z",
+        "createdAt": "2026-07-08T13:43:39.334Z",
+        "url": "/cms-media/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1.jpg",
+        "thumbnailURL": "http://localhost:3000/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1-400x300.jpg",
+        "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1.jpg",
+        "mimeType": "image/jpeg",
+        "filesize": 652771,
+        "width": 1920,
+        "height": 2880,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "http://localhost:3000/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1-400x300.jpg",
+            "width": 400,
+            "height": 300,
+            "mimeType": "image/jpeg",
+            "filesize": 22792,
+            "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1-400x300.jpg"
+          },
+          "card": {
+            "url": "http://localhost:3000/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1-768x512.jpg",
+            "width": 768,
+            "height": 512,
+            "mimeType": "image/jpeg",
+            "filesize": 55412,
+            "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1-768x512.jpg"
+          },
+          "hero": {
+            "url": "http://localhost:3000/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1-1920x1080.jpg",
+            "width": 1920,
+            "height": 1080,
+            "mimeType": "image/jpeg",
+            "filesize": 221487,
+            "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1-1920x1080.jpg"
+          }
+        }
+      },
+      "heroImageMobile": {
+        "id": 52,
+        "alt": "teste",
+        "updatedAt": "2026-07-06T22:31:13.855Z",
+        "createdAt": "2026-07-06T22:31:13.854Z",
+        "url": "/cms-media/cris-hemsworth.webp",
+        "thumbnailURL": "http://localhost:3000/api/media/file/cris-hemsworth-400x300.webp",
+        "filename": "cris-hemsworth.webp",
+        "mimeType": "image/webp",
+        "filesize": 59712,
+        "width": 1200,
+        "height": 900,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "http://localhost:3000/api/media/file/cris-hemsworth-400x300.webp",
+            "width": 400,
+            "height": 300,
+            "mimeType": "image/webp",
+            "filesize": 12414,
+            "filename": "cris-hemsworth-400x300.webp"
+          },
+          "card": {
+            "url": "http://localhost:3000/api/media/file/cris-hemsworth-768x512.webp",
+            "width": 768,
+            "height": 512,
+            "mimeType": "image/webp",
+            "filesize": 28924,
+            "filename": "cris-hemsworth-768x512.webp"
+          },
+          "hero": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      },
       "heroCtaLabel": "Our solutions",
       "heroCtaUrl": "/servicos",
       "heroLogos": [
         {
-          "id": "6a5169c4f23afd4d2c5c46ed",
+          "id": "6a39bb72335e0251f4b603b1",
+          "logo": {
+            "id": 2,
+            "alt": "BAYER",
+            "updatedAt": "2026-06-22T22:55:31.863Z",
+            "createdAt": "2026-06-22T22:49:52.857Z",
+            "url": "/cms-media/BAYER.png",
+            "thumbnailURL": "http://localhost:3000/api/media/file/BAYER-400x300.png",
+            "filename": "BAYER.png",
+            "mimeType": "image/png",
+            "filesize": 48050,
+            "width": 3000,
+            "height": 2000,
+            "focalX": 100,
+            "focalY": 100,
+            "sizes": {
+              "thumbnail": {
+                "url": "http://localhost:3000/api/media/file/BAYER-400x300.png",
+                "width": 400,
+                "height": 300,
+                "mimeType": "image/png",
+                "filesize": 23288,
+                "filename": "BAYER-400x300.png"
+              },
+              "card": {
+                "url": "http://localhost:3000/api/media/file/BAYER-768x512.png",
+                "width": 768,
+                "height": 512,
+                "mimeType": "image/png",
+                "filesize": 41835,
+                "filename": "BAYER-768x512.png"
+              },
+              "hero": {
+                "url": "http://localhost:3000/api/media/file/BAYER-1920x1080.png",
+                "width": 1920,
+                "height": 1080,
+                "mimeType": "image/png",
+                "filesize": 121820,
+                "filename": "BAYER-1920x1080.png"
+              }
+            }
+          },
+          "alt": "teste"
+        },
+        {
+          "id": "6a39bcc000f6d41caf49d7c2",
           "logo": {
             "id": 4,
-            "alt": "logo_BASF",
-            "updatedAt": "2026-07-10T21:28:20.241Z",
-            "createdAt": "2026-07-10T21:28:19.758Z",
+            "alt": "BASF",
+            "updatedAt": "2026-06-22T22:53:05.022Z",
+            "createdAt": "2026-06-22T22:53:05.022Z",
             "url": "/cms-media/BASF.png",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BASF-400x300.png",
+            "thumbnailURL": "http://localhost:3000/api/media/file/BASF-400x300.png",
             "filename": "BASF.png",
             "mimeType": "image/png",
             "filesize": 29525,
@@ -68,7 +195,7 @@
             "focalY": 50,
             "sizes": {
               "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BASF-400x300.png",
+                "url": "http://localhost:3000/api/media/file/BASF-400x300.png",
                 "width": 400,
                 "height": 300,
                 "mimeType": "image/png",
@@ -76,7 +203,7 @@
                 "filename": "BASF-400x300.png"
               },
               "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BASF-768x512.png",
+                "url": "http://localhost:3000/api/media/file/BASF-768x512.png",
                 "width": 768,
                 "height": 512,
                 "mimeType": "image/png",
@@ -93,105 +220,15 @@
               }
             }
           },
-          "alt": "BASF"
+          "alt": "basf"
         },
         {
-          "id": "6a5169c4f23afd4d2c5c46ee",
+          "id": "6a39ddb000f6d41caf49d7c4",
           "logo": {
-            "id": 11,
-            "alt": "BAYER",
-            "updatedAt": "2026-07-10T21:35:42.991Z",
-            "createdAt": "2026-07-10T21:35:42.543Z",
-            "url": "/cms-media/BAYER.png",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BAYER-400x300.png",
-            "filename": "BAYER.png",
-            "mimeType": "image/png",
-            "filesize": 48050,
-            "width": 3000,
-            "height": 2000,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BAYER-400x300.png",
-                "width": 400,
-                "height": 300,
-                "mimeType": "image/png",
-                "filesize": 23287,
-                "filename": "BAYER-400x300.png"
-              },
-              "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BAYER-768x512.png",
-                "width": 768,
-                "height": 512,
-                "mimeType": "image/png",
-                "filesize": 41835,
-                "filename": "BAYER-768x512.png"
-              },
-              "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BAYER-1920x1080.png",
-                "width": 1920,
-                "height": 1080,
-                "mimeType": "image/png",
-                "filesize": 121879,
-                "filename": "BAYER-1920x1080.png"
-              }
-            }
-          },
-          "alt": "Bayer"
-        },
-        {
-          "id": "6a5169c4f23afd4d2c5c46ef",
-          "logo": {
-            "id": 3,
-            "alt": "logo_Syngenta",
-            "updatedAt": "2026-07-10T21:27:45.725Z",
-            "createdAt": "2026-07-10T21:27:45.445Z",
-            "url": "/cms-media/Syngenta.png",
-            "thumbnailURL": null,
-            "filename": "Syngenta.png",
-            "mimeType": "image/png",
-            "filesize": 4305,
-            "width": 127,
-            "height": 42,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              },
-              "card": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              },
-              "hero": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              }
-            }
-          },
-          "alt": "Syngenta"
-        },
-        {
-          "id": "6a5169c4f23afd4d2c5c46f0",
-          "logo": {
-            "id": 2,
-            "alt": "logo_corteva",
-            "updatedAt": "2026-07-10T21:26:07.638Z",
-            "createdAt": "2026-07-10T21:26:07.340Z",
+            "id": 5,
+            "alt": "corteva",
+            "updatedAt": "2026-06-23T01:13:39.704Z",
+            "createdAt": "2026-06-23T01:13:39.704Z",
             "url": "/cms-media/Corteva.svg",
             "thumbnailURL": null,
             "filename": "Corteva.svg",
@@ -228,7 +265,52 @@
               }
             }
           },
-          "alt": "Corteva"
+          "alt": "corteva"
+        },
+        {
+          "id": "6a39dde000f6d41caf49d7c6",
+          "logo": {
+            "id": 6,
+            "alt": "Syngenta",
+            "updatedAt": "2026-06-23T01:14:27.712Z",
+            "createdAt": "2026-06-23T01:14:27.712Z",
+            "url": "/cms-media/Syngenta.png",
+            "thumbnailURL": null,
+            "filename": "Syngenta.png",
+            "mimeType": "image/png",
+            "filesize": 4305,
+            "width": 127,
+            "height": 42,
+            "focalX": 50,
+            "focalY": 50,
+            "sizes": {
+              "thumbnail": {
+                "url": null,
+                "width": null,
+                "height": null,
+                "mimeType": null,
+                "filesize": null,
+                "filename": null
+              },
+              "card": {
+                "url": null,
+                "width": null,
+                "height": null,
+                "mimeType": null,
+                "filesize": null,
+                "filename": null
+              },
+              "hero": {
+                "url": null,
+                "width": null,
+                "height": null,
+                "mimeType": null,
+                "filesize": null,
+                "filename": null
+              }
+            }
+          },
+          "alt": "syngenta"
         }
       ],
       "introTitle": "Introduction",
@@ -246,29 +328,25 @@
               "version": 1,
               "children": [
                 {
-                  "mode": "normal",
-                  "text": "In agriculture, results don’t happen by chance. They are built through experience, strategy, and well-informed decisions. For over 20 years, Grupo PA has worked alongside rural producers, combining technical consulting, precision agriculture, and management expertise to turn knowledge into productivity.",
+                  "text": "In the field, results don't happen by chance. They are born from experience, strategy, and well-made decisions. For over 20 years, Grupo PA has walked alongside rural producers, combining technical consulting, precision agriculture, and management to turn knowledge into productivity.",
                   "type": "text",
-                  "style": "",
-                  "detail": 0,
-                  "format": 0,
                   "version": 1
                 }
-              ],
-              "textStyle": "",
-              "textFormat": 0
+              ]
             }
           ]
         }
       },
+      "introMediaType": "vimeo",
+      "introVimeoUrl": "https://girassolagricola.com.br/wp-content/uploads/2026/02/girassol-academia-goellner-video-02.mp4",
       "introImage": {
-        "id": 74,
-        "alt": "Introdução - Grupo PA",
-        "updatedAt": "2026-07-10T21:51:30.697Z",
-        "createdAt": "2026-07-10T21:51:28.248Z",
-        "url": "/cms-media/img_introducao-5.png",
-        "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/img_introducao-5-400x300.png",
-        "filename": "img_introducao-5.png",
+        "id": 48,
+        "alt": "teste",
+        "updatedAt": "2026-07-04T22:14:29.294Z",
+        "createdAt": "2026-07-04T22:14:29.294Z",
+        "url": "/cms-media/img_introducao-1.png",
+        "thumbnailURL": "http://localhost:3000/api/media/file/img_introducao-1-400x300.png",
+        "filename": "img_introducao-1.png",
         "mimeType": "image/png",
         "filesize": 254415,
         "width": 1011,
@@ -277,20 +355,20 @@
         "focalY": 50,
         "sizes": {
           "thumbnail": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/img_introducao-5-400x300.png",
+            "url": "http://localhost:3000/api/media/file/img_introducao-1-400x300.png",
             "width": 400,
             "height": 300,
             "mimeType": "image/png",
             "filesize": 62529,
-            "filename": "img_introducao-5-400x300.png"
+            "filename": "img_introducao-1-400x300.png"
           },
           "card": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/img_introducao-5-768x512.png",
+            "url": "http://localhost:3000/api/media/file/img_introducao-1-768x512.png",
             "width": 768,
             "height": 512,
             "mimeType": "image/png",
             "filesize": 188461,
-            "filename": "img_introducao-5-768x512.png"
+            "filename": "img_introducao-1-768x512.png"
           },
           "hero": {
             "url": null,
@@ -302,71 +380,81 @@
           }
         }
       },
+      "introVideoWidth": 100,
+      "introVideoMaxWidth": 460,
+      "introVideoAlign": "right",
+      "introVideoAspectRatio": "1/1",
+      "introVideoRadius": 300,
+      "introVideoInnerRadius": 80,
+      "introContainerBg": "",
+      "introContainerPadding": 0,
+      "introContainerBorder": false,
+      "introContainerBorderColor": null,
       "introCtaLabel": "Learn more",
       "introCtaUrl": "/quem-somos",
       "bannerText": "Your next harvest\ncan be even",
       "bannerTextAlign": "center",
       "bannerTextAccent": "better with us!",
-      "bannerTextAccentColor": "#E1FE00",
+      "bannerTextAccentColor": "#e1fe00",
       "bannerImage": {
-        "id": 166,
-        "alt": "Campo de algodão",
-        "updatedAt": "2026-07-13T20:15:46.496Z",
-        "createdAt": "2026-07-13T20:15:46.106Z",
-        "url": "/cms-media/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc.jpg",
-        "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-400x300.jpg",
-        "filename": "cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc.jpg",
+        "id": 9,
+        "alt": "bannercentral",
+        "updatedAt": "2026-06-23T05:37:40.888Z",
+        "createdAt": "2026-06-23T05:37:40.888Z",
+        "url": "/cms-media/24d7d5b8f47085cfef3a120257b79fb7ffc1981a.jpg",
+        "thumbnailURL": "http://localhost:3000/api/media/file/24d7d5b8f47085cfef3a120257b79fb7ffc1981a-400x300.jpg",
+        "filename": "24d7d5b8f47085cfef3a120257b79fb7ffc1981a.jpg",
         "mimeType": "image/jpeg",
-        "filesize": 4676784,
-        "width": 3011,
-        "height": 2000,
+        "filesize": 188624,
+        "width": 1920,
+        "height": 1280,
         "focalX": 50,
         "focalY": 50,
         "sizes": {
           "thumbnail": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-400x300.jpg",
+            "url": "http://localhost:3000/api/media/file/24d7d5b8f47085cfef3a120257b79fb7ffc1981a-400x300.jpg",
             "width": 400,
             "height": 300,
             "mimeType": "image/jpeg",
-            "filesize": 37681,
-            "filename": "cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-400x300.jpg"
+            "filesize": 16191,
+            "filename": "24d7d5b8f47085cfef3a120257b79fb7ffc1981a-400x300.jpg"
           },
           "card": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-768x512.jpg",
+            "url": "http://localhost:3000/api/media/file/24d7d5b8f47085cfef3a120257b79fb7ffc1981a-768x512.jpg",
             "width": 768,
             "height": 512,
             "mimeType": "image/jpeg",
-            "filesize": 100380,
-            "filename": "cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-768x512.jpg"
+            "filesize": 41843,
+            "filename": "24d7d5b8f47085cfef3a120257b79fb7ffc1981a-768x512.jpg"
           },
           "hero": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-1920x1080.jpg",
+            "url": "http://localhost:3000/api/media/file/24d7d5b8f47085cfef3a120257b79fb7ffc1981a-1920x1080.jpg",
             "width": 1920,
             "height": 1080,
             "mimeType": "image/jpeg",
-            "filesize": 389621,
-            "filename": "cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-1920x1080.jpg"
+            "filesize": 176439,
+            "filename": "24d7d5b8f47085cfef3a120257b79fb7ffc1981a-1920x1080.jpg"
           }
         }
       },
       "statsTag": "results",
       "statsTitle": "Numbers that",
       "statsTitleAccent": "translate excellence",
-      "statsTitleAccentColor": null,
+      "statsTitleAccentColor": "#88a668",
       "statsTitleAlign": "left",
-      "statsSubtext": "The numbers are the result of work built on close collaboration, analysis, and a strong presence in the field. Every achievement reflects technical planning, continuous support, and the trust of producers who grow alongside us.",
+      "statsSubtext": "Numbers are the result of work done with closeness, analysis, and field presence. Each result carries technical planning, constant monitoring, and the trust of farmers who grow alongside us.",
       "statsSubtextAlign": "left",
       "stats": [
         {
-          "id": "6a504773ea2cb06b24d84db4",
-          "prefix": "",
-          "value": 1.5,
+          "id": "6a3a1d01aa9a9080a0d71ee7",
+          "prefix": "+",
+          "value": 400000,
           "suffix": "B",
           "icon": {
-            "id": 94,
+            "id": 10,
             "alt": "for_you",
-            "updatedAt": "2026-07-10T22:09:45.284Z",
-            "createdAt": "2026-07-10T22:09:45.037Z",
+            "updatedAt": "2026-06-23T05:45:10.063Z",
+            "createdAt": "2026-06-23T05:45:10.062Z",
             "url": "/cms-media/for_you.svg",
             "thumbnailURL": null,
             "filename": "for_you.svg",
@@ -406,23 +494,23 @@
           "color": "peach",
           "customBgColor": null,
           "customTextColor": null,
-          "label": "Purchasing Management"
+          "label": "Hectares atendidos"
         },
         {
-          "id": "6a504773ea2cb06b24d84db5",
+          "id": "6a3a2207d67d6a7d4e99f10d",
           "prefix": "+",
           "value": 3500,
-          "suffix": "",
+          "suffix": "m",
           "icon": {
-            "id": 95,
-            "alt": "Ícone ",
-            "updatedAt": "2026-07-14T19:14:59.143Z",
-            "createdAt": "2026-07-10T22:12:10.202Z",
-            "url": "/cms-media/Icon_202.svg",
+            "id": 11,
+            "alt": "paid",
+            "updatedAt": "2026-06-23T06:05:48.253Z",
+            "createdAt": "2026-06-23T06:05:48.253Z",
+            "url": "/cms-media/paid.svg",
             "thumbnailURL": null,
-            "filename": "Icon_202.svg",
+            "filename": "paid.svg",
             "mimeType": "image/svg+xml",
-            "filesize": 3282,
+            "filesize": 3638,
             "width": 45,
             "height": 45,
             "focalX": null,
@@ -457,23 +545,23 @@
           "color": "dark",
           "customBgColor": null,
           "customTextColor": null,
-          "label": "Field Research Treatments"
+          "label": "Tratamentos do campo de pesquisa"
         },
         {
-          "id": "6a504773ea2cb06b24d84db6",
+          "id": "6a3a2281d67d6a7d4e99f10f",
           "prefix": "+",
-          "value": 163,
-          "suffix": "",
+          "value": 160,
+          "suffix": null,
           "icon": {
-            "id": 96,
-            "alt": "Ícone estrutura",
-            "updatedAt": "2026-07-14T19:15:27.048Z",
-            "createdAt": "2026-07-10T22:12:45.235Z",
-            "url": "/cms-media/Icon_203.svg",
+            "id": 12,
+            "alt": "trator",
+            "updatedAt": "2026-06-23T06:07:29.613Z",
+            "createdAt": "2026-06-23T06:07:29.613Z",
+            "url": "/cms-media/agriculture.svg",
             "thumbnailURL": null,
-            "filename": "Icon_203.svg",
+            "filename": "agriculture.svg",
             "mimeType": "image/svg+xml",
-            "filesize": 2413,
+            "filesize": 3888,
             "width": 45,
             "height": 45,
             "focalX": null,
@@ -508,18 +596,18 @@
           "color": "lime",
           "customBgColor": null,
           "customTextColor": null,
-          "label": "Properties Served"
+          "label": "Fazendas/Grupos atendidos"
         },
         {
-          "id": "6a504773ea2cb06b24d84db7",
+          "id": "6a3a22e9d67d6a7d4e99f111",
           "prefix": "+",
-          "value": 73,
-          "suffix": "",
+          "value": 70,
+          "suffix": null,
           "icon": {
-            "id": 97,
-            "alt": "símbolo verificado",
-            "updatedAt": "2026-07-10T22:13:17.907Z",
-            "createdAt": "2026-07-10T22:13:17.691Z",
+            "id": 13,
+            "alt": "verificado",
+            "updatedAt": "2026-06-23T06:08:59.177Z",
+            "createdAt": "2026-06-23T06:08:59.177Z",
             "url": "/cms-media/verified.svg",
             "thumbnailURL": null,
             "filename": "verified.svg",
@@ -559,7 +647,58 @@
           "color": "paleGreen",
           "customBgColor": null,
           "customTextColor": null,
-          "label": "Clients"
+          "label": "Safras de experiência somada"
+        },
+        {
+          "id": "6a4c290d084213fa6aa6c593",
+          "prefix": "+",
+          "value": 4,
+          "suffix": null,
+          "icon": {
+            "id": 51,
+            "alt": "agricultura",
+            "updatedAt": "2026-07-06T22:17:23.801Z",
+            "createdAt": "2026-07-06T22:17:23.801Z",
+            "url": "/cms-media/agriculture-1.svg",
+            "thumbnailURL": null,
+            "filename": "agriculture-1.svg",
+            "mimeType": "image/svg+xml",
+            "filesize": 3888,
+            "width": 45,
+            "height": 45,
+            "focalX": null,
+            "focalY": null,
+            "sizes": {
+              "thumbnail": {
+                "url": null,
+                "width": null,
+                "height": null,
+                "mimeType": null,
+                "filesize": null,
+                "filename": null
+              },
+              "card": {
+                "url": null,
+                "width": null,
+                "height": null,
+                "mimeType": null,
+                "filesize": null,
+                "filename": null
+              },
+              "hero": {
+                "url": null,
+                "width": null,
+                "height": null,
+                "mimeType": null,
+                "filesize": null,
+                "filename": null
+              }
+            }
+          },
+          "color": "softBlue",
+          "customBgColor": null,
+          "customTextColor": null,
+          "label": "teste"
         }
       ],
       "methodologyBadge": "Structure",
@@ -567,15 +706,15 @@
       "methodologyTitleAlign": "left",
       "methodologyCards": [
         {
-          "id": "6a5169c8f23afd4d2c5c46fe",
+          "id": "6a4e632fc909d08384496837",
           "icon": {
-            "id": 98,
-            "alt": "cavalo tabuleiro xadrez",
-            "updatedAt": "2026-07-10T22:15:06.159Z",
-            "createdAt": "2026-07-10T22:15:05.912Z",
-            "url": "/cms-media/chess_knight.svg",
+            "id": 57,
+            "alt": "peão xadrez",
+            "updatedAt": "2026-07-08T15:39:33.763Z",
+            "createdAt": "2026-07-08T15:39:33.763Z",
+            "url": "/cms-media/chess_knight-2.svg",
             "thumbnailURL": null,
-            "filename": "chess_knight.svg",
+            "filename": "chess_knight-2.svg",
             "mimeType": "image/svg+xml",
             "filesize": 2491,
             "width": 67,
@@ -610,56 +749,56 @@
             }
           },
           "image": {
-            "id": 169,
-            "alt": "Colheita do milho",
-            "updatedAt": "2026-07-13T20:22:06.747Z",
-            "createdAt": "2026-07-13T20:22:03.737Z",
-            "url": "/cms-media/cut-stubble-in-the-foreground-combine-harvester-h-2026-03-16-22-54-57-utc_20_1_.jpg",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cut-stubble-in-the-foreground-combine-harvester-h-2026-03-16-22-54-57-utc%20(1)-400x300.jpg",
-            "filename": "cut-stubble-in-the-foreground-combine-harvester-h-2026-03-16-22-54-57-utc_20_1_.jpg",
+            "id": 54,
+            "alt": "teste",
+            "updatedAt": "2026-07-08T13:42:12.779Z",
+            "createdAt": "2026-07-08T13:42:12.779Z",
+            "url": "/cms-media/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c.jpg",
+            "thumbnailURL": "http://localhost:3000/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg",
+            "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c.jpg",
             "mimeType": "image/jpeg",
-            "filesize": 1739971,
-            "width": 3464,
-            "height": 2931,
+            "filesize": 652771,
+            "width": 1920,
+            "height": 2880,
             "focalX": 50,
             "focalY": 50,
             "sizes": {
               "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cut-stubble-in-the-foreground-combine-harvester-h-2026-03-16-22-54-57-utc%20(1)-400x300.jpg",
+                "url": "http://localhost:3000/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg",
                 "width": 400,
                 "height": 300,
                 "mimeType": "image/jpeg",
-                "filesize": 38768,
-                "filename": "cut-stubble-in-the-foreground-combine-harvester-h-2026-03-16-22-54-57-utc (1)-400x300.jpg"
+                "filesize": 22792,
+                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg"
               },
               "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cut-stubble-in-the-foreground-combine-harvester-h-2026-03-16-22-54-57-utc%20(1)-768x512.jpg",
+                "url": "http://localhost:3000/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-768x512.jpg",
                 "width": 768,
                 "height": 512,
                 "mimeType": "image/jpeg",
-                "filesize": 123316,
-                "filename": "cut-stubble-in-the-foreground-combine-harvester-h-2026-03-16-22-54-57-utc (1)-768x512.jpg"
+                "filesize": 55412,
+                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-768x512.jpg"
               },
               "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cut-stubble-in-the-foreground-combine-harvester-h-2026-03-16-22-54-57-utc%20(1)-1920x1080.jpg",
+                "url": "http://localhost:3000/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1920x1080.jpg",
                 "width": 1920,
                 "height": 1080,
                 "mimeType": "image/jpeg",
-                "filesize": 495050,
-                "filename": "cut-stubble-in-the-foreground-combine-harvester-h-2026-03-16-22-54-57-utc (1)-1920x1080.jpg"
+                "filesize": 221487,
+                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1920x1080.jpg"
               }
             }
           },
           "title": "Strategy",
-          "description": "Research-driven decisions guided by clear objectives and a long-term vision, transforming agronomic insights into practical actions that maximize productivity, profitability, and the sustainability of production systems."
+          "description": "Research-driven decisions, long-term vision, and objectives that turn agronomic insights into practical actions maximizing productivity, profitability, and sustainability across production systems."
         },
         {
-          "id": "6a5169c8f23afd4d2c5c46ff",
+          "id": "6a4e632fc909d08384496838",
           "icon": {
-            "id": 163,
-            "alt": "tempo",
-            "updatedAt": "2026-07-11T14:56:49.678Z",
-            "createdAt": "2026-07-11T14:56:49.381Z",
+            "id": 55,
+            "alt": "time",
+            "updatedAt": "2026-07-08T13:43:15.602Z",
+            "createdAt": "2026-07-08T13:43:15.602Z",
             "url": "/cms-media/avg_time-1.svg",
             "thumbnailURL": null,
             "filename": "avg_time-1.svg",
@@ -697,13 +836,13 @@
             }
           },
           "image": {
-            "id": 101,
-            "alt": "reunião agro",
-            "updatedAt": "2026-07-10T22:18:09.488Z",
-            "createdAt": "2026-07-10T22:18:09.167Z",
-            "url": "/cms-media/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c.jpg",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg",
-            "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c.jpg",
+            "id": 56,
+            "alt": "teste",
+            "updatedAt": "2026-07-08T13:43:39.334Z",
+            "createdAt": "2026-07-08T13:43:39.334Z",
+            "url": "/cms-media/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1.jpg",
+            "thumbnailURL": "http://localhost:3000/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1-400x300.jpg",
+            "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1.jpg",
             "mimeType": "image/jpeg",
             "filesize": 652771,
             "width": 1920,
@@ -712,41 +851,41 @@
             "focalY": 50,
             "sizes": {
               "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg",
+                "url": "http://localhost:3000/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1-400x300.jpg",
                 "width": 400,
                 "height": 300,
                 "mimeType": "image/jpeg",
                 "filesize": 22792,
-                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg"
+                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1-400x300.jpg"
               },
               "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-768x512.jpg",
+                "url": "http://localhost:3000/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1-768x512.jpg",
                 "width": 768,
                 "height": 512,
                 "mimeType": "image/jpeg",
                 "filesize": 55412,
-                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-768x512.jpg"
+                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1-768x512.jpg"
               },
               "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1920x1080.jpg",
+                "url": "http://localhost:3000/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1-1920x1080.jpg",
                 "width": 1920,
                 "height": 1080,
                 "mimeType": "image/jpeg",
                 "filesize": 221487,
-                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1920x1080.jpg"
+                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1-1920x1080.jpg"
               }
             }
           },
           "title": "Execution",
-          "description": "Data-driven decisions based on agronomic information, weather conditions, and market trends to mitigate risks even before planting begins."
+          "description": "Data-driven decisions based on climate and market conditions to mitigate risks even before planting."
         },
         {
-          "id": "6a5169c8f23afd4d2c5c4700",
+          "id": "6a4e632fc909d08384496839",
           "icon": {
-            "id": 100,
-            "alt": "símbolo de automação",
-            "updatedAt": "2026-07-10T22:17:00.914Z",
-            "createdAt": "2026-07-10T22:17:00.693Z",
+            "id": 39,
+            "alt": "Ícone Unitá",
+            "updatedAt": "2026-06-26T18:55:33.682Z",
+            "createdAt": "2026-06-26T18:55:33.682Z",
             "url": "/cms-media/automation.svg",
             "thumbnailURL": null,
             "filename": "automation.svg",
@@ -784,13 +923,13 @@
             }
           },
           "image": {
-            "id": 101,
-            "alt": "reunião agro",
-            "updatedAt": "2026-07-10T22:18:09.488Z",
-            "createdAt": "2026-07-10T22:18:09.167Z",
-            "url": "/cms-media/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c.jpg",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg",
-            "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c.jpg",
+            "id": 56,
+            "alt": "teste",
+            "updatedAt": "2026-07-08T13:43:39.334Z",
+            "createdAt": "2026-07-08T13:43:39.334Z",
+            "url": "/cms-media/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1.jpg",
+            "thumbnailURL": "http://localhost:3000/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1-400x300.jpg",
+            "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1.jpg",
             "mimeType": "image/jpeg",
             "filesize": 652771,
             "width": 1920,
@@ -799,48 +938,93 @@
             "focalY": 50,
             "sizes": {
               "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg",
+                "url": "http://localhost:3000/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1-400x300.jpg",
                 "width": 400,
                 "height": 300,
                 "mimeType": "image/jpeg",
                 "filesize": 22792,
-                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg"
+                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1-400x300.jpg"
               },
               "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-768x512.jpg",
+                "url": "http://localhost:3000/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1-768x512.jpg",
                 "width": 768,
                 "height": 512,
                 "mimeType": "image/jpeg",
                 "filesize": 55412,
-                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-768x512.jpg"
+                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1-768x512.jpg"
               },
               "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1920x1080.jpg",
+                "url": "http://localhost:3000/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1-1920x1080.jpg",
                 "width": 1920,
                 "height": 1080,
                 "mimeType": "image/jpeg",
                 "filesize": 221487,
-                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1920x1080.jpg"
+                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1-1920x1080.jpg"
               }
             }
           },
           "title": "Technology",
-          "description": "Use of the best digital agriculture tools to optimize resources and monitor your crop’s health in real time."
+          "description": "Using the best digital agriculture tools to optimize resources and monitor your crop health in real time."
         }
       ],
       "mapTag": "Coverage",
       "mapTitle": "Where we are",
-      "mapDescription": "We are present in more than 30 municipalities, working with soybean, corn, and other crops, using precise mapping to help increase your productivity.",
+      "mapDescription": "We are present in over 30 municipalities, working with soy, corn, and other crops, with precise mapping to boost your productivity.",
       "mapLogos": [
         {
-          "id": "6a5169c4f23afd4d2c5c46f4",
+          "id": "6a3e604004af7278637dbc5b",
+          "logo": {
+            "id": 2,
+            "alt": "BAYER",
+            "updatedAt": "2026-06-22T22:55:31.863Z",
+            "createdAt": "2026-06-22T22:49:52.857Z",
+            "url": "/cms-media/BAYER.png",
+            "thumbnailURL": "http://localhost:3000/api/media/file/BAYER-400x300.png",
+            "filename": "BAYER.png",
+            "mimeType": "image/png",
+            "filesize": 48050,
+            "width": 3000,
+            "height": 2000,
+            "focalX": 100,
+            "focalY": 100,
+            "sizes": {
+              "thumbnail": {
+                "url": "http://localhost:3000/api/media/file/BAYER-400x300.png",
+                "width": 400,
+                "height": 300,
+                "mimeType": "image/png",
+                "filesize": 23288,
+                "filename": "BAYER-400x300.png"
+              },
+              "card": {
+                "url": "http://localhost:3000/api/media/file/BAYER-768x512.png",
+                "width": 768,
+                "height": 512,
+                "mimeType": "image/png",
+                "filesize": 41835,
+                "filename": "BAYER-768x512.png"
+              },
+              "hero": {
+                "url": "http://localhost:3000/api/media/file/BAYER-1920x1080.png",
+                "width": 1920,
+                "height": 1080,
+                "mimeType": "image/png",
+                "filesize": 121820,
+                "filename": "BAYER-1920x1080.png"
+              }
+            }
+          },
+          "alt": "bayer"
+        },
+        {
+          "id": "6a3e60cb04af7278637dbc5d",
           "logo": {
             "id": 4,
-            "alt": "logo_BASF",
-            "updatedAt": "2026-07-10T21:28:20.241Z",
-            "createdAt": "2026-07-10T21:28:19.758Z",
+            "alt": "BASF",
+            "updatedAt": "2026-06-22T22:53:05.022Z",
+            "createdAt": "2026-06-22T22:53:05.022Z",
             "url": "/cms-media/BASF.png",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BASF-400x300.png",
+            "thumbnailURL": "http://localhost:3000/api/media/file/BASF-400x300.png",
             "filename": "BASF.png",
             "mimeType": "image/png",
             "filesize": 29525,
@@ -850,7 +1034,7 @@
             "focalY": 50,
             "sizes": {
               "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BASF-400x300.png",
+                "url": "http://localhost:3000/api/media/file/BASF-400x300.png",
                 "width": 400,
                 "height": 300,
                 "mimeType": "image/png",
@@ -858,7 +1042,7 @@
                 "filename": "BASF-400x300.png"
               },
               "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BASF-768x512.png",
+                "url": "http://localhost:3000/api/media/file/BASF-768x512.png",
                 "width": 768,
                 "height": 512,
                 "mimeType": "image/png",
@@ -875,105 +1059,15 @@
               }
             }
           },
-          "alt": "BASF"
+          "alt": "basf"
         },
         {
-          "id": "6a5169c4f23afd4d2c5c46f5",
+          "id": "6a3e60dd04af7278637dbc5f",
           "logo": {
-            "id": 11,
-            "alt": "BAYER",
-            "updatedAt": "2026-07-10T21:35:42.991Z",
-            "createdAt": "2026-07-10T21:35:42.543Z",
-            "url": "/cms-media/BAYER.png",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BAYER-400x300.png",
-            "filename": "BAYER.png",
-            "mimeType": "image/png",
-            "filesize": 48050,
-            "width": 3000,
-            "height": 2000,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BAYER-400x300.png",
-                "width": 400,
-                "height": 300,
-                "mimeType": "image/png",
-                "filesize": 23287,
-                "filename": "BAYER-400x300.png"
-              },
-              "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BAYER-768x512.png",
-                "width": 768,
-                "height": 512,
-                "mimeType": "image/png",
-                "filesize": 41835,
-                "filename": "BAYER-768x512.png"
-              },
-              "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BAYER-1920x1080.png",
-                "width": 1920,
-                "height": 1080,
-                "mimeType": "image/png",
-                "filesize": 121879,
-                "filename": "BAYER-1920x1080.png"
-              }
-            }
-          },
-          "alt": "Bayer"
-        },
-        {
-          "id": "6a5169c4f23afd4d2c5c46f6",
-          "logo": {
-            "id": 3,
-            "alt": "logo_Syngenta",
-            "updatedAt": "2026-07-10T21:27:45.725Z",
-            "createdAt": "2026-07-10T21:27:45.445Z",
-            "url": "/cms-media/Syngenta.png",
-            "thumbnailURL": null,
-            "filename": "Syngenta.png",
-            "mimeType": "image/png",
-            "filesize": 4305,
-            "width": 127,
-            "height": 42,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              },
-              "card": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              },
-              "hero": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              }
-            }
-          },
-          "alt": "Syngenta"
-        },
-        {
-          "id": "6a5169c4f23afd4d2c5c46f7",
-          "logo": {
-            "id": 2,
-            "alt": "logo_corteva",
-            "updatedAt": "2026-07-10T21:26:07.638Z",
-            "createdAt": "2026-07-10T21:26:07.340Z",
+            "id": 5,
+            "alt": "corteva",
+            "updatedAt": "2026-06-23T01:13:39.704Z",
+            "createdAt": "2026-06-23T01:13:39.704Z",
             "url": "/cms-media/Corteva.svg",
             "thumbnailURL": null,
             "filename": "Corteva.svg",
@@ -1010,44 +1104,40 @@
               }
             }
           },
-          "alt": "Corteva"
-        }
-      ],
-      "galleryTitle": "partnership",
-      "gallerySubtitle": "We are constantly moving forward to bring the latest research and innovation directly to the producer.",
-      "galleryImages": [
+          "alt": "corteva"
+        },
         {
-          "id": "6a5169c4f23afd4d2c5c46f8",
-          "image": {
-            "id": 173,
-            "alt": "Fazenda São Paulo",
-            "updatedAt": "2026-07-13T20:45:26.350Z",
-            "createdAt": "2026-07-13T20:45:26.028Z",
-            "url": "/cms-media/DJI_240720257.jpeg",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/DJI_240720257-400x300.jpg",
-            "filename": "DJI_240720257.jpeg",
-            "mimeType": "image/jpeg",
-            "filesize": 122586,
-            "width": 1280,
-            "height": 720,
+          "id": "6a3e60ee04af7278637dbc61",
+          "logo": {
+            "id": 6,
+            "alt": "Syngenta",
+            "updatedAt": "2026-06-23T01:14:27.712Z",
+            "createdAt": "2026-06-23T01:14:27.712Z",
+            "url": "/cms-media/Syngenta.png",
+            "thumbnailURL": null,
+            "filename": "Syngenta.png",
+            "mimeType": "image/png",
+            "filesize": 4305,
+            "width": 127,
+            "height": 42,
             "focalX": 50,
             "focalY": 50,
             "sizes": {
               "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/DJI_240720257-400x300.jpg",
-                "width": 400,
-                "height": 300,
-                "mimeType": "image/jpeg",
-                "filesize": 23246,
-                "filename": "DJI_240720257-400x300.jpg"
+                "url": null,
+                "width": null,
+                "height": null,
+                "mimeType": null,
+                "filesize": null,
+                "filename": null
               },
               "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/DJI_240720257-768x512.jpg",
-                "width": 768,
-                "height": 512,
-                "mimeType": "image/jpeg",
-                "filesize": 67439,
-                "filename": "DJI_240720257-768x512.jpg"
+                "url": null,
+                "width": null,
+                "height": null,
+                "mimeType": null,
+                "filesize": null,
+                "filename": null
               },
               "hero": {
                 "url": null,
@@ -1058,17 +1148,66 @@
                 "filename": null
               }
             }
+          },
+          "alt": "syngenta"
+        }
+      ],
+      "galleryTitle": "partnership",
+      "gallerySubtitle": "We are in constant motion to bring the best of research and innovation to the farmer.",
+      "galleryImages": [
+        {
+          "id": "6a3e656c338eb2a8dba9273e",
+          "image": {
+            "id": 16,
+            "alt": "1",
+            "updatedAt": "2026-06-26T11:41:42.498Z",
+            "createdAt": "2026-06-26T11:41:42.498Z",
+            "url": "/cms-media/baa238e3fc02b3d400d6dd088e117e24270f8fc2.jpg",
+            "thumbnailURL": "http://localhost:3000/api/media/file/baa238e3fc02b3d400d6dd088e117e24270f8fc2-400x300.jpg",
+            "filename": "baa238e3fc02b3d400d6dd088e117e24270f8fc2.jpg",
+            "mimeType": "image/jpeg",
+            "filesize": 278084,
+            "width": 1920,
+            "height": 2880,
+            "focalX": 50,
+            "focalY": 50,
+            "sizes": {
+              "thumbnail": {
+                "url": "http://localhost:3000/api/media/file/baa238e3fc02b3d400d6dd088e117e24270f8fc2-400x300.jpg",
+                "width": 400,
+                "height": 300,
+                "mimeType": "image/jpeg",
+                "filesize": 10246,
+                "filename": "baa238e3fc02b3d400d6dd088e117e24270f8fc2-400x300.jpg"
+              },
+              "card": {
+                "url": "http://localhost:3000/api/media/file/baa238e3fc02b3d400d6dd088e117e24270f8fc2-768x512.jpg",
+                "width": 768,
+                "height": 512,
+                "mimeType": "image/jpeg",
+                "filesize": 25872,
+                "filename": "baa238e3fc02b3d400d6dd088e117e24270f8fc2-768x512.jpg"
+              },
+              "hero": {
+                "url": "http://localhost:3000/api/media/file/baa238e3fc02b3d400d6dd088e117e24270f8fc2-1920x1080.jpg",
+                "width": 1920,
+                "height": 1080,
+                "mimeType": "image/jpeg",
+                "filesize": 123524,
+                "filename": "baa238e3fc02b3d400d6dd088e117e24270f8fc2-1920x1080.jpg"
+              }
+            }
           }
         },
         {
-          "id": "6a5169c4f23afd4d2c5c46f9",
+          "id": "6a3e6ca7ec13b574fe0eac08",
           "image": {
-            "id": 104,
-            "alt": "encontro gestores",
-            "updatedAt": "2026-07-10T22:21:04.212Z",
-            "createdAt": "2026-07-10T22:21:03.954Z",
+            "id": 17,
+            "alt": "2",
+            "updatedAt": "2026-06-26T12:12:41.277Z",
+            "createdAt": "2026-06-26T12:12:41.276Z",
             "url": "/cms-media/beedb545b44dc721b1a3a132868eb0c4e8cc4bab.jpg",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/beedb545b44dc721b1a3a132868eb0c4e8cc4bab-400x300.jpg",
+            "thumbnailURL": "http://localhost:3000/api/media/file/beedb545b44dc721b1a3a132868eb0c4e8cc4bab-400x300.jpg",
             "filename": "beedb545b44dc721b1a3a132868eb0c4e8cc4bab.jpg",
             "mimeType": "image/jpeg",
             "filesize": 192136,
@@ -1078,7 +1217,7 @@
             "focalY": 50,
             "sizes": {
               "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/beedb545b44dc721b1a3a132868eb0c4e8cc4bab-400x300.jpg",
+                "url": "http://localhost:3000/api/media/file/beedb545b44dc721b1a3a132868eb0c4e8cc4bab-400x300.jpg",
                 "width": 400,
                 "height": 300,
                 "mimeType": "image/jpeg",
@@ -1086,7 +1225,7 @@
                 "filename": "beedb545b44dc721b1a3a132868eb0c4e8cc4bab-400x300.jpg"
               },
               "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/beedb545b44dc721b1a3a132868eb0c4e8cc4bab-768x512.jpg",
+                "url": "http://localhost:3000/api/media/file/beedb545b44dc721b1a3a132868eb0c4e8cc4bab-768x512.jpg",
                 "width": 768,
                 "height": 512,
                 "mimeType": "image/jpeg",
@@ -1094,7 +1233,7 @@
                 "filename": "beedb545b44dc721b1a3a132868eb0c4e8cc4bab-768x512.jpg"
               },
               "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/beedb545b44dc721b1a3a132868eb0c4e8cc4bab-1920x1080.jpg",
+                "url": "http://localhost:3000/api/media/file/beedb545b44dc721b1a3a132868eb0c4e8cc4bab-1920x1080.jpg",
                 "width": 1920,
                 "height": 1080,
                 "mimeType": "image/jpeg",
@@ -1105,14 +1244,14 @@
           }
         },
         {
-          "id": "6a5169c4f23afd4d2c5c46fa",
+          "id": "6a3e6cbdec13b574fe0eac0a",
           "image": {
-            "id": 105,
-            "alt": "Caio Coppolla no PA Summit 2026",
-            "updatedAt": "2026-07-13T20:46:24.234Z",
-            "createdAt": "2026-07-10T22:21:49.790Z",
+            "id": 18,
+            "alt": "3",
+            "updatedAt": "2026-06-26T12:13:03.532Z",
+            "createdAt": "2026-06-26T12:13:03.532Z",
             "url": "/cms-media/85f6e4495a4d96ad341bbddff77d858a677161d7.jpg",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/85f6e4495a4d96ad341bbddff77d858a677161d7-400x300.jpg",
+            "thumbnailURL": "http://localhost:3000/api/media/file/85f6e4495a4d96ad341bbddff77d858a677161d7-400x300.jpg",
             "filename": "85f6e4495a4d96ad341bbddff77d858a677161d7.jpg",
             "mimeType": "image/jpeg",
             "filesize": 1025923,
@@ -1122,7 +1261,7 @@
             "focalY": 50,
             "sizes": {
               "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/85f6e4495a4d96ad341bbddff77d858a677161d7-400x300.jpg",
+                "url": "http://localhost:3000/api/media/file/85f6e4495a4d96ad341bbddff77d858a677161d7-400x300.jpg",
                 "width": 400,
                 "height": 300,
                 "mimeType": "image/jpeg",
@@ -1130,7 +1269,7 @@
                 "filename": "85f6e4495a4d96ad341bbddff77d858a677161d7-400x300.jpg"
               },
               "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/85f6e4495a4d96ad341bbddff77d858a677161d7-768x512.jpg",
+                "url": "http://localhost:3000/api/media/file/85f6e4495a4d96ad341bbddff77d858a677161d7-768x512.jpg",
                 "width": 768,
                 "height": 512,
                 "mimeType": "image/jpeg",
@@ -1138,7 +1277,7 @@
                 "filename": "85f6e4495a4d96ad341bbddff77d858a677161d7-768x512.jpg"
               },
               "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/85f6e4495a4d96ad341bbddff77d858a677161d7-1920x1080.jpg",
+                "url": "http://localhost:3000/api/media/file/85f6e4495a4d96ad341bbddff77d858a677161d7-1920x1080.jpg",
                 "width": 1920,
                 "height": 1080,
                 "mimeType": "image/jpeg",
@@ -1149,14 +1288,14 @@
           }
         },
         {
-          "id": "6a5169c4f23afd4d2c5c46fb",
+          "id": "6a3e6cf7ec13b574fe0eac0c",
           "image": {
-            "id": 106,
-            "alt": "Paulo Asunção no PA Summit 2026",
-            "updatedAt": "2026-07-13T20:46:47.532Z",
-            "createdAt": "2026-07-10T22:22:20.854Z",
+            "id": 19,
+            "alt": "4",
+            "updatedAt": "2026-06-26T12:13:48.848Z",
+            "createdAt": "2026-06-26T12:13:48.848Z",
             "url": "/cms-media/94372e485b12b23ae709386aacf102bb3f9a4435.jpg",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/94372e485b12b23ae709386aacf102bb3f9a4435-400x300.jpg",
+            "thumbnailURL": "http://localhost:3000/api/media/file/94372e485b12b23ae709386aacf102bb3f9a4435-400x300.jpg",
             "filename": "94372e485b12b23ae709386aacf102bb3f9a4435.jpg",
             "mimeType": "image/jpeg",
             "filesize": 185633,
@@ -1166,7 +1305,7 @@
             "focalY": 50,
             "sizes": {
               "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/94372e485b12b23ae709386aacf102bb3f9a4435-400x300.jpg",
+                "url": "http://localhost:3000/api/media/file/94372e485b12b23ae709386aacf102bb3f9a4435-400x300.jpg",
                 "width": 400,
                 "height": 300,
                 "mimeType": "image/jpeg",
@@ -1174,7 +1313,7 @@
                 "filename": "94372e485b12b23ae709386aacf102bb3f9a4435-400x300.jpg"
               },
               "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/94372e485b12b23ae709386aacf102bb3f9a4435-768x512.jpg",
+                "url": "http://localhost:3000/api/media/file/94372e485b12b23ae709386aacf102bb3f9a4435-768x512.jpg",
                 "width": 768,
                 "height": 512,
                 "mimeType": "image/jpeg",
@@ -1182,7 +1321,7 @@
                 "filename": "94372e485b12b23ae709386aacf102bb3f9a4435-768x512.jpg"
               },
               "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/94372e485b12b23ae709386aacf102bb3f9a4435-1920x1080.jpg",
+                "url": "http://localhost:3000/api/media/file/94372e485b12b23ae709386aacf102bb3f9a4435-1920x1080.jpg",
                 "width": 1920,
                 "height": 1080,
                 "mimeType": "image/jpeg",
@@ -1193,14 +1332,14 @@
           }
         },
         {
-          "id": "6a5169c4f23afd4d2c5c46fc",
+          "id": "6a3e6d08ec13b574fe0eac0e",
           "image": {
-            "id": 107,
-            "alt": "reunião",
-            "updatedAt": "2026-07-10T22:22:46.932Z",
-            "createdAt": "2026-07-10T22:22:46.373Z",
+            "id": 20,
+            "alt": "5",
+            "updatedAt": "2026-06-26T12:14:26.838Z",
+            "createdAt": "2026-06-26T12:14:26.838Z",
             "url": "/cms-media/777b3ea0100fa9d7bdeab3a9e9e3dc8dc1214130.jpg",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/777b3ea0100fa9d7bdeab3a9e9e3dc8dc1214130-400x300.jpg",
+            "thumbnailURL": "http://localhost:3000/api/media/file/777b3ea0100fa9d7bdeab3a9e9e3dc8dc1214130-400x300.jpg",
             "filename": "777b3ea0100fa9d7bdeab3a9e9e3dc8dc1214130.jpg",
             "mimeType": "image/jpeg",
             "filesize": 412929,
@@ -1210,7 +1349,7 @@
             "focalY": 50,
             "sizes": {
               "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/777b3ea0100fa9d7bdeab3a9e9e3dc8dc1214130-400x300.jpg",
+                "url": "http://localhost:3000/api/media/file/777b3ea0100fa9d7bdeab3a9e9e3dc8dc1214130-400x300.jpg",
                 "width": 400,
                 "height": 300,
                 "mimeType": "image/jpeg",
@@ -1218,7 +1357,7 @@
                 "filename": "777b3ea0100fa9d7bdeab3a9e9e3dc8dc1214130-400x300.jpg"
               },
               "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/777b3ea0100fa9d7bdeab3a9e9e3dc8dc1214130-768x512.jpg",
+                "url": "http://localhost:3000/api/media/file/777b3ea0100fa9d7bdeab3a9e9e3dc8dc1214130-768x512.jpg",
                 "width": 768,
                 "height": 512,
                 "mimeType": "image/jpeg",
@@ -1226,56 +1365,12 @@
                 "filename": "777b3ea0100fa9d7bdeab3a9e9e3dc8dc1214130-768x512.jpg"
               },
               "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/777b3ea0100fa9d7bdeab3a9e9e3dc8dc1214130-1920x1080.jpg",
+                "url": "http://localhost:3000/api/media/file/777b3ea0100fa9d7bdeab3a9e9e3dc8dc1214130-1920x1080.jpg",
                 "width": 1920,
                 "height": 1080,
                 "mimeType": "image/jpeg",
                 "filesize": 378613,
                 "filename": "777b3ea0100fa9d7bdeab3a9e9e3dc8dc1214130-1920x1080.jpg"
-              }
-            }
-          }
-        },
-        {
-          "id": "6a5169c4f23afd4d2c5c46fd",
-          "image": {
-            "id": 108,
-            "alt": "integração",
-            "updatedAt": "2026-07-10T22:23:15.094Z",
-            "createdAt": "2026-07-10T22:23:14.843Z",
-            "url": "/cms-media/4d05cbcbb57228e29cb0115182c019bf0417b22b.jpg",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/4d05cbcbb57228e29cb0115182c019bf0417b22b-400x300.jpg",
-            "filename": "4d05cbcbb57228e29cb0115182c019bf0417b22b.jpg",
-            "mimeType": "image/jpeg",
-            "filesize": 446138,
-            "width": 1920,
-            "height": 2880,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/4d05cbcbb57228e29cb0115182c019bf0417b22b-400x300.jpg",
-                "width": 400,
-                "height": 300,
-                "mimeType": "image/jpeg",
-                "filesize": 20243,
-                "filename": "4d05cbcbb57228e29cb0115182c019bf0417b22b-400x300.jpg"
-              },
-              "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/4d05cbcbb57228e29cb0115182c019bf0417b22b-768x512.jpg",
-                "width": 768,
-                "height": 512,
-                "mimeType": "image/jpeg",
-                "filesize": 48371,
-                "filename": "4d05cbcbb57228e29cb0115182c019bf0417b22b-768x512.jpg"
-              },
-              "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/4d05cbcbb57228e29cb0115182c019bf0417b22b-1920x1080.jpg",
-                "width": 1920,
-                "height": 1080,
-                "mimeType": "image/jpeg",
-                "filesize": 191424,
-                "filename": "4d05cbcbb57228e29cb0115182c019bf0417b22b-1920x1080.jpg"
               }
             }
           }
@@ -1285,52 +1380,52 @@
       "testimonialsTitle": "Partnerships that prove",
       "testimonialsTitleAccent": "results",
       "ctaText": null,
-      "ctaButtonLabel": "Talk to a consultant",
+      "ctaButtonLabel": "Fale com um consultor",
       "ctaButtonUrl": "/contato",
-      "updatedAt": "2026-07-15T15:26:50.971Z",
-      "createdAt": "2026-07-10T01:14:27.658Z",
+      "updatedAt": "2026-07-30T18:12:58.061Z",
+      "createdAt": "2026-06-17T19:28:05.910Z",
       "globalType": "home-page"
     },
     "about-page": {
       "id": 1,
       "heroImage": {
-        "id": 171,
-        "alt": "Quem somos",
-        "updatedAt": "2026-07-17T13:16:57.026Z",
-        "createdAt": "2026-07-13T20:37:52.998Z",
-        "url": "/cms-media/HMA06183_20_1_.webp",
-        "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/HMA06183%20(1)-400x300.webp",
-        "filename": "HMA06183_20_1_.webp",
+        "id": 27,
+        "alt": "Sessão Hero - Quem somos",
+        "updatedAt": "2026-06-26T16:57:24.552Z",
+        "createdAt": "2026-06-26T16:57:24.549Z",
+        "url": "/cms-media/Sessao-Hero-Quem-somos.webp",
+        "thumbnailURL": "http://localhost:3000/api/media/file/Sessao-Hero-Quem-somos-400x300.webp",
+        "filename": "Sessao-Hero-Quem-somos.webp",
         "mimeType": "image/webp",
-        "filesize": 794340,
-        "width": 5986,
-        "height": 3446,
+        "filesize": 545478,
+        "width": 2560,
+        "height": 1707,
         "focalX": 50,
         "focalY": 50,
         "sizes": {
           "thumbnail": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/HMA06183%20(1)-400x300.webp",
+            "url": "http://localhost:3000/api/media/file/Sessao-Hero-Quem-somos-400x300.webp",
             "width": 400,
             "height": 300,
             "mimeType": "image/webp",
-            "filesize": 19974,
-            "filename": "HMA06183 (1)-400x300.webp"
+            "filesize": 19106,
+            "filename": "Sessao-Hero-Quem-somos-400x300.webp"
           },
           "card": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/HMA06183%20(1)-768x512.webp",
+            "url": "http://localhost:3000/api/media/file/Sessao-Hero-Quem-somos-768x512.webp",
             "width": 768,
             "height": 512,
             "mimeType": "image/webp",
-            "filesize": 50172,
-            "filename": "HMA06183 (1)-768x512.webp"
+            "filesize": 57528,
+            "filename": "Sessao-Hero-Quem-somos-768x512.webp"
           },
           "hero": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/HMA06183%20(1)-1920x1080.webp",
+            "url": "http://localhost:3000/api/media/file/Sessao-Hero-Quem-somos-1920x1080.webp",
             "width": 1920,
             "height": 1080,
             "mimeType": "image/webp",
-            "filesize": 177252,
-            "filename": "HMA06183 (1)-1920x1080.webp"
+            "filesize": 265000,
+            "filename": "Sessao-Hero-Quem-somos-1920x1080.webp"
           }
         }
       },
@@ -1339,7 +1434,7 @@
       "introTag": "about us",
       "title": "Our people",
       "subtitle": "make the difference",
-      "subtitleColor": null,
+      "subtitleColor": "#88a668",
       "introText": {
         "root": {
           "type": "root",
@@ -1354,42 +1449,11 @@
               "version": 1,
               "children": [
                 {
-                  "mode": "normal",
-                  "text": "Based in Tangará da Serra, Mato Grosso, Grupo PA combines specialized agronomic consulting with personalized support to help producers achieve higher productivity. With our own experimental field, we turn research and practical studies into reliable data, eliminating guesswork and optimizing the results of your harvest.",
+                  "text": "Based in Tangará da Serra (MT), Grupo PA combines specialized agronomic consulting and close support to boost producer productivity. With our own experimental field, we transform research and practical studies into real data to eliminate guesswork and optimize your harvest results.\n\nWe simplify your routine by handling all input procurement management, negotiating the best prices, terms, and suppliers on the market. Pioneers in precision agriculture, we use GPS and remote sensing to collect precise data and maximize the performance of every hectare. We are the solid and profitable partnership you seek for the field. Count on Grupo PA to elevate your production standards.",
                   "type": "text",
-                  "style": "",
-                  "detail": 0,
-                  "format": 0,
-                  "version": 1
-                },
-                {
-                  "type": "linebreak",
                   "version": 1
                 }
-              ],
-              "direction": null,
-              "textStyle": "",
-              "textFormat": 0
-            },
-            {
-              "type": "paragraph",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "children": [
-                {
-                  "mode": "normal",
-                  "text": "We simplify your operations by managing the entire procurement process for agricultural inputs, negotiating the best prices, terms, and suppliers available in the market. As pioneers in precision agriculture, we use GPS technology and remote sensing to collect accurate data and maximize the performance of every hectare. We are the reliable and profitable partner you need in the field. Count on Grupo PA to take your production to the next level.",
-                  "type": "text",
-                  "style": "",
-                  "detail": 0,
-                  "format": 0,
-                  "version": 1
-                }
-              ],
-              "direction": null,
-              "textStyle": "",
-              "textFormat": 0
+              ]
             }
           ]
         }
@@ -1475,55 +1539,15 @@
       "videoSectionTag": "institutional",
       "videoSectionTitle": "Institutional",
       "videoSectionTitleAccent": "Video",
-      "videoSectionTitleAccentColor": null,
+      "videoSectionTitleAccentColor": "#88a668",
       "institutionalVideoUrl": "https://www.youtube.com/embed/2Val9IbUWHk",
       "timelineTag": "timeline",
       "timelineTitle": "Our history",
       "timeline": [
         {
-          "id": "6a5169cef23afd4d2c5c4709",
+          "id": "6a4e632fc909d08384496842",
           "year": "1993",
-          "image": {
-            "id": 112,
-            "alt": "Fundador",
-            "updatedAt": "2026-07-10T23:52:25.922Z",
-            "createdAt": "2026-07-10T23:52:25.510Z",
-            "url": "/cms-media/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c.png",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg",
-            "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c.png",
-            "mimeType": "image/png",
-            "filesize": 4573057,
-            "width": 2488,
-            "height": 3732,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg",
-                "width": 400,
-                "height": 300,
-                "mimeType": "image/jpeg",
-                "filesize": 22821,
-                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg"
-              },
-              "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-768x512.jpg",
-                "width": 768,
-                "height": 512,
-                "mimeType": "image/jpeg",
-                "filesize": 55143,
-                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-768x512.jpg"
-              },
-              "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1920x1080.jpg",
-                "width": 1920,
-                "height": 1080,
-                "mimeType": "image/jpeg",
-                "filesize": 217508,
-                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1920x1080.jpg"
-              }
-            }
-          },
+          "image": null,
           "tag": "the beginning",
           "text": {
             "root": {
@@ -1539,66 +1563,20 @@
                   "version": 1,
                   "children": [
                     {
-                      "mode": "normal",
-                      "text": "Grupo PA began its journey in Mato Grosso in 1993 with the acquisition of São Paulo Farm in Diamantino, Mato Grosso, for the cultivation of soybeans and corn. To this day, it remains the group's main farm and is home to our research field.",
+                      "text": "Grupo PA began its history in Mato Grosso in 1993, through the acquisition of Faz. São Paulo, in Diamantino - MT, for soybean and corn cultivation. It remains the group's main farm and the location of our research field to this day.",
                       "type": "text",
-                      "style": "",
-                      "detail": 0,
-                      "format": 0,
                       "version": 1
                     }
-                  ],
-                  "textStyle": "",
-                  "textFormat": 0
+                  ]
                 }
               ]
             }
           }
         },
         {
-          "id": "6a5169cef23afd4d2c5c470a",
+          "id": "6a4e632fc909d08384496843",
           "year": "2002",
-          "image": {
-            "id": 112,
-            "alt": "Fundador",
-            "updatedAt": "2026-07-10T23:52:25.922Z",
-            "createdAt": "2026-07-10T23:52:25.510Z",
-            "url": "/cms-media/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c.png",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg",
-            "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c.png",
-            "mimeType": "image/png",
-            "filesize": 4573057,
-            "width": 2488,
-            "height": 3732,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg",
-                "width": 400,
-                "height": 300,
-                "mimeType": "image/jpeg",
-                "filesize": 22821,
-                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg"
-              },
-              "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-768x512.jpg",
-                "width": 768,
-                "height": 512,
-                "mimeType": "image/jpeg",
-                "filesize": 55143,
-                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-768x512.jpg"
-              },
-              "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1920x1080.jpg",
-                "width": 1920,
-                "height": 1080,
-                "mimeType": "image/jpeg",
-                "filesize": 217508,
-                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1920x1080.jpg"
-              }
-            }
-          },
+          "image": null,
           "tag": "consulting",
           "text": {
             "root": {
@@ -1614,24 +1592,18 @@
                   "version": 1,
                   "children": [
                     {
-                      "mode": "normal",
-                      "text": "In 2002, our founder, Paulo Asunção, began providing agronomic consulting services at the invitation of a neighboring farmer. This became the company’s first client, and that partnership continues to this day.",
+                      "text": "In 2002, our founder Paulo Asunção, at the invitation of a neighboring landowner, began providing agronomic consulting services. This was the company's first client and remains with us to this day.",
                       "type": "text",
-                      "style": "",
-                      "detail": 0,
-                      "format": 0,
                       "version": 1
                     }
-                  ],
-                  "textStyle": "",
-                  "textFormat": 0
+                  ]
                 }
               ]
             }
           }
         },
         {
-          "id": "6a5169cef23afd4d2c5c470b",
+          "id": "6a4e632fc909d08384496844",
           "year": "2009",
           "image": null,
           "tag": "technology",
@@ -1649,66 +1621,20 @@
                   "version": 1,
                   "children": [
                     {
-                      "mode": "normal",
-                      "text": "In 2009, PA Consultoria began offering precision agriculture services, becoming one of the first companies in the state to provide this solution.",
+                      "text": "In 2009, PA Consultoria began offering precision agriculture services, being one of the first companies in the state to provide this service.",
                       "type": "text",
-                      "style": "",
-                      "detail": 0,
-                      "format": 0,
                       "version": 1
                     }
-                  ],
-                  "textStyle": "",
-                  "textFormat": 0
+                  ]
                 }
               ]
             }
           }
         },
         {
-          "id": "6a5169cef23afd4d2c5c470c",
+          "id": "6a4e632fc909d08384496845",
           "year": "2011",
-          "image": {
-            "id": 176,
-            "alt": "Campo de pesquisa",
-            "updatedAt": "2026-07-14T14:38:15.665Z",
-            "createdAt": "2026-07-14T14:38:13.592Z",
-            "url": "/cms-media/DJI_20260625175601_0970_D.JPG",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/DJI_20260625175601_0970_D-400x300.jpg",
-            "filename": "DJI_20260625175601_0970_D.JPG",
-            "mimeType": "image/jpeg",
-            "filesize": 29126656,
-            "width": 8064,
-            "height": 4536,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/DJI_20260625175601_0970_D-400x300.jpg",
-                "width": 400,
-                "height": 300,
-                "mimeType": "image/jpeg",
-                "filesize": 26008,
-                "filename": "DJI_20260625175601_0970_D-400x300.jpg"
-              },
-              "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/DJI_20260625175601_0970_D-768x512.jpg",
-                "width": 768,
-                "height": 512,
-                "mimeType": "image/jpeg",
-                "filesize": 84901,
-                "filename": "DJI_20260625175601_0970_D-768x512.jpg"
-              },
-              "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/DJI_20260625175601_0970_D-1920x1080.jpg",
-                "width": 1920,
-                "height": 1080,
-                "mimeType": "image/jpeg",
-                "filesize": 442889,
-                "filename": "DJI_20260625175601_0970_D-1920x1080.jpg"
-              }
-            }
-          },
+          "image": null,
           "tag": "research",
           "text": {
             "root": {
@@ -1724,67 +1650,21 @@
                   "version": 1,
                   "children": [
                     {
-                      "mode": "normal",
-                      "text": "We began our Agronomic Research activities, which today include a 60-hectare area dedicated to development and innovation, generating valuable results for building the best production strategy.",
+                      "text": "We began Agronomic Research work that today covers an area of 60 hectares with over 2,000 treatments dedicated to development, generating important results for building the best production strategy.",
                       "type": "text",
-                      "style": "",
-                      "detail": 0,
-                      "format": 0,
                       "version": 1
                     }
-                  ],
-                  "textStyle": "",
-                  "textFormat": 0
+                  ]
                 }
               ]
             }
           }
         },
         {
-          "id": "6a5169cef23afd4d2c5c470f",
+          "id": "6a4e632fc909d08384496846",
           "year": "2013",
-          "image": {
-            "id": 175,
-            "alt": "Algodão",
-            "updatedAt": "2026-07-14T14:36:50.777Z",
-            "createdAt": "2026-07-14T14:36:50.101Z",
-            "url": "/cms-media/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-1.jpg",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-1-400x300.jpg",
-            "filename": "cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-1.jpg",
-            "mimeType": "image/jpeg",
-            "filesize": 4676784,
-            "width": 3011,
-            "height": 2000,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-1-400x300.jpg",
-                "width": 400,
-                "height": 300,
-                "mimeType": "image/jpeg",
-                "filesize": 37681,
-                "filename": "cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-1-400x300.jpg"
-              },
-              "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-1-768x512.jpg",
-                "width": 768,
-                "height": 512,
-                "mimeType": "image/jpeg",
-                "filesize": 100380,
-                "filename": "cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-1-768x512.jpg"
-              },
-              "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-1-1920x1080.jpg",
-                "width": 1920,
-                "height": 1080,
-                "mimeType": "image/jpeg",
-                "filesize": 389621,
-                "filename": "cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-1-1920x1080.jpg"
-              }
-            }
-          },
-          "tag": "expansion",
+          "image": null,
+          "tag": "event",
           "text": {
             "root": {
               "type": "root",
@@ -1799,66 +1679,20 @@
                   "version": 1,
                   "children": [
                     {
-                      "mode": "normal",
-                      "text": "PA Pesquisa held its first field day at its research farm at São Paulo Farm, bringing together around 30 producers.",
+                      "text": "PA Research held its first field day at its research field at Faz. São Paulo, gathering about 30 producers.",
                       "type": "text",
-                      "style": "",
-                      "detail": 0,
-                      "format": 0,
                       "version": 1
                     }
-                  ],
-                  "textStyle": "",
-                  "textFormat": 0
+                  ]
                 }
               ]
             }
           }
         },
         {
-          "id": "6a5169cef23afd4d2c5c470e",
+          "id": "6a4e632fc909d08384496847",
           "year": "2023",
-          "image": {
-            "id": 112,
-            "alt": "Fundador",
-            "updatedAt": "2026-07-10T23:52:25.922Z",
-            "createdAt": "2026-07-10T23:52:25.510Z",
-            "url": "/cms-media/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c.png",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg",
-            "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c.png",
-            "mimeType": "image/png",
-            "filesize": 4573057,
-            "width": 2488,
-            "height": 3732,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg",
-                "width": 400,
-                "height": 300,
-                "mimeType": "image/jpeg",
-                "filesize": 22821,
-                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg"
-              },
-              "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-768x512.jpg",
-                "width": 768,
-                "height": 512,
-                "mimeType": "image/jpeg",
-                "filesize": 55143,
-                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-768x512.jpg"
-              },
-              "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1920x1080.jpg",
-                "width": 1920,
-                "height": 1080,
-                "mimeType": "image/jpeg",
-                "filesize": 217508,
-                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1920x1080.jpg"
-              }
-            }
-          },
+          "image": null,
           "tag": "new crops",
           "text": {
             "root": {
@@ -1885,49 +1719,38 @@
           }
         },
         {
-          "id": "6a5169cef23afd4d2c5c4710",
+          "id": "6a4e632fc909d08384496848",
           "year": "2024",
-          "image": {
-            "id": 112,
-            "alt": "Fundador",
-            "updatedAt": "2026-07-10T23:52:25.922Z",
-            "createdAt": "2026-07-10T23:52:25.510Z",
-            "url": "/cms-media/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c.png",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg",
-            "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c.png",
-            "mimeType": "image/png",
-            "filesize": 4573057,
-            "width": 2488,
-            "height": 3732,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg",
-                "width": 400,
-                "height": 300,
-                "mimeType": "image/jpeg",
-                "filesize": 22821,
-                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg"
-              },
-              "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-768x512.jpg",
-                "width": 768,
-                "height": 512,
-                "mimeType": "image/jpeg",
-                "filesize": 55143,
-                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-768x512.jpg"
-              },
-              "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1920x1080.jpg",
-                "width": 1920,
-                "height": 1080,
-                "mimeType": "image/jpeg",
-                "filesize": 217508,
-                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1920x1080.jpg"
-              }
+          "image": null,
+          "tag": "expansion",
+          "text": {
+            "root": {
+              "type": "root",
+              "format": "",
+              "indent": 0,
+              "version": 1,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "format": "",
+                  "indent": 0,
+                  "version": 1,
+                  "children": [
+                    {
+                      "text": "Committed to our mission of contributing to the development of agribusiness, we expanded and began serving the Northern Mato Grosso region.",
+                      "type": "text",
+                      "version": 1
+                    }
+                  ]
+                }
+              ]
             }
-          },
+          }
+        },
+        {
+          "id": "6a4e632fc909d08384496849",
+          "year": "2026",
+          "image": null,
           "tag": "investment",
           "text": {
             "root": {
@@ -1943,438 +1766,182 @@
                   "version": 1,
                   "children": [
                     {
-                      "mode": "normal",
-                      "text": "PA Consultoria began providing services for cotton production.",
+                      "text": "Grupo PA continues to invest in agriculture and in Mato Grosso. As shareholders of ALD Bioenergy, we made new investments to triple the plant.",
                       "type": "text",
-                      "style": "",
-                      "detail": 0,
-                      "format": 0,
                       "version": 1
                     }
-                  ],
-                  "textStyle": "",
-                  "textFormat": 0
+                  ]
                 }
               ]
             }
           }
-        },
-        {
-          "id": "6a51875bf0d5537e81805c90",
-          "year": "2023",
-          "image": {
-            "id": 112,
-            "alt": "Fundador",
-            "updatedAt": "2026-07-10T23:52:25.922Z",
-            "createdAt": "2026-07-10T23:52:25.510Z",
-            "url": "/cms-media/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c.png",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg",
-            "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c.png",
-            "mimeType": "image/png",
-            "filesize": 4573057,
-            "width": 2488,
-            "height": 3732,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg",
-                "width": 400,
-                "height": 300,
-                "mimeType": "image/jpeg",
-                "filesize": 22821,
-                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg"
-              },
-              "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-768x512.jpg",
-                "width": 768,
-                "height": 512,
-                "mimeType": "image/jpeg",
-                "filesize": 55143,
-                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-768x512.jpg"
-              },
-              "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1920x1080.jpg",
-                "width": 1920,
-                "height": 1080,
-                "mimeType": "image/jpeg",
-                "filesize": 217508,
-                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1920x1080.jpg"
-              }
-            }
-          },
-          "tag": "Expansion",
-          "text": {
-            "root": {
-              "type": "root",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "children": [
-                {
-                  "type": "paragraph",
-                  "format": "",
-                  "indent": 0,
-                  "version": 1,
-                  "children": [
-                    {
-                      "mode": "normal",
-                      "text": "Committed to our mission of contributing to the development of agribusiness, we expanded our operations and began serving the Northern region of Mato Grosso.",
-                      "type": "text",
-                      "style": "",
-                      "detail": 0,
-                      "format": 0,
-                      "version": 1
-                    }
-                  ],
-                  "direction": null,
-                  "textStyle": "",
-                  "textFormat": 0
-                },
-                {
-                  "type": "paragraph",
-                  "format": "",
-                  "indent": 0,
-                  "version": 1,
-                  "children": [],
-                  "direction": null,
-                  "textStyle": "",
-                  "textFormat": 0
-                }
-              ],
-              "direction": null
-            }
-          }
-        },
-        {
-          "id": "6a57a9ebb8aa8a764b85b580",
-          "year": "2026",
-          "image": null,
-          "tag": "Innovation",
-          "text": {
-            "root": {
-              "type": "root",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "children": [
-                {
-                  "type": "paragraph",
-                  "format": "",
-                  "indent": 0,
-                  "version": 1,
-                  "children": [
-                    {
-                      "mode": "normal",
-                      "text": "Grupo PA continues to invest in agribusiness and in Mato Grosso. As shareholders of ALD Bioenergia, we made new investments to triple the plant’s production capacity.",
-                      "type": "text",
-                      "style": "",
-                      "detail": 0,
-                      "format": 0,
-                      "version": 1
-                    }
-                  ],
-                  "direction": null,
-                  "textStyle": "",
-                  "textFormat": 0
-                }
-              ],
-              "direction": null
-            }
-          }
         }
       ],
-      "updatedAt": "2026-07-15T15:45:32.830Z",
-      "createdAt": "2026-07-10T01:14:32.835Z",
+      "updatedAt": "2026-07-08T14:48:15.434Z",
+      "createdAt": "2026-06-26T15:12:58.935Z",
       "globalType": "about-page"
     },
     "services-page": {
       "id": 1,
       "heroImage": {
-        "id": 172,
-        "alt": "Campo de pesquisa",
-        "updatedAt": "2026-07-13T20:43:25.313Z",
-        "createdAt": "2026-07-13T20:43:24.767Z",
-        "url": "/cms-media/ChatGPT_20Image_2013_20de_20jul._20de_202026_2C_2016_42_48.png",
-        "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/ChatGPT%20Image%2013%20de%20jul.%20de%202026%2C%2016_42_48-400x300.png",
-        "filename": "ChatGPT_20Image_2013_20de_20jul._20de_202026_2C_2016_42_48.png",
-        "mimeType": "image/png",
-        "filesize": 2410524,
-        "width": 1537,
-        "height": 1023,
+        "id": 29,
+        "alt": "Background Serviços",
+        "updatedAt": "2026-06-26T18:55:24.841Z",
+        "createdAt": "2026-06-26T18:55:24.839Z",
+        "url": "/cms-media/bg_servicos.webp",
+        "thumbnailURL": "http://localhost:3000/api/media/file/bg_servicos-400x300.webp",
+        "filename": "bg_servicos.webp",
+        "mimeType": "image/webp",
+        "filesize": 194964,
+        "width": 2560,
+        "height": 1706,
         "focalX": 50,
         "focalY": 50,
         "sizes": {
           "thumbnail": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/ChatGPT%20Image%2013%20de%20jul.%20de%202026%2C%2016_42_48-400x300.png",
+            "url": "http://localhost:3000/api/media/file/bg_servicos-400x300.webp",
             "width": 400,
             "height": 300,
-            "mimeType": "image/png",
-            "filesize": 278722,
-            "filename": "ChatGPT Image 13 de jul. de 2026, 16_42_48-400x300.png"
+            "mimeType": "image/webp",
+            "filesize": 16558,
+            "filename": "bg_servicos-400x300.webp"
           },
           "card": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/ChatGPT%20Image%2013%20de%20jul.%20de%202026%2C%2016_42_48-768x512.png",
+            "url": "http://localhost:3000/api/media/file/bg_servicos-768x512.webp",
             "width": 768,
             "height": 512,
-            "mimeType": "image/png",
-            "filesize": 885169,
-            "filename": "ChatGPT Image 13 de jul. de 2026, 16_42_48-768x512.png"
+            "mimeType": "image/webp",
+            "filesize": 36506,
+            "filename": "bg_servicos-768x512.webp"
           },
           "hero": {
-            "url": null,
-            "width": null,
-            "height": null,
-            "mimeType": null,
-            "filesize": null,
-            "filename": null
+            "url": "http://localhost:3000/api/media/file/bg_servicos-1920x1080.webp",
+            "width": 1920,
+            "height": 1080,
+            "mimeType": "image/webp",
+            "filesize": 114160,
+            "filename": "bg_servicos-1920x1080.webp"
           }
         }
       },
       "heroImageTablet": null,
       "heroImageMobile": null,
       "servicesBadge": "Our Solutions",
-      "servicesTitle": "Our",
-      "servicesSubtitle": "Services",
-      "servicesSubtitleColor": null,
+      "servicesTitle": "Integrated",
+      "servicesSubtitle": "Solution Framework",
+      "servicesSubtitleColor": "#88a668",
       "servicesDescription": "We provide high-level technical agronomic support, blending precision agriculture, procurement planning, and real-time analytics to optimize your results every harvest.",
       "servicesCards": [
         {
-          "id": "6a51dc9cb989194a2449af73",
+          "id": "6a4e632fc909d08384496852",
           "slug": "consultoria-agronomica",
-          "title": "Agronomic Consulting",
-          "shortDescription": "Crop productivity begins long before planting. That’s why our agronomic consulting works closely..."
+          "title": "Agronomic\nConsulting",
+          "shortDescription": "Monitoring from planning to harvest to maximize your profitability."
         },
         {
-          "id": "6a51dc9cb989194a2449af74",
+          "id": "6a4e632fc909d08384496853",
           "slug": "unita",
           "title": "Unitá",
-          "shortDescription": "Integrated agricultural data platform for crop management and monitoring."
+          "shortDescription": "Intelligent platform connecting field data for rapid decision making."
         },
         {
-          "id": "6a51dc9cb989194a2449af75",
+          "id": "6a4e632fc909d08384496854",
           "slug": "agricultura-de-precisao",
-          "title": "Precision Agriculture",
-          "shortDescription": "Agronomic research is one of the pillars of Grupo PA. We constantly invest..."
+          "title": "Precision\nAgriculture",
+          "shortDescription": "Detailed mapping and localized variable rate applications to save resources."
         },
         {
-          "id": "6a51dc9cb989194a2449af76",
+          "id": "6a4e632fc909d08384496855",
           "slug": "gestao-de-compras",
-          "title": "Procurement Management",
-          "shortDescription": "Procurement management goes far beyond price negotiation. Our..."
-        },
-        {
-          "id": "6a51dc9cb989194a2449af77",
-          "slug": "pesquisa-agronomica",
-          "title": "Agronomic\nResearch",
-          "shortDescription": "Agronomic research is one of the pillars of Grupo PA. We constantly invest..."
+          "title": "Purchase\nManagement",
+          "shortDescription": "Market intelligence and strategic negotiation for agricultural input acquisition."
         }
       ],
-      "ecosystemBadge": "Our Strength in the Field",
-      "ecosystemTitle": "Eco",
-      "ecosystemSubtitle": "system",
-      "ecosystemSubtitleColor": null,
+      "ecosystemBadge": "ECOSYSTEM",
+      "ecosystemTitle": "The strength of our",
+      "ecosystemSubtitle": "Integrated Ecosystem",
+      "ecosystemSubtitleColor": "#88a668",
       "ecosystemCards": [
         {
-          "id": "6a51dc9cb989194a2449af77",
-          "image": {
-            "id": 151,
-            "alt": "ALD Bioenergia Card",
-            "updatedAt": "2026-07-11T06:02:10.608Z",
-            "createdAt": "2026-07-11T06:02:08.049Z",
-            "url": "/cms-media/ald_bioenergia-7.webp",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/ald_bioenergia-7-400x300.webp",
-            "filename": "ald_bioenergia-7.webp",
-            "mimeType": "image/webp",
-            "filesize": 179936,
-            "width": 1708,
-            "height": 828,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/ald_bioenergia-7-400x300.webp",
-                "width": 400,
-                "height": 300,
-                "mimeType": "image/webp",
-                "filesize": 16172,
-                "filename": "ald_bioenergia-7-400x300.webp"
-              },
-              "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/ald_bioenergia-7-768x512.webp",
-                "width": 768,
-                "height": 512,
-                "mimeType": "image/webp",
-                "filesize": 54818,
-                "filename": "ald_bioenergia-7-768x512.webp"
-              },
-              "hero": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              }
-            }
-          },
+          "id": "6a4e632fc909d08384496856",
+          "image": null,
           "link": "/aldbioenergia",
-          "title": "ALD Bioenergia"
+          "title": "ALD Bioenergy"
         },
         {
-          "id": "6a51dc9cb989194a2449af78",
-          "image": {
-            "id": 152,
-            "alt": "Lavoura Card",
-            "updatedAt": "2026-07-11T06:02:14.459Z",
-            "createdAt": "2026-07-11T06:02:12.998Z",
-            "url": "/cms-media/lavoura-7.webp",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/lavoura-7-400x300.webp",
-            "filename": "lavoura-7.webp",
-            "mimeType": "image/webp",
-            "filesize": 53612,
-            "width": 889,
-            "height": 500,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/lavoura-7-400x300.webp",
-                "width": 400,
-                "height": 300,
-                "mimeType": "image/webp",
-                "filesize": 18570,
-                "filename": "lavoura-7-400x300.webp"
-              },
-              "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/lavoura-7-768x512.webp",
-                "width": 768,
-                "height": 512,
-                "mimeType": "image/webp",
-                "filesize": 45462,
-                "filename": "lavoura-7-768x512.webp"
-              },
-              "hero": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              }
-            }
-          },
+          "id": "6a4e632fc909d08384496857",
+          "image": null,
           "link": "/lavoura",
-          "title": "Crop"
+          "title": "Farmland"
         },
         {
-          "id": "6a51dc9cb989194a2449af79",
-          "image": {
-            "id": 153,
-            "alt": "Centro de Pesquisa Card",
-            "updatedAt": "2026-07-11T06:02:19.889Z",
-            "createdAt": "2026-07-11T06:02:17.765Z",
-            "url": "/cms-media/centro_pesquisa-7.webp",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/centro_pesquisa-7-400x300.webp",
-            "filename": "centro_pesquisa-7.webp",
-            "mimeType": "image/webp",
-            "filesize": 647730,
-            "width": 2560,
-            "height": 1707,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/centro_pesquisa-7-400x300.webp",
-                "width": 400,
-                "height": 300,
-                "mimeType": "image/webp",
-                "filesize": 33208,
-                "filename": "centro_pesquisa-7-400x300.webp"
-              },
-              "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/centro_pesquisa-7-768x512.webp",
-                "width": 768,
-                "height": 512,
-                "mimeType": "image/webp",
-                "filesize": 95854,
-                "filename": "centro_pesquisa-7-768x512.webp"
-              },
-              "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/centro_pesquisa-7-1920x1080.webp",
-                "width": 1920,
-                "height": 1080,
-                "mimeType": "image/webp",
-                "filesize": 389428,
-                "filename": "centro_pesquisa-7-1920x1080.webp"
-              }
-            }
-          },
+          "id": "6a4e632fc909d08384496858",
+          "image": null,
           "link": "/centropesquisa",
           "title": "Research Center"
         },
         {
-          "id": "6a51dc9cb989194a2449af7a",
-          "image": {
-            "id": 154,
-            "alt": "Eventos Card",
-            "updatedAt": "2026-07-11T06:02:26.908Z",
-            "createdAt": "2026-07-11T06:02:24.419Z",
-            "url": "/cms-media/eventos-7.webp",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/eventos-7-400x300.webp",
-            "filename": "eventos-7.webp",
-            "mimeType": "image/webp",
-            "filesize": 1511712,
-            "width": 2560,
-            "height": 3840,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/eventos-7-400x300.webp",
-                "width": 400,
-                "height": 300,
-                "mimeType": "image/webp",
-                "filesize": 9760,
-                "filename": "eventos-7-400x300.webp"
-              },
-              "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/eventos-7-768x512.webp",
-                "width": 768,
-                "height": 512,
-                "mimeType": "image/webp",
-                "filesize": 35836,
-                "filename": "eventos-7-768x512.webp"
-              },
-              "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/eventos-7-1920x1080.webp",
-                "width": 1920,
-                "height": 1080,
-                "mimeType": "image/webp",
-                "filesize": 277394,
-                "filename": "eventos-7-1920x1080.webp"
-              }
-            }
-          },
+          "id": "6a4e632fc909d08384496859",
+          "image": null,
           "link": "/palestras",
           "title": "Lectures and Events"
         }
       ],
-      "updatedAt": "2026-07-15T15:52:46.319Z",
-      "createdAt": "2026-07-10T01:14:36.581Z",
+      "updatedAt": "2026-07-08T14:48:15.509Z",
+      "createdAt": "2026-06-26T18:55:41.758Z",
       "globalType": "services-page"
     },
     "careers-page": {
       "id": 1,
-      "heroImage": null,
+      "heroImage": {
+        "id": 45,
+        "alt": "Hero Carreiras",
+        "updatedAt": "2026-07-01T03:24:02.523Z",
+        "createdAt": "2026-07-01T03:24:02.519Z",
+        "url": "/cms-media/bg_carreiras.webp",
+        "thumbnailURL": "http://localhost:3000/api/media/file/bg_carreiras-400x300.webp",
+        "filename": "bg_carreiras.webp",
+        "mimeType": "image/webp",
+        "filesize": 137784,
+        "width": 2560,
+        "height": 1707,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "http://localhost:3000/api/media/file/bg_carreiras-400x300.webp",
+            "width": 400,
+            "height": 300,
+            "mimeType": "image/webp",
+            "filesize": 12264,
+            "filename": "bg_carreiras-400x300.webp"
+          },
+          "card": {
+            "url": "http://localhost:3000/api/media/file/bg_carreiras-768x512.webp",
+            "width": 768,
+            "height": 512,
+            "mimeType": "image/webp",
+            "filesize": 25154,
+            "filename": "bg_carreiras-768x512.webp"
+          },
+          "hero": {
+            "url": "http://localhost:3000/api/media/file/bg_carreiras-1920x1080.webp",
+            "width": 1920,
+            "height": 1080,
+            "mimeType": "image/webp",
+            "filesize": 79340,
+            "filename": "bg_carreiras-1920x1080.webp"
+          }
+        }
+      },
       "heroImageTablet": null,
       "heroImageMobile": null,
       "title": "Be part ",
       "titleHighlight": "of PA",
-      "titleHighlightColor": null,
+      "titleHighlightColor": "#88a668",
       "introText": "At Grupo PA, we understand that the best opportunities aren't necessarily the easiest, but those that challenge, develop, and enable professional and personal growth.\n\nWe look for committed, curious people who are willing to evolve every day. People who value teamwork, take on responsibilities, and see challenges as learning opportunities.\n\nWhether in consulting, research, agricultural production, or other Grupo PA businesses, we work to build a strong team that is prepared and passionate about what they do.",
-      "updatedAt": "2026-07-10T21:53:28.063Z",
-      "createdAt": "2026-07-10T01:14:41.134Z",
+      "updatedAt": "2026-07-08T14:48:15.559Z",
+      "createdAt": "2026-07-01T03:24:02.577Z",
       "globalType": "careers-page"
     },
     "contact-settings": {
@@ -2382,67 +1949,61 @@
       "heroImage": null,
       "heroImageTablet": null,
       "heroImageMobile": null,
-      "formRecipientEmail": "rh@agropa.com.br",
-      "careerRecipientEmail": "rh@agropa.com.br",
+      "formRecipientEmail": null,
+      "careerRecipientEmail": null,
       "phone": "(65) 3016-1203",
       "whatsapp": "",
       "formTitle": "Contact us",
       "formDescription": "Our team is available to answer questions, present our services, and help you find the best solutions for your reality. Get in touch with us. It will be a pleasure to talk to you.",
       "addresses": [
         {
-          "id": "6a5169dbf23afd4d2c5c4724",
+          "id": "6a4e632fc909d0838449685d",
           "phone": "(65) 3016-1203",
           "email": "contato@agropa.com.br",
           "title": "Grupo PA - Headquarters",
           "address": "Av. Brasil, 2453 - Jardim Cidade Alta, Tangará da Serra-MT - 78306-157"
         },
         {
-          "id": "6a5169dbf23afd4d2c5c4725",
+          "id": "6a4e632fc909d0838449685e",
           "phone": "(65) 3325-3129",
           "email": "administrativoagricola@agropa.com.br",
           "title": "São Paulo Farm",
           "address": "BR-364 Highway, KM 724 + 15Km right - Rural Area, Diamantino-MT - 78.304-000"
         },
         {
-          "id": "6a5169dbf23afd4d2c5c4726",
-          "phone": "(65) 3016-1203",
-          "email": "contato@agropa.com.br",
+          "id": "6a4e632fc909d0838449685f",
+          "phone": null,
+          "email": null,
           "title": "Sinop branch",
           "address": "Trivium Gallery – Room 01, Rua das Andirobas, 223, Commercial Sector, CEP: 78550-000"
         }
       ],
-      "updatedAt": "2026-07-14T18:56:53.953Z",
-      "createdAt": "2026-07-10T01:14:43.994Z",
+      "updatedAt": "2026-07-08T14:48:15.603Z",
+      "createdAt": "2026-07-06T20:02:46.970Z",
       "globalType": "contact-settings"
     },
     "footer-settings": {
       "id": 1,
       "addresses": [
         {
-          "id": "6a5169dff23afd4d2c5c4729",
+          "id": "6a4e632fc909d08384496862",
           "mapsUrl": "https://www.google.com/maps/place/-14.6335131,-57.5054472",
           "label": "Headquarters Tangará",
           "text": "Av. Brasil, 2453 - Jardim Cidade Alta, Tangará da Serra - MT, 78306-157"
         },
         {
-          "id": "6a5169dff23afd4d2c5c472a",
+          "id": "6a4e632fc909d08384496863",
           "mapsUrl": "https://www.google.com/maps/place/-14.053104768419136,-57.302202616270456",
           "label": "Branch Diamantino",
           "text": "BR-364 Highway, KM 724 + 15Km right - Rural Area, Diamantino - MT, 78304-000"
-        },
-        {
-          "id": "6a5686ad0f2f1776e15d8c86",
-          "mapsUrl": "https://maps.app.goo.gl/ELFvbjRkpG4VedCZ6",
-          "label": "Sinop",
-          "text": "Galeria Trivium – Sala 01, Rua das Andirobas, 223, Setor Comercial, CEP: 78550-000"
         }
       ],
-      "linkedinUrl": "https://www.linkedin.com/company/pa-consultoria-agron%C3%B4mica/",
-      "instagramUrl": "https://www.instagram.com/paconsultoriaagronomica/",
+      "linkedinUrl": null,
+      "instagramUrl": null,
       "facebookUrl": null,
-      "youtubeUrl": "https://www.youtube.com/@AgroPa",
-      "updatedAt": "2026-07-14T19:12:04.003Z",
-      "createdAt": "2026-07-10T01:14:47.699Z",
+      "youtubeUrl": null,
+      "updatedAt": "2026-07-07T14:51:00.481Z",
+      "createdAt": "2026-07-07T14:51:00.481Z",
       "globalType": "footer-settings"
     },
     "ald-bioenergia-page": {
@@ -2455,10 +2016,10 @@
   "collections": {
     "services": [
       {
-        "id": 4,
-        "title": "Purchase Management",
-        "slug": "gestao-de-compras",
-        "shortDescription": "Strategic advice on input acquisition.",
+        "id": 21,
+        "title": "Pesquisa\nAgronômica",
+        "slug": "pesquisa-agronomica",
+        "shortDescription": "A pesquisa agronômica é um dos pilares do Grupo PA. Investimos constantemente...",
         "leftContent": {
           "root": {
             "type": "root",
@@ -2471,53 +2032,15 @@
                 "format": "",
                 "indent": 0,
                 "version": 1,
-                "children": [],
-                "direction": null,
-                "textStyle": "",
-                "textFormat": 0
-              },
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
                 "children": [
                   {
-                    "mode": "normal",
-                    "text": "Procurement management goes far beyond price negotiation. Our work is focused on developing strategies that bring greater efficiency, security, and profitability to rural producers by analyzing the best purchasing timing, suppliers, market opportunities, and the cost-benefit of each investment made.",
+                    "text": "A pesquisa agronômica é um dos pilares do Grupo PA. Investimos constantemente em estudos e validações a campo para desenvolver soluções mais eficientes, sustentáveis e alinhadas à realidade do produtor rural.",
                     "type": "text",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0,
                     "version": 1
                   }
-                ],
-                "direction": null,
-                "textStyle": "",
-                "textFormat": 0
-              },
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "mode": "normal",
-                    "text": "We manage the acquisition of agricultural machinery, equipment, and inputs, strengthening our clients’ negotiation power and contributing to more assertive decisions within their operations.",
-                    "type": "text",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0,
-                    "version": 1
-                  }
-                ],
-                "direction": null,
-                "textStyle": "",
-                "textFormat": 0
+                ]
               }
-            ],
-            "direction": null
+            ]
           }
         },
         "bottomContent": {
@@ -2534,71 +2057,42 @@
                 "version": 1,
                 "children": [
                   {
-                    "mode": "normal",
-                    "text": "With technical knowledge and a strategic vision of the agricultural market, we seek alternatives that combine operational performance, durability, and economic feasibility.",
+                    "text": "Cada experimento é conduzido com acompanhamento técnico e análise detalhada dos resultados obtidos em campo.",
                     "type": "text",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0,
                     "version": 1
                   }
-                ],
-                "direction": null,
-                "textStyle": "",
-                "textFormat": 0
-              },
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "mode": "normal",
-                    "text": "Beyond commercial analysis, we monitor market trends, price fluctuations, and new technologies available, allowing producers to have greater clarity and confidence when making investments. Our goal is to transform purchasing into a strategic tool to improve field results and optimize agricultural operation costs.",
-                    "type": "text",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0,
-                    "version": 1
-                  }
-                ],
-                "direction": null,
-                "textStyle": "",
-                "textFormat": 0
-              },
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "mode": "normal",
-                    "text": "Today, Grupo PA manages millions in procurement operations, building strong relationships with partners and suppliers to create better opportunities for the producers we serve.",
-                    "type": "text",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0,
-                    "version": 1
-                  }
-                ],
-                "direction": null,
-                "textStyle": "",
-                "textFormat": 0
+                ]
               }
-            ],
-            "direction": null
+            ]
           }
         },
+        "coverImage": null,
+        "coverImageTablet": null,
+        "coverImageMobile": null,
+        "illustrationImage": null,
+        "showIllustration": true,
+        "cycleActive": false,
+        "cycleColor": "#88a668",
+        "cycleAccentColor": "#88a668",
+        "cycleSteps": [],
+        "updatedAt": "2026-07-30T13:48:12.957Z",
+        "createdAt": "2026-07-30T13:48:12.956Z"
+      },
+      {
+        "id": 4,
+        "title": "Purchase Management",
+        "slug": "gestao-de-compras",
+        "shortDescription": "Strategic advice on input acquisition.",
+        "leftContent": null,
+        "bottomContent": null,
         "coverImage": {
-          "id": 161,
+          "id": 43,
           "alt": "Hero Gestão de Compras",
-          "updatedAt": "2026-07-11T06:03:02.884Z",
-          "createdAt": "2026-07-11T06:03:00.788Z",
-          "url": "/cms-media/bg_gestao_compras-7.webp",
-          "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/bg_gestao_compras-7-400x300.webp",
-          "filename": "bg_gestao_compras-7.webp",
+          "updatedAt": "2026-06-26T18:55:40.112Z",
+          "createdAt": "2026-06-26T18:55:40.111Z",
+          "url": "/cms-media/bg_gestao_compras.webp",
+          "thumbnailURL": "http://localhost:3000/api/media/file/bg_gestao_compras-400x300.webp",
+          "filename": "bg_gestao_compras.webp",
           "mimeType": "image/webp",
           "filesize": 113956,
           "width": 2560,
@@ -2607,41 +2101,41 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/bg_gestao_compras-7-400x300.webp",
+              "url": "http://localhost:3000/api/media/file/bg_gestao_compras-400x300.webp",
               "width": 400,
               "height": 300,
               "mimeType": "image/webp",
               "filesize": 13056,
-              "filename": "bg_gestao_compras-7-400x300.webp"
+              "filename": "bg_gestao_compras-400x300.webp"
             },
             "card": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/bg_gestao_compras-7-768x512.webp",
+              "url": "http://localhost:3000/api/media/file/bg_gestao_compras-768x512.webp",
               "width": 768,
               "height": 512,
               "mimeType": "image/webp",
               "filesize": 28142,
-              "filename": "bg_gestao_compras-7-768x512.webp"
+              "filename": "bg_gestao_compras-768x512.webp"
             },
             "hero": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/bg_gestao_compras-7-1920x1080.webp",
+              "url": "http://localhost:3000/api/media/file/bg_gestao_compras-1920x1080.webp",
               "width": 1920,
               "height": 1080,
               "mimeType": "image/webp",
               "filesize": 76962,
-              "filename": "bg_gestao_compras-7-1920x1080.webp"
+              "filename": "bg_gestao_compras-1920x1080.webp"
             }
           }
         },
         "coverImageTablet": null,
         "coverImageMobile": null,
         "illustrationImage": {
-          "id": 162,
+          "id": 44,
           "alt": "Ilustração Gestão de Compras",
-          "updatedAt": "2026-07-11T06:03:07.578Z",
-          "createdAt": "2026-07-11T06:03:05.699Z",
-          "url": "/cms-media/img_gestao_compras-7.webp",
-          "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/img_gestao_compras-7-400x300.webp",
-          "filename": "img_gestao_compras-7.webp",
+          "updatedAt": "2026-06-26T18:55:41.701Z",
+          "createdAt": "2026-06-26T18:55:41.701Z",
+          "url": "/cms-media/img_gestao_compras.webp",
+          "thumbnailURL": "http://localhost:3000/api/media/file/img_gestao_compras-400x300.webp",
+          "filename": "img_gestao_compras.webp",
           "mimeType": "image/webp",
           "filesize": 50898,
           "width": 2560,
@@ -2650,28 +2144,28 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/img_gestao_compras-7-400x300.webp",
+              "url": "http://localhost:3000/api/media/file/img_gestao_compras-400x300.webp",
               "width": 400,
               "height": 300,
               "mimeType": "image/webp",
               "filesize": 5658,
-              "filename": "img_gestao_compras-7-400x300.webp"
+              "filename": "img_gestao_compras-400x300.webp"
             },
             "card": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/img_gestao_compras-7-768x512.webp",
+              "url": "http://localhost:3000/api/media/file/img_gestao_compras-768x512.webp",
               "width": 768,
               "height": 512,
               "mimeType": "image/webp",
               "filesize": 12088,
-              "filename": "img_gestao_compras-7-768x512.webp"
+              "filename": "img_gestao_compras-768x512.webp"
             },
             "hero": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/img_gestao_compras-7-1920x1080.webp",
+              "url": "http://localhost:3000/api/media/file/img_gestao_compras-1920x1080.webp",
               "width": 1920,
               "height": 1080,
               "mimeType": "image/webp",
               "filesize": 36340,
-              "filename": "img_gestao_compras-7-1920x1080.webp"
+              "filename": "img_gestao_compras-1920x1080.webp"
             }
           }
         },
@@ -2680,124 +2174,24 @@
         "cycleColor": "#88a668",
         "cycleAccentColor": "#88a668",
         "cycleSteps": [],
-        "updatedAt": "2026-07-15T16:04:47.226Z",
-        "createdAt": "2026-07-10T01:13:57.983Z"
+        "updatedAt": "2026-07-08T14:48:15.153Z",
+        "createdAt": "2026-06-17T19:28:05.867Z"
       },
       {
         "id": 3,
         "title": "Precision Agriculture",
         "slug": "agricultura-de-precisao",
         "shortDescription": "Advanced technology for variable rate application.",
-        "leftContent": {
-          "root": {
-            "type": "root",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "mode": "normal",
-                    "text": "Agronomic research is one of the pillars of Grupo PA. We continuously invest in field studies and validations to develop more efficient, sustainable solutions aligned with the reality of rural producers.",
-                    "type": "text",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0,
-                    "version": 1
-                  }
-                ],
-                "direction": null,
-                "textStyle": "",
-                "textFormat": 0
-              },
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "mode": "normal",
-                    "text": "Our goal is to transform data and experiments into practical strategies that contribute to increasing crop productivity and profitability. We currently have more than 60 hectares dedicated exclusively to research, where we conduct trials involving cultivars, soil fertility, crop protection management, input positioning, climate impacts, and new technologies applied to agriculture.",
-                    "type": "text",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0,
-                    "version": 1
-                  }
-                ],
-                "direction": null,
-                "textStyle": "",
-                "textFormat": 0
-              }
-            ],
-            "direction": null
-          }
-        },
-        "bottomContent": {
-          "root": {
-            "type": "root",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "mode": "normal",
-                    "text": "Each experiment is conducted with technical monitoring and detailed analysis of the results obtained in the field. Through research, we gain a deeper understanding of crop behavior and anticipate solutions for the challenges faced by producers. This allows us to generate reliable information, reduce risks, and support more assertive decision-making within agricultural operations.",
-                    "type": "text",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0,
-                    "version": 1
-                  }
-                ],
-                "direction": null,
-                "textStyle": "",
-                "textFormat": 0
-              },
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "mode": "normal",
-                    "text": "Our commitment is to bring innovation closer to field practices, connecting science, technology, and agronomic expertise to drive sustainable results in agribusiness.",
-                    "type": "text",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0,
-                    "version": 1
-                  }
-                ],
-                "direction": null,
-                "textStyle": "",
-                "textFormat": 0
-              }
-            ],
-            "direction": null
-          }
-        },
+        "leftContent": null,
+        "bottomContent": null,
         "coverImage": {
-          "id": 159,
+          "id": 40,
           "alt": "Hero Agricultura de Precisão",
-          "updatedAt": "2026-07-11T06:02:51.945Z",
-          "createdAt": "2026-07-11T06:02:49.595Z",
-          "url": "/cms-media/bg_agricultura_precisao-7.webp",
-          "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/bg_agricultura_precisao-7-400x300.webp",
-          "filename": "bg_agricultura_precisao-7.webp",
+          "updatedAt": "2026-06-26T18:55:35.709Z",
+          "createdAt": "2026-06-26T18:55:35.709Z",
+          "url": "/cms-media/bg_agricultura_precisao.webp",
+          "thumbnailURL": "http://localhost:3000/api/media/file/bg_agricultura_precisao-400x300.webp",
+          "filename": "bg_agricultura_precisao.webp",
           "mimeType": "image/webp",
           "filesize": 326474,
           "width": 2560,
@@ -2806,41 +2200,41 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/bg_agricultura_precisao-7-400x300.webp",
+              "url": "http://localhost:3000/api/media/file/bg_agricultura_precisao-400x300.webp",
               "width": 400,
               "height": 300,
               "mimeType": "image/webp",
               "filesize": 30652,
-              "filename": "bg_agricultura_precisao-7-400x300.webp"
+              "filename": "bg_agricultura_precisao-400x300.webp"
             },
             "card": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/bg_agricultura_precisao-7-768x512.webp",
+              "url": "http://localhost:3000/api/media/file/bg_agricultura_precisao-768x512.webp",
               "width": 768,
               "height": 512,
               "mimeType": "image/webp",
               "filesize": 73640,
-              "filename": "bg_agricultura_precisao-7-768x512.webp"
+              "filename": "bg_agricultura_precisao-768x512.webp"
             },
             "hero": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/bg_agricultura_precisao-7-1920x1080.webp",
+              "url": "http://localhost:3000/api/media/file/bg_agricultura_precisao-1920x1080.webp",
               "width": 1920,
               "height": 1080,
               "mimeType": "image/webp",
               "filesize": 220728,
-              "filename": "bg_agricultura_precisao-7-1920x1080.webp"
+              "filename": "bg_agricultura_precisao-1920x1080.webp"
             }
           }
         },
         "coverImageTablet": null,
         "coverImageMobile": null,
         "illustrationImage": {
-          "id": 160,
+          "id": 41,
           "alt": "Ilustração Agricultura de Precisão",
-          "updatedAt": "2026-07-11T06:02:57.797Z",
-          "createdAt": "2026-07-11T06:02:55.244Z",
-          "url": "/cms-media/img_agricultura_precisao-7.webp",
-          "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/img_agricultura_precisao-7-400x300.webp",
-          "filename": "img_agricultura_precisao-7.webp",
+          "updatedAt": "2026-06-26T18:55:38.312Z",
+          "createdAt": "2026-06-26T18:55:38.312Z",
+          "url": "/cms-media/img_agricultura_precisao.webp",
+          "thumbnailURL": "http://localhost:3000/api/media/file/img_agricultura_precisao-400x300.webp",
+          "filename": "img_agricultura_precisao.webp",
           "mimeType": "image/webp",
           "filesize": 701570,
           "width": 2560,
@@ -2849,28 +2243,28 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/img_agricultura_precisao-7-400x300.webp",
+              "url": "http://localhost:3000/api/media/file/img_agricultura_precisao-400x300.webp",
               "width": 400,
               "height": 300,
               "mimeType": "image/webp",
               "filesize": 29928,
-              "filename": "img_agricultura_precisao-7-400x300.webp"
+              "filename": "img_agricultura_precisao-400x300.webp"
             },
             "card": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/img_agricultura_precisao-7-768x512.webp",
+              "url": "http://localhost:3000/api/media/file/img_agricultura_precisao-768x512.webp",
               "width": 768,
               "height": 512,
               "mimeType": "image/webp",
               "filesize": 89252,
-              "filename": "img_agricultura_precisao-7-768x512.webp"
+              "filename": "img_agricultura_precisao-768x512.webp"
             },
             "hero": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/img_agricultura_precisao-7-1920x1080.webp",
+              "url": "http://localhost:3000/api/media/file/img_agricultura_precisao-1920x1080.webp",
               "width": 1920,
               "height": 1080,
               "mimeType": "image/webp",
               "filesize": 394798,
-              "filename": "img_agricultura_precisao-7-1920x1080.webp"
+              "filename": "img_agricultura_precisao-1920x1080.webp"
             }
           }
         },
@@ -2879,144 +2273,24 @@
         "cycleColor": "#88a668",
         "cycleAccentColor": "#88a668",
         "cycleSteps": [],
-        "updatedAt": "2026-07-15T16:03:26.116Z",
-        "createdAt": "2026-07-10T01:13:55.218Z"
+        "updatedAt": "2026-07-08T14:48:15.112Z",
+        "createdAt": "2026-06-17T19:28:05.858Z"
       },
       {
         "id": 2,
         "title": "Unitá",
         "slug": "unita",
         "shortDescription": "Integrated data platform.",
-        "leftContent": {
-          "root": {
-            "type": "root",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "mode": "normal",
-                    "text": "The results of an application do not always depend solely on the product used. Equipment calibration and operational quality make all the difference in ensuring that the management practices deliver the expected results.",
-                    "type": "text",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0,
-                    "version": 1
-                  }
-                ],
-                "direction": null,
-                "textStyle": "",
-                "textFormat": 0
-              },
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "mode": "normal",
-                    "text": "Through the partnership between PA Consultoria and Kimberlit, consulting clients have access to UniTA, a service that evaluates the quality of applications carried out on the farm and identifies opportunities for improvement in equipment and operations.",
-                    "type": "text",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0,
-                    "version": 1
-                  }
-                ],
-                "direction": null,
-                "textStyle": "",
-                "textFormat": 0
-              }
-            ],
-            "direction": null
-          }
-        },
-        "bottomContent": {
-          "root": {
-            "type": "root",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "mode": "normal",
-                    "text": "The work is performed directly on the property, analyzing details that impact spraying efficiency and helping ensure that the management practices recommended by the technical team are executed in the best possible way.",
-                    "type": "text",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0,
-                    "version": 1
-                  }
-                ],
-                "direction": null,
-                "textStyle": "",
-                "textFormat": 0
-              },
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "mode": "normal",
-                    "text": "Often, small adjustments can generate significant gains in efficiency, reduce losses, and improve the utilization of products applied to the crop.",
-                    "type": "text",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0,
-                    "version": 1
-                  }
-                ],
-                "direction": null,
-                "textStyle": "",
-                "textFormat": 0
-              },
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "mode": "normal",
-                    "text": "UniTA is an exclusive benefit for PA Consultoria clients and comes at no additional cost. It is another tool to support decision-making in the field and help producers achieve the maximum results from every application.",
-                    "type": "text",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0,
-                    "version": 1
-                  }
-                ],
-                "direction": null,
-                "textStyle": "",
-                "textFormat": 0
-              }
-            ],
-            "direction": null
-          }
-        },
+        "leftContent": null,
+        "bottomContent": null,
         "coverImage": {
-          "id": 157,
+          "id": 37,
           "alt": "Hero Unitá",
-          "updatedAt": "2026-07-11T06:02:42.005Z",
-          "createdAt": "2026-07-11T06:02:39.739Z",
-          "url": "/cms-media/bg_unita-7.png",
-          "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/bg_unita-7-400x300.jpg",
-          "filename": "bg_unita-7.png",
+          "updatedAt": "2026-06-26T18:55:33.488Z",
+          "createdAt": "2026-06-26T18:55:33.488Z",
+          "url": "/cms-media/bg_unita.png",
+          "thumbnailURL": "http://localhost:3000/api/media/file/bg_unita-400x300.jpg",
+          "filename": "bg_unita.png",
           "mimeType": "image/png",
           "filesize": 1060994,
           "width": 1024,
@@ -3025,20 +2299,20 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/bg_unita-7-400x300.jpg",
+              "url": "http://localhost:3000/api/media/file/bg_unita-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
               "filesize": 38334,
-              "filename": "bg_unita-7-400x300.jpg"
+              "filename": "bg_unita-400x300.jpg"
             },
             "card": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/bg_unita-7-768x512.jpg",
+              "url": "http://localhost:3000/api/media/file/bg_unita-768x512.jpg",
               "width": 768,
               "height": 512,
               "mimeType": "image/jpeg",
               "filesize": 109672,
-              "filename": "bg_unita-7-768x512.jpg"
+              "filename": "bg_unita-768x512.jpg"
             },
             "hero": {
               "url": null,
@@ -3053,43 +2327,43 @@
         "coverImageTablet": null,
         "coverImageMobile": null,
         "illustrationImage": {
-          "id": 164,
-          "alt": "abstract",
-          "updatedAt": "2026-07-15T16:01:58.758Z",
-          "createdAt": "2026-07-11T16:15:42.412Z",
-          "url": "/cms-media/abstract-bubbles-of-yellow-green-and-orange-2026-03-26-00-11-02-utc.jpg.webp",
-          "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/abstract-bubbles-of-yellow-green-and-orange-2026-03-26-00-11-02-utc.jpg-400x300.webp",
-          "filename": "abstract-bubbles-of-yellow-green-and-orange-2026-03-26-00-11-02-utc.jpg.webp",
-          "mimeType": "image/webp",
-          "filesize": 907424,
-          "width": 5009,
-          "height": 2818,
+          "id": 38,
+          "alt": "Ilustração Unitá",
+          "updatedAt": "2026-06-26T18:55:33.650Z",
+          "createdAt": "2026-06-26T18:55:33.650Z",
+          "url": "/cms-media/img_unita.png",
+          "thumbnailURL": "http://localhost:3000/api/media/file/img_unita-400x300.jpg",
+          "filename": "img_unita.png",
+          "mimeType": "image/png",
+          "filesize": 826139,
+          "width": 1024,
+          "height": 1024,
           "focalX": 50,
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/abstract-bubbles-of-yellow-green-and-orange-2026-03-26-00-11-02-utc.jpg-400x300.webp",
+              "url": "http://localhost:3000/api/media/file/img_unita-400x300.jpg",
               "width": 400,
               "height": 300,
-              "mimeType": "image/webp",
-              "filesize": 19238,
-              "filename": "abstract-bubbles-of-yellow-green-and-orange-2026-03-26-00-11-02-utc.jpg-400x300.webp"
+              "mimeType": "image/jpeg",
+              "filesize": 35979,
+              "filename": "img_unita-400x300.jpg"
             },
             "card": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/abstract-bubbles-of-yellow-green-and-orange-2026-03-26-00-11-02-utc.jpg-768x512.webp",
+              "url": "http://localhost:3000/api/media/file/img_unita-768x512.jpg",
               "width": 768,
               "height": 512,
-              "mimeType": "image/webp",
-              "filesize": 51014,
-              "filename": "abstract-bubbles-of-yellow-green-and-orange-2026-03-26-00-11-02-utc.jpg-768x512.webp"
+              "mimeType": "image/jpeg",
+              "filesize": 91937,
+              "filename": "img_unita-768x512.jpg"
             },
             "hero": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/abstract-bubbles-of-yellow-green-and-orange-2026-03-26-00-11-02-utc.jpg-1920x1080.webp",
-              "width": 1920,
-              "height": 1080,
-              "mimeType": "image/webp",
-              "filesize": 194044,
-              "filename": "abstract-bubbles-of-yellow-green-and-orange-2026-03-26-00-11-02-utc.jpg-1920x1080.webp"
+              "url": null,
+              "width": null,
+              "height": null,
+              "mimeType": null,
+              "filesize": null,
+              "filename": null
             }
           }
         },
@@ -3098,164 +2372,24 @@
         "cycleColor": "#88a668",
         "cycleAccentColor": "#88a668",
         "cycleSteps": [],
-        "updatedAt": "2026-07-15T16:02:07.743Z",
-        "createdAt": "2026-07-10T01:13:52.526Z"
+        "updatedAt": "2026-07-08T14:48:15.069Z",
+        "createdAt": "2026-06-17T19:28:05.847Z"
       },
       {
         "id": 1,
         "title": "Agronomic Consulting",
         "slug": "consultoria-agronomica",
         "shortDescription": "Complete technical management to maximize productivity.",
-        "leftContent": {
-          "root": {
-            "type": "root",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "mode": "normal",
-                    "text": "PA Consultoria was born from the field and built its reputation by delivering what truly matters to producers: reliable information for decision-making. Behind the company is a farming family that, for more than three decades, has experienced the challenges of agriculture firsthand. This essence remains with us to this day.",
-                    "type": "text",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0,
-                    "version": 1
-                  }
-                ],
-                "direction": null,
-                "textStyle": "",
-                "textFormat": 0
-              },
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "mode": "normal",
-                    "text": "In addition to being consultants and researchers, we continue to be producers, facing the same challenges, opportunities, and risks of every harvest.",
-                    "type": "text",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0,
-                    "version": 1
-                  }
-                ],
-                "direction": null,
-                "textStyle": "",
-                "textFormat": 0
-              }
-            ],
-            "direction": null
-          }
-        },
-        "bottomContent": {
-          "root": {
-            "type": "root",
-            "format": "",
-            "indent": 0,
-            "version": 1,
-            "children": [
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "mode": "normal",
-                    "text": "This experience has shaped the way we work. We believe that a recommendation only has value when it works within the reality of each farm. That is why we combine practical experience, agronomic research, and technical support to transform knowledge into results.",
-                    "type": "text",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0,
-                    "version": 1
-                  }
-                ],
-                "direction": null,
-                "textStyle": "",
-                "textFormat": 0
-              },
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "mode": "normal",
-                    "text": "With a solid research structure, we generate our own data and insights. This knowledge is validated in the field and directly applied to our clients’ realities, ensuring independent, reliable recommendations aligned with the needs of each property.",
-                    "type": "text",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0,
-                    "version": 1
-                  }
-                ],
-                "direction": null,
-                "textStyle": "",
-                "textFormat": 0
-              },
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "mode": "normal",
-                    "text": "Throughout our journey, we have earned the trust of hundreds of producers and become a benchmark in agronomic consulting, research, and knowledge generation for agribusiness. Our credibility is the result of work built on close relationships, excellence, and a commitment to delivering results.",
-                    "type": "text",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0,
-                    "version": 1
-                  }
-                ],
-                "direction": null,
-                "textStyle": "",
-                "textFormat": 0
-              },
-              {
-                "type": "paragraph",
-                "format": "",
-                "indent": 0,
-                "version": 1,
-                "children": [
-                  {
-                    "mode": "normal",
-                    "text": "We are strategic partners for producers seeking productivity, efficiency, sustainability, and confidence in their decision-making.",
-                    "type": "text",
-                    "style": "",
-                    "detail": 0,
-                    "format": 0,
-                    "version": 1
-                  }
-                ],
-                "direction": null,
-                "textStyle": "",
-                "textFormat": 0
-              }
-            ],
-            "direction": null
-          }
-        },
+        "leftContent": null,
+        "bottomContent": null,
         "coverImage": {
-          "id": 155,
+          "id": 34,
           "alt": "Hero Consultoria Agronômica",
-          "updatedAt": "2026-07-11T06:02:32.435Z",
-          "createdAt": "2026-07-11T06:02:30.203Z",
-          "url": "/cms-media/bg_consultoria_agronomica-7.webp",
-          "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/bg_consultoria_agronomica-7-400x300.webp",
-          "filename": "bg_consultoria_agronomica-7.webp",
+          "updatedAt": "2026-06-26T18:55:32.218Z",
+          "createdAt": "2026-06-26T18:55:32.218Z",
+          "url": "/cms-media/bg_consultoria_agronomica.webp",
+          "thumbnailURL": "http://localhost:3000/api/media/file/bg_consultoria_agronomica-400x300.webp",
+          "filename": "bg_consultoria_agronomica.webp",
           "mimeType": "image/webp",
           "filesize": 607166,
           "width": 2560,
@@ -3264,71 +2398,71 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/bg_consultoria_agronomica-7-400x300.webp",
+              "url": "http://localhost:3000/api/media/file/bg_consultoria_agronomica-400x300.webp",
               "width": 400,
               "height": 300,
               "mimeType": "image/webp",
               "filesize": 33354,
-              "filename": "bg_consultoria_agronomica-7-400x300.webp"
+              "filename": "bg_consultoria_agronomica-400x300.webp"
             },
             "card": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/bg_consultoria_agronomica-7-768x512.webp",
+              "url": "http://localhost:3000/api/media/file/bg_consultoria_agronomica-768x512.webp",
               "width": 768,
               "height": 512,
               "mimeType": "image/webp",
               "filesize": 96190,
-              "filename": "bg_consultoria_agronomica-7-768x512.webp"
+              "filename": "bg_consultoria_agronomica-768x512.webp"
             },
             "hero": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/bg_consultoria_agronomica-7-1920x1080.webp",
+              "url": "http://localhost:3000/api/media/file/bg_consultoria_agronomica-1920x1080.webp",
               "width": 1920,
               "height": 1080,
               "mimeType": "image/webp",
               "filesize": 379342,
-              "filename": "bg_consultoria_agronomica-7-1920x1080.webp"
+              "filename": "bg_consultoria_agronomica-1920x1080.webp"
             }
           }
         },
         "coverImageTablet": null,
         "coverImageMobile": null,
         "illustrationImage": {
-          "id": 174,
-          "alt": "Fazenda São Paulo",
-          "updatedAt": "2026-07-13T20:50:23.384Z",
-          "createdAt": "2026-07-13T20:50:23.124Z",
-          "url": "/cms-media/DJI_240720257-1.jpeg",
-          "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/DJI_240720257-1-400x300.jpg",
-          "filename": "DJI_240720257-1.jpeg",
-          "mimeType": "image/jpeg",
-          "filesize": 122586,
-          "width": 1280,
-          "height": 720,
+          "id": 35,
+          "alt": "Ilustração Consultoria Agronômica",
+          "updatedAt": "2026-06-26T18:55:33.252Z",
+          "createdAt": "2026-06-26T18:55:33.252Z",
+          "url": "/cms-media/img_consultoria_agronomica.webp",
+          "thumbnailURL": "http://localhost:3000/api/media/file/img_consultoria_agronomica-400x300.webp",
+          "filename": "img_consultoria_agronomica.webp",
+          "mimeType": "image/webp",
+          "filesize": 417570,
+          "width": 1920,
+          "height": 1080,
           "focalX": 50,
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/DJI_240720257-1-400x300.jpg",
+              "url": "http://localhost:3000/api/media/file/img_consultoria_agronomica-400x300.webp",
               "width": 400,
               "height": 300,
-              "mimeType": "image/jpeg",
-              "filesize": 23246,
-              "filename": "DJI_240720257-1-400x300.jpg"
+              "mimeType": "image/webp",
+              "filesize": 30874,
+              "filename": "img_consultoria_agronomica-400x300.webp"
             },
             "card": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/DJI_240720257-1-768x512.jpg",
+              "url": "http://localhost:3000/api/media/file/img_consultoria_agronomica-768x512.webp",
               "width": 768,
               "height": 512,
-              "mimeType": "image/jpeg",
-              "filesize": 67439,
-              "filename": "DJI_240720257-1-768x512.jpg"
+              "mimeType": "image/webp",
+              "filesize": 95790,
+              "filename": "img_consultoria_agronomica-768x512.webp"
             },
             "hero": {
-              "url": null,
-              "width": null,
-              "height": null,
-              "mimeType": null,
-              "filesize": null,
-              "filename": null
+              "url": "http://localhost:3000/api/media/file/img_consultoria_agronomica-1920x1080.webp",
+              "width": 1920,
+              "height": 1080,
+              "mimeType": "image/webp",
+              "filesize": 417570,
+              "filename": "img_consultoria_agronomica-1920x1080.webp"
             }
           }
         },
@@ -3337,361 +2471,450 @@
         "cycleColor": "#88a668",
         "cycleAccentColor": "#88a668",
         "cycleSteps": [],
-        "updatedAt": "2026-07-15T15:57:06.886Z",
-        "createdAt": "2026-07-10T01:13:49.802Z"
+        "updatedAt": "2026-07-08T14:48:15.023Z",
+        "createdAt": "2026-06-17T19:28:05.701Z"
       }
     ],
     "jobs": [
       {
-        "id": 1,
-        "title": "Administrative Analyst II",
-        "slug": "Administrative Analyst II",
-        "summary": "Ensure the organization and efficiency of the company’s financial, tax, and administrative processes, ensuring compliance with legal and tax obligations, effective expense control, supplier management, and support for the administrative and financial coordination team.",
-        "description": null,
+        "id": 5,
+        "slug": "engenheiro-agronomo",
         "requirements": [
           {
-            "id": "6a518f709b1d4aa458d41b71",
-            "item": "Category AB Driver’s License"
+            "id": "6a4c2f44084213fa6aa6c59b"
           },
           {
-            "id": "6a518f799b1d4aa458d41b72",
-            "item": "Experience as an Administrative and Financial Analyst"
+            "id": "6a4c2f50084213fa6aa6c59d"
           }
         ],
         "responsibilities": [
           {
-            "id": "6a518f7c9b1d4aa458d41b73",
-            "item": "Perform bank reconciliations"
-          },
-          {
-            "id": "6a518f819b1d4aa458d41b74",
-            "item": "Enter invoices into the system"
+            "id": "6a4c2f73084213fa6aa6c59f"
           }
         ],
         "status": "open",
         "visible": true,
-        "openingDate": "2026-07-10T12:00:00.000Z",
-        "closingDate": "2026-07-11T12:00:00.000Z",
+        "openingDate": null,
+        "closingDate": null,
+        "order": 0,
+        "updatedAt": "2026-07-07T17:37:59.702Z",
+        "createdAt": "2026-07-06T22:43:27.604Z"
+      },
+      {
+        "id": 1,
+        "slug": "analista-administrativo-corporativo",
+        "requirements": [
+          {
+            "id": "6a32f3f6803b2c7a48d5ef9d"
+          },
+          {
+            "id": "6a32f3f6803b2c7a48d5ef9e"
+          },
+          {
+            "id": "6a32f3f6803b2c7a48d5ef9f"
+          },
+          {
+            "id": "6a32f3f6803b2c7a48d5efa0"
+          },
+          {
+            "id": "6a32f3f6803b2c7a48d5efa1"
+          },
+          {
+            "id": "6a32f3f6803b2c7a48d5efa2"
+          },
+          {
+            "id": "6a32f3f6803b2c7a48d5efa3"
+          }
+        ],
+        "responsibilities": [
+          {
+            "id": "6a32f3f6803b2c7a48d5efa4"
+          },
+          {
+            "id": "6a32f3f6803b2c7a48d5efa5"
+          },
+          {
+            "id": "6a32f3f6803b2c7a48d5efa6"
+          },
+          {
+            "id": "6a32f3f6803b2c7a48d5efa7"
+          },
+          {
+            "id": "6a32f3f6803b2c7a48d5efa8"
+          },
+          {
+            "id": "6a32f3f6803b2c7a48d5efa9"
+          }
+        ],
+        "status": "open",
+        "visible": true,
+        "openingDate": null,
+        "closingDate": null,
         "order": 1,
-        "updatedAt": "2026-07-15T16:10:29.645Z",
-        "createdAt": "2026-07-11T00:34:30.540Z"
+        "updatedAt": "2026-06-17T19:22:30.197Z",
+        "createdAt": "2026-06-17T19:22:30.196Z"
+      },
+      {
+        "id": 2,
+        "slug": "analista-centro-de-operacoes-agricolas-coa",
+        "requirements": [
+          {
+            "id": "6a32f3f6803b2c7a48d5efaa"
+          },
+          {
+            "id": "6a32f3f6803b2c7a48d5efab"
+          },
+          {
+            "id": "6a32f3f6803b2c7a48d5efac"
+          },
+          {
+            "id": "6a32f3f6803b2c7a48d5efad"
+          },
+          {
+            "id": "6a32f3f6803b2c7a48d5efae"
+          }
+        ],
+        "responsibilities": [
+          {
+            "id": "6a32f3f6803b2c7a48d5efaf"
+          },
+          {
+            "id": "6a32f3f6803b2c7a48d5efb0"
+          },
+          {
+            "id": "6a32f3f6803b2c7a48d5efb1"
+          },
+          {
+            "id": "6a32f3f6803b2c7a48d5efb2"
+          },
+          {
+            "id": "6a32f3f6803b2c7a48d5efb3"
+          }
+        ],
+        "status": "open",
+        "visible": true,
+        "openingDate": null,
+        "closingDate": null,
+        "order": 2,
+        "updatedAt": "2026-06-17T19:22:30.217Z",
+        "createdAt": "2026-06-17T19:22:30.217Z"
+      },
+      {
+        "id": 3,
+        "slug": "estagio-obrigatorio",
+        "requirements": [
+          {
+            "id": "6a32f3f6803b2c7a48d5efb4"
+          },
+          {
+            "id": "6a32f3f6803b2c7a48d5efb5"
+          },
+          {
+            "id": "6a32f3f6803b2c7a48d5efb6"
+          },
+          {
+            "id": "6a32f3f6803b2c7a48d5efb7"
+          }
+        ],
+        "responsibilities": [
+          {
+            "id": "6a32f3f6803b2c7a48d5efb8"
+          },
+          {
+            "id": "6a32f3f6803b2c7a48d5efb9"
+          },
+          {
+            "id": "6a32f3f6803b2c7a48d5efba"
+          },
+          {
+            "id": "6a32f3f6803b2c7a48d5efbb"
+          }
+        ],
+        "status": "paused",
+        "visible": true,
+        "openingDate": "2026-06-01T12:00:00.000Z",
+        "closingDate": "2026-07-05T12:00:00.000Z",
+        "order": 3,
+        "updatedAt": "2026-07-01T04:26:17.220Z",
+        "createdAt": "2026-06-17T19:22:30.234Z"
       }
     ],
     "map-locations": [
       {
-        "id": 27,
-        "title": "Nova Olímpia - MT",
-        "city": "Nova Olímpia",
-        "state": "MT",
-        "area": "3.006,7 Hac.",
-        "description": null,
-        "positionX": 523,
-        "positionY": 552,
+        "id": 40,
+        "title": "Sidrolândia - MT",
+        "city": "Sidrolândia",
+        "state": "MS",
+        "area": "20000 Hac.",
+        "description": "teste",
+        "positionX": 609,
+        "positionY": 520,
         "published": true,
-        "updatedAt": "2026-07-13T20:27:07.507Z",
-        "createdAt": "2026-07-13T18:08:05.124Z"
+        "updatedAt": "2026-07-09T00:21:00.370Z",
+        "createdAt": "2026-07-09T00:14:33.329Z"
       },
       {
-        "id": 26,
+        "id": 39,
         "title": "União do Sul - MT",
         "city": "União do Sul",
         "state": "MT",
-        "area": "2.059,13",
+        "area": "2059.13",
         "description": null,
         "positionX": 595,
         "positionY": 440,
         "published": true,
-        "updatedAt": "2026-07-13T20:23:12.875Z",
-        "createdAt": "2026-07-10T01:14:26.633Z"
+        "updatedAt": "2026-07-08T14:45:12.444Z",
+        "createdAt": "2026-07-08T14:45:12.444Z"
       },
       {
-        "id": 25,
-        "title": "Tangará da Serra - MT",
-        "city": "Tangará da Serra",
-        "state": "MT",
-        "area": "21.289,57",
-        "description": null,
-        "positionX": 515,
-        "positionY": 565,
-        "published": true,
-        "updatedAt": "2026-07-13T20:27:31.799Z",
-        "createdAt": "2026-07-10T01:14:25.626Z"
-      },
-      {
-        "id": 24,
+        "id": 38,
         "title": "Tabaporã - MT",
         "city": "Tabaporã",
         "state": "MT",
-        "area": "7.260,7",
+        "area": "7260.7",
         "description": null,
         "positionX": 540,
         "positionY": 440,
         "published": true,
-        "updatedAt": "2026-07-13T20:27:42.205Z",
-        "createdAt": "2026-07-10T01:14:24.596Z"
+        "updatedAt": "2026-07-08T14:45:12.432Z",
+        "createdAt": "2026-07-08T14:45:12.432Z"
       },
       {
-        "id": 23,
+        "id": 37,
         "title": "Sinop - MT",
         "city": "Sinop",
         "state": "MT",
-        "area": "4.284,67",
+        "area": "4284.67",
         "description": null,
         "positionX": 570,
         "positionY": 455,
         "published": true,
-        "updatedAt": "2026-07-13T20:27:52.586Z",
-        "createdAt": "2026-07-10T01:14:23.585Z"
+        "updatedAt": "2026-07-08T14:45:12.420Z",
+        "createdAt": "2026-07-08T14:45:12.420Z"
       },
       {
-        "id": 22,
+        "id": 36,
         "title": "Sapezal - MT",
         "city": "Sapezal",
         "state": "MT",
-        "area": "3.509,8",
+        "area": "3509.8",
         "description": null,
         "positionX": 450,
         "positionY": 520,
         "published": true,
-        "updatedAt": "2026-07-13T20:28:10.488Z",
-        "createdAt": "2026-07-10T01:14:22.568Z"
+        "updatedAt": "2026-07-08T14:45:12.409Z",
+        "createdAt": "2026-07-08T14:45:12.409Z"
       },
       {
-        "id": 21,
+        "id": 35,
         "title": "São José do Rio Claro - MT",
         "city": "São José do Rio Claro",
         "state": "MT",
-        "area": "7.107,81",
+        "area": "7107.81",
         "description": null,
         "positionX": 540,
         "positionY": 520,
         "published": true,
-        "updatedAt": "2026-07-13T20:28:21.977Z",
-        "createdAt": "2026-07-10T01:14:21.559Z"
+        "updatedAt": "2026-07-08T14:45:12.397Z",
+        "createdAt": "2026-07-08T14:45:12.397Z"
       },
       {
-        "id": 20,
+        "id": 34,
         "title": "Santo Afonso - MT",
         "city": "Santo Afonso",
         "state": "MT",
-        "area": "6.049,7",
+        "area": "6049.7",
         "description": null,
         "positionX": 515,
         "positionY": 560,
         "published": true,
-        "updatedAt": "2026-07-13T20:28:41.656Z",
-        "createdAt": "2026-07-10T01:14:20.555Z"
+        "updatedAt": "2026-07-08T14:45:12.386Z",
+        "createdAt": "2026-07-08T14:45:12.386Z"
       },
       {
-        "id": 19,
+        "id": 33,
         "title": "Santa Rita do Trivelato - MT",
         "city": "Santa Rita do Trivelato",
         "state": "MT",
-        "area": "1.400,31",
+        "area": "1400.31",
         "description": null,
         "positionX": 590,
         "positionY": 535,
         "published": true,
-        "updatedAt": "2026-07-13T20:28:52.131Z",
-        "createdAt": "2026-07-10T01:14:19.541Z"
+        "updatedAt": "2026-07-08T14:45:12.374Z",
+        "createdAt": "2026-07-08T14:45:12.374Z"
       },
       {
-        "id": 18,
+        "id": 32,
         "title": "Salto do Céu - MT",
         "city": "Salto do Céu",
         "state": "MT",
-        "area": "2.018,55",
+        "area": "2018.55",
         "description": null,
         "positionX": 475,
         "positionY": 615,
         "published": true,
-        "updatedAt": "2026-07-13T20:29:03.208Z",
-        "createdAt": "2026-07-10T01:14:18.539Z"
+        "updatedAt": "2026-07-08T14:45:12.363Z",
+        "createdAt": "2026-07-08T14:45:12.363Z"
       },
       {
-        "id": 17,
+        "id": 31,
         "title": "Porto dos Gaúchos - MT",
         "city": "Porto dos Gaúchos",
         "state": "MT",
-        "area": "1.420",
+        "area": "1420",
         "description": null,
         "positionX": 515,
         "positionY": 465,
         "published": true,
-        "updatedAt": "2026-07-13T20:29:17.118Z",
-        "createdAt": "2026-07-10T01:14:17.533Z"
+        "updatedAt": "2026-07-08T14:45:12.351Z",
+        "createdAt": "2026-07-08T14:45:12.351Z"
       },
       {
-        "id": 16,
+        "id": 30,
         "title": "Novo Progresso - PA",
         "city": "Novo Progresso",
         "state": "PA",
-        "area": "555,7",
+        "area": "555.7",
         "description": null,
         "positionX": 465,
         "positionY": 265,
         "published": true,
-        "updatedAt": "2026-07-13T20:29:30.218Z",
-        "createdAt": "2026-07-10T01:14:16.526Z"
+        "updatedAt": "2026-07-08T14:45:12.339Z",
+        "createdAt": "2026-07-08T14:45:12.339Z"
       },
       {
-        "id": 14,
-        "title": "Nova Mutum - MT",
-        "city": "Nova Mutum",
-        "state": "MT",
-        "area": "4.420,7",
-        "description": null,
-        "positionX": 570,
-        "positionY": 535,
-        "published": true,
-        "updatedAt": "2026-07-13T20:29:44.184Z",
-        "createdAt": "2026-07-10T01:14:14.519Z"
-      },
-      {
-        "id": 13,
+        "id": 29,
         "title": "Nova Maringá - MT",
         "city": "Nova Maringá",
         "state": "MT",
-        "area": "26.184,7",
+        "area": "26184.7",
         "description": null,
         "positionX": 495,
         "positionY": 500,
         "published": true,
-        "updatedAt": "2026-07-13T20:29:59.932Z",
-        "createdAt": "2026-07-10T01:14:13.511Z"
+        "updatedAt": "2026-07-08T14:45:12.322Z",
+        "createdAt": "2026-07-08T14:45:12.322Z"
       },
       {
-        "id": 12,
+        "id": 28,
         "title": "Nova Marilândia - MT",
         "city": "Nova Marilândia",
         "state": "MT",
-        "area": "755,54",
+        "area": "755.54",
         "description": null,
         "positionX": 520,
         "positionY": 562,
         "published": true,
-        "updatedAt": "2026-07-13T20:30:12.190Z",
-        "createdAt": "2026-07-10T01:14:12.497Z"
+        "updatedAt": "2026-07-08T14:45:12.310Z",
+        "createdAt": "2026-07-08T14:45:12.310Z"
       },
       {
-        "id": 11,
+        "id": 27,
         "title": "Nortelândia - MT",
         "city": "Nortelândia",
         "state": "MT",
-        "area": "491,57",
+        "area": "491.57",
         "description": null,
         "positionX": 520,
         "positionY": 565,
         "published": true,
-        "updatedAt": "2026-07-13T20:30:35.035Z",
-        "createdAt": "2026-07-10T01:14:11.477Z"
+        "updatedAt": "2026-07-08T14:45:12.299Z",
+        "createdAt": "2026-07-08T14:45:12.299Z"
       },
       {
-        "id": 10,
+        "id": 26,
         "title": "Marcelândia - MT",
         "city": "Marcelândia",
         "state": "MT",
-        "area": "3.519,79",
+        "area": "3519.79",
         "description": null,
         "positionX": 605,
         "positionY": 440,
         "published": true,
-        "updatedAt": "2026-07-13T20:30:47.125Z",
-        "createdAt": "2026-07-10T01:14:10.452Z"
+        "updatedAt": "2026-07-08T14:45:12.286Z",
+        "createdAt": "2026-07-08T14:45:12.286Z"
       },
       {
-        "id": 9,
+        "id": 25,
         "title": "Juara - MT",
         "city": "Juara",
         "state": "MT",
-        "area": "3.275",
+        "area": "3275",
         "description": null,
         "positionX": 505,
         "positionY": 455,
         "published": true,
-        "updatedAt": "2026-07-13T20:31:11.004Z",
-        "createdAt": "2026-07-10T01:14:09.438Z"
+        "updatedAt": "2026-07-08T14:45:12.274Z",
+        "createdAt": "2026-07-08T14:45:12.274Z"
       },
       {
-        "id": 8,
+        "id": 24,
         "title": "Ipiranga do Norte - MT",
         "city": "Ipiranga do Norte",
         "state": "MT",
-        "area": "5.206,6",
+        "area": "5206.6",
         "description": null,
         "positionX": 570,
         "positionY": 485,
         "published": true,
-        "updatedAt": "2026-07-13T20:31:24.316Z",
-        "createdAt": "2026-07-10T01:14:07.721Z"
+        "updatedAt": "2026-07-08T14:45:12.263Z",
+        "createdAt": "2026-07-08T14:45:12.263Z"
       },
       {
-        "id": 7,
-        "title": "Diamantino - MT",
-        "city": "Diamantino",
-        "state": "MT",
-        "area": "51.300,05",
-        "description": null,
-        "positionX": 550,
-        "positionY": 550,
-        "published": true,
-        "updatedAt": "2026-07-13T19:16:36.909Z",
-        "createdAt": "2026-07-10T01:14:06.723Z"
-      },
-      {
-        "id": 6,
+        "id": 23,
         "title": "Comodoro - MT",
         "city": "Comodoro",
         "state": "MT",
-        "area": "12.755",
+        "area": "12755",
         "description": null,
         "positionX": 415,
         "positionY": 537,
         "published": true,
-        "updatedAt": "2026-07-13T20:31:50.855Z",
-        "createdAt": "2026-07-10T01:14:05.721Z"
+        "updatedAt": "2026-07-08T14:45:12.246Z",
+        "createdAt": "2026-07-08T14:45:12.246Z"
       },
       {
-        "id": 5,
+        "id": 22,
         "title": "Cláudia - MT",
         "city": "Cláudia",
         "state": "MT",
-        "area": "3.329",
+        "area": "3329",
         "description": null,
         "positionX": 590,
         "positionY": 450,
         "published": true,
-        "updatedAt": "2026-07-13T20:32:03.940Z",
-        "createdAt": "2026-07-10T01:14:04.719Z"
+        "updatedAt": "2026-07-08T14:45:12.233Z",
+        "createdAt": "2026-07-08T14:45:12.233Z"
       },
       {
-        "id": 4,
+        "id": 21,
         "title": "Campo Novo do Parecis - MT",
         "city": "Campo Novo do Parecis",
         "state": "MT",
-        "area": "43.235,51",
+        "area": "43235.51",
         "description": null,
         "positionX": 505,
         "positionY": 535,
         "published": true,
-        "updatedAt": "2026-07-13T20:32:18.091Z",
-        "createdAt": "2026-07-10T01:14:03.720Z"
+        "updatedAt": "2026-07-08T14:45:12.220Z",
+        "createdAt": "2026-07-08T14:45:12.220Z"
       },
       {
-        "id": 3,
+        "id": 20,
         "title": "Brasnorte - MT",
         "city": "Brasnorte",
         "state": "MT",
-        "area": "7.667,74",
+        "area": "7667.74",
         "description": null,
         "positionX": 475,
         "positionY": 490,
         "published": true,
-        "updatedAt": "2026-07-13T20:32:36.700Z",
-        "createdAt": "2026-07-10T01:14:02.716Z"
+        "updatedAt": "2026-07-08T14:45:12.208Z",
+        "createdAt": "2026-07-08T14:45:12.208Z"
       },
       {
-        "id": 2,
+        "id": 19,
         "title": "Barra do Bugres - MT",
         "city": "Barra do Bugres",
         "state": "MT",
@@ -3700,36 +2923,152 @@
         "positionX": 525,
         "positionY": 585,
         "published": true,
-        "updatedAt": "2026-07-10T01:14:01.707Z",
-        "createdAt": "2026-07-10T01:14:01.707Z"
+        "updatedAt": "2026-07-08T14:45:12.197Z",
+        "createdAt": "2026-07-08T14:45:12.196Z"
       },
       {
-        "id": 1,
+        "id": 18,
         "title": "Arenápolis - MT",
         "city": "Arenápolis",
         "state": "MT",
-        "area": "3.153.11",
+        "area": "3153.11",
         "description": null,
         "positionX": 528,
         "positionY": 565,
         "published": true,
-        "updatedAt": "2026-07-13T20:26:28.582Z",
-        "createdAt": "2026-07-10T01:14:00.696Z"
+        "updatedAt": "2026-07-08T14:45:12.178Z",
+        "createdAt": "2026-07-08T14:45:12.178Z"
+      },
+      {
+        "id": 17,
+        "title": "Nova Olímpia - MT",
+        "city": "Nova Olímpa",
+        "state": "MT",
+        "area": "12000 Hac.",
+        "description": "teste",
+        "positionX": 495,
+        "positionY": 546,
+        "published": true,
+        "updatedAt": "2026-07-08T13:22:25.372Z",
+        "createdAt": "2026-07-08T13:22:10.095Z"
+      },
+      {
+        "id": 16,
+        "title": "Primavera do Leste - MT",
+        "city": "Primavera do Leste",
+        "state": "MT",
+        "area": "5.400 Hac.",
+        "description": null,
+        "positionX": 500.8,
+        "positionY": 593.7,
+        "published": true,
+        "updatedAt": "2026-06-17T19:23:17.061Z",
+        "createdAt": "2026-06-17T19:23:17.061Z"
+      },
+      {
+        "id": 15,
+        "title": "Nova Mutum - MT",
+        "city": "Nova Mutum",
+        "state": "MT",
+        "area": "7.800 Hac.",
+        "description": null,
+        "positionX": 530.4,
+        "positionY": 572.2,
+        "published": true,
+        "updatedAt": "2026-06-17T19:23:17.052Z",
+        "createdAt": "2026-06-17T19:23:17.052Z"
+      },
+      {
+        "id": 14,
+        "title": "Querência - MT",
+        "city": "Querência",
+        "state": "MT",
+        "area": "6.200 Hac.",
+        "description": null,
+        "positionX": 556.9,
+        "positionY": 550.7,
+        "published": true,
+        "updatedAt": "2026-06-17T19:23:17.044Z",
+        "createdAt": "2026-06-17T19:23:17.044Z"
+      },
+      {
+        "id": 13,
+        "title": "Sorriso - MT",
+        "city": "Sorriso",
+        "state": "MT",
+        "area": "15.600 Hac.",
+        "description": null,
+        "positionX": 480.4,
+        "positionY": 474.2,
+        "published": true,
+        "updatedAt": "2026-06-17T19:23:17.035Z",
+        "createdAt": "2026-06-17T19:23:17.035Z"
+      },
+      {
+        "id": 12,
+        "title": "Lucas do Rio Verde - MT",
+        "city": "Lucas do Rio Verde",
+        "state": "MT",
+        "area": "8.500 Hac.",
+        "description": null,
+        "positionX": 525.4,
+        "positionY": 517.4,
+        "published": true,
+        "updatedAt": "2026-06-17T19:23:17.028Z",
+        "createdAt": "2026-06-17T19:23:17.028Z"
+      },
+      {
+        "id": 11,
+        "title": "Diamantino - MT",
+        "city": "Diamantino",
+        "state": "MT",
+        "area": "9.300 Hac.",
+        "description": null,
+        "positionX": 495.9,
+        "positionY": 535,
+        "published": true,
+        "updatedAt": "2026-06-17T19:23:17.020Z",
+        "createdAt": "2026-06-17T19:23:17.020Z"
+      },
+      {
+        "id": 9,
+        "title": "Bom Jesus do Araguaia - MT",
+        "city": "Bom Jesus do Araguaia",
+        "state": "MT",
+        "area": "3.450 Hac.",
+        "description": null,
+        "positionX": 650,
+        "positionY": 448,
+        "published": true,
+        "updatedAt": "2026-06-17T19:23:17.002Z",
+        "createdAt": "2026-06-17T19:23:17.002Z"
+      },
+      {
+        "id": 2,
+        "title": "Tangará da Serra - MT",
+        "city": "Tangará da Serra",
+        "state": "MT",
+        "area": "12.100 Hac.",
+        "description": null,
+        "positionX": 626,
+        "positionY": 484,
+        "published": true,
+        "updatedAt": "2026-07-08T13:21:01.331Z",
+        "createdAt": "2026-06-17T19:22:30.138Z"
       }
     ],
     "testimonials": [
       {
-        "id": 1,
+        "id": 5,
         "authorName": "Ricardo Mantovani",
-        "authorDescription": "Mantovani Group • Sorriso - MT",
         "photo": {
-          "id": 77,
-          "alt": "Ricardo Mantovani",
-          "updatedAt": "2026-07-10T21:51:43.740Z",
-          "createdAt": "2026-07-10T21:51:42.355Z",
-          "url": "/cms-media/65c4d9fbb138a93ced0c88eca17bafbf1d87fb04-4.jpg",
-          "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/65c4d9fbb138a93ced0c88eca17bafbf1d87fb04-4-400x300.jpg",
-          "filename": "65c4d9fbb138a93ced0c88eca17bafbf1d87fb04-4.jpg",
+          "id": 25,
+          "alt": "ricardo montovani",
+          "updatedAt": "2026-06-26T14:53:17.287Z",
+          "createdAt": "2026-06-26T14:53:17.287Z",
+          "url": "/cms-media/65c4d9fbb138a93ced0c88eca17bafbf1d87fb04-1.jpg",
+          "thumbnailURL": "http://localhost:3000/api/media/file/65c4d9fbb138a93ced0c88eca17bafbf1d87fb04-1-400x300.jpg",
+          "filename": "65c4d9fbb138a93ced0c88eca17bafbf1d87fb04-1.jpg",
           "mimeType": "image/jpeg",
           "filesize": 20589,
           "width": 400,
@@ -3738,12 +3077,12 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/65c4d9fbb138a93ced0c88eca17bafbf1d87fb04-4-400x300.jpg",
+              "url": "http://localhost:3000/api/media/file/65c4d9fbb138a93ced0c88eca17bafbf1d87fb04-1-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
               "filesize": 12542,
-              "filename": "65c4d9fbb138a93ced0c88eca17bafbf1d87fb04-4-400x300.jpg"
+              "filename": "65c4d9fbb138a93ced0c88eca17bafbf1d87fb04-1-400x300.jpg"
             },
             "card": {
               "url": null,
@@ -3763,24 +3102,22 @@
             }
           }
         },
-        "quote": "What I like most about the team is that they are not office consultants. They are always here at the farm, entering the field, looking at pests up close, and discussing management with me in the yard. It's technical support that gives a lot of confidence when making decisions.",
         "order": 1,
         "published": true,
-        "updatedAt": "2026-07-10T21:52:55.023Z",
-        "createdAt": "2026-07-10T21:36:49.171Z"
+        "updatedAt": "2026-06-26T14:53:18.488Z",
+        "createdAt": "2026-06-17T19:23:16.865Z"
       },
       {
-        "id": 2,
+        "id": 6,
         "authorName": "Aline Albuquerque",
-        "authorDescription": "Albuquerque Agribusiness • Rio Verde - GO",
         "photo": {
-          "id": 75,
-          "alt": "Aline Albuquerque",
-          "updatedAt": "2026-07-10T21:51:37.505Z",
-          "createdAt": "2026-07-10T21:51:35.933Z",
-          "url": "/cms-media/971dc91ffb3df0e774cb402e6525eb1b44564eb4-3.jpg",
-          "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/971dc91ffb3df0e774cb402e6525eb1b44564eb4-3-400x300.jpg",
-          "filename": "971dc91ffb3df0e774cb402e6525eb1b44564eb4-3.jpg",
+          "id": 24,
+          "alt": "aline albuquerque",
+          "updatedAt": "2026-06-26T14:52:51.601Z",
+          "createdAt": "2026-06-26T14:52:51.601Z",
+          "url": "/cms-media/971dc91ffb3df0e774cb402e6525eb1b44564eb4.jpg",
+          "thumbnailURL": "http://localhost:3000/api/media/file/971dc91ffb3df0e774cb402e6525eb1b44564eb4-400x300.jpg",
+          "filename": "971dc91ffb3df0e774cb402e6525eb1b44564eb4.jpg",
           "mimeType": "image/jpeg",
           "filesize": 24530,
           "width": 400,
@@ -3789,20 +3126,20 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/971dc91ffb3df0e774cb402e6525eb1b44564eb4-3-400x300.jpg",
+              "url": "http://localhost:3000/api/media/file/971dc91ffb3df0e774cb402e6525eb1b44564eb4-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
               "filesize": 12429,
-              "filename": "971dc91ffb3df0e774cb402e6525eb1b44564eb4-3-400x300.jpg"
+              "filename": "971dc91ffb3df0e774cb402e6525eb1b44564eb4-400x300.jpg"
             },
             "card": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/971dc91ffb3df0e774cb402e6525eb1b44564eb4-3-768x512.jpg",
+              "url": "http://localhost:3000/api/media/file/971dc91ffb3df0e774cb402e6525eb1b44564eb4-768x512.jpg",
               "width": 768,
               "height": 512,
               "mimeType": "image/jpeg",
               "filesize": 28153,
-              "filename": "971dc91ffb3df0e774cb402e6525eb1b44564eb4-3-768x512.jpg"
+              "filename": "971dc91ffb3df0e774cb402e6525eb1b44564eb4-768x512.jpg"
             },
             "hero": {
               "url": null,
@@ -3814,24 +3151,22 @@
             }
           }
         },
-        "quote": "We bought new machinery and various digital tools, but we were missing the hands and training to get everything running. The PA team unlocked that for us, generating the application maps we needed to save on inputs.",
         "order": 2,
         "published": true,
-        "updatedAt": "2026-07-10T21:52:58.801Z",
-        "createdAt": "2026-07-10T21:36:52.353Z"
+        "updatedAt": "2026-06-26T14:52:53.801Z",
+        "createdAt": "2026-06-17T19:23:16.972Z"
       },
       {
-        "id": 3,
+        "id": 7,
         "authorName": "Geraldo Augusto",
-        "authorDescription": "Santa Maria Farm • Cristalina - GO",
         "photo": {
-          "id": 76,
-          "alt": "Geraldo Augusto",
-          "updatedAt": "2026-07-10T21:51:40.662Z",
-          "createdAt": "2026-07-10T21:51:39.171Z",
-          "url": "/cms-media/3556d9be59a0ee15266fcdd51184fd62ffd60e02-3.jpg",
-          "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/3556d9be59a0ee15266fcdd51184fd62ffd60e02-3-400x300.jpg",
-          "filename": "3556d9be59a0ee15266fcdd51184fd62ffd60e02-3.jpg",
+          "id": 23,
+          "alt": "geraldo augusto",
+          "updatedAt": "2026-06-26T14:52:24.055Z",
+          "createdAt": "2026-06-26T14:52:24.055Z",
+          "url": "/cms-media/3556d9be59a0ee15266fcdd51184fd62ffd60e02.jpg",
+          "thumbnailURL": "http://localhost:3000/api/media/file/3556d9be59a0ee15266fcdd51184fd62ffd60e02-400x300.jpg",
+          "filename": "3556d9be59a0ee15266fcdd51184fd62ffd60e02.jpg",
           "mimeType": "image/jpeg",
           "filesize": 20633,
           "width": 400,
@@ -3840,20 +3175,20 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/3556d9be59a0ee15266fcdd51184fd62ffd60e02-3-400x300.jpg",
+              "url": "http://localhost:3000/api/media/file/3556d9be59a0ee15266fcdd51184fd62ffd60e02-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
               "filesize": 15228,
-              "filename": "3556d9be59a0ee15266fcdd51184fd62ffd60e02-3-400x300.jpg"
+              "filename": "3556d9be59a0ee15266fcdd51184fd62ffd60e02-400x300.jpg"
             },
             "card": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/3556d9be59a0ee15266fcdd51184fd62ffd60e02-3-768x512.jpg",
+              "url": "http://localhost:3000/api/media/file/3556d9be59a0ee15266fcdd51184fd62ffd60e02-768x512.jpg",
               "width": 768,
               "height": 512,
               "mimeType": "image/jpeg",
               "filesize": 32981,
-              "filename": "3556d9be59a0ee15266fcdd51184fd62ffd60e02-3-768x512.jpg"
+              "filename": "3556d9be59a0ee15266fcdd51184fd62ffd60e02-768x512.jpg"
             },
             "hero": {
               "url": null,
@@ -3865,24 +3200,22 @@
             }
           }
         },
-        "quote": "We already harvested well, but the cost side was a bit disorganized, everything in our heads or in a notebook. They helped organize the harvest numbers and see where the money was going. Today the farm runs much more professionally.",
         "order": 3,
         "published": true,
-        "updatedAt": "2026-07-10T21:53:02.573Z",
-        "createdAt": "2026-07-10T21:36:55.550Z"
+        "updatedAt": "2026-06-26T14:52:26.243Z",
+        "createdAt": "2026-06-17T19:23:16.983Z"
       },
       {
-        "id": 4,
+        "id": 8,
         "authorName": "José Carlos Junqueira",
-        "authorDescription": "Primavera Farm • Uberaba - MG",
         "photo": {
-          "id": 78,
-          "alt": "José Carlos Junqueira",
-          "updatedAt": "2026-07-10T21:51:47.051Z",
-          "createdAt": "2026-07-10T21:51:45.457Z",
-          "url": "/cms-media/c2dddb294cb9e1059aa217cd8c4c942951c32917-3.jpg",
-          "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/c2dddb294cb9e1059aa217cd8c4c942951c32917-3-400x300.jpg",
-          "filename": "c2dddb294cb9e1059aa217cd8c4c942951c32917-3.jpg",
+          "id": 21,
+          "alt": "josé carlos junqueira",
+          "updatedAt": "2026-06-26T14:49:24.366Z",
+          "createdAt": "2026-06-26T14:49:24.366Z",
+          "url": "/cms-media/c2dddb294cb9e1059aa217cd8c4c942951c32917.jpg",
+          "thumbnailURL": "http://localhost:3000/api/media/file/c2dddb294cb9e1059aa217cd8c4c942951c32917-400x300.jpg",
+          "filename": "c2dddb294cb9e1059aa217cd8c4c942951c32917.jpg",
           "mimeType": "image/jpeg",
           "filesize": 43841,
           "width": 400,
@@ -3891,20 +3224,20 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/c2dddb294cb9e1059aa217cd8c4c942951c32917-3-400x300.jpg",
+              "url": "http://localhost:3000/api/media/file/c2dddb294cb9e1059aa217cd8c4c942951c32917-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
               "filesize": 23584,
-              "filename": "c2dddb294cb9e1059aa217cd8c4c942951c32917-3-400x300.jpg"
+              "filename": "c2dddb294cb9e1059aa217cd8c4c942951c32917-400x300.jpg"
             },
             "card": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/c2dddb294cb9e1059aa217cd8c4c942951c32917-3-768x512.jpg",
+              "url": "http://localhost:3000/api/media/file/c2dddb294cb9e1059aa217cd8c4c942951c32917-768x512.jpg",
               "width": 768,
               "height": 512,
               "mimeType": "image/jpeg",
               "filesize": 51770,
-              "filename": "c2dddb294cb9e1059aa217cd8c4c942951c32917-3-768x512.jpg"
+              "filename": "c2dddb294cb9e1059aa217cd8c4c942951c32917-768x512.jpg"
             },
             "hero": {
               "url": null,
@@ -3916,13 +3249,110 @@
             }
           }
         },
-        "quote": "Working with PA took a big worry off my mind. I know that the recommendation, soil profile, and technical monitoring are well handled by people who know what they're doing, so I can focus on other aspects of the business.",
         "order": 4,
         "published": true,
-        "updatedAt": "2026-07-10T21:53:06.431Z",
-        "createdAt": "2026-07-10T21:36:58.732Z"
+        "updatedAt": "2026-06-26T14:57:49.835Z",
+        "createdAt": "2026-06-17T19:23:16.991Z"
+      },
+      {
+        "id": 9,
+        "authorName": "teste",
+        "photo": {
+          "id": 22,
+          "alt": "teste",
+          "updatedAt": "2026-06-26T14:49:57.663Z",
+          "createdAt": "2026-06-26T14:49:57.663Z",
+          "url": "/cms-media/65c4d9fbb138a93ced0c88eca17bafbf1d87fb04.jpg",
+          "thumbnailURL": "http://localhost:3000/api/media/file/65c4d9fbb138a93ced0c88eca17bafbf1d87fb04-400x300.jpg",
+          "filename": "65c4d9fbb138a93ced0c88eca17bafbf1d87fb04.jpg",
+          "mimeType": "image/jpeg",
+          "filesize": 20589,
+          "width": 400,
+          "height": 400,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "http://localhost:3000/api/media/file/65c4d9fbb138a93ced0c88eca17bafbf1d87fb04-400x300.jpg",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/jpeg",
+              "filesize": 12542,
+              "filename": "65c4d9fbb138a93ced0c88eca17bafbf1d87fb04-400x300.jpg"
+            },
+            "card": {
+              "url": null,
+              "width": null,
+              "height": null,
+              "mimeType": null,
+              "filesize": null,
+              "filename": null
+            },
+            "hero": {
+              "url": null,
+              "width": null,
+              "height": null,
+              "mimeType": null,
+              "filesize": null,
+              "filename": null
+            }
+          }
+        },
+        "order": 5,
+        "published": true,
+        "updatedAt": "2026-06-26T14:50:27.326Z",
+        "createdAt": "2026-06-26T14:50:08.620Z"
+      },
+      {
+        "id": 10,
+        "authorName": "Klayton",
+        "photo": {
+          "id": 52,
+          "alt": "teste",
+          "updatedAt": "2026-07-06T22:31:13.855Z",
+          "createdAt": "2026-07-06T22:31:13.854Z",
+          "url": "/cms-media/cris-hemsworth.webp",
+          "thumbnailURL": "http://localhost:3000/api/media/file/cris-hemsworth-400x300.webp",
+          "filename": "cris-hemsworth.webp",
+          "mimeType": "image/webp",
+          "filesize": 59712,
+          "width": 1200,
+          "height": 900,
+          "focalX": 50,
+          "focalY": 50,
+          "sizes": {
+            "thumbnail": {
+              "url": "http://localhost:3000/api/media/file/cris-hemsworth-400x300.webp",
+              "width": 400,
+              "height": 300,
+              "mimeType": "image/webp",
+              "filesize": 12414,
+              "filename": "cris-hemsworth-400x300.webp"
+            },
+            "card": {
+              "url": "http://localhost:3000/api/media/file/cris-hemsworth-768x512.webp",
+              "width": 768,
+              "height": 512,
+              "mimeType": "image/webp",
+              "filesize": 28924,
+              "filename": "cris-hemsworth-768x512.webp"
+            },
+            "hero": {
+              "url": null,
+              "width": null,
+              "height": null,
+              "mimeType": null,
+              "filesize": null,
+              "filename": null
+            }
+          }
+        },
+        "order": 6,
+        "published": true,
+        "updatedAt": "2026-07-06T22:32:16.251Z",
+        "createdAt": "2026-07-06T22:31:33.106Z"
       }
     ]
   },
-  "syncedAt": "2026-07-20T19:05:14.741Z"
+  "syncedAt": "2026-07-30T18:33:35.457Z"
 }

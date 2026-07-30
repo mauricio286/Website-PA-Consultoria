@@ -117,16 +117,23 @@ export default function QuemSomos() {
         }));
   }, [aboutData, staticTimelineItems]);
 
+  const isHeroLoading = aboutData === null;
+  const bgImage = isHeroLoading ? undefined : (aboutData?.heroImage ? api.getMediaUrl(aboutData.heroImage) : imgBg);
+  const bgImageTablet = isHeroLoading ? undefined : (aboutData?.heroImageTablet ? api.getMediaUrl(aboutData.heroImageTablet) : undefined);
+  const bgImageMobile = isHeroLoading ? undefined : (aboutData?.heroImageMobile ? api.getMediaUrl(aboutData.heroImageMobile) : undefined);
+
   return (
     <main className={`${styles.quemSomosPage} page-transition-enter`}>
       {/* Sessão 1 — Hero Banner */}
       <section className={styles.heroSection}>
         <div className={styles.heroBgWrapper}>
-          <picture>
-            {aboutData?.heroImageMobile && <source media="(max-width: 580px)" srcSet={api.getMediaUrl(aboutData.heroImageMobile)} />}
-            {aboutData?.heroImageTablet && <source media="(max-width: 1024px)" srcSet={api.getMediaUrl(aboutData.heroImageTablet)} />}
-            <img src={api.getMediaUrl(aboutData?.heroImage) || imgBg} alt="Background da PA" className={styles.heroBg} />
-          </picture>
+          {bgImage && (
+            <picture>
+              {bgImageMobile && <source media="(max-width: 580px)" srcSet={bgImageMobile} />}
+              {bgImageTablet && <source media="(max-width: 1024px)" srcSet={bgImageTablet} />}
+              <img src={bgImage} alt="Background da PA" className={styles.heroBg} />
+            </picture>
+          )}
         </div>
         
         {/* Scroll down button instead of back button */}
@@ -149,7 +156,7 @@ export default function QuemSomos() {
               {(aboutData?.subtitle || t.quemSomos.introHighlight) && (
                 <>
                   <br />
-                  <span className={styles.highlight}>
+                  <span className={styles.highlight} style={aboutData?.subtitleColor ? { color: aboutData.subtitleColor } : undefined}>
                     {aboutData?.subtitle || t.quemSomos.introHighlight}
                   </span>
                 </>
@@ -253,7 +260,7 @@ export default function QuemSomos() {
               <AnimatedText key={`vid1-${locale}-${videoMainTitle}`} text={videoMainTitle} type="word" />
               {videoMainTitle && videoHighlightTitle && ' '}
               {videoHighlightTitle && (
-                <span className={styles.highlight}>
+                <span className={styles.highlight} style={aboutData?.videoSectionTitleAccentColor ? { color: aboutData.videoSectionTitleAccentColor } : undefined}>
                   <AnimatedText key={`vid2-${locale}-${videoHighlightTitle}`} text={videoHighlightTitle} type="word" delay={0.1} />
                 </span>
               )}
@@ -316,7 +323,6 @@ export default function QuemSomos() {
                 onMouseLeave={handleMouseLeave}
                 onMouseUp={handleMouseUp}
                 onMouseMove={handleMouseMove}
-                data-lenis-prevent="true"
               >
                 {timelineItemsToRender.map((item, idx) => (
                   <div key={idx} className={styles.timelineItemWrapper}>

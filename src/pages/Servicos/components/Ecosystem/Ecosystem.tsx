@@ -79,14 +79,16 @@ export default function Ecosystem({ data }: EcosystemProps) {
         </div>
 
         <h2 className={styles.ecosystemTitle}>
-          {titleAccent && (
-            <span className={styles.highlight}>
-              <AnimatedText key={`eco1-${locale}-${titleAccent}`} text={titleAccent} type="word" />
-              {" "}
-            </span>
-          )}
           {titleNormal && (
-            <AnimatedText key={`eco2-${locale}-${titleNormal}`} text={titleNormal} type="word" delay={titleAccent ? 0.1 : 0} />
+            <AnimatedText key={`eco2-${locale}-${titleNormal}`} text={titleNormal} type="word" />
+          )}
+          {titleAccent && (
+            <span 
+              className={styles.highlight} 
+              style={data?.ecosystemSubtitleColor ? { color: data.ecosystemSubtitleColor } : undefined}
+            >
+              <AnimatedText key={`eco1-${locale}-${titleAccent}`} text={titleAccent} type="word" delay={titleNormal ? 0.15 : 0} />
+            </span>
           )}
         </h2>
 
