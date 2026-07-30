@@ -32,11 +32,10 @@
 
 .bgImage {
   position: absolute;
-  /* Design: left: -7.91%, top: -16.73%, w: 115.77%, h: 144.73% */
-  left: -7.91%;
-  top: -16.73%;
-  width: 115.77%;
-  height: 144.73%;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
   max-width: none;
   object-fit: cover;
   animation: hero-impact-zoom 6.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;

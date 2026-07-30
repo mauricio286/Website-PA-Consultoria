@@ -4,7 +4,7 @@
       "id": 1,
       "heroTitle": "Results\nproven by\nthe field!",
       "heroSubtitle": "Specialized agronomic consulting for farmers seeking excellence, profitability, and security in every planted hectare.",
-      "heroMediaType": "vimeo",
+      "heroMediaType": "upload",
       "heroVimeoUrl": "https://vimeo.com/808678256",
       "heroImage": {
         "id": 35,
@@ -1382,7 +1382,7 @@
       "ctaText": null,
       "ctaButtonLabel": "Fale com um consultor",
       "ctaButtonUrl": "/contato",
-      "updatedAt": "2026-07-30T18:12:58.061Z",
+      "updatedAt": "2026-07-30T19:41:17.669Z",
       "createdAt": "2026-06-17T19:28:05.910Z",
       "globalType": "home-page"
     },
@@ -3354,5 +3354,5 @@
       }
     ]
   },
-  "syncedAt": "2026-07-30T18:33:35.457Z"
+  "syncedAt": "2026-07-30T19:44:19.767Z"
 }

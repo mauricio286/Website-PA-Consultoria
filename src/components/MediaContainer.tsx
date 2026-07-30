@@ -90,7 +90,7 @@ export default function MediaContainer({
   // 3. Imagem estática ou GIF com suporte a diferentes resoluções (Tablet / Mobile)
   if (mediaMobileUrl || mediaTabletUrl) {
     return (
-      <picture className={styles.picture} style={style}>
+      <picture className={`${styles.picture} ${className}`} style={style}>
         {mediaMobileUrl && <source media="(max-width: 580px)" srcSet={mediaMobileUrl} />}
         {mediaTabletUrl && <source media="(max-width: 1024px)" srcSet={mediaTabletUrl} />}
         <img
