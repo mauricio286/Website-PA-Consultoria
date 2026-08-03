@@ -1,18 +1,14 @@
-/* LogoCarousel — Layout / 64:87 */
-/* Overlaps the bottom of hero: top 824px of 1024px hero */
-
 .carousel {
   position: relative;
   width: 100%;
-  max-width: 1100px; /* Reduced area per user request */
-  margin: 0 auto; /* Centered in the Hero section */
+  max-width: 1100px;
+  margin: 0 auto;
   background-color: transparent;
   overflow: hidden;
   height: 140px;
-  display: flex;
+  display: flex;           /* os dois tracks ficam lado a lado */
   align-items: center;
-  justify-content: center;
-  /* Fade edges for smooth transition */
+  /* Fade nas bordas para suavizar entrada/saída */
   -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
   mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
@@ -20,17 +16,17 @@
 .track {
   display: flex;
   align-items: center;
-  gap: 0; /* usa margin-right em .logo para gap uniforme após cada item, inclusive o último */
+  gap: 75px;
+  flex-shrink: 0;           /* CRUCIAL: não deixa o track encolher */
+  padding-right: 75px;      /* garante gap após o último item (mesmo efeito que margin-right) */
   animation: logo-scroll 30s linear infinite;
-  width: max-content;
-  padding: 0;
   will-change: transform;
   transform: translateZ(0);
 }
 
 @keyframes logo-scroll {
   from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  to   { transform: translateX(-100%); } /* 100% da própria largura do track */
 }
 
 .track:hover {
@@ -44,8 +40,7 @@
   flex-shrink: 0;
   opacity: 0.85;
   transition: opacity 0.2s ease;
-  filter: brightness(0) invert(1); /* All logos white on dark bg */
-  margin-right: 75px; /* gap uniforme incluindo após o último item de cada set */
+  filter: brightness(0) invert(1);
 }
 
 .logo:hover {

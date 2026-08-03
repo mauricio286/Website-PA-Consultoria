@@ -53,11 +53,22 @@ export default function LogoCarousel({ logos }: LogoCarouselProps) {
 
   return (
     <div className={styles.carousel} data-node-id="3:19">
-      {/* Duplicamos a lista para que a rolagem infinita seja perfeita */}
+      {/* Dois tracks idênticos lado a lado — cada um anima -100% da sua própria largura */}
       <div className={styles.track}>
-        {[...repeatedLogos, ...repeatedLogos].map((l, i) => (
+        {repeatedLogos.map((l, i) => (
           <img
-            key={i}
+            key={`a-${i}`}
+            src={l.src}
+            alt={l.alt}
+            className={`${styles.logo} ${l.cls || ''}`}
+            style={!l.cls ? { maxHeight: '72px', maxWidth: '160px' } : undefined}
+          />
+        ))}
+      </div>
+      <div className={styles.track} aria-hidden="true">
+        {repeatedLogos.map((l, i) => (
+          <img
+            key={`b-${i}`}
             src={l.src}
             alt={l.alt}
             className={`${styles.logo} ${l.cls || ''}`}
