@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "sync-cms": "node scripts/sync-cms-content.mjs",
-    "build": "npm run sync-cms && tsc -b && vite build",
+    "sync-cms:prod": "cross-env NODE_ENV=production node scripts/sync-cms-content.mjs",
+    "build": "cross-env NODE_ENV=production node scripts/sync-cms-content.mjs && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "optimize": "node scripts/optimize-images.mjs"
@@ -26,6 +27,7 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
+    "cross-env": "^10.1.0",
     "eslint": "^10.3.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
