@@ -20,11 +20,10 @@
 .track {
   display: flex;
   align-items: center;
-  gap: 75px;
-  /* Double the items for seamless loop */
+  gap: 0; /* usa margin-right em .logo para gap uniforme após cada item, inclusive o último */
   animation: logo-scroll 30s linear infinite;
   width: max-content;
-  padding: 10px;
+  padding: 0;
   will-change: transform;
   transform: translateZ(0);
 }
@@ -46,6 +45,7 @@
   opacity: 0.85;
   transition: opacity 0.2s ease;
   filter: brightness(0) invert(1); /* All logos white on dark bg */
+  margin-right: 75px; /* gap uniforme incluindo após o último item de cada set */
 }
 
 .logo:hover {
