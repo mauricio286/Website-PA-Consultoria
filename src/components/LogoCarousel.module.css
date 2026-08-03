@@ -30,6 +30,11 @@
 }
 
 .track:hover {
+  /* Não pausar o track individualmente — usar .carousel:hover abaixo */
+}
+
+/* Pausa TODOS os tracks ao mesmo tempo quando o cursor entra no carousel */
+.carousel:hover .track {
   animation-play-state: paused;
 }
 
