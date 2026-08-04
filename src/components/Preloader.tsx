@@ -76,43 +76,36 @@ export default function Preloader({ onDone }: PreloaderProps) {
   useEffect(() => {
     let currentProgress = 0;
     let isApiAndImageDone = false;
-    let isMinTimeDone = false;
+    let isMinTimeDone = true;
     let isWindowLoaded = false;
     let isFinished = false;
 
-    // Slower fill — feels more deliberate and premium
+    // Fast progress fill
     const interval = setInterval(() => {
       if (isFinished) return;
-      const jump = currentProgress < 60
-        ? Math.random() * 8 + 4   // moderate at start
-        : Math.random() * 3 + 1;  // very slow near 90%
+      const jump = currentProgress < 70
+        ? Math.random() * 15 + 10  // rápida evolução inicial
+        : Math.random() * 5 + 2;
 
       currentProgress = Math.min(currentProgress + jump, 90);
       setProgress(currentProgress);
-    }, 100);
+    }, 50);
 
     const finishLoading = () => {
       if (isFinished) return;
       isFinished = true;
       clearInterval(interval);
       setProgress(100);
-      // Pause at 100% so the user can register it
       setTimeout(() => {
         setLoading(false);
-      }, 500);
+      }, 200);
     };
 
-    // Minimum preloader display time (e.g. 2 seconds) for smooth visual experience
-    const minTimer = setTimeout(() => {
-      isMinTimeDone = true;
-      checkAllConditions();
-    }, 2000);
-
-    // Safety timeout of 5 seconds (5000ms) - as requested by the user
+    // Safety timeout de 4 segundos para evitar telas travadas
     const safetyTimeout = setTimeout(() => {
       console.warn("Preloader safety timeout reached. Forcing loading finished.");
       finishLoading();
-    }, 5000);
+    }, 4000);
 
     // Check window load state
     const handleWindowLoad = () => {
@@ -166,7 +159,8 @@ export default function Preloader({ onDone }: PreloaderProps) {
             selectedMedia = loader.getHeroImage(data);
           }
 
-          const mediaUrl = api.getMediaUrl(selectedMedia);
+          const targetSize = width <= 580 ? 'thumbnail' : width <= 1024 ? 'card' : 'hero';
+          const mediaUrl = api.getMediaUrl(selectedMedia, targetSize);
 
           if (mediaUrl) {
             const img = new Image();
@@ -185,7 +179,6 @@ export default function Preloader({ onDone }: PreloaderProps) {
 
     return () => {
       clearInterval(interval);
-      clearTimeout(minTimer);
       clearTimeout(safetyTimeout);
       window.removeEventListener('load', handleWindowLoad);
       isFinished = true;
