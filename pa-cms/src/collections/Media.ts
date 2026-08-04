@@ -12,25 +12,28 @@ const Media: CollectionConfig = {
     group: 'Conteúdo',
   },
   upload: {
-    // Tamanhos de imagem gerados automaticamente pelo Payload
+    // Tamanhos de imagem gerados automaticamente pelo Payload em WebP otimizado (85% qualidade)
     imageSizes: [
       {
         name: 'thumbnail',
         width: 400,
         height: 300,
         position: 'centre',
+        formatOptions: { format: 'webp', quality: 85 },
       },
       {
         name: 'card',
         width: 768,
         height: 512,
         position: 'centre',
+        formatOptions: { format: 'webp', quality: 85 },
       },
       {
         name: 'hero',
         width: 1920,
         height: 1080,
         position: 'centre',
+        formatOptions: { format: 'webp', quality: 85 },
       },
     ],
     adminThumbnail: 'thumbnail',

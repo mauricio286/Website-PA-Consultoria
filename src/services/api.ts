@@ -9,6 +9,15 @@ function getLocaleUrl(path: string, locale?: string): string {
   return url;
 }
 
+export interface MediaSize {
+  url: string;
+  width?: number;
+  height?: number;
+  mimeType?: string;
+  filesize?: number;
+  filename?: string;
+}
+
 // Tipo genérico para imagens/mídias retornadas pelo Payload
 export interface Media {
   id: string;
@@ -18,6 +27,12 @@ export interface Media {
   size?: number;
   width?: number;
   height?: number;
+  sizes?: {
+    thumbnail?: MediaSize;
+    card?: MediaSize;
+    hero?: MediaSize;
+    [key: string]: MediaSize | undefined;
+  };
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -442,16 +457,23 @@ async function fetchSwr<T>(
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const api = {
-  // Helper para formatar a URL da imagem
-  getMediaUrl(media: Media | string | undefined | null): string {
+  // Helper para formatar a URL da imagem (com suporte a variantes otimizadas: hero, card, thumbnail)
+  getMediaUrl(media: Media | string | undefined | null, size?: 'hero' | 'card' | 'thumbnail'): string {
     if (!media) return '';
     if (typeof media === 'string') {
       if (media.startsWith('http') || media.startsWith('data:') || media.startsWith('/cms-media/')) return media;
       return `${API_URL}${media.startsWith('/') ? '' : '/'}${media}`;
     }
-    if (media.url) {
-      if (media.url.startsWith('http') || media.url.startsWith('/cms-media/')) return media.url;
-      return `${API_URL}${media.url.startsWith('/') ? '' : '/'}${media.url}`;
+
+    // Tenta pegar a URL do tamanho solicitado (ex: 'hero', 'card', 'thumbnail') com fallback seguro para a original
+    let targetUrl = media.url;
+    if (size && media.sizes && media.sizes[size]?.url) {
+      targetUrl = media.sizes[size]!.url;
+    }
+
+    if (targetUrl) {
+      if (targetUrl.startsWith('http') || targetUrl.startsWith('data:') || targetUrl.startsWith('/cms-media/')) return targetUrl;
+      return `${API_URL}${targetUrl.startsWith('/') ? '' : '/'}${targetUrl}`;
     }
     return '';
   },

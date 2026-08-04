@@ -104,6 +104,7 @@ export default function Hero({ data }: HeroProps) {
             alt={(data?.heroImage && typeof data.heroImage === 'object') ? data.heroImage.alt : "Background Hero"}
             className={styles.bgImage}
             fitMode="cover"
+            size="hero"
           />
         </div>
         <div className={styles.overlay} />

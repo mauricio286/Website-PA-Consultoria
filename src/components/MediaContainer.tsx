@@ -13,6 +13,7 @@ export interface MediaContainerProps {
   className?: string;
   style?: React.CSSProperties;
   fitMode?: 'cover' | 'contain' | 'fit';
+  size?: 'hero' | 'card' | 'thumbnail';
 }
 
 export default function MediaContainer({
@@ -26,6 +27,7 @@ export default function MediaContainer({
   className = '',
   style,
   fitMode = 'cover',
+  size,
 }: MediaContainerProps) {
   // 1. Caso seja selecionado o campo de Link/Vimeo
   if (mediaType === 'vimeo' && vimeoUrl) {
@@ -64,9 +66,9 @@ export default function MediaContainer({
   }
 
   // 2. Mídia enviada via Upload
-  const mediaUrl = api.getMediaUrl(media) || defaultFallbackSrc || '';
-  const mediaTabletUrl = api.getMediaUrl(mediaTablet);
-  const mediaMobileUrl = api.getMediaUrl(mediaMobile);
+  const mediaUrl = api.getMediaUrl(media, size) || defaultFallbackSrc || '';
+  const mediaTabletUrl = api.getMediaUrl(mediaTablet, 'card');
+  const mediaMobileUrl = api.getMediaUrl(mediaMobile, 'thumbnail');
 
   const mimeType = (typeof media === 'object' && media?.mimeType) ? media.mimeType : '';
   const isVideo = mimeType.startsWith('video/') || /\.(mp4|webm|mov)(\?.*)?$/i.test(mediaUrl);
