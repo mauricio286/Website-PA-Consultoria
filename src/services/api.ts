@@ -24,6 +24,7 @@ export interface Media {
   url: string;
   alt?: string;
   mimeType?: string;
+  filename?: string;
   size?: number;
   width?: number;
   height?: number;
@@ -372,6 +373,33 @@ function getStaticData(locale?: string) {
   return cmsDataMap[lang] || cmsPt;
 }
 
+// Mapa de mídias estáticas pré-compiladas no build (para Comparação Inteligente de Mídia)
+const staticMediaMap = new Map<string, string>();
+
+function registerStaticMedia(obj: any) {
+  if (!obj || typeof obj !== 'object') return;
+  if (Array.isArray(obj)) {
+    obj.forEach(registerStaticMedia);
+    return;
+  }
+  if (typeof obj.url === 'string' && obj.url.startsWith('/cms-media/')) {
+    const filename = obj.filename || obj.url.replace('/cms-media/', '');
+    if (filename) {
+      staticMediaMap.set(filename, obj.url);
+      const cleanName = filename.replace(/[^a-zA-Z0-9._-]/g, '_');
+      staticMediaMap.set(cleanName, obj.url);
+    }
+  }
+  for (const key of Object.keys(obj)) {
+    if (typeof obj[key] === 'object' && obj[key] !== null) {
+      registerStaticMedia(obj[key]);
+    }
+  }
+}
+
+registerStaticMedia(cmsPt);
+registerStaticMedia(cmsEn);
+
 // ─────────────────────────────────────────────────────────────────────────────
 // SWR (STALE-WHILE-REVALIDATE) ENGINE
 // ─────────────────────────────────────────────────────────────────────────────
@@ -457,24 +485,49 @@ async function fetchSwr<T>(
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const api = {
-  // Helper para formatar a URL da imagem (com suporte a variantes otimizadas: hero, card, thumbnail)
+  // Helper para formatar a URL da imagem (com suporte a variantes otimizadas e Comparação Inteligente de Mídia)
   getMediaUrl(media: Media | string | undefined | null, size?: 'hero' | 'card' | 'thumbnail'): string {
     if (!media) return '';
+
+    // 1. Se for string simples (ex: caminho relativo ou absoluto)
     if (typeof media === 'string') {
       if (media.startsWith('http') || media.startsWith('data:') || media.startsWith('/cms-media/')) return media;
+      const rawName = media.split('?')[0].split('/').pop() || '';
+      const cleanName = decodeURIComponent(rawName).replace(/[^a-zA-Z0-9._-]/g, '_');
+      if (cleanName && staticMediaMap.has(cleanName)) {
+        return staticMediaMap.get(cleanName)!;
+      }
       return `${API_URL}${media.startsWith('/') ? '' : '/'}${media}`;
     }
 
-    // Tenta pegar a URL do tamanho solicitado (ex: 'hero', 'card', 'thumbnail') com fallback seguro para a original
+    // 2. Se for objeto Media do Payload
     let targetUrl = media.url;
+    let targetFilename = media.filename;
+
     if (size && media.sizes && media.sizes[size]?.url) {
       targetUrl = media.sizes[size]!.url;
+      if (media.sizes[size]!.filename) {
+        targetFilename = media.sizes[size]!.filename;
+      }
     }
 
     if (targetUrl) {
-      if (targetUrl.startsWith('http') || targetUrl.startsWith('data:') || targetUrl.startsWith('/cms-media/')) return targetUrl;
+      if (targetUrl.startsWith('/cms-media/') || targetUrl.startsWith('data:')) return targetUrl;
+
+      // Extrai o nome do arquivo para comparar com o mapa do build estático
+      const rawName = targetFilename || targetUrl.split('?')[0].split('/').pop() || '';
+      const cleanName = decodeURIComponent(rawName).replace(/[^a-zA-Z0-9._-]/g, '_');
+
+      // COMPARAÇÃO INTELIGENTE: Se o arquivo já existe no build estático do Firebase, usa a versão estática rápida! (0ms delay)
+      if (cleanName && staticMediaMap.has(cleanName)) {
+        return staticMediaMap.get(cleanName)!;
+      }
+
+      // Se o cliente publicou uma imagem nova no Payload CMS pós-build, carrega da API do Payload
+      if (targetUrl.startsWith('http')) return targetUrl;
       return `${API_URL}${targetUrl.startsWith('/') ? '' : '/'}${targetUrl}`;
     }
+
     return '';
   },
 
