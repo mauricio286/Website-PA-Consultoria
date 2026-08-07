@@ -500,9 +500,9 @@ export default function Carreiras() {
       });
   };
 
-  const bgImage = careersPage?.heroImage ? api.getMediaUrl(careersPage.heroImage) : imgBgCarreiras;
-  const bgImageTablet = careersPage?.heroImageTablet ? api.getMediaUrl(careersPage.heroImageTablet) : undefined;
-  const bgImageMobile = careersPage?.heroImageMobile ? api.getMediaUrl(careersPage.heroImageMobile) : undefined;
+  const bgImage = careersPage?.heroImage ? api.getMediaUrl(careersPage.heroImage, 'hero') : imgBgCarreiras;
+  const bgImageTablet = careersPage?.heroImageTablet ? api.getMediaUrl(careersPage.heroImageTablet, 'card') : undefined;
+  const bgImageMobile = careersPage?.heroImageMobile ? api.getMediaUrl(careersPage.heroImageMobile, 'thumbnail') : undefined;
 
   return (
     <main className={`${styles.carreirasPage} page-transition-enter`}>

@@ -8,9 +8,9 @@ interface HeroProps {
 
 export default function Hero({ data }: HeroProps) {
   const isLoading = data === null;
-  const bgImage = isLoading ? undefined : (data?.heroImage ? api.getMediaUrl(data.heroImage) : imgBgServicos);
-  const bgImageTablet = isLoading ? undefined : (data?.heroImageTablet ? api.getMediaUrl(data.heroImageTablet) : undefined);
-  const bgImageMobile = isLoading ? undefined : (data?.heroImageMobile ? api.getMediaUrl(data.heroImageMobile) : undefined);
+  const bgImage = isLoading ? undefined : (data?.heroImage ? api.getMediaUrl(data.heroImage, 'hero') : imgBgServicos);
+  const bgImageTablet = isLoading ? undefined : (data?.heroImageTablet ? api.getMediaUrl(data.heroImageTablet, 'card') : undefined);
+  const bgImageMobile = isLoading ? undefined : (data?.heroImageMobile ? api.getMediaUrl(data.heroImageMobile, 'thumbnail') : undefined);
 
   return (
     <section className={styles.heroSection}>

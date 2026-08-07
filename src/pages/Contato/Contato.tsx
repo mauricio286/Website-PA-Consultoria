@@ -87,9 +87,9 @@ export default function Contato() {
         }
       ];
 
-  const bgImage = cmsData?.heroImage ? api.getMediaUrl(cmsData.heroImage) : imgBgContato;
-  const bgImageTablet = cmsData?.heroImageTablet ? api.getMediaUrl(cmsData.heroImageTablet) : undefined;
-  const bgImageMobile = cmsData?.heroImageMobile ? api.getMediaUrl(cmsData.heroImageMobile) : undefined;
+  const bgImage = cmsData?.heroImage ? api.getMediaUrl(cmsData.heroImage, 'hero') : imgBgContato;
+  const bgImageTablet = cmsData?.heroImageTablet ? api.getMediaUrl(cmsData.heroImageTablet, 'card') : undefined;
+  const bgImageMobile = cmsData?.heroImageMobile ? api.getMediaUrl(cmsData.heroImageMobile, 'thumbnail') : undefined;
 
   return (
     <main className={`${styles.contatoPage} page-transition-enter`}>

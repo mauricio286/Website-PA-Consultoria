@@ -28,7 +28,7 @@ export default function Lavoura() {
       
       <SubpageHero 
         title={pageData?.title || t.lavouraPage.title} 
-        bgImage={pageData?.heroImage ? api.getMediaUrl(pageData.heroImage) : imgBgAld} 
+        bgImage={pageData?.heroImage ? api.getMediaUrl(pageData.heroImage, 'hero') : imgBgAld} 
         breadcrumbCurrent={pageData?.title || t.lavouraPage.title} 
       />
 

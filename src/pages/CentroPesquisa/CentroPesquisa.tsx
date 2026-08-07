@@ -29,7 +29,7 @@ export default function CentroPesquisa() {
       {/* Hero Section */}
       <SubpageHero 
         title={pageData?.title || t.centroPesquisaPage.title} 
-        bgImage={pageData?.heroImage ? api.getMediaUrl(pageData.heroImage) : imgBgServicos} 
+        bgImage={pageData?.heroImage ? api.getMediaUrl(pageData.heroImage, 'hero') : imgBgServicos} 
         breadcrumbCurrent={pageData?.title || t.centroPesquisaPage.title} 
       />
 

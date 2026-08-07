@@ -24,14 +24,14 @@ export default function PesquisaAgronomica() {
       });
   }, [locale]);
 
-  const bgImage = loading ? undefined : (service?.coverImage ? api.getMediaUrl(service.coverImage) : imgBgServicos);
-  const contentImage = service?.illustrationImage ? api.getMediaUrl(service.illustrationImage) : imgCentroPesquisa;
+  const bgImage = loading ? undefined : (service?.coverImage ? api.getMediaUrl(service.coverImage, 'hero') : imgBgServicos);
+  const contentImage = service?.illustrationImage ? api.getMediaUrl(service.illustrationImage, 'card') : imgCentroPesquisa;
 
   const leftContent = service?.leftContent;
   const bottomContent = service?.bottomContent;
 
-  const bgImageTablet = loading ? undefined : (service?.coverImageTablet ? api.getMediaUrl(service.coverImageTablet) : undefined);
-  const bgImageMobile = loading ? undefined : (service?.coverImageMobile ? api.getMediaUrl(service.coverImageMobile) : undefined);
+  const bgImageTablet = loading ? undefined : (service?.coverImageTablet ? api.getMediaUrl(service.coverImageTablet, 'card') : undefined);
+  const bgImageMobile = loading ? undefined : (service?.coverImageMobile ? api.getMediaUrl(service.coverImageMobile, 'thumbnail') : undefined);
   const showIllustration = service ? service.showIllustration !== false : true;
   const serviceTitle = service?.title?.replace(/\r?\n/g, ' ') || t.pesquisaAgroPage.title;
 

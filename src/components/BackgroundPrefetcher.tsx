@@ -99,7 +99,8 @@ export default function BackgroundPrefetcher() {
               selectedMedia = loader.getHeroImage(data);
             }
 
-            const mediaUrl = api.getMediaUrl(selectedMedia);
+            const targetSize = width <= 580 ? 'thumbnail' : width <= 1024 ? 'card' : 'hero';
+            const mediaUrl = api.getMediaUrl(selectedMedia, targetSize);
 
             if (mediaUrl) {
               // Preload in browser cache by instantiating an Image

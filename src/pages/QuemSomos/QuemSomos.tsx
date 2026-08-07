@@ -118,9 +118,9 @@ export default function QuemSomos() {
   }, [aboutData, staticTimelineItems]);
 
   const isHeroLoading = aboutData === null;
-  const bgImage = isHeroLoading ? undefined : (aboutData?.heroImage ? api.getMediaUrl(aboutData.heroImage) : imgBg);
-  const bgImageTablet = isHeroLoading ? undefined : (aboutData?.heroImageTablet ? api.getMediaUrl(aboutData.heroImageTablet) : undefined);
-  const bgImageMobile = isHeroLoading ? undefined : (aboutData?.heroImageMobile ? api.getMediaUrl(aboutData.heroImageMobile) : undefined);
+  const bgImage = isHeroLoading ? undefined : (aboutData?.heroImage ? api.getMediaUrl(aboutData.heroImage, 'hero') : imgBg);
+  const bgImageTablet = isHeroLoading ? undefined : (aboutData?.heroImageTablet ? api.getMediaUrl(aboutData.heroImageTablet, 'card') : undefined);
+  const bgImageMobile = isHeroLoading ? undefined : (aboutData?.heroImageMobile ? api.getMediaUrl(aboutData.heroImageMobile, 'thumbnail') : undefined);
 
   return (
     <main className={`${styles.quemSomosPage} page-transition-enter`}>

@@ -28,7 +28,7 @@ export default function AldBioenergia() {
 
       <SubpageHero
         title={pageData?.title || t.aldPage.title}
-        bgImage={pageData?.heroImage ? api.getMediaUrl(pageData.heroImage) : imgBgAld}
+        bgImage={pageData?.heroImage ? api.getMediaUrl(pageData.heroImage, 'hero') : imgBgAld}
         breadcrumbCurrent={pageData?.title || t.aldPage.title}
       />
 

@@ -29,7 +29,7 @@ export default function Palestras() {
       {/* Hero Section */}
       <SubpageHero 
         title={pageData?.title || t.palestrasPage.title} 
-        bgImage={pageData?.heroImage ? api.getMediaUrl(pageData.heroImage) : imgBgServicos} 
+        bgImage={pageData?.heroImage ? api.getMediaUrl(pageData.heroImage, 'hero') : imgBgServicos} 
         breadcrumbCurrent={pageData?.title || t.palestrasPage.title} 
       />
 
