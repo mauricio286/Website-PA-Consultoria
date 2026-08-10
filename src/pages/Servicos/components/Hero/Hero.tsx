@@ -19,7 +19,7 @@ export default function Hero({ data }: HeroProps) {
           <picture>
             {bgImageMobile && <source media="(max-width: 580px)" srcSet={bgImageMobile} />}
             {bgImageTablet && <source media="(max-width: 1024px)" srcSet={bgImageTablet} />}
-            <img src={bgImage} alt="Background da PA - Serviços" className={styles.heroBg} />
+            <img src={bgImage} alt="Background da PA - Serviços" className={styles.heroBg} loading="eager" fetchPriority="high" />
           </picture>
         )}
       </div>

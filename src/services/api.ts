@@ -485,6 +485,8 @@ async function fetchSwr<T>(
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const api = {
+  getStaticData,
+
   // Helper para formatar a URL da imagem (com suporte a variantes otimizadas e Comparação Inteligente de Mídia)
   getMediaUrl(media: Media | string | undefined | null, size?: 'hero' | 'card' | 'thumbnail'): string {
     if (!media) return '';

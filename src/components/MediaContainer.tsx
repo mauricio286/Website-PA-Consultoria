@@ -100,6 +100,8 @@ export default function MediaContainer({
           alt={alt}
           className={`${styles.image} ${className}`}
           style={{ objectFit: fitMode === 'contain' ? 'contain' : 'cover' }}
+          loading={size === 'hero' ? 'eager' : undefined}
+          fetchPriority={size === 'hero' ? 'high' : undefined}
         />
       </picture>
     );
@@ -111,6 +113,8 @@ export default function MediaContainer({
       alt={alt}
       className={`${styles.image} ${className}`}
       style={{ objectFit: fitMode === 'contain' ? 'contain' : 'cover', ...style }}
+      loading={size === 'hero' ? 'eager' : undefined}
+      fetchPriority={size === 'hero' ? 'high' : undefined}
     />
   );
 }

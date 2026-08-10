@@ -122,9 +122,9 @@ export default function Ecosystem({ data }: EcosystemProps) {
               
               let imgSource = "";
               if (card.image && typeof card.image === 'object' && 'url' in card.image) {
-                imgSource = api.getMediaUrl(card.image);
+                imgSource = api.getMediaUrl(card.image, 'card');
               } else if (typeof card.image === 'string' && card.image) {
-                imgSource = api.getMediaUrl(card.image);
+                imgSource = api.getMediaUrl(card.image, 'card');
               } else {
                 imgSource = staticCards[idx]?.image || "";
               }
@@ -135,7 +135,7 @@ export default function Ecosystem({ data }: EcosystemProps) {
               return (
                 <div key={card.id || idx} className={`${styles.ecoCard} ${cardClass}`}>
                   <div className={styles.ecoImageWrapper}>
-                    <img src={imgSource} alt={card.title} />
+                    <img src={imgSource} alt={card.title} loading="eager" />
                   </div>
                   <h3 className={styles.ecoCardTitle}>{card.title}</h3>
                   <div className={styles.ecoCardButton}>

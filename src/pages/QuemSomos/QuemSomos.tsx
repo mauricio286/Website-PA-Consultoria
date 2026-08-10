@@ -38,14 +38,14 @@ export default function QuemSomos() {
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
 
-  const [aboutData, setAboutData] = useState<AboutPageData | null>(null);
+  const [aboutData, setAboutData] = useState<AboutPageData | null>(() => api.getStaticData(locale).globals?.['about-page'] || null);
 
   // Ensure we start at the top of the page when navigating here and fetch CMS data
   useEffect(() => {
     window.scrollTo(0, 0);
-    api.getAboutPage(locale)
+    api.getAboutPage(locale, (updated) => setAboutData(updated))
       .then((res) => {
-        setAboutData(res);
+        if (res) setAboutData(res);
       })
       .catch((err) => {
         console.error('Error fetching AboutPage data:', err);
@@ -131,7 +131,7 @@ export default function QuemSomos() {
             <picture>
               {bgImageMobile && <source media="(max-width: 580px)" srcSet={bgImageMobile} />}
               {bgImageTablet && <source media="(max-width: 1024px)" srcSet={bgImageTablet} />}
-              <img src={bgImage} alt="Background da PA" className={styles.heroBg} />
+              <img src={bgImage} alt="Background da PA" className={styles.heroBg} loading="eager" fetchPriority="high" />
             </picture>
           )}
         </div>

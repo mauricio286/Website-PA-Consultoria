@@ -15,15 +15,15 @@ import { imgSessao4 } from '../assets';
 import styles from '../App.module.css';
 
 export default function Home() {
-  const [homeData, setHomeData] = useState<HomePageData | null>(null);
+  const { locale, t } = useLanguage();
+  const [homeData, setHomeData] = useState<HomePageData | null>(() => api.getStaticData(locale).globals?.['home-page'] || null);
   const bannerRef = useRef<HTMLElement>(null);
   const bannerImgRef = useRef<HTMLImageElement>(null);
-  const { locale, t } = useLanguage();
 
   useEffect(() => {
-    api.getHomePage(locale)
+    api.getHomePage(locale, (updated) => setHomeData(updated))
       .then((res) => {
-        setHomeData(res);
+        if (res) setHomeData(res);
       })
       .catch((err) => {
         console.error(err);

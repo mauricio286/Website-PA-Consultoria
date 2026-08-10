@@ -6,20 +6,20 @@ import { api, type ServicesPageData, type Service } from '../../services/api';
 import { useLanguage } from '../../i18n';
 
 export default function Servicos() {
-  const [pageData, setPageData] = useState<ServicesPageData | null>(null);
-  const [services, setServices] = useState<Service[] | null>(null);
   const { locale } = useLanguage();
+  const [pageData, setPageData] = useState<ServicesPageData | null>(() => api.getStaticData(locale).globals?.['services-page'] || null);
+  const [services, setServices] = useState<Service[] | null>(() => api.getStaticData(locale).collections?.['services'] || null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    // Fetch CMS data with locale
-    api.getServicesPage(locale)
-      .then(data => setPageData(data))
+    // Fetch CMS data com listener de atualizacoes SWR em segundo plano
+    api.getServicesPage(locale, (updated) => setPageData(updated))
+      .then(data => { if (data) setPageData(data); })
       .catch(err => console.error('Erro ao carregar dados da página de serviços:', err));
 
-    api.getServices(locale)
-      .then(list => setServices(list))
+    api.getServices(locale, (updatedList) => setServices(updatedList))
+      .then(list => { if (list) setServices(list); })
       .catch(err => console.error('Erro ao carregar lista de serviços:', err));
   }, [locale]);
 
