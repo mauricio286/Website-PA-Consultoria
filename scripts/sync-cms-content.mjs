@@ -130,6 +130,25 @@ async function processObjectMedia(obj) {
     if (copy.filename) {
       copy.filename = path.basename(newMediaUrl);
     }
+
+    // Processar e baixar também todas as mídias responsivas dentro de sizes (hero, card, thumbnail, etc.)
+    if (copy.sizes && typeof copy.sizes === 'object') {
+      const newSizes = {};
+      for (const [sizeKey, sizeObj] of Object.entries(copy.sizes)) {
+        if (sizeObj && typeof sizeObj === 'object' && sizeObj.url) {
+          const newSizeUrl = await downloadMedia(sizeObj.url);
+          newSizes[sizeKey] = {
+            ...sizeObj,
+            url: newSizeUrl,
+            filename: path.basename(newSizeUrl),
+          };
+        } else {
+          newSizes[sizeKey] = sizeObj;
+        }
+      }
+      copy.sizes = newSizes;
+    }
+
     return copy;
   }
 

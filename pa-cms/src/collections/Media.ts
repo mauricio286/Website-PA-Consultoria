@@ -56,6 +56,14 @@ const Media: CollectionConfig = {
     update: isLoggedIn,
     delete: isLoggedIn,
   },
+  hooks: {
+    afterChange: [
+      async () => {
+        const { triggerRebuildHook } = await import('../hooks/rebuildWebhook')
+        await triggerRebuildHook()
+      },
+    ],
+  },
   fields: [
     {
       name: 'alt',
