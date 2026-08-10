@@ -7,20 +7,14 @@ import { useLanguage } from '../../i18n';
 import { api, type LavouraPageData } from '../../services/api';
 
 export default function Lavoura() {
-  const { t, locale } = useLanguage();
-  const [pageData, setPageData] = useState<LavouraPageData | null>(null);
+  const { locale, t } = useLanguage();
+  const [pageData, setPageData] = useState<LavouraPageData | null>(() => api.getStaticData(locale).globals?.['lavoura-page'] || null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    api.getLavouraPage(locale)
-      .then(data => {
-        if (data && data.title) {
-          setPageData(data);
-        }
-      })
-      .catch(err => {
-        console.error('Erro ao carregar dados do CMS para Lavoura:', err);
-      });
+    api.getLavouraPage(locale, (updated) => setPageData(updated))
+      .then(data => { if (data) setPageData(data); })
+      .catch(err => console.error('Erro ao carregar dados Lavoura:', err));
   }, [locale]);
 
   return (

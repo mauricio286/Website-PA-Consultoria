@@ -266,9 +266,10 @@ const initialForm: FormData = {
 
 // ─── Componente Principal ────────────────────────────────────────────────────
 export default function Carreiras() {
-  const [vagas, setVagas] = useState<Job[]>([]);
-  const [vagasLoaded, setVagasLoaded] = useState(false);
-  const [careersPage, setCareersPage] = useState<CareersPageData | null>(null);
+  const { locale, t } = useLanguage();
+  const [careersPage, setCareersPage] = useState<CareersPageData | null>(() => api.getStaticData(locale).globals?.['careers-page'] || null);
+  const [vagas, setVagas] = useState<Job[]>(() => api.getStaticData(locale).collections?.['jobs'] || []);
+  const [vagasLoaded, setVagasLoaded] = useState(() => (api.getStaticData(locale).collections?.['jobs']?.length || 0) > 0);
   const [vagaSelecionada, setVagaSelecionada] = useState<Job | null>(null);
   const [formData, setFormData] = useState(initialForm);
   const [submitted, setSubmitted] = useState(false);
@@ -276,7 +277,6 @@ export default function Carreiras() {
   const [uploadProgress, setUploadProgress] = useState<number | null>(null);
   const [trackMarginLeft, setTrackMarginLeft] = useState(0);
   const [pdfError, setPdfError] = useState(false);
-  const { locale, t } = useLanguage();
 
   // Carrossel
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -291,23 +291,21 @@ export default function Carreiras() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    api.getCareersPage(locale)
-      .then(data => {
-        setCareersPage(data);
-      })
-      .catch(err => {
-        console.error('Erro ao carregar dados da página Carreiras:', err);
-      });
+    api.getCareersPage(locale, (updated) => setCareersPage(updated))
+      .then(data => { if (data) setCareersPage(data); })
+      .catch(err => console.error('Erro ao carregar dados da página Carreiras:', err));
 
-    api.getJobs(locale)
+    api.getJobs(locale, (updatedList) => {
+      setVagas(updatedList);
+      setVagasLoaded(true);
+    })
       .then(data => {
-        setVagas(data);
-        setVagasLoaded(true);
+        if (data) {
+          setVagas(data);
+          setVagasLoaded(true);
+        }
       })
-      .catch(err => {
-        console.error('Erro ao carregar vagas:', err);
-        setVagasLoaded(false); // Deixa fallback em caso de erro real
-      });
+      .catch(err => console.error('Erro ao carregar vagas:', err));
   }, [locale]);
 
   const fallbackJobs: Job[] = useMemo(() => fallbackVagas.map(v => {

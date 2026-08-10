@@ -7,20 +7,14 @@ import LexicalRenderer from '../../components/LexicalRenderer';
 import SubpageHero from '../../components/SubpageHero';
 
 export default function CentroPesquisa() {
-  const { t, locale } = useLanguage();
-  const [pageData, setPageData] = useState<CentroPesquisaPageData | null>(null);
+  const { locale, t } = useLanguage();
+  const [pageData, setPageData] = useState<CentroPesquisaPageData | null>(() => api.getStaticData(locale).globals?.['centro-pesquisa-page'] || null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    api.getCentroPesquisaPage(locale)
-      .then(data => {
-        if (data && data.title) {
-          setPageData(data);
-        }
-      })
-      .catch(err => {
-        console.error('Erro ao carregar dados do CMS para Centro de Pesquisa:', err);
-      });
+    api.getCentroPesquisaPage(locale, (updated) => setPageData(updated))
+      .then(data => { if (data) setPageData(data); })
+      .catch(err => console.error('Erro ao carregar dados Centro Pesquisa:', err));
   }, [locale]);
 
   return (

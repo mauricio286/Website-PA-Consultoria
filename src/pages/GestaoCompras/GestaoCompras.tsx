@@ -7,31 +7,25 @@ import { api, type Service } from '../../services/api';
 import { useLanguage } from '../../i18n';
 
 export default function GestaoCompras() {
-  const [service, setService] = useState<Service | null>(null);
-  const [loading, setLoading] = useState(true);
   const { locale, t } = useLanguage();
+  const initialService = api.getStaticData(locale).collections?.['services']?.find((s: any) => s.slug === 'gestao-de-compras') || null;
+  const [service, setService] = useState<Service | null>(() => initialService);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    api.getServiceBySlug('gestao-de-compras', locale)
-      .then(data => {
-        setService(data);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error('Erro ao carregar dados do serviço:', err);
-        setLoading(false);
-      });
+    api.getServiceBySlug('gestao-de-compras', locale, (updated) => setService(updated))
+      .then(data => { if (data) setService(data); })
+      .catch(err => console.error('Erro ao carregar dados do serviço:', err));
   }, [locale]);
 
-  const bgImage = loading ? undefined : (service?.coverImage ? api.getMediaUrl(service.coverImage, 'hero') : imgBgGestaoCompras);
+  const bgImage = service?.coverImage ? api.getMediaUrl(service.coverImage, 'hero') : imgBgGestaoCompras;
   const contentImage = service?.illustrationImage ? api.getMediaUrl(service.illustrationImage, 'card') : imgGestaoCompras;
 
   const leftContent = service?.leftContent;
   const bottomContent = service?.bottomContent;
 
-  const bgImageTablet = loading ? undefined : (service?.coverImageTablet ? api.getMediaUrl(service.coverImageTablet, 'card') : undefined);
-  const bgImageMobile = loading ? undefined : (service?.coverImageMobile ? api.getMediaUrl(service.coverImageMobile, 'thumbnail') : undefined);
+  const bgImageTablet = service?.coverImageTablet ? api.getMediaUrl(service.coverImageTablet, 'card') : undefined;
+  const bgImageMobile = service?.coverImageMobile ? api.getMediaUrl(service.coverImageMobile, 'thumbnail') : undefined;
   const showIllustration = service ? service.showIllustration !== false : true;
   const serviceTitle = service?.title?.replace(/\r?\n/g, ' ') || t.gestaoPage.title;
 

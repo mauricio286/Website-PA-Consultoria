@@ -7,20 +7,14 @@ import LexicalRenderer from '../../components/LexicalRenderer';
 import SubpageHero from '../../components/SubpageHero';
 
 export default function Palestras() {
-  const { t, locale } = useLanguage();
-  const [pageData, setPageData] = useState<PalestrasPageData | null>(null);
+  const { locale, t } = useLanguage();
+  const [pageData, setPageData] = useState<PalestrasPageData | null>(() => api.getStaticData(locale).globals?.['palestras-page'] || null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    api.getPalestrasPage(locale)
-      .then(data => {
-        if (data && data.title) {
-          setPageData(data);
-        }
-      })
-      .catch(err => {
-        console.error('Erro ao carregar dados do CMS para Palestras:', err);
-      });
+    api.getPalestrasPage(locale, (updated) => setPageData(updated))
+      .then(data => { if (data) setPageData(data); })
+      .catch(err => console.error('Erro ao carregar dados Palestras:', err));
   }, [locale]);
 
   return (

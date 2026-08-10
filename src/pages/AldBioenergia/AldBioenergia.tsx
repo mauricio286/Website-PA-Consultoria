@@ -7,20 +7,14 @@ import { useLanguage } from '../../i18n';
 import { api, type AldBioenergiaPageData } from '../../services/api';
 
 export default function AldBioenergia() {
-  const { t, locale } = useLanguage();
-  const [pageData, setPageData] = useState<AldBioenergiaPageData | null>(null);
+  const { locale, t } = useLanguage();
+  const [pageData, setPageData] = useState<AldBioenergiaPageData | null>(() => api.getStaticData(locale).globals?.['ald-bioenergia-page'] || null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    api.getAldBioenergiaPage(locale)
-      .then(data => {
-        if (data && data.title) {
-          setPageData(data);
-        }
-      })
-      .catch(err => {
-        console.error('Erro ao carregar dados do CMS para ALD Bioenergia:', err);
-      });
+    api.getAldBioenergiaPage(locale, (updated) => setPageData(updated))
+      .then(data => { if (data) setPageData(data); })
+      .catch(err => console.error('Erro ao carregar dados ALD Bioenergia:', err));
   }, [locale]);
 
   return (

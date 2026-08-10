@@ -7,9 +7,10 @@ import { useLanguage } from '../../i18n';
 import { message } from 'antd';
 
 export default function Contato() {
+  const { locale, t } = useLanguage();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [cmsData, setCmsData] = useState<ContactSettingsData | null>(null);
+  const [cmsData, setCmsData] = useState<ContactSettingsData | null>(() => api.getStaticData(locale).globals?.['contact-settings'] || null);
   const [formData, setFormData] = useState({
     nome: '',
     celular: '',
@@ -17,11 +18,10 @@ export default function Contato() {
     assunto: '',
     mensagem: ''
   });
-  const { locale, t } = useLanguage();
 
   useEffect(() => {
-    api.getContactSettings(locale)
-      .then(data => setCmsData(data))
+    api.getContactSettings(locale, (updated) => setCmsData(updated))
+      .then(data => { if (data) setCmsData(data); })
       .catch(err => console.error("Erro ao carregar dados de contato:", err));
   }, [locale]);
 
@@ -99,7 +99,7 @@ export default function Contato() {
           <picture>
             {bgImageMobile && <source media="(max-width: 580px)" srcSet={bgImageMobile} />}
             {bgImageTablet && <source media="(max-width: 1024px)" srcSet={bgImageTablet} />}
-            <img src={bgImage} alt="Banner Contato" className={styles.heroBg} />
+            <img src={bgImage} alt="Banner Contato" className={styles.heroBg} loading="eager" fetchPriority="high" />
           </picture>
         </div>
         <div className={styles.scrollDownWrapper}>
