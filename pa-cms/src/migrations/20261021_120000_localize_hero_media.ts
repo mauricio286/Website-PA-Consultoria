@@ -68,16 +68,42 @@ export async function up({ db }: MigrateUpArgs): Promise<void> {
     -- This guarantees zero data loss on deployment to production.
     -- ─────────────────────────────────────────────────────────────────────────
     DO $$ BEGIN
+      -- Copy hero_image fields if they exist on the parent table
       IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'home_page' AND column_name = 'hero_image_id') THEN
         UPDATE "home_page_locales" l
         SET 
           "hero_image_id" = p."hero_image_id",
           "hero_image_tablet_id" = p."hero_image_tablet_id",
-          "hero_image_mobile_id" = p."hero_image_mobile_id",
-          "hero_media_type" = COALESCE(p."hero_media_type", 'upload'),
-          "hero_vimeo_url" = p."hero_vimeo_url",
-          "hero_vimeo_url_tablet" = p."hero_vimeo_url_tablet",
-          "hero_vimeo_url_mobile" = p."hero_vimeo_url_mobile"
+          "hero_image_mobile_id" = p."hero_image_mobile_id"
+        FROM "home_page" p
+        WHERE l."_parent_id" = p."id";
+      END IF;
+
+      -- Copy hero_media_type + hero_vimeo_url if they exist on the parent table
+      IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'home_page' AND column_name = 'hero_media_type') THEN
+        UPDATE "home_page_locales" l
+        SET "hero_media_type" = COALESCE(p."hero_media_type", 'upload')
+        FROM "home_page" p
+        WHERE l."_parent_id" = p."id";
+      END IF;
+
+      IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'home_page' AND column_name = 'hero_vimeo_url') THEN
+        UPDATE "home_page_locales" l
+        SET "hero_vimeo_url" = p."hero_vimeo_url"
+        FROM "home_page" p
+        WHERE l."_parent_id" = p."id";
+      END IF;
+
+      IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'home_page' AND column_name = 'hero_vimeo_url_tablet') THEN
+        UPDATE "home_page_locales" l
+        SET "hero_vimeo_url_tablet" = p."hero_vimeo_url_tablet"
+        FROM "home_page" p
+        WHERE l."_parent_id" = p."id";
+      END IF;
+
+      IF EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'home_page' AND column_name = 'hero_vimeo_url_mobile') THEN
+        UPDATE "home_page_locales" l
+        SET "hero_vimeo_url_mobile" = p."hero_vimeo_url_mobile"
         FROM "home_page" p
         WHERE l."_parent_id" = p."id";
       END IF;
