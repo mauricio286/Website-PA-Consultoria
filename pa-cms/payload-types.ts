@@ -799,15 +799,43 @@ export interface HomePage {
    * Cole o link do vídeo do Vimeo (ex: https://vimeo.com/76979871). O vídeo rodará automaticamente em loop contínuo e sem som.
    */
   heroVimeoUrl?: string | null;
+  /**
+   * Opcional. Link de vídeo alternativo para tablets. Se não informado, usa o de Desktop.
+   */
+  heroVimeoUrlTablet?: string | null;
+  /**
+   * Opcional. Link de vídeo vertical (ex: formato Reels/Stories 9:16 ou 1:1) para celulares. Se não informado, usa o de Desktop.
+   */
+  heroVimeoUrlMobile?: string | null;
   heroImage?: (number | null) | Media;
   /**
    * Opcional. Exibida em tablets (telas de até 1024px). Se não informada, usa a de Desktop.
    */
   heroImageTablet?: (number | null) | Media;
   /**
-   * Opcional. Exibida em celulares (telas de até 580px). Se não informada, usa a de Desktop ou Tablet.
+   * Opcional. Exibida em celulares (telas de até 580px). Se for vídeo, permite subir arquivo vertical (9:16 ou 1:1). Se não informada, usa a de Desktop ou Tablet.
    */
   heroImageMobile?: (number | null) | Media;
+  /**
+   * Recomendado para vídeos: Nenhum ou Gradiente Suave para manter cores vivas.
+   */
+  heroOverlayType?: ('solid' | 'gradient' | 'none') | null;
+  /**
+   * De 0 a 100%. Padrão: 50% para fotos. Para vídeos com boa leitura, sugerido entre 0% e 30%.
+   */
+  heroOverlayOpacity?: number | null;
+  /**
+   * Quando o vídeo horizontal 16:9 for cortado no celular, define onde concentrar a visão.
+   */
+  heroVideoPositionMobile?: ('center' | 'left' | 'right' | 'top' | 'bottom') | null;
+  /**
+   * No modo proporcional, a altura diminui no celular e reduz muito o corte lateral do vídeo.
+   */
+  heroMobileHeightMode?: ('fullscreen' | 'proportional') | null;
+  /**
+   * Se ativado, remove o efeito de zoom do parallax ao rolar e mantém o vídeo perfeitamente estável.
+   */
+  heroDisableEntranceAnimation?: boolean | null;
   heroCtaLabel?: string | null;
   heroCtaUrl?: string | null;
   heroLogos?:
@@ -1525,9 +1553,16 @@ export interface HomePageSelect<T extends boolean = true> {
   heroSubtitle?: T;
   heroMediaType?: T;
   heroVimeoUrl?: T;
+  heroVimeoUrlTablet?: T;
+  heroVimeoUrlMobile?: T;
   heroImage?: T;
   heroImageTablet?: T;
   heroImageMobile?: T;
+  heroOverlayType?: T;
+  heroOverlayOpacity?: T;
+  heroVideoPositionMobile?: T;
+  heroMobileHeightMode?: T;
+  heroDisableEntranceAnimation?: T;
   heroCtaLabel?: T;
   heroCtaUrl?: T;
   heroLogos?:

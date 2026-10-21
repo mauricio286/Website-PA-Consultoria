@@ -45,9 +45,16 @@ export interface HomePageData {
   heroSubtitle?: string;
   heroMediaType?: 'upload' | 'vimeo';
   heroVimeoUrl?: string;
+  heroVimeoUrlTablet?: string;
+  heroVimeoUrlMobile?: string;
   heroImage?: Media | string;
   heroImageTablet?: Media | string;
   heroImageMobile?: Media | string;
+  heroOverlayType?: 'solid' | 'gradient' | 'none';
+  heroOverlayOpacity?: number;
+  heroVideoPositionMobile?: 'center' | 'left' | 'right' | 'top' | 'bottom';
+  heroMobileHeightMode?: 'fullscreen' | 'proportional';
+  heroDisableEntranceAnimation?: boolean;
   heroCtaLabel?: string;
   heroCtaUrl?: string;
   heroLogos?: Array<{

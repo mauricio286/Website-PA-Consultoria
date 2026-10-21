@@ -18,6 +18,7 @@
   transform: translate(-50%, -50%);
   border: none;
   pointer-events: none;
+  transition: transform 0.3s ease, left 0.3s ease, top 0.3s ease;
 }
 
 /* Vimeo iframe ajustado para containers proporcionais (ex: Introdução) */

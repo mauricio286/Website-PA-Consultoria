@@ -41,6 +41,7 @@ const HomePage: GlobalConfig = {
           name: 'heroMediaType',
           label: 'Tipo de Mídia de Fundo',
           type: 'select',
+          localized: true,
           defaultValue: 'upload',
           options: [
             { label: 'Upload de Arquivo (Imagem, GIF ou MP4)', value: 'upload' },
@@ -52,11 +53,32 @@ const HomePage: GlobalConfig = {
         },
         {
           name: 'heroVimeoUrl',
-          label: 'Link do Vídeo no Vimeo (Hero)',
+          label: 'Link do Vídeo no Vimeo (Hero - Desktop)',
           type: 'text',
+          localized: true,
           admin: {
             condition: (data, siblingData) => siblingData?.heroMediaType === 'vimeo',
             description: 'Cole o link do vídeo do Vimeo (ex: https://vimeo.com/76979871). O vídeo rodará automaticamente em loop contínuo e sem som.',
+          },
+        },
+        {
+          name: 'heroVimeoUrlTablet',
+          label: 'Link do Vídeo no Vimeo (Tablet - Opcional)',
+          type: 'text',
+          localized: true,
+          admin: {
+            condition: (data, siblingData) => siblingData?.heroMediaType === 'vimeo',
+            description: 'Opcional. Link de vídeo alternativo para tablets. Se não informado, usa o de Desktop.',
+          },
+        },
+        {
+          name: 'heroVimeoUrlMobile',
+          label: 'Link do Vídeo no Vimeo (Mobile - Opcional)',
+          type: 'text',
+          localized: true,
+          admin: {
+            condition: (data, siblingData) => siblingData?.heroMediaType === 'vimeo',
+            description: 'Opcional. Link de vídeo vertical (ex: formato Reels/Stories 9:16 ou 1:1) para celulares. Se não informado, usa o de Desktop.',
           },
         },
         {
@@ -64,6 +86,7 @@ const HomePage: GlobalConfig = {
           label: 'Imagem/Vídeo de fundo do Hero (Desktop)',
           type: 'upload',
           relationTo: 'media',
+          localized: true,
           admin: {
             condition: (data, siblingData) => siblingData?.heroMediaType !== 'vimeo',
           },
@@ -73,6 +96,7 @@ const HomePage: GlobalConfig = {
           label: 'Imagem de fundo (Tablet)',
           type: 'upload',
           relationTo: 'media',
+          localized: true,
           admin: {
             condition: (data, siblingData) => siblingData?.heroMediaType !== 'vimeo',
             description: 'Opcional. Exibida em tablets (telas de até 1024px). Se não informada, usa a de Desktop.',
@@ -80,13 +104,100 @@ const HomePage: GlobalConfig = {
         },
         {
           name: 'heroImageMobile',
-          label: 'Imagem de fundo (Mobile)',
+          label: 'Imagem/Vídeo de fundo (Mobile)',
           type: 'upload',
           relationTo: 'media',
+          localized: true,
           admin: {
             condition: (data, siblingData) => siblingData?.heroMediaType !== 'vimeo',
-            description: 'Opcional. Exibida em celulares (telas de até 580px). Se não informada, usa a de Desktop ou Tablet.',
+            description: 'Opcional. Exibida em celulares (telas de até 580px). Se for vídeo, permite subir arquivo vertical (9:16 ou 1:1). Se não informada, usa a de Desktop ou Tablet.',
           },
+        },
+        {
+          type: 'collapsible',
+          label: '🎨 Efeitos Visuais, Overlay e Enquadramento do Hero',
+          admin: {
+            initCollapsed: false,
+          },
+          fields: [
+            {
+              type: 'row',
+              fields: [
+                {
+                  name: 'heroOverlayType',
+                  label: 'Tipo de Overlay (Película sobre a mídia)',
+                  type: 'select',
+                  defaultValue: 'solid',
+                  options: [
+                    { label: 'Escurecimento Sólido (Padrão)', value: 'solid' },
+                    { label: 'Gradiente Suave (Protege texto à esquerda e base)', value: 'gradient' },
+                    { label: 'Nenhum (Mídia 100% pura sem escurecimento)', value: 'none' },
+                  ],
+                  admin: {
+                    width: '50%',
+                    description: 'Recomendado para vídeos: Nenhum ou Gradiente Suave para manter cores vivas.',
+                  },
+                },
+                {
+                  name: 'heroOverlayOpacity',
+                  label: 'Opacidade do Overlay (%)',
+                  type: 'number',
+                  min: 0,
+                  max: 100,
+                  defaultValue: 50,
+                  admin: {
+                    width: '50%',
+                    description: 'De 0 a 100%. Padrão: 50% para fotos. Para vídeos com boa leitura, sugerido entre 0% e 30%.',
+                  },
+                },
+              ],
+            },
+            {
+              type: 'row',
+              fields: [
+                {
+                  name: 'heroVideoPositionMobile',
+                  label: 'Enquadramento / Foco no Mobile',
+                  type: 'select',
+                  defaultValue: 'center',
+                  options: [
+                    { label: 'Centro (Padrão)', value: 'center' },
+                    { label: 'Foco à Esquerda', value: 'left' },
+                    { label: 'Foco à Direita', value: 'right' },
+                    { label: 'Foco no Topo', value: 'top' },
+                    { label: 'Foco na Base', value: 'bottom' },
+                  ],
+                  admin: {
+                    width: '50%',
+                    description: 'Quando o vídeo horizontal 16:9 for cortado no celular, define onde concentrar a visão.',
+                  },
+                },
+                {
+                  name: 'heroMobileHeightMode',
+                  label: 'Altura do Hero no Mobile',
+                  type: 'select',
+                  defaultValue: 'fullscreen',
+                  options: [
+                    { label: 'Tela Cheia (100vh - Padrão imersivo)', value: 'fullscreen' },
+                    { label: 'Ajustado / Proporcional (~65vh - Mostra mais largura do vídeo)', value: 'proportional' },
+                  ],
+                  admin: {
+                    width: '50%',
+                    description: 'No modo proporcional, a altura diminui no celular e reduz muito o corte lateral do vídeo.',
+                  },
+                },
+              ],
+            },
+            {
+              name: 'heroDisableEntranceAnimation',
+              label: 'Desativar efeito de zoom e animações sobre o vídeo',
+              type: 'checkbox',
+              defaultValue: false,
+              admin: {
+                description: 'Se ativado, remove o efeito de zoom do parallax ao rolar e mantém o vídeo perfeitamente estável.',
+              },
+            },
+          ],
         },
         {
           type: 'row',

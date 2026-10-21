@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './MediaContainer.module.css';
 import { api, type Media } from '../services/api';
 
 export interface MediaContainerProps {
   mediaType?: 'upload' | 'vimeo';
   vimeoUrl?: string;
+  vimeoUrlTablet?: string;
+  vimeoUrlMobile?: string;
   media?: Media | string | null;
   mediaTablet?: Media | string | null;
   mediaMobile?: Media | string | null;
+  objectPositionMobile?: 'center' | 'left' | 'right' | 'top' | 'bottom' | string;
   defaultFallbackSrc?: string;
   alt?: string;
   className?: string;
@@ -16,12 +19,43 @@ export interface MediaContainerProps {
   size?: 'hero' | 'card' | 'thumbnail';
 }
 
+function useBreakpoint() {
+  const [breakpoint, setBreakpoint] = useState<'mobile' | 'tablet' | 'desktop'>(() => {
+    if (typeof window === 'undefined') return 'desktop';
+    const w = window.innerWidth;
+    if (w <= 580) return 'mobile';
+    if (w <= 1024) return 'tablet';
+    return 'desktop';
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      const w = window.innerWidth;
+      if (w <= 580) {
+        setBreakpoint('mobile');
+      } else if (w <= 1024) {
+        setBreakpoint('tablet');
+      } else {
+        setBreakpoint('desktop');
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize, { passive: true });
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return breakpoint;
+}
+
 export default function MediaContainer({
   mediaType = 'upload',
   vimeoUrl,
+  vimeoUrlTablet,
+  vimeoUrlMobile,
   media,
   mediaTablet,
   mediaMobile,
+  objectPositionMobile,
   defaultFallbackSrc,
   alt = '',
   className = '',
@@ -29,39 +63,70 @@ export default function MediaContainer({
   fitMode = 'cover',
   size,
 }: MediaContainerProps) {
-  // 1. Caso seja selecionado o campo de Link/Vimeo
-  if (mediaType === 'vimeo' && vimeoUrl) {
-    const trimmedUrl = vimeoUrl.trim();
-    const isDirectVideo = /\.(mp4|webm|mov)(\?.*)?$/i.test(trimmedUrl);
+  const breakpoint = useBreakpoint();
 
-    if (isDirectVideo) {
-      return (
-        <div className={`${styles.videoWrapper} ${className}`} style={style}>
-          <video
-            src={trimmedUrl}
-            className={styles.video}
-            style={{ objectFit: fitMode === 'contain' ? 'contain' : 'cover' }}
-            autoPlay
-            loop
-            muted
-            playsInline
-          />
-        </div>
-      );
+  // 1. Caso seja selecionado o campo de Link/Vimeo
+  if (mediaType === 'vimeo') {
+    let activeVimeoUrl = vimeoUrl;
+    if (breakpoint === 'mobile' && vimeoUrlMobile) {
+      activeVimeoUrl = vimeoUrlMobile;
+    } else if (breakpoint === 'tablet' && vimeoUrlTablet) {
+      activeVimeoUrl = vimeoUrlTablet;
     }
 
-    const embedUrl = api.getVimeoEmbedUrl(trimmedUrl);
-    if (embedUrl) {
-      return (
-        <div className={`${styles.vimeoWrapper} ${className}`} style={style}>
-          <iframe
-            src={embedUrl}
-            className={fitMode === 'fit' || fitMode === 'contain' ? styles.vimeoIframeFit : styles.vimeoIframe}
-            allow="autoplay; fullscreen; picture-in-picture"
-            title={alt || 'Vídeo de fundo'}
-          />
-        </div>
-      );
+    if (activeVimeoUrl) {
+      const trimmedUrl = activeVimeoUrl.trim();
+      const isDirectVideo = /\.(mp4|webm|mov)(\?.*)?$/i.test(trimmedUrl);
+
+      if (isDirectVideo) {
+        const objectPosition = breakpoint === 'mobile' && objectPositionMobile ? objectPositionMobile : undefined;
+        return (
+          <div className={`${styles.videoWrapper} ${className}`} style={style}>
+            <video
+              key={trimmedUrl}
+              src={trimmedUrl}
+              className={styles.video}
+              style={{
+                objectFit: fitMode === 'contain' ? 'contain' : 'cover',
+                objectPosition,
+              }}
+              autoPlay
+              loop
+              muted
+              playsInline
+            />
+          </div>
+        );
+      }
+
+      const embedUrl = api.getVimeoEmbedUrl(trimmedUrl);
+      if (embedUrl) {
+        let iframeStyle: React.CSSProperties = {};
+        if (breakpoint === 'mobile' && objectPositionMobile && fitMode !== 'fit' && fitMode !== 'contain') {
+          if (objectPositionMobile === 'left') {
+            iframeStyle = { left: '0%', transform: 'translate(0%, -50%)' };
+          } else if (objectPositionMobile === 'right') {
+            iframeStyle = { left: '100%', transform: 'translate(-100%, -50%)' };
+          } else if (objectPositionMobile === 'top') {
+            iframeStyle = { top: '0%', transform: 'translate(-50%, 0%)' };
+          } else if (objectPositionMobile === 'bottom') {
+            iframeStyle = { top: '100%', transform: 'translate(-50%, -100%)' };
+          }
+        }
+
+        return (
+          <div className={`${styles.vimeoWrapper} ${className}`} style={style}>
+            <iframe
+              key={embedUrl}
+              src={embedUrl}
+              className={fitMode === 'fit' || fitMode === 'contain' ? styles.vimeoIframeFit : styles.vimeoIframe}
+              style={iframeStyle}
+              allow="autoplay; fullscreen; picture-in-picture"
+              title={alt || 'Vídeo de fundo'}
+            />
+          </div>
+        );
+      }
     }
   }
 
@@ -73,13 +138,32 @@ export default function MediaContainer({
   const mimeType = (typeof media === 'object' && media?.mimeType) ? media.mimeType : '';
   const isVideo = mimeType.startsWith('video/') || /\.(mp4|webm|mov)(\?.*)?$/i.test(mediaUrl);
 
-  if (isVideo) {
+  const mobileMimeType = (typeof mediaMobile === 'object' && mediaMobile?.mimeType) ? mediaMobile.mimeType : '';
+  const isMobileVideo = mobileMimeType.startsWith('video/') || /\.(mp4|webm|mov)(\?.*)?$/i.test(mediaMobileUrl || '');
+
+  const tabletMimeType = (typeof mediaTablet === 'object' && mediaTablet?.mimeType) ? mediaTablet.mimeType : '';
+  const isTabletVideo = tabletMimeType.startsWith('video/') || /\.(mp4|webm|mov)(\?.*)?$/i.test(mediaTabletUrl || '');
+
+  if (isVideo || isMobileVideo || isTabletVideo) {
+    let activeVideoUrl = mediaUrl;
+    if (breakpoint === 'mobile' && mediaMobileUrl && isMobileVideo) {
+      activeVideoUrl = mediaMobileUrl;
+    } else if (breakpoint === 'tablet' && mediaTabletUrl && isTabletVideo) {
+      activeVideoUrl = mediaTabletUrl;
+    }
+
+    const objectPosition = breakpoint === 'mobile' && objectPositionMobile ? objectPositionMobile : undefined;
+
     return (
       <div className={`${styles.videoWrapper} ${className}`} style={style}>
         <video
-          src={mediaUrl}
+          key={activeVideoUrl}
+          src={activeVideoUrl}
           className={styles.video}
-          style={{ objectFit: fitMode === 'contain' ? 'contain' : 'cover' }}
+          style={{
+            objectFit: fitMode === 'contain' ? 'contain' : 'cover',
+            objectPosition,
+          }}
           autoPlay
           loop
           muted

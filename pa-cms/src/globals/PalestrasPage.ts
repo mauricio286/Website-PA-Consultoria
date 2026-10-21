@@ -23,6 +23,7 @@ const PalestrasPage: GlobalConfig = {
           label: 'Imagem de fundo do Hero',
           type: 'upload',
           relationTo: 'media',
+          localized: true,
           required: true,
         },
         {

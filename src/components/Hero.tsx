@@ -23,11 +23,36 @@ export default function Hero({ data }: HeroProps) {
   // Computação dos dados dinâmicos do CMS ou fallbacks
   const heroMediaType = data?.heroMediaType || 'upload';
   const heroVimeoUrl = data?.heroVimeoUrl;
+  const heroVimeoUrlTablet = data?.heroVimeoUrlTablet;
+  const heroVimeoUrlMobile = data?.heroVimeoUrlMobile;
+  const heroOverlayType = data?.heroOverlayType || 'solid';
+  const heroOverlayOpacity = typeof data?.heroOverlayOpacity === 'number' ? data.heroOverlayOpacity : 50;
+  const heroVideoPositionMobile = data?.heroVideoPositionMobile || 'center';
+  const heroMobileHeightMode = data?.heroMobileHeightMode || 'fullscreen';
+  const heroDisableEntranceAnimation = !!data?.heroDisableEntranceAnimation;
+
   const bgImageUrl = api.getMediaUrl(data?.heroImage) || imgProperty1Default;
   const subtitle = data?.heroSubtitle || t.hero.description;
   const ctaLabel = data?.heroCtaLabel || t.hero.cta;
   const ctaUrl = data?.heroCtaUrl || "/servicos";
   const isHash = ctaUrl.startsWith('#');
+
+  // Cálculo dinâmico do overlay (película sobre o vídeo/imagem)
+  let overlayStyle: React.CSSProperties = {};
+  if (heroOverlayType === 'none' || heroOverlayOpacity === 0) {
+    overlayStyle = { display: 'none' };
+  } else if (heroOverlayType === 'gradient') {
+    const alpha = heroOverlayOpacity / 100;
+    overlayStyle = {
+      background: `linear-gradient(to right, rgba(0, 0, 0, ${alpha}) 0%, rgba(0, 0, 0, ${alpha * 0.4}) 55%, transparent 100%), linear-gradient(to top, rgba(0, 0, 0, ${alpha * 0.8}) 0%, transparent 40%)`,
+    };
+  } else {
+    // 'solid'
+    const alpha = heroOverlayOpacity / 100;
+    overlayStyle = {
+      backgroundColor: `rgba(0, 0, 0, ${alpha})`,
+    };
+  }
 
   // Smart CTA handler: scroll if anchor exists on page, otherwise navigate to route
   const handleCtaClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -55,6 +80,13 @@ export default function Hero({ data }: HeroProps) {
   }
 
   useEffect(() => {
+    if (heroDisableEntranceAnimation) {
+      if (parallaxRef.current) {
+        parallaxRef.current.style.transform = 'none';
+      }
+      return;
+    }
+
     const handleScroll = () => {
       if (!heroRef.current || !parallaxRef.current) return;
       const rect = heroRef.current.getBoundingClientRect();
@@ -87,16 +119,24 @@ export default function Hero({ data }: HeroProps) {
     handleScroll();
 
     return () => window.removeEventListener('scroll', scrollListener);
-  }, []);
+  }, [heroDisableEntranceAnimation]);
 
   return (
-    <section id="hero" className={styles.hero} data-node-id="34:1004" ref={heroRef}>
+    <section 
+      id="hero" 
+      className={`${styles.hero} ${heroMobileHeightMode === 'proportional' ? styles.proportionalHeight : ''}`} 
+      data-node-id="34:1004" 
+      ref={heroRef}
+    >
       {/* Background — Design BgSessaoHero */}
       <div className={styles.bgWrapper} aria-hidden="true">
         <div ref={parallaxRef} className={styles.parallaxWrapper}>
           <MediaContainer
             mediaType={heroMediaType}
             vimeoUrl={heroVimeoUrl}
+            vimeoUrlTablet={heroVimeoUrlTablet}
+            vimeoUrlMobile={heroVimeoUrlMobile}
+            objectPositionMobile={heroVideoPositionMobile}
             media={data?.heroImage || bgImageUrl}
             mediaTablet={data?.heroImageTablet}
             mediaMobile={data?.heroImageMobile}
@@ -107,7 +147,7 @@ export default function Hero({ data }: HeroProps) {
             size="hero"
           />
         </div>
-        <div className={styles.overlay} />
+        <div className={styles.overlay} style={overlayStyle} />
       </div>
 
       {/* Content */}

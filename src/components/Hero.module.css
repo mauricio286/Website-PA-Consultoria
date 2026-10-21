@@ -73,12 +73,13 @@
   opacity: 1 !important;
 }
 
-/* Dark overlay — rgba(0,0,0,0.5) from Design */
+/* Dark overlay — rgba(0,0,0,0.5) from Design (customizable via CMS) */
 .overlay {
   position: absolute;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 2;
+  transition: opacity 0.3s ease, background 0.3s ease, background-color 0.3s ease;
 }
 
 /* Content sits above bg */
@@ -198,6 +199,13 @@
 }
 
 @media (max-width: 768px) {
+  .hero.proportionalHeight {
+    height: auto;
+    min-height: 65vh;
+    max-height: 85vh;
+    padding-bottom: 24px;
+  }
+
   .contentWrapper { padding: 0 24px; }
 
   .titleLine {

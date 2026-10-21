@@ -1,1384 +1,5 @@
 {
   "globals": {
-    "home-page": {
-      "id": 1,
-      "heroTitle": "Resultados que o \ncampo comprova!",
-      "heroSubtitle": "Consultoria agronômica especializada para produtores que buscam excelência, rentabilidade e segurança em cada hectare plantado.",
-      "heroMediaType": "upload",
-      "heroVimeoUrl": null,
-      "heroImage": {
-        "id": 92,
-        "alt": "Agricultura",
-        "updatedAt": "2026-07-10T22:04:53.664Z",
-        "createdAt": "2026-07-10T22:04:53.364Z",
-        "url": "/cms-media/BG_20-_20Sess_C3_A3o_20Hero-1.jpeg",
-        "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BG%20-%20Sess%C3%A3o%20Hero-1-400x300.jpg",
-        "filename": "BG_20-_20Sess_C3_A3o_20Hero-1.jpeg",
-        "mimeType": "image/jpeg",
-        "filesize": 488018,
-        "width": 2560,
-        "height": 1707,
-        "focalX": 50,
-        "focalY": 50,
-        "sizes": {
-          "thumbnail": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BG%20-%20Sess%C3%A3o%20Hero-1-400x300.jpg",
-            "width": 400,
-            "height": 300,
-            "mimeType": "image/jpeg",
-            "filesize": 16820,
-            "filename": "BG - Sessão Hero-1-400x300.jpg"
-          },
-          "card": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BG%20-%20Sess%C3%A3o%20Hero-1-768x512.jpg",
-            "width": 768,
-            "height": 512,
-            "mimeType": "image/jpeg",
-            "filesize": 41553,
-            "filename": "BG - Sessão Hero-1-768x512.jpg"
-          },
-          "hero": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BG%20-%20Sess%C3%A3o%20Hero-1-1920x1080.jpg",
-            "width": 1920,
-            "height": 1080,
-            "mimeType": "image/jpeg",
-            "filesize": 157336,
-            "filename": "BG - Sessão Hero-1-1920x1080.jpg"
-          }
-        }
-      },
-      "heroImageTablet": {
-        "id": 92,
-        "alt": "Agricultura",
-        "updatedAt": "2026-07-10T22:04:53.664Z",
-        "createdAt": "2026-07-10T22:04:53.364Z",
-        "url": "/cms-media/BG_20-_20Sess_C3_A3o_20Hero-1.jpeg",
-        "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BG%20-%20Sess%C3%A3o%20Hero-1-400x300.jpg",
-        "filename": "BG_20-_20Sess_C3_A3o_20Hero-1.jpeg",
-        "mimeType": "image/jpeg",
-        "filesize": 488018,
-        "width": 2560,
-        "height": 1707,
-        "focalX": 50,
-        "focalY": 50,
-        "sizes": {
-          "thumbnail": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BG%20-%20Sess%C3%A3o%20Hero-1-400x300.jpg",
-            "width": 400,
-            "height": 300,
-            "mimeType": "image/jpeg",
-            "filesize": 16820,
-            "filename": "BG - Sessão Hero-1-400x300.jpg"
-          },
-          "card": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BG%20-%20Sess%C3%A3o%20Hero-1-768x512.jpg",
-            "width": 768,
-            "height": 512,
-            "mimeType": "image/jpeg",
-            "filesize": 41553,
-            "filename": "BG - Sessão Hero-1-768x512.jpg"
-          },
-          "hero": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BG%20-%20Sess%C3%A3o%20Hero-1-1920x1080.jpg",
-            "width": 1920,
-            "height": 1080,
-            "mimeType": "image/jpeg",
-            "filesize": 157336,
-            "filename": "BG - Sessão Hero-1-1920x1080.jpg"
-          }
-        }
-      },
-      "heroImageMobile": {
-        "id": 92,
-        "alt": "Agricultura",
-        "updatedAt": "2026-07-10T22:04:53.664Z",
-        "createdAt": "2026-07-10T22:04:53.364Z",
-        "url": "/cms-media/BG_20-_20Sess_C3_A3o_20Hero-1.jpeg",
-        "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BG%20-%20Sess%C3%A3o%20Hero-1-400x300.jpg",
-        "filename": "BG_20-_20Sess_C3_A3o_20Hero-1.jpeg",
-        "mimeType": "image/jpeg",
-        "filesize": 488018,
-        "width": 2560,
-        "height": 1707,
-        "focalX": 50,
-        "focalY": 50,
-        "sizes": {
-          "thumbnail": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BG%20-%20Sess%C3%A3o%20Hero-1-400x300.jpg",
-            "width": 400,
-            "height": 300,
-            "mimeType": "image/jpeg",
-            "filesize": 16820,
-            "filename": "BG - Sessão Hero-1-400x300.jpg"
-          },
-          "card": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BG%20-%20Sess%C3%A3o%20Hero-1-768x512.jpg",
-            "width": 768,
-            "height": 512,
-            "mimeType": "image/jpeg",
-            "filesize": 41553,
-            "filename": "BG - Sessão Hero-1-768x512.jpg"
-          },
-          "hero": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BG%20-%20Sess%C3%A3o%20Hero-1-1920x1080.jpg",
-            "width": 1920,
-            "height": 1080,
-            "mimeType": "image/jpeg",
-            "filesize": 157336,
-            "filename": "BG - Sessão Hero-1-1920x1080.jpg"
-          }
-        }
-      },
-      "heroCtaLabel": "Nossas soluções",
-      "heroCtaUrl": "/servicos",
-      "heroLogos": [
-        {
-          "id": "6a5169c4f23afd4d2c5c46ed",
-          "logo": {
-            "id": 4,
-            "alt": "logo_BASF",
-            "updatedAt": "2026-07-10T21:28:20.241Z",
-            "createdAt": "2026-07-10T21:28:19.758Z",
-            "url": "/cms-media/BASF.png",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BASF-400x300.png",
-            "filename": "BASF.png",
-            "mimeType": "image/png",
-            "filesize": 29525,
-            "width": 960,
-            "height": 347,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BASF-400x300.png",
-                "width": 400,
-                "height": 300,
-                "mimeType": "image/png",
-                "filesize": 17916,
-                "filename": "BASF-400x300.png"
-              },
-              "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BASF-768x512.png",
-                "width": 768,
-                "height": 512,
-                "mimeType": "image/png",
-                "filesize": 35388,
-                "filename": "BASF-768x512.png"
-              },
-              "hero": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              }
-            }
-          },
-          "alt": "BASF"
-        },
-        {
-          "id": "6a5169c4f23afd4d2c5c46ee",
-          "logo": {
-            "id": 11,
-            "alt": "BAYER",
-            "updatedAt": "2026-07-10T21:35:42.991Z",
-            "createdAt": "2026-07-10T21:35:42.543Z",
-            "url": "/cms-media/BAYER.png",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BAYER-400x300.png",
-            "filename": "BAYER.png",
-            "mimeType": "image/png",
-            "filesize": 48050,
-            "width": 3000,
-            "height": 2000,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BAYER-400x300.png",
-                "width": 400,
-                "height": 300,
-                "mimeType": "image/png",
-                "filesize": 23287,
-                "filename": "BAYER-400x300.png"
-              },
-              "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BAYER-768x512.png",
-                "width": 768,
-                "height": 512,
-                "mimeType": "image/png",
-                "filesize": 41835,
-                "filename": "BAYER-768x512.png"
-              },
-              "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BAYER-1920x1080.png",
-                "width": 1920,
-                "height": 1080,
-                "mimeType": "image/png",
-                "filesize": 121879,
-                "filename": "BAYER-1920x1080.png"
-              }
-            }
-          },
-          "alt": "Bayer"
-        },
-        {
-          "id": "6a5169c4f23afd4d2c5c46ef",
-          "logo": {
-            "id": 3,
-            "alt": "logo_Syngenta",
-            "updatedAt": "2026-07-10T21:27:45.725Z",
-            "createdAt": "2026-07-10T21:27:45.445Z",
-            "url": "/cms-media/Syngenta.png",
-            "thumbnailURL": null,
-            "filename": "Syngenta.png",
-            "mimeType": "image/png",
-            "filesize": 4305,
-            "width": 127,
-            "height": 42,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              },
-              "card": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              },
-              "hero": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              }
-            }
-          },
-          "alt": "Syngenta"
-        },
-        {
-          "id": "6a5169c4f23afd4d2c5c46f0",
-          "logo": {
-            "id": 2,
-            "alt": "logo_corteva",
-            "updatedAt": "2026-07-10T21:26:07.638Z",
-            "createdAt": "2026-07-10T21:26:07.340Z",
-            "url": "/cms-media/Corteva.svg",
-            "thumbnailURL": null,
-            "filename": "Corteva.svg",
-            "mimeType": "image/svg+xml",
-            "filesize": 9611,
-            "width": 154,
-            "height": 32,
-            "focalX": null,
-            "focalY": null,
-            "sizes": {
-              "thumbnail": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              },
-              "card": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              },
-              "hero": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              }
-            }
-          },
-          "alt": "Corteva"
-        }
-      ],
-      "introTitle": "Introdução",
-      "introText": {
-        "root": {
-          "type": "root",
-          "format": "",
-          "indent": 0,
-          "version": 1,
-          "children": [
-            {
-              "type": "paragraph",
-              "format": "",
-              "indent": 0,
-              "version": 1,
-              "children": [
-                {
-                  "text": "No campo, resultado não acontece por acaso. Ele nasce de experiência, estratégia e decisões bem tomadas. Há mais de 20 anos, o Grupo PA caminha ao lado do produtor rural, unindo consultoria técnica, agricultura de precisão e gestão para transformar conhecimento em produtividade.",
-                  "type": "text",
-                  "version": 1
-                }
-              ]
-            }
-          ]
-        }
-      },
-      "introMediaType": "upload",
-      "introVimeoUrl": null,
-      "introImage": {
-        "id": 74,
-        "alt": "Introdução - Grupo PA",
-        "updatedAt": "2026-07-10T21:51:30.697Z",
-        "createdAt": "2026-07-10T21:51:28.248Z",
-        "url": "/cms-media/img_introducao-5.png",
-        "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/img_introducao-5-400x300.png",
-        "filename": "img_introducao-5.png",
-        "mimeType": "image/png",
-        "filesize": 254415,
-        "width": 1011,
-        "height": 1024,
-        "focalX": 50,
-        "focalY": 50,
-        "sizes": {
-          "thumbnail": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/img_introducao-5-400x300.png",
-            "width": 400,
-            "height": 300,
-            "mimeType": "image/png",
-            "filesize": 62529,
-            "filename": "img_introducao-5-400x300.png"
-          },
-          "card": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/img_introducao-5-768x512.png",
-            "width": 768,
-            "height": 512,
-            "mimeType": "image/png",
-            "filesize": 188461,
-            "filename": "img_introducao-5-768x512.png"
-          },
-          "hero": {
-            "url": null,
-            "width": null,
-            "height": null,
-            "mimeType": null,
-            "filesize": null,
-            "filename": null
-          }
-        }
-      },
-      "introVideoWidth": 80,
-      "introVideoMaxWidth": 0,
-      "introVideoAlign": "right",
-      "introVideoAspectRatio": "16/9",
-      "introVideoRadius": 0,
-      "introVideoInnerRadius": 0,
-      "introContainerBg": null,
-      "introContainerPadding": 0,
-      "introContainerBorder": false,
-      "introContainerBorderColor": null,
-      "introCtaLabel": "Ver mais",
-      "introCtaUrl": "/quem-somos",
-      "bannerText": "Sua próxima safra, pode ser ainda",
-      "bannerTextAlign": "center",
-      "bannerTextAccent": "melhor conosco!",
-      "bannerTextAccentColor": "#E1FE00",
-      "bannerImage": {
-        "id": 166,
-        "alt": "Campo de algodão",
-        "updatedAt": "2026-07-13T20:15:46.496Z",
-        "createdAt": "2026-07-13T20:15:46.106Z",
-        "url": "/cms-media/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc.jpg",
-        "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-400x300.jpg",
-        "filename": "cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc.jpg",
-        "mimeType": "image/jpeg",
-        "filesize": 4676784,
-        "width": 3011,
-        "height": 2000,
-        "focalX": 50,
-        "focalY": 50,
-        "sizes": {
-          "thumbnail": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-400x300.jpg",
-            "width": 400,
-            "height": 300,
-            "mimeType": "image/jpeg",
-            "filesize": 37681,
-            "filename": "cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-400x300.jpg"
-          },
-          "card": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-768x512.jpg",
-            "width": 768,
-            "height": 512,
-            "mimeType": "image/jpeg",
-            "filesize": 100380,
-            "filename": "cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-768x512.jpg"
-          },
-          "hero": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-1920x1080.jpg",
-            "width": 1920,
-            "height": 1080,
-            "mimeType": "image/jpeg",
-            "filesize": 389621,
-            "filename": "cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-1920x1080.jpg"
-          }
-        }
-      },
-      "statsTag": "resultados",
-      "statsTitle": "Números que",
-      "statsTitleAccent": "traduzem excelência",
-      "statsTitleAccentColor": null,
-      "statsTitleAlign": "left",
-      "statsSubtext": "Os números são consequência de um trabalho feito com proximidade, análise e presença no campo. Cada resultado carrega planejamento técnico, acompanhamento constante e a confiança de produtores que crescem junto com a gente.",
-      "statsSubtextAlign": "left",
-      "stats": [
-        {
-          "id": "6a504773ea2cb06b24d84db4",
-          "prefix": "",
-          "value": 1.5,
-          "suffix": "B",
-          "icon": {
-            "id": 94,
-            "alt": "for_you",
-            "updatedAt": "2026-07-10T22:09:45.284Z",
-            "createdAt": "2026-07-10T22:09:45.037Z",
-            "url": "/cms-media/for_you.svg",
-            "thumbnailURL": null,
-            "filename": "for_you.svg",
-            "mimeType": "image/svg+xml",
-            "filesize": 2571,
-            "width": 45,
-            "height": 45,
-            "focalX": null,
-            "focalY": null,
-            "sizes": {
-              "thumbnail": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              },
-              "card": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              },
-              "hero": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              }
-            }
-          },
-          "color": "peach",
-          "customBgColor": null,
-          "customTextColor": null,
-          "label": "Gestão de compras"
-        },
-        {
-          "id": "6a504773ea2cb06b24d84db5",
-          "prefix": "+",
-          "value": 3500,
-          "suffix": "",
-          "icon": {
-            "id": 95,
-            "alt": "Ícone ",
-            "updatedAt": "2026-07-14T19:14:59.143Z",
-            "createdAt": "2026-07-10T22:12:10.202Z",
-            "url": "/cms-media/Icon_202.svg",
-            "thumbnailURL": null,
-            "filename": "Icon_202.svg",
-            "mimeType": "image/svg+xml",
-            "filesize": 3282,
-            "width": 45,
-            "height": 45,
-            "focalX": null,
-            "focalY": null,
-            "sizes": {
-              "thumbnail": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              },
-              "card": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              },
-              "hero": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              }
-            }
-          },
-          "color": "dark",
-          "customBgColor": null,
-          "customTextColor": null,
-          "label": "Tratamentos no campo de pesquisa"
-        },
-        {
-          "id": "6a504773ea2cb06b24d84db6",
-          "prefix": "+",
-          "value": 163,
-          "suffix": "",
-          "icon": {
-            "id": 96,
-            "alt": "Ícone estrutura",
-            "updatedAt": "2026-07-14T19:15:27.048Z",
-            "createdAt": "2026-07-10T22:12:45.235Z",
-            "url": "/cms-media/Icon_203.svg",
-            "thumbnailURL": null,
-            "filename": "Icon_203.svg",
-            "mimeType": "image/svg+xml",
-            "filesize": 2413,
-            "width": 45,
-            "height": 45,
-            "focalX": null,
-            "focalY": null,
-            "sizes": {
-              "thumbnail": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              },
-              "card": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              },
-              "hero": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              }
-            }
-          },
-          "color": "lime",
-          "customBgColor": null,
-          "customTextColor": null,
-          "label": "Propriedades atendidas"
-        },
-        {
-          "id": "6a504773ea2cb06b24d84db7",
-          "prefix": "+",
-          "value": 73,
-          "suffix": "",
-          "icon": {
-            "id": 97,
-            "alt": "símbolo verificado",
-            "updatedAt": "2026-07-10T22:13:17.907Z",
-            "createdAt": "2026-07-10T22:13:17.691Z",
-            "url": "/cms-media/verified.svg",
-            "thumbnailURL": null,
-            "filename": "verified.svg",
-            "mimeType": "image/svg+xml",
-            "filesize": 2749,
-            "width": 45,
-            "height": 45,
-            "focalX": null,
-            "focalY": null,
-            "sizes": {
-              "thumbnail": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              },
-              "card": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              },
-              "hero": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              }
-            }
-          },
-          "color": "paleGreen",
-          "customBgColor": null,
-          "customTextColor": null,
-          "label": "Clientes"
-        }
-      ],
-      "methodologyBadge": "Estrutura",
-      "methodologyTitle": "Pilares Metodológicos",
-      "methodologyTitleAlign": "left",
-      "methodologyCards": [
-        {
-          "id": "6a5169c8f23afd4d2c5c46fe",
-          "icon": {
-            "id": 98,
-            "alt": "cavalo tabuleiro xadrez",
-            "updatedAt": "2026-07-10T22:15:06.159Z",
-            "createdAt": "2026-07-10T22:15:05.912Z",
-            "url": "/cms-media/chess_knight.svg",
-            "thumbnailURL": null,
-            "filename": "chess_knight.svg",
-            "mimeType": "image/svg+xml",
-            "filesize": 2491,
-            "width": 67,
-            "height": 67,
-            "focalX": null,
-            "focalY": null,
-            "sizes": {
-              "thumbnail": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              },
-              "card": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              },
-              "hero": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              }
-            }
-          },
-          "image": {
-            "id": 169,
-            "alt": "Colheita do milho",
-            "updatedAt": "2026-07-13T20:22:06.747Z",
-            "createdAt": "2026-07-13T20:22:03.737Z",
-            "url": "/cms-media/cut-stubble-in-the-foreground-combine-harvester-h-2026-03-16-22-54-57-utc_20_1_.jpg",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cut-stubble-in-the-foreground-combine-harvester-h-2026-03-16-22-54-57-utc%20(1)-400x300.jpg",
-            "filename": "cut-stubble-in-the-foreground-combine-harvester-h-2026-03-16-22-54-57-utc_20_1_.jpg",
-            "mimeType": "image/jpeg",
-            "filesize": 1739971,
-            "width": 3464,
-            "height": 2931,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cut-stubble-in-the-foreground-combine-harvester-h-2026-03-16-22-54-57-utc%20(1)-400x300.jpg",
-                "width": 400,
-                "height": 300,
-                "mimeType": "image/jpeg",
-                "filesize": 38768,
-                "filename": "cut-stubble-in-the-foreground-combine-harvester-h-2026-03-16-22-54-57-utc (1)-400x300.jpg"
-              },
-              "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cut-stubble-in-the-foreground-combine-harvester-h-2026-03-16-22-54-57-utc%20(1)-768x512.jpg",
-                "width": 768,
-                "height": 512,
-                "mimeType": "image/jpeg",
-                "filesize": 123316,
-                "filename": "cut-stubble-in-the-foreground-combine-harvester-h-2026-03-16-22-54-57-utc (1)-768x512.jpg"
-              },
-              "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cut-stubble-in-the-foreground-combine-harvester-h-2026-03-16-22-54-57-utc%20(1)-1920x1080.jpg",
-                "width": 1920,
-                "height": 1080,
-                "mimeType": "image/jpeg",
-                "filesize": 495050,
-                "filename": "cut-stubble-in-the-foreground-combine-harvester-h-2026-03-16-22-54-57-utc (1)-1920x1080.jpg"
-              }
-            }
-          },
-          "title": "Estratégia",
-          "description": "Decisões orientadas por pesquisa, objetivos e visão de longo prazo,\ntransformando informações agronômicas em ações práticas que maximizam a\nprodutividade, a rentabilidade e a sustentabilidade dos sistemas produtivos."
-        },
-        {
-          "id": "6a5169c8f23afd4d2c5c46ff",
-          "icon": {
-            "id": 163,
-            "alt": "tempo",
-            "updatedAt": "2026-07-11T14:56:49.678Z",
-            "createdAt": "2026-07-11T14:56:49.381Z",
-            "url": "/cms-media/avg_time-1.svg",
-            "thumbnailURL": null,
-            "filename": "avg_time-1.svg",
-            "mimeType": "image/svg+xml",
-            "filesize": 3731,
-            "width": 67,
-            "height": 67,
-            "focalX": null,
-            "focalY": null,
-            "sizes": {
-              "thumbnail": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              },
-              "card": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              },
-              "hero": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              }
-            }
-          },
-          "image": {
-            "id": 101,
-            "alt": "reunião agro",
-            "updatedAt": "2026-07-10T22:18:09.488Z",
-            "createdAt": "2026-07-10T22:18:09.167Z",
-            "url": "/cms-media/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c.jpg",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg",
-            "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c.jpg",
-            "mimeType": "image/jpeg",
-            "filesize": 652771,
-            "width": 1920,
-            "height": 2880,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg",
-                "width": 400,
-                "height": 300,
-                "mimeType": "image/jpeg",
-                "filesize": 22792,
-                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg"
-              },
-              "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-768x512.jpg",
-                "width": 768,
-                "height": 512,
-                "mimeType": "image/jpeg",
-                "filesize": 55412,
-                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-768x512.jpg"
-              },
-              "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1920x1080.jpg",
-                "width": 1920,
-                "height": 1080,
-                "mimeType": "image/jpeg",
-                "filesize": 221487,
-                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1920x1080.jpg"
-              }
-            }
-          },
-          "title": "Planejamento",
-          "description": "Decisões embasadas em dados, clima e mercado\npara mitigar riscos antes mesmo do plantio."
-        },
-        {
-          "id": "6a5169c8f23afd4d2c5c4700",
-          "icon": {
-            "id": 100,
-            "alt": "símbolo de automação",
-            "updatedAt": "2026-07-10T22:17:00.914Z",
-            "createdAt": "2026-07-10T22:17:00.693Z",
-            "url": "/cms-media/automation.svg",
-            "thumbnailURL": null,
-            "filename": "automation.svg",
-            "mimeType": "image/svg+xml",
-            "filesize": 3230,
-            "width": 67,
-            "height": 67,
-            "focalX": null,
-            "focalY": null,
-            "sizes": {
-              "thumbnail": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              },
-              "card": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              },
-              "hero": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              }
-            }
-          },
-          "image": {
-            "id": 101,
-            "alt": "reunião agro",
-            "updatedAt": "2026-07-10T22:18:09.488Z",
-            "createdAt": "2026-07-10T22:18:09.167Z",
-            "url": "/cms-media/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c.jpg",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg",
-            "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c.jpg",
-            "mimeType": "image/jpeg",
-            "filesize": 652771,
-            "width": 1920,
-            "height": 2880,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg",
-                "width": 400,
-                "height": 300,
-                "mimeType": "image/jpeg",
-                "filesize": 22792,
-                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-400x300.jpg"
-              },
-              "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-768x512.jpg",
-                "width": 768,
-                "height": 512,
-                "mimeType": "image/jpeg",
-                "filesize": 55412,
-                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-768x512.jpg"
-              },
-              "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1920x1080.jpg",
-                "width": 1920,
-                "height": 1080,
-                "mimeType": "image/jpeg",
-                "filesize": 221487,
-                "filename": "5120bca5841e59bde1605a7a8c0577bc6d9a3d9c-1920x1080.jpg"
-              }
-            }
-          },
-          "title": "Execução",
-          "description": "Uso das melhores ferramentas de agricultura digital\npara otimizar recursos e monitorar a saúde da sua safra em tempo real."
-        }
-      ],
-      "mapTag": "Atuação",
-      "mapTitle": "Onde estamos",
-      "mapDescription": "Estamos presentes em mais de 30 municípios, atuando nas culturas de soja, milho, entre outras, com mapeamento preciso para aumentar sua produtividade.",
-      "mapLogos": [
-        {
-          "id": "6a5169c4f23afd4d2c5c46f4",
-          "logo": {
-            "id": 4,
-            "alt": "logo_BASF",
-            "updatedAt": "2026-07-10T21:28:20.241Z",
-            "createdAt": "2026-07-10T21:28:19.758Z",
-            "url": "/cms-media/BASF.png",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BASF-400x300.png",
-            "filename": "BASF.png",
-            "mimeType": "image/png",
-            "filesize": 29525,
-            "width": 960,
-            "height": 347,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BASF-400x300.png",
-                "width": 400,
-                "height": 300,
-                "mimeType": "image/png",
-                "filesize": 17916,
-                "filename": "BASF-400x300.png"
-              },
-              "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BASF-768x512.png",
-                "width": 768,
-                "height": 512,
-                "mimeType": "image/png",
-                "filesize": 35388,
-                "filename": "BASF-768x512.png"
-              },
-              "hero": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              }
-            }
-          },
-          "alt": "BASF"
-        },
-        {
-          "id": "6a5169c4f23afd4d2c5c46f5",
-          "logo": {
-            "id": 11,
-            "alt": "BAYER",
-            "updatedAt": "2026-07-10T21:35:42.991Z",
-            "createdAt": "2026-07-10T21:35:42.543Z",
-            "url": "/cms-media/BAYER.png",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BAYER-400x300.png",
-            "filename": "BAYER.png",
-            "mimeType": "image/png",
-            "filesize": 48050,
-            "width": 3000,
-            "height": 2000,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BAYER-400x300.png",
-                "width": 400,
-                "height": 300,
-                "mimeType": "image/png",
-                "filesize": 23287,
-                "filename": "BAYER-400x300.png"
-              },
-              "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BAYER-768x512.png",
-                "width": 768,
-                "height": 512,
-                "mimeType": "image/png",
-                "filesize": 41835,
-                "filename": "BAYER-768x512.png"
-              },
-              "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/BAYER-1920x1080.png",
-                "width": 1920,
-                "height": 1080,
-                "mimeType": "image/png",
-                "filesize": 121879,
-                "filename": "BAYER-1920x1080.png"
-              }
-            }
-          },
-          "alt": "Bayer"
-        },
-        {
-          "id": "6a5169c4f23afd4d2c5c46f6",
-          "logo": {
-            "id": 3,
-            "alt": "logo_Syngenta",
-            "updatedAt": "2026-07-10T21:27:45.725Z",
-            "createdAt": "2026-07-10T21:27:45.445Z",
-            "url": "/cms-media/Syngenta.png",
-            "thumbnailURL": null,
-            "filename": "Syngenta.png",
-            "mimeType": "image/png",
-            "filesize": 4305,
-            "width": 127,
-            "height": 42,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              },
-              "card": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              },
-              "hero": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              }
-            }
-          },
-          "alt": "Syngenta"
-        },
-        {
-          "id": "6a5169c4f23afd4d2c5c46f7",
-          "logo": {
-            "id": 2,
-            "alt": "logo_corteva",
-            "updatedAt": "2026-07-10T21:26:07.638Z",
-            "createdAt": "2026-07-10T21:26:07.340Z",
-            "url": "/cms-media/Corteva.svg",
-            "thumbnailURL": null,
-            "filename": "Corteva.svg",
-            "mimeType": "image/svg+xml",
-            "filesize": 9611,
-            "width": 154,
-            "height": 32,
-            "focalX": null,
-            "focalY": null,
-            "sizes": {
-              "thumbnail": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              },
-              "card": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              },
-              "hero": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              }
-            }
-          },
-          "alt": "Corteva"
-        }
-      ],
-      "galleryTitle": "parceria",
-      "gallerySubtitle": "Nós estamos em movimento constante para levar o melhor da pesquisa e inovação até o produtor.",
-      "galleryImages": [
-        {
-          "id": "6a5169c4f23afd4d2c5c46f8",
-          "image": {
-            "id": 173,
-            "alt": "Fazenda São Paulo",
-            "updatedAt": "2026-07-13T20:45:26.350Z",
-            "createdAt": "2026-07-13T20:45:26.028Z",
-            "url": "/cms-media/DJI_240720257.jpeg",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/DJI_240720257-400x300.jpg",
-            "filename": "DJI_240720257.jpeg",
-            "mimeType": "image/jpeg",
-            "filesize": 122586,
-            "width": 1280,
-            "height": 720,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/DJI_240720257-400x300.jpg",
-                "width": 400,
-                "height": 300,
-                "mimeType": "image/jpeg",
-                "filesize": 23246,
-                "filename": "DJI_240720257-400x300.jpg"
-              },
-              "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/DJI_240720257-768x512.jpg",
-                "width": 768,
-                "height": 512,
-                "mimeType": "image/jpeg",
-                "filesize": 67439,
-                "filename": "DJI_240720257-768x512.jpg"
-              },
-              "hero": {
-                "url": null,
-                "width": null,
-                "height": null,
-                "mimeType": null,
-                "filesize": null,
-                "filename": null
-              }
-            }
-          }
-        },
-        {
-          "id": "6a5169c4f23afd4d2c5c46f9",
-          "image": {
-            "id": 104,
-            "alt": "encontro gestores",
-            "updatedAt": "2026-07-10T22:21:04.212Z",
-            "createdAt": "2026-07-10T22:21:03.954Z",
-            "url": "/cms-media/beedb545b44dc721b1a3a132868eb0c4e8cc4bab.jpg",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/beedb545b44dc721b1a3a132868eb0c4e8cc4bab-400x300.jpg",
-            "filename": "beedb545b44dc721b1a3a132868eb0c4e8cc4bab.jpg",
-            "mimeType": "image/jpeg",
-            "filesize": 192136,
-            "width": 1920,
-            "height": 1280,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/beedb545b44dc721b1a3a132868eb0c4e8cc4bab-400x300.jpg",
-                "width": 400,
-                "height": 300,
-                "mimeType": "image/jpeg",
-                "filesize": 18860,
-                "filename": "beedb545b44dc721b1a3a132868eb0c4e8cc4bab-400x300.jpg"
-              },
-              "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/beedb545b44dc721b1a3a132868eb0c4e8cc4bab-768x512.jpg",
-                "width": 768,
-                "height": 512,
-                "mimeType": "image/jpeg",
-                "filesize": 44045,
-                "filename": "beedb545b44dc721b1a3a132868eb0c4e8cc4bab-768x512.jpg"
-              },
-              "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/beedb545b44dc721b1a3a132868eb0c4e8cc4bab-1920x1080.jpg",
-                "width": 1920,
-                "height": 1080,
-                "mimeType": "image/jpeg",
-                "filesize": 168390,
-                "filename": "beedb545b44dc721b1a3a132868eb0c4e8cc4bab-1920x1080.jpg"
-              }
-            }
-          }
-        },
-        {
-          "id": "6a5169c4f23afd4d2c5c46fa",
-          "image": {
-            "id": 105,
-            "alt": "Caio Coppolla no PA Summit 2026",
-            "updatedAt": "2026-07-13T20:46:24.234Z",
-            "createdAt": "2026-07-10T22:21:49.790Z",
-            "url": "/cms-media/85f6e4495a4d96ad341bbddff77d858a677161d7.jpg",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/85f6e4495a4d96ad341bbddff77d858a677161d7-400x300.jpg",
-            "filename": "85f6e4495a4d96ad341bbddff77d858a677161d7.jpg",
-            "mimeType": "image/jpeg",
-            "filesize": 1025923,
-            "width": 1920,
-            "height": 2880,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/85f6e4495a4d96ad341bbddff77d858a677161d7-400x300.jpg",
-                "width": 400,
-                "height": 300,
-                "mimeType": "image/jpeg",
-                "filesize": 16258,
-                "filename": "85f6e4495a4d96ad341bbddff77d858a677161d7-400x300.jpg"
-              },
-              "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/85f6e4495a4d96ad341bbddff77d858a677161d7-768x512.jpg",
-                "width": 768,
-                "height": 512,
-                "mimeType": "image/jpeg",
-                "filesize": 50851,
-                "filename": "85f6e4495a4d96ad341bbddff77d858a677161d7-768x512.jpg"
-              },
-              "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/85f6e4495a4d96ad341bbddff77d858a677161d7-1920x1080.jpg",
-                "width": 1920,
-                "height": 1080,
-                "mimeType": "image/jpeg",
-                "filesize": 293301,
-                "filename": "85f6e4495a4d96ad341bbddff77d858a677161d7-1920x1080.jpg"
-              }
-            }
-          }
-        },
-        {
-          "id": "6a5169c4f23afd4d2c5c46fb",
-          "image": {
-            "id": 106,
-            "alt": "Paulo Asunção no PA Summit 2026",
-            "updatedAt": "2026-07-13T20:46:47.532Z",
-            "createdAt": "2026-07-10T22:22:20.854Z",
-            "url": "/cms-media/94372e485b12b23ae709386aacf102bb3f9a4435.jpg",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/94372e485b12b23ae709386aacf102bb3f9a4435-400x300.jpg",
-            "filename": "94372e485b12b23ae709386aacf102bb3f9a4435.jpg",
-            "mimeType": "image/jpeg",
-            "filesize": 185633,
-            "width": 1920,
-            "height": 1280,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/94372e485b12b23ae709386aacf102bb3f9a4435-400x300.jpg",
-                "width": 400,
-                "height": 300,
-                "mimeType": "image/jpeg",
-                "filesize": 20058,
-                "filename": "94372e485b12b23ae709386aacf102bb3f9a4435-400x300.jpg"
-              },
-              "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/94372e485b12b23ae709386aacf102bb3f9a4435-768x512.jpg",
-                "width": 768,
-                "height": 512,
-                "mimeType": "image/jpeg",
-                "filesize": 47800,
-                "filename": "94372e485b12b23ae709386aacf102bb3f9a4435-768x512.jpg"
-              },
-              "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/94372e485b12b23ae709386aacf102bb3f9a4435-1920x1080.jpg",
-                "width": 1920,
-                "height": 1080,
-                "mimeType": "image/jpeg",
-                "filesize": 168725,
-                "filename": "94372e485b12b23ae709386aacf102bb3f9a4435-1920x1080.jpg"
-              }
-            }
-          }
-        },
-        {
-          "id": "6a5169c4f23afd4d2c5c46fc",
-          "image": {
-            "id": 107,
-            "alt": "reunião",
-            "updatedAt": "2026-07-10T22:22:46.932Z",
-            "createdAt": "2026-07-10T22:22:46.373Z",
-            "url": "/cms-media/777b3ea0100fa9d7bdeab3a9e9e3dc8dc1214130.jpg",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/777b3ea0100fa9d7bdeab3a9e9e3dc8dc1214130-400x300.jpg",
-            "filename": "777b3ea0100fa9d7bdeab3a9e9e3dc8dc1214130.jpg",
-            "mimeType": "image/jpeg",
-            "filesize": 412929,
-            "width": 1920,
-            "height": 1280,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/777b3ea0100fa9d7bdeab3a9e9e3dc8dc1214130-400x300.jpg",
-                "width": 400,
-                "height": 300,
-                "mimeType": "image/jpeg",
-                "filesize": 32395,
-                "filename": "777b3ea0100fa9d7bdeab3a9e9e3dc8dc1214130-400x300.jpg"
-              },
-              "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/777b3ea0100fa9d7bdeab3a9e9e3dc8dc1214130-768x512.jpg",
-                "width": 768,
-                "height": 512,
-                "mimeType": "image/jpeg",
-                "filesize": 87101,
-                "filename": "777b3ea0100fa9d7bdeab3a9e9e3dc8dc1214130-768x512.jpg"
-              },
-              "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/777b3ea0100fa9d7bdeab3a9e9e3dc8dc1214130-1920x1080.jpg",
-                "width": 1920,
-                "height": 1080,
-                "mimeType": "image/jpeg",
-                "filesize": 378613,
-                "filename": "777b3ea0100fa9d7bdeab3a9e9e3dc8dc1214130-1920x1080.jpg"
-              }
-            }
-          }
-        },
-        {
-          "id": "6a5169c4f23afd4d2c5c46fd",
-          "image": {
-            "id": 108,
-            "alt": "integração",
-            "updatedAt": "2026-07-10T22:23:15.094Z",
-            "createdAt": "2026-07-10T22:23:14.843Z",
-            "url": "/cms-media/4d05cbcbb57228e29cb0115182c019bf0417b22b.jpg",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/4d05cbcbb57228e29cb0115182c019bf0417b22b-400x300.jpg",
-            "filename": "4d05cbcbb57228e29cb0115182c019bf0417b22b.jpg",
-            "mimeType": "image/jpeg",
-            "filesize": 446138,
-            "width": 1920,
-            "height": 2880,
-            "focalX": 50,
-            "focalY": 50,
-            "sizes": {
-              "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/4d05cbcbb57228e29cb0115182c019bf0417b22b-400x300.jpg",
-                "width": 400,
-                "height": 300,
-                "mimeType": "image/jpeg",
-                "filesize": 20243,
-                "filename": "4d05cbcbb57228e29cb0115182c019bf0417b22b-400x300.jpg"
-              },
-              "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/4d05cbcbb57228e29cb0115182c019bf0417b22b-768x512.jpg",
-                "width": 768,
-                "height": 512,
-                "mimeType": "image/jpeg",
-                "filesize": 48371,
-                "filename": "4d05cbcbb57228e29cb0115182c019bf0417b22b-768x512.jpg"
-              },
-              "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/4d05cbcbb57228e29cb0115182c019bf0417b22b-1920x1080.jpg",
-                "width": 1920,
-                "height": 1080,
-                "mimeType": "image/jpeg",
-                "filesize": 191424,
-                "filename": "4d05cbcbb57228e29cb0115182c019bf0417b22b-1920x1080.jpg"
-              }
-            }
-          }
-        }
-      ],
-      "testimonialsTag": "DEPOIMENTOS",
-      "testimonialsTitle": "Parcerias que ",
-      "testimonialsTitleAccent": "comprovam resultados",
-      "ctaText": null,
-      "ctaButtonLabel": "Fale com um consultor",
-      "ctaButtonUrl": "/contato",
-      "updatedAt": "2026-08-01T16:07:39.150Z",
-      "createdAt": "2026-07-10T01:14:27.658Z",
-      "globalType": "home-page"
-    },
     "about-page": {
       "id": 1,
       "heroImage": {
@@ -1397,28 +18,28 @@
         "focalY": 50,
         "sizes": {
           "thumbnail": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/HMA06183%20(1)-400x300.webp",
+            "url": "/cms-media/HMA06183_20_1_-400x300.webp",
             "width": 400,
             "height": 300,
             "mimeType": "image/webp",
             "filesize": 19974,
-            "filename": "HMA06183 (1)-400x300.webp"
+            "filename": "HMA06183_20_1_-400x300.webp"
           },
           "card": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/HMA06183%20(1)-768x512.webp",
+            "url": "/cms-media/HMA06183_20_1_-768x512.webp",
             "width": 768,
             "height": 512,
             "mimeType": "image/webp",
             "filesize": 50172,
-            "filename": "HMA06183 (1)-768x512.webp"
+            "filename": "HMA06183_20_1_-768x512.webp"
           },
           "hero": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/HMA06183%20(1)-1920x1080.webp",
+            "url": "/cms-media/HMA06183_20_1_-1920x1080.webp",
             "width": 1920,
             "height": 1080,
             "mimeType": "image/webp",
             "filesize": 177252,
-            "filename": "HMA06183 (1)-1920x1080.webp"
+            "filename": "HMA06183_20_1_-1920x1080.webp"
           }
         }
       },
@@ -1569,11 +190,11 @@
           }
         }
       },
-      "videoSectionTag": "institucional",
-      "videoSectionTitle": "Vídeo",
-      "videoSectionTitleAccent": "Institucional",
+      "videoSectionTag": "Dia de campo",
+      "videoSectionTitle": "PA",
+      "videoSectionTitleAccent": "SUMMIT 2026",
       "videoSectionTitleAccentColor": null,
-      "institutionalVideoUrl": "https://www.youtube.com/embed/2Val9IbUWHk",
+      "institutionalVideoUrl": "https://youtu.be/60-8fURIYdU",
       "timelineTag": "timeline",
       "timelineTitle": "Nossa história",
       "timeline": [
@@ -1596,7 +217,7 @@
             "focalY": 50,
             "sizes": {
               "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-400x300.jpg",
+                "url": "/cms-media/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-400x300.jpg",
                 "width": 400,
                 "height": 300,
                 "mimeType": "image/jpeg",
@@ -1604,7 +225,7 @@
                 "filename": "cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-400x300.jpg"
               },
               "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-768x512.jpg",
+                "url": "/cms-media/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-768x512.jpg",
                 "width": 768,
                 "height": 512,
                 "mimeType": "image/jpeg",
@@ -1612,7 +233,7 @@
                 "filename": "cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-768x512.jpg"
               },
               "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-1920x1080.jpg",
+                "url": "/cms-media/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-1920x1080.jpg",
                 "width": 1920,
                 "height": 1080,
                 "mimeType": "image/jpeg",
@@ -1673,7 +294,7 @@
             "focalY": 50,
             "sizes": {
               "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-400x300.jpg",
+                "url": "/cms-media/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-400x300.jpg",
                 "width": 400,
                 "height": 300,
                 "mimeType": "image/jpeg",
@@ -1681,7 +302,7 @@
                 "filename": "cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-400x300.jpg"
               },
               "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-768x512.jpg",
+                "url": "/cms-media/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-768x512.jpg",
                 "width": 768,
                 "height": 512,
                 "mimeType": "image/jpeg",
@@ -1689,7 +310,7 @@
                 "filename": "cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-768x512.jpg"
               },
               "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-1920x1080.jpg",
+                "url": "/cms-media/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-1920x1080.jpg",
                 "width": 1920,
                 "height": 1080,
                 "mimeType": "image/jpeg",
@@ -1787,7 +408,7 @@
             "focalY": 50,
             "sizes": {
               "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/DJI_20260625175601_0970_D-400x300.jpg",
+                "url": "/cms-media/DJI_20260625175601_0970_D-400x300.jpg",
                 "width": 400,
                 "height": 300,
                 "mimeType": "image/jpeg",
@@ -1795,7 +416,7 @@
                 "filename": "DJI_20260625175601_0970_D-400x300.jpg"
               },
               "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/DJI_20260625175601_0970_D-768x512.jpg",
+                "url": "/cms-media/DJI_20260625175601_0970_D-768x512.jpg",
                 "width": 768,
                 "height": 512,
                 "mimeType": "image/jpeg",
@@ -1803,7 +424,7 @@
                 "filename": "DJI_20260625175601_0970_D-768x512.jpg"
               },
               "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/DJI_20260625175601_0970_D-1920x1080.jpg",
+                "url": "/cms-media/DJI_20260625175601_0970_D-1920x1080.jpg",
                 "width": 1920,
                 "height": 1080,
                 "mimeType": "image/jpeg",
@@ -1864,7 +485,7 @@
             "focalY": 50,
             "sizes": {
               "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-1-400x300.jpg",
+                "url": "/cms-media/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-1-400x300.jpg",
                 "width": 400,
                 "height": 300,
                 "mimeType": "image/jpeg",
@@ -1872,7 +493,7 @@
                 "filename": "cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-1-400x300.jpg"
               },
               "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-1-768x512.jpg",
+                "url": "/cms-media/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-1-768x512.jpg",
                 "width": 768,
                 "height": 512,
                 "mimeType": "image/jpeg",
@@ -1880,7 +501,7 @@
                 "filename": "cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-1-768x512.jpg"
               },
               "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-1-1920x1080.jpg",
+                "url": "/cms-media/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-1-1920x1080.jpg",
                 "width": 1920,
                 "height": 1080,
                 "mimeType": "image/jpeg",
@@ -1941,7 +562,7 @@
             "focalY": 50,
             "sizes": {
               "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-400x300.jpg",
+                "url": "/cms-media/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-400x300.jpg",
                 "width": 400,
                 "height": 300,
                 "mimeType": "image/jpeg",
@@ -1949,7 +570,7 @@
                 "filename": "cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-400x300.jpg"
               },
               "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-768x512.jpg",
+                "url": "/cms-media/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-768x512.jpg",
                 "width": 768,
                 "height": 512,
                 "mimeType": "image/jpeg",
@@ -1957,7 +578,7 @@
                 "filename": "cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-768x512.jpg"
               },
               "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-1920x1080.jpg",
+                "url": "/cms-media/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-1920x1080.jpg",
                 "width": 1920,
                 "height": 1080,
                 "mimeType": "image/jpeg",
@@ -2003,43 +624,43 @@
           "id": "6a5169cef23afd4d2c5c4710",
           "year": "2024",
           "image": {
-            "id": 112,
-            "alt": "Fundador",
-            "updatedAt": "2026-07-22T20:00:46.458Z",
-            "createdAt": "2026-07-10T23:52:25.510Z",
-            "url": "/cms-media/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2.jpg",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-400x300.jpg",
-            "filename": "cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2.jpg",
+            "id": 181,
+            "alt": "Sinop",
+            "updatedAt": "2026-10-02T23:46:21.637Z",
+            "createdAt": "2026-10-02T23:46:20.297Z",
+            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/DSC06791.JPG",
+            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/DSC06791-400x300.jpg",
+            "filename": "DSC06791.JPG",
             "mimeType": "image/jpeg",
-            "filesize": 4676784,
-            "width": 3011,
-            "height": 2000,
+            "filesize": 15626928,
+            "width": 6192,
+            "height": 4128,
             "focalX": 50,
             "focalY": 50,
             "sizes": {
               "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-400x300.jpg",
+                "url": "/cms-media/DSC06791-400x300.jpg",
                 "width": 400,
                 "height": 300,
                 "mimeType": "image/jpeg",
-                "filesize": 37681,
-                "filename": "cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-400x300.jpg"
+                "filesize": 21740,
+                "filename": "DSC06791-400x300.jpg"
               },
               "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-768x512.jpg",
+                "url": "/cms-media/DSC06791-768x512.jpg",
                 "width": 768,
                 "height": 512,
                 "mimeType": "image/jpeg",
-                "filesize": 100380,
-                "filename": "cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-768x512.jpg"
+                "filesize": 52945,
+                "filename": "DSC06791-768x512.jpg"
               },
               "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-1920x1080.jpg",
+                "url": "/cms-media/DSC06791-1920x1080.jpg",
                 "width": 1920,
                 "height": 1080,
                 "mimeType": "image/jpeg",
-                "filesize": 389621,
-                "filename": "cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-1920x1080.jpg"
+                "filesize": 180379,
+                "filename": "DSC06791-1920x1080.jpg"
               }
             }
           },
@@ -2080,43 +701,43 @@
           "id": "6a51875bf0d5537e81805c90",
           "year": "2026",
           "image": {
-            "id": 112,
-            "alt": "Fundador",
-            "updatedAt": "2026-07-22T20:00:46.458Z",
-            "createdAt": "2026-07-10T23:52:25.510Z",
-            "url": "/cms-media/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2.jpg",
-            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-400x300.jpg",
-            "filename": "cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2.jpg",
+            "id": 182,
+            "alt": "ALD",
+            "updatedAt": "2026-10-02T23:52:36.660Z",
+            "createdAt": "2026-10-02T23:52:36.030Z",
+            "url": "/cms-media/Planta-.jpeg",
+            "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/Planta--400x300.jpg",
+            "filename": "Planta-.jpeg",
             "mimeType": "image/jpeg",
-            "filesize": 4676784,
-            "width": 3011,
-            "height": 2000,
+            "filesize": 1032628,
+            "width": 2560,
+            "height": 1440,
             "focalX": 50,
             "focalY": 50,
             "sizes": {
               "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-400x300.jpg",
+                "url": "/cms-media/Planta--400x300.jpg",
                 "width": 400,
                 "height": 300,
                 "mimeType": "image/jpeg",
-                "filesize": 37681,
-                "filename": "cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-400x300.jpg"
+                "filesize": 19083,
+                "filename": "Planta--400x300.jpg"
               },
               "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-768x512.jpg",
+                "url": "/cms-media/Planta--768x512.jpg",
                 "width": 768,
                 "height": 512,
                 "mimeType": "image/jpeg",
-                "filesize": 100380,
-                "filename": "cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-768x512.jpg"
+                "filesize": 61022,
+                "filename": "Planta--768x512.jpg"
               },
               "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-1920x1080.jpg",
+                "url": "/cms-media/Planta--1920x1080.jpg",
                 "width": 1920,
                 "height": 1080,
                 "mimeType": "image/jpeg",
-                "filesize": 389621,
-                "filename": "cotton-field-under-a-clear-blue-sky-2026-03-16-01-25-09-utc-2-1920x1080.jpg"
+                "filesize": 330175,
+                "filename": "Planta--1920x1080.jpg"
               }
             }
           },
@@ -2154,7 +775,7 @@
           }
         }
       ],
-      "updatedAt": "2026-07-22T19:59:56.337Z",
+      "updatedAt": "2026-10-08T01:25:33.359Z",
       "createdAt": "2026-07-10T01:14:32.835Z",
       "globalType": "about-page"
     },
@@ -2176,20 +797,20 @@
         "focalY": 50,
         "sizes": {
           "thumbnail": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/ChatGPT%20Image%2013%20de%20jul.%20de%202026%2C%2016_42_48-400x300.png",
+            "url": "/cms-media/ChatGPT_20Image_2013_20de_20jul._20de_202026_2C_2016_42_48-400x300.png",
             "width": 400,
             "height": 300,
             "mimeType": "image/png",
             "filesize": 278722,
-            "filename": "ChatGPT Image 13 de jul. de 2026, 16_42_48-400x300.png"
+            "filename": "ChatGPT_20Image_2013_20de_20jul._20de_202026_2C_2016_42_48-400x300.png"
           },
           "card": {
-            "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/ChatGPT%20Image%2013%20de%20jul.%20de%202026%2C%2016_42_48-768x512.png",
+            "url": "/cms-media/ChatGPT_20Image_2013_20de_20jul._20de_202026_2C_2016_42_48-768x512.png",
             "width": 768,
             "height": 512,
             "mimeType": "image/png",
             "filesize": 885169,
-            "filename": "ChatGPT Image 13 de jul. de 2026, 16_42_48-768x512.png"
+            "filename": "ChatGPT_20Image_2013_20de_20jul._20de_202026_2C_2016_42_48-768x512.png"
           },
           "hero": {
             "url": null,
@@ -2263,7 +884,7 @@
             "focalY": 50,
             "sizes": {
               "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/ald_bioenergia-7-400x300.webp",
+                "url": "/cms-media/ald_bioenergia-7-400x300.webp",
                 "width": 400,
                 "height": 300,
                 "mimeType": "image/webp",
@@ -2271,7 +892,7 @@
                 "filename": "ald_bioenergia-7-400x300.webp"
               },
               "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/ald_bioenergia-7-768x512.webp",
+                "url": "/cms-media/ald_bioenergia-7-768x512.webp",
                 "width": 768,
                 "height": 512,
                 "mimeType": "image/webp",
@@ -2309,7 +930,7 @@
             "focalY": 50,
             "sizes": {
               "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/lavoura-7-400x300.webp",
+                "url": "/cms-media/lavoura-7-400x300.webp",
                 "width": 400,
                 "height": 300,
                 "mimeType": "image/webp",
@@ -2317,7 +938,7 @@
                 "filename": "lavoura-7-400x300.webp"
               },
               "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/lavoura-7-768x512.webp",
+                "url": "/cms-media/lavoura-7-768x512.webp",
                 "width": 768,
                 "height": 512,
                 "mimeType": "image/webp",
@@ -2355,7 +976,7 @@
             "focalY": 50,
             "sizes": {
               "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/centro_pesquisa-7-400x300.webp",
+                "url": "/cms-media/centro_pesquisa-7-400x300.webp",
                 "width": 400,
                 "height": 300,
                 "mimeType": "image/webp",
@@ -2363,7 +984,7 @@
                 "filename": "centro_pesquisa-7-400x300.webp"
               },
               "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/centro_pesquisa-7-768x512.webp",
+                "url": "/cms-media/centro_pesquisa-7-768x512.webp",
                 "width": 768,
                 "height": 512,
                 "mimeType": "image/webp",
@@ -2371,7 +992,7 @@
                 "filename": "centro_pesquisa-7-768x512.webp"
               },
               "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/centro_pesquisa-7-1920x1080.webp",
+                "url": "/cms-media/centro_pesquisa-7-1920x1080.webp",
                 "width": 1920,
                 "height": 1080,
                 "mimeType": "image/webp",
@@ -2401,7 +1022,7 @@
             "focalY": 50,
             "sizes": {
               "thumbnail": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/eventos-7-400x300.webp",
+                "url": "/cms-media/eventos-7-400x300.webp",
                 "width": 400,
                 "height": 300,
                 "mimeType": "image/webp",
@@ -2409,7 +1030,7 @@
                 "filename": "eventos-7-400x300.webp"
               },
               "card": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/eventos-7-768x512.webp",
+                "url": "/cms-media/eventos-7-768x512.webp",
                 "width": 768,
                 "height": 512,
                 "mimeType": "image/webp",
@@ -2417,7 +1038,7 @@
                 "filename": "eventos-7-768x512.webp"
               },
               "hero": {
-                "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/eventos-7-1920x1080.webp",
+                "url": "/cms-media/eventos-7-1920x1080.webp",
                 "width": 1920,
                 "height": 1080,
                 "mimeType": "image/webp",
@@ -2774,7 +1395,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/agriculture-combine-harvester-on-a-wheat-field-wi-2026-03-26-07-58-08-utc-400x300.jpg",
+              "url": "/cms-media/agriculture-combine-harvester-on-a-wheat-field-wi-2026-03-26-07-58-08-utc-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -2782,7 +1403,7 @@
               "filename": "agriculture-combine-harvester-on-a-wheat-field-wi-2026-03-26-07-58-08-utc-400x300.jpg"
             },
             "card": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/agriculture-combine-harvester-on-a-wheat-field-wi-2026-03-26-07-58-08-utc-768x512.jpg",
+              "url": "/cms-media/agriculture-combine-harvester-on-a-wheat-field-wi-2026-03-26-07-58-08-utc-768x512.jpg",
               "width": 768,
               "height": 512,
               "mimeType": "image/jpeg",
@@ -2790,7 +1411,7 @@
               "filename": "agriculture-combine-harvester-on-a-wheat-field-wi-2026-03-26-07-58-08-utc-768x512.jpg"
             },
             "hero": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/agriculture-combine-harvester-on-a-wheat-field-wi-2026-03-26-07-58-08-utc-1920x1080.jpg",
+              "url": "/cms-media/agriculture-combine-harvester-on-a-wheat-field-wi-2026-03-26-07-58-08-utc-1920x1080.jpg",
               "width": 1920,
               "height": 1080,
               "mimeType": "image/jpeg",
@@ -2817,7 +1438,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/close-up-of-seeder-attached-to-tractor-in-field-a-2026-03-24-04-47-20-utc-400x300.jpg",
+              "url": "/cms-media/close-up-of-seeder-attached-to-tractor-in-field-a-2026-03-24-04-47-20-utc-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -2825,7 +1446,7 @@
               "filename": "close-up-of-seeder-attached-to-tractor-in-field-a-2026-03-24-04-47-20-utc-400x300.jpg"
             },
             "card": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/close-up-of-seeder-attached-to-tractor-in-field-a-2026-03-24-04-47-20-utc-768x512.jpg",
+              "url": "/cms-media/close-up-of-seeder-attached-to-tractor-in-field-a-2026-03-24-04-47-20-utc-768x512.jpg",
               "width": 768,
               "height": 512,
               "mimeType": "image/jpeg",
@@ -2833,7 +1454,7 @@
               "filename": "close-up-of-seeder-attached-to-tractor-in-field-a-2026-03-24-04-47-20-utc-768x512.jpg"
             },
             "hero": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/close-up-of-seeder-attached-to-tractor-in-field-a-2026-03-24-04-47-20-utc-1920x1080.jpg",
+              "url": "/cms-media/close-up-of-seeder-attached-to-tractor-in-field-a-2026-03-24-04-47-20-utc-1920x1080.jpg",
               "width": 1920,
               "height": 1080,
               "mimeType": "image/jpeg",
@@ -2991,7 +1612,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/bg_agricultura_precisao-7-400x300.webp",
+              "url": "/cms-media/bg_agricultura_precisao-7-400x300.webp",
               "width": 400,
               "height": 300,
               "mimeType": "image/webp",
@@ -2999,7 +1620,7 @@
               "filename": "bg_agricultura_precisao-7-400x300.webp"
             },
             "card": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/bg_agricultura_precisao-7-768x512.webp",
+              "url": "/cms-media/bg_agricultura_precisao-7-768x512.webp",
               "width": 768,
               "height": 512,
               "mimeType": "image/webp",
@@ -3007,7 +1628,7 @@
               "filename": "bg_agricultura_precisao-7-768x512.webp"
             },
             "hero": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/bg_agricultura_precisao-7-1920x1080.webp",
+              "url": "/cms-media/bg_agricultura_precisao-7-1920x1080.webp",
               "width": 1920,
               "height": 1080,
               "mimeType": "image/webp",
@@ -3034,7 +1655,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/img_agricultura_precisao-7-400x300.webp",
+              "url": "/cms-media/img_agricultura_precisao-7-400x300.webp",
               "width": 400,
               "height": 300,
               "mimeType": "image/webp",
@@ -3042,7 +1663,7 @@
               "filename": "img_agricultura_precisao-7-400x300.webp"
             },
             "card": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/img_agricultura_precisao-7-768x512.webp",
+              "url": "/cms-media/img_agricultura_precisao-7-768x512.webp",
               "width": 768,
               "height": 512,
               "mimeType": "image/webp",
@@ -3050,7 +1671,7 @@
               "filename": "img_agricultura_precisao-7-768x512.webp"
             },
             "hero": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/img_agricultura_precisao-7-1920x1080.webp",
+              "url": "/cms-media/img_agricultura_precisao-7-1920x1080.webp",
               "width": 1920,
               "height": 1080,
               "mimeType": "image/webp",
@@ -3219,7 +1840,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/bg_unita-7-400x300.jpg",
+              "url": "/cms-media/bg_unita-7-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -3227,7 +1848,7 @@
               "filename": "bg_unita-7-400x300.jpg"
             },
             "card": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/bg_unita-7-768x512.jpg",
+              "url": "/cms-media/bg_unita-7-768x512.jpg",
               "width": 768,
               "height": 512,
               "mimeType": "image/jpeg",
@@ -3262,7 +1883,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/abstract-bubbles-of-yellow-green-and-orange-2026-03-26-00-11-02-utc.jpg-400x300.webp",
+              "url": "/cms-media/abstract-bubbles-of-yellow-green-and-orange-2026-03-26-00-11-02-utc.jpg-400x300.webp",
               "width": 400,
               "height": 300,
               "mimeType": "image/webp",
@@ -3270,7 +1891,7 @@
               "filename": "abstract-bubbles-of-yellow-green-and-orange-2026-03-26-00-11-02-utc.jpg-400x300.webp"
             },
             "card": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/abstract-bubbles-of-yellow-green-and-orange-2026-03-26-00-11-02-utc.jpg-768x512.webp",
+              "url": "/cms-media/abstract-bubbles-of-yellow-green-and-orange-2026-03-26-00-11-02-utc.jpg-768x512.webp",
               "width": 768,
               "height": 512,
               "mimeType": "image/webp",
@@ -3278,7 +1899,7 @@
               "filename": "abstract-bubbles-of-yellow-green-and-orange-2026-03-26-00-11-02-utc.jpg-768x512.webp"
             },
             "hero": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/abstract-bubbles-of-yellow-green-and-orange-2026-03-26-00-11-02-utc.jpg-1920x1080.webp",
+              "url": "/cms-media/abstract-bubbles-of-yellow-green-and-orange-2026-03-26-00-11-02-utc.jpg-1920x1080.webp",
               "width": 1920,
               "height": 1080,
               "mimeType": "image/webp",
@@ -3555,7 +2176,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/bg_consultoria_agronomica-7-400x300.webp",
+              "url": "/cms-media/bg_consultoria_agronomica-7-400x300.webp",
               "width": 400,
               "height": 300,
               "mimeType": "image/webp",
@@ -3563,7 +2184,7 @@
               "filename": "bg_consultoria_agronomica-7-400x300.webp"
             },
             "card": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/bg_consultoria_agronomica-7-768x512.webp",
+              "url": "/cms-media/bg_consultoria_agronomica-7-768x512.webp",
               "width": 768,
               "height": 512,
               "mimeType": "image/webp",
@@ -3571,7 +2192,7 @@
               "filename": "bg_consultoria_agronomica-7-768x512.webp"
             },
             "hero": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/bg_consultoria_agronomica-7-1920x1080.webp",
+              "url": "/cms-media/bg_consultoria_agronomica-7-1920x1080.webp",
               "width": 1920,
               "height": 1080,
               "mimeType": "image/webp",
@@ -3598,7 +2219,7 @@
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/DJI_240720257-1-400x300.jpg",
+              "url": "/cms-media/DJI_240720257-1-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
@@ -3606,7 +2227,7 @@
               "filename": "DJI_240720257-1-400x300.jpg"
             },
             "card": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/DJI_240720257-1-768x512.jpg",
+              "url": "/cms-media/DJI_240720257-1-768x512.jpg",
               "width": 768,
               "height": 512,
               "mimeType": "image/jpeg",
@@ -3677,9 +2298,9 @@
         "area": "3.006,7 Hac.",
         "description": null,
         "positionX": 523,
-        "positionY": 552,
+        "positionY": 554,
         "published": true,
-        "updatedAt": "2026-07-13T20:27:07.507Z",
+        "updatedAt": "2026-08-08T01:59:03.796Z",
         "createdAt": "2026-07-13T18:08:05.124Z"
       },
       {
@@ -4011,38 +2632,38 @@
     "testimonials": [
       {
         "id": 1,
-        "authorName": "Ricardo Mantovani",
-        "authorDescription": "Grupo Mantovani • Sorriso - MT",
+        "authorName": "Romeu Ciochetta",
+        "authorDescription": "Morena Agro • Campo Novo do Parecis - MT",
         "photo": {
-          "id": 77,
-          "alt": "Ricardo Mantovani",
-          "updatedAt": "2026-07-10T21:51:43.740Z",
-          "createdAt": "2026-07-10T21:51:42.355Z",
-          "url": "/cms-media/65c4d9fbb138a93ced0c88eca17bafbf1d87fb04-4.jpg",
-          "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/65c4d9fbb138a93ced0c88eca17bafbf1d87fb04-4-400x300.jpg",
-          "filename": "65c4d9fbb138a93ced0c88eca17bafbf1d87fb04-4.jpg",
-          "mimeType": "image/jpeg",
-          "filesize": 20589,
-          "width": 400,
-          "height": 400,
+          "id": 184,
+          "alt": "Romeu Jose Ciochetta",
+          "updatedAt": "2026-10-15T16:28:27.209Z",
+          "createdAt": "2026-10-15T16:28:26.826Z",
+          "url": "/cms-media/Captura_20de_20Tela_202026-10-15_20a_CC_80s_2012.25.25.png",
+          "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/Captura%20de%20Tela%202026-10-15%20a%CC%80s%2012.25.25-400x300.png",
+          "filename": "Captura_20de_20Tela_202026-10-15_20a_CC_80s_2012.25.25.png",
+          "mimeType": "image/png",
+          "filesize": 849950,
+          "width": 954,
+          "height": 958,
           "focalX": 50,
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/65c4d9fbb138a93ced0c88eca17bafbf1d87fb04-4-400x300.jpg",
+              "url": "/cms-media/Captura_20de_20Tela_202026-10-15_20a_CC_80s_2012.25.25-400x300.png",
               "width": 400,
               "height": 300,
-              "mimeType": "image/jpeg",
-              "filesize": 12542,
-              "filename": "65c4d9fbb138a93ced0c88eca17bafbf1d87fb04-4-400x300.jpg"
+              "mimeType": "image/png",
+              "filesize": 188709,
+              "filename": "Captura_20de_20Tela_202026-10-15_20a_CC_80s_2012.25.25-400x300.png"
             },
             "card": {
-              "url": null,
-              "width": null,
-              "height": null,
-              "mimeType": null,
-              "filesize": null,
-              "filename": null
+              "url": "/cms-media/Captura_20de_20Tela_202026-10-15_20a_CC_80s_2012.25.25-768x512.png",
+              "width": 768,
+              "height": 512,
+              "mimeType": "image/png",
+              "filesize": 569659,
+              "filename": "Captura_20de_20Tela_202026-10-15_20a_CC_80s_2012.25.25-768x512.png"
             },
             "hero": {
               "url": null,
@@ -4057,163 +2678,61 @@
         "quote": "O que eu mais gosto na equipe é que eles não são consultores de escritório. Estão sempre aqui na fazenda, entram no talhão, olham a praga de perto e discutem o manejo comigo no pátio. É um suporte técnico que dá muita segurança para decidir.",
         "order": 1,
         "published": true,
-        "updatedAt": "2026-07-10T21:52:55.023Z",
+        "updatedAt": "2026-10-15T16:28:41.440Z",
         "createdAt": "2026-07-10T21:36:49.171Z"
       },
       {
-        "id": 2,
-        "authorName": "Aline Albuquerque",
-        "authorDescription": "Agropecuária Albuquerque • Rio Verde - GO",
-        "photo": {
-          "id": 75,
-          "alt": "Aline Albuquerque",
-          "updatedAt": "2026-07-10T21:51:37.505Z",
-          "createdAt": "2026-07-10T21:51:35.933Z",
-          "url": "/cms-media/971dc91ffb3df0e774cb402e6525eb1b44564eb4-3.jpg",
-          "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/971dc91ffb3df0e774cb402e6525eb1b44564eb4-3-400x300.jpg",
-          "filename": "971dc91ffb3df0e774cb402e6525eb1b44564eb4-3.jpg",
-          "mimeType": "image/jpeg",
-          "filesize": 24530,
-          "width": 400,
-          "height": 533,
-          "focalX": 50,
-          "focalY": 50,
-          "sizes": {
-            "thumbnail": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/971dc91ffb3df0e774cb402e6525eb1b44564eb4-3-400x300.jpg",
-              "width": 400,
-              "height": 300,
-              "mimeType": "image/jpeg",
-              "filesize": 12429,
-              "filename": "971dc91ffb3df0e774cb402e6525eb1b44564eb4-3-400x300.jpg"
-            },
-            "card": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/971dc91ffb3df0e774cb402e6525eb1b44564eb4-3-768x512.jpg",
-              "width": 768,
-              "height": 512,
-              "mimeType": "image/jpeg",
-              "filesize": 28153,
-              "filename": "971dc91ffb3df0e774cb402e6525eb1b44564eb4-3-768x512.jpg"
-            },
-            "hero": {
-              "url": null,
-              "width": null,
-              "height": null,
-              "mimeType": null,
-              "filesize": null,
-              "filename": null
-            }
-          }
-        },
-        "quote": "A gente comprou maquinário novo e várias ferramentas digitais, mas faltava braço e treinamento para fazer tudo rodar. O pessoal da PA destravou isso aqui dentro, gerando os mapas de aplicação que a gente precisava para economizar insumo.",
-        "order": 2,
-        "published": true,
-        "updatedAt": "2026-07-10T21:52:58.801Z",
-        "createdAt": "2026-07-10T21:36:52.353Z"
-      },
-      {
-        "id": 3,
-        "authorName": "Geraldo Augusto",
-        "authorDescription": "Fazenda Santa Maria • Cristalina - GO",
-        "photo": {
-          "id": 76,
-          "alt": "Geraldo Augusto",
-          "updatedAt": "2026-07-10T21:51:40.662Z",
-          "createdAt": "2026-07-10T21:51:39.171Z",
-          "url": "/cms-media/3556d9be59a0ee15266fcdd51184fd62ffd60e02-3.jpg",
-          "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/3556d9be59a0ee15266fcdd51184fd62ffd60e02-3-400x300.jpg",
-          "filename": "3556d9be59a0ee15266fcdd51184fd62ffd60e02-3.jpg",
-          "mimeType": "image/jpeg",
-          "filesize": 20633,
-          "width": 400,
-          "height": 599,
-          "focalX": 50,
-          "focalY": 50,
-          "sizes": {
-            "thumbnail": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/3556d9be59a0ee15266fcdd51184fd62ffd60e02-3-400x300.jpg",
-              "width": 400,
-              "height": 300,
-              "mimeType": "image/jpeg",
-              "filesize": 15228,
-              "filename": "3556d9be59a0ee15266fcdd51184fd62ffd60e02-3-400x300.jpg"
-            },
-            "card": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/3556d9be59a0ee15266fcdd51184fd62ffd60e02-3-768x512.jpg",
-              "width": 768,
-              "height": 512,
-              "mimeType": "image/jpeg",
-              "filesize": 32981,
-              "filename": "3556d9be59a0ee15266fcdd51184fd62ffd60e02-3-768x512.jpg"
-            },
-            "hero": {
-              "url": null,
-              "width": null,
-              "height": null,
-              "mimeType": null,
-              "filesize": null,
-              "filename": null
-            }
-          }
-        },
-        "quote": "A gente já colhia bem, mas a parte de custos era meio bagunçada, tudo na cabeça ou em caderneta. Eles ajudaram a organizar os números da safra e a enxergar para onde estava indo o dinheiro. Hoje a fazenda roda muito mais profissional.",
-        "order": 3,
-        "published": true,
-        "updatedAt": "2026-07-10T21:53:02.573Z",
-        "createdAt": "2026-07-10T21:36:55.550Z"
-      },
-      {
         "id": 4,
-        "authorName": "José Carlos Junqueira",
-        "authorDescription": "Fazenda Primavera • Uberaba - MG",
+        "authorName": "Gustavo José Talheimer",
+        "authorDescription": "Fazenda 3 Irmãos • Tangará da Serra - MT",
         "photo": {
-          "id": 78,
-          "alt": "José Carlos Junqueira",
-          "updatedAt": "2026-07-10T21:51:47.051Z",
-          "createdAt": "2026-07-10T21:51:45.457Z",
-          "url": "/cms-media/c2dddb294cb9e1059aa217cd8c4c942951c32917-3.jpg",
-          "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/c2dddb294cb9e1059aa217cd8c4c942951c32917-3-400x300.jpg",
-          "filename": "c2dddb294cb9e1059aa217cd8c4c942951c32917-3.jpg",
+          "id": 183,
+          "alt": "Gustavo",
+          "updatedAt": "2026-10-15T16:23:50.382Z",
+          "createdAt": "2026-10-15T16:23:49.648Z",
+          "url": "/cms-media/IMG_6852.jpg",
+          "thumbnailURL": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/IMG_6852-400x300.jpg",
+          "filename": "IMG_6852.jpg",
           "mimeType": "image/jpeg",
-          "filesize": 43841,
-          "width": 400,
-          "height": 600,
+          "filesize": 86650,
+          "width": 836,
+          "height": 1132,
           "focalX": 50,
           "focalY": 50,
           "sizes": {
             "thumbnail": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/c2dddb294cb9e1059aa217cd8c4c942951c32917-3-400x300.jpg",
+              "url": "/cms-media/IMG_6852-400x300.jpg",
               "width": 400,
               "height": 300,
               "mimeType": "image/jpeg",
-              "filesize": 23584,
-              "filename": "c2dddb294cb9e1059aa217cd8c4c942951c32917-3-400x300.jpg"
+              "filesize": 13248,
+              "filename": "IMG_6852-400x300.jpg"
             },
             "card": {
-              "url": "https://pa-cms-187712348679.us-central1.run.app/api/media/file/c2dddb294cb9e1059aa217cd8c4c942951c32917-3-768x512.jpg",
+              "url": "/cms-media/IMG_6852-768x512.jpg",
               "width": 768,
               "height": 512,
               "mimeType": "image/jpeg",
-              "filesize": 51770,
-              "filename": "c2dddb294cb9e1059aa217cd8c4c942951c32917-3-768x512.jpg"
+              "filesize": 28055,
+              "filename": "IMG_6852-768x512.jpg"
             },
             "hero": {
-              "url": null,
-              "width": null,
-              "height": null,
-              "mimeType": null,
-              "filesize": null,
-              "filename": null
+              "url": "/cms-media/IMG_6852-1920x1080.jpg",
+              "width": 1920,
+              "height": 1080,
+              "mimeType": "image/jpeg",
+              "filesize": 83414,
+              "filename": "IMG_6852-1920x1080.jpg"
             }
           }
         },
-        "quote": "Trabalhar com a PA me tirou uma preocupação grande da cabeça. Sei que a parte de recomendação, perfil de solo e o monitoramento técnico estão bem assistidos por quem entende do assunto, aí consigo focar em outras frentes do negócio.",
+        "quote": "Somos clientes a 6 anos, começou indo nos dias de campo onde despertou a vontade de ter o auxílio da PA na nossa fazenda, e em conversas informais com o Paulo sobre diversos assuntos ligados a bom manejo da lavoura, então desde que a PA começou nos atender foi uma revolução na propriedade, consórcio com braquiaria, subsolagem e demais bons manejos que resultam em maior produtividade.",
         "order": 4,
         "published": true,
-        "updatedAt": "2026-07-10T21:53:06.431Z",
+        "updatedAt": "2026-10-15T16:23:58.393Z",
         "createdAt": "2026-07-10T21:36:58.732Z"
       }
     ]
   },
-  "syncedAt": "2026-08-03T14:18:29.666Z"
+  "syncedAt": "2026-10-21T11:37:29.897Z"
 }
