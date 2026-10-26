@@ -53,8 +53,13 @@
   align-items: center;
   width: 720px;
   max-width: 100%;
-  /* Perspective required for 3D tilt effect */
+  /* Perspective required for 3D tilt effect on static image */
   perspective: 1200px;
+}
+
+/* Remove perspective when rightCol holds a video (applied via inline style override) */
+.rightColVideo {
+  perspective: none !important;
 }
 
 /* Wrapper that receives the 3D rotation via direct style (no framer-motion) */
@@ -65,6 +70,10 @@
   /* CSS transition handles smooth return to flat on mouseleave */
   transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   cursor: default;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+  outline: 1px solid transparent;
 }
 
 /* Intermediate layer: handles scale + position.
@@ -74,6 +83,8 @@
   transform: scale(1.65) translateX(150px);
   transform-origin: center right;
   will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* Container para vídeo/Vimeo na introdução: sem zoom, proporcional ao rightCol */
@@ -81,8 +92,10 @@
 .videoCol {
   display: block;
   position: relative;
+  /* aspect-ratio vem do inline style (CMS), fallback 16/9 */
   aspect-ratio: 16 / 9;
   /* Sem background, border ou shadow por padrão — container invisível */
+  background: transparent;
 }
 
 /* Wrapper interno que clippa o vídeo ao arredondamento definido no CMS */
@@ -97,6 +110,21 @@
   isolation: isolate;
   will-change: transform;
   transform: translateZ(0);
+  background: transparent;
+}
+
+/*
+  Escala para cobrir o container independente do aspect-ratio do vídeo vs container.
+  Quando o container é 1:1 e o vídeo é 16:9, o vídeo teria barras horizontais
+  (letterbox). Uma escala de 1.78× garante que o conteúdo 16:9 cubra um container
+  1:1 sem barras visíveis (overflow cortado pelo .videoClip).
+  Para containers já 16:9, 1.04 é suficiente para esconder artefatos de borda.
+  Usamos 1.8 como valor seguro para qualquer razão de aspecto.
+*/
+.videoClip iframe,
+.videoClip video {
+  transform: scale(1.8);
+  transform-origin: center center;
 }
 
 /* Layout */

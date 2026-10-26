@@ -31,6 +31,7 @@ export default function Introduction({ data }: IntroductionProps) {
       const rect = container.getBoundingClientRect();
       const xPct = (e.clientX - rect.left) / rect.width - 0.5;
       const yPct = (e.clientY - rect.top) / rect.height - 0.5;
+      wrapper.style.transition = 'none';
       wrapper.style.transform =
         `perspective(1200px) rotateX(${yPct * -5}deg) rotateY(${xPct * 5}deg)`;
     };
@@ -42,6 +43,7 @@ export default function Introduction({ data }: IntroductionProps) {
     const handleMouseLeave = () => {
       clearTimeout(activationTimer);
       isHovering = false;
+      wrapper.style.transition = 'transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
       wrapper.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
     };
 
@@ -98,6 +100,8 @@ export default function Introduction({ data }: IntroductionProps) {
     // Garantia de que o vídeo não excede a largura disponível
     boxSizing: 'border-box',
     overflow: 'hidden',
+    // Remove a perspectiva 3D do rightCol (só necessária para o efeito tilt da imagem estática)
+    perspective: 'none',
   };
 
   const videoColStyle: React.CSSProperties = {
@@ -115,7 +119,6 @@ export default function Introduction({ data }: IntroductionProps) {
   const videoClipStyle: React.CSSProperties = {
     width: '100%',
     height: '100%',
-    position: 'relative',
     overflow: 'hidden',
     ...(videoInnerRadius > 0 && {
       borderRadius: `${videoInnerRadius}px`,
@@ -187,7 +190,7 @@ export default function Introduction({ data }: IntroductionProps) {
 
         {/* Right — Image or Video */}
         <div
-          className={styles.rightCol}
+          className={`${styles.rightCol}${isVideoMedia ? ` ${styles.rightColVideo}` : ''}`}
           ref={containerRef}
           data-node-id="122:1934"
           style={isVideoMedia ? rightColVideoStyle : undefined}
