@@ -4,6 +4,7 @@
   height: 100%;
   overflow: hidden;
   pointer-events: none;
+  background-color: transparent;
 }
 
 /* Vimeo iframe ajustado para cobrir totalmente o container mantendo proporção 16:9 ideal */
@@ -23,10 +24,12 @@
 
 /* Vimeo iframe ajustado para containers proporcionais (ex: Introdução) */
 .vimeoIframeFit {
+  display: block;
   width: 100%;
   height: 100%;
   border: none;
   pointer-events: none;
+  background-color: transparent;
 }
 
 .videoWrapper {

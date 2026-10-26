@@ -114,17 +114,43 @@
 }
 
 /*
-  Escala para cobrir o container independente do aspect-ratio do vídeo vs container.
-  Quando o container é 1:1 e o vídeo é 16:9, o vídeo teria barras horizontais
-  (letterbox). Uma escala de 1.78× garante que o conteúdo 16:9 cubra um container
-  1:1 sem barras visíveis (overflow cortado pelo .videoClip).
-  Para containers já 16:9, 1.04 é suficiente para esconder artefatos de borda.
-  Usamos 1.8 como valor seguro para qualquer razão de aspecto.
+  Cobertura sem escala: o iframe/video é posicionado em absoluto e dimensionado
+  para cobrir o container (object-fit: cover equivalente para iframe).
+  Para vídeo 16:9 em container 1:1:
+    - width: 177.78% (= 16/9 × 100%) → cobre toda a altura sem barras
+    - left: 50% + translateX(-50%) → centraliza horizontalmente
+  O overflow:hidden no .videoClip corta o excesso lateral.
 */
-.videoClip iframe,
+
+/* O vimeoWrapper/videoWrapper interno não deve re-clipar — o videoClip já cuida disso */
+.videoClip div[class*="vimeoWrapper"],
+.videoClip div[class*="videoWrapper"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;   /* deixa o iframe extrapolar — videoClip que corta */
+}
+
+/* iframe Vimeo: cover behavior — 177.78% de largura para vídeo 16:9 preencher container 1:1 */
+.videoClip iframe {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 177.78%;
+  height: 100%;
+  transform: translateX(-50%);
+  border: none;
+  pointer-events: none;
+}
+
+/* Vídeo MP4 */
 .videoClip video {
-  transform: scale(1.8);
-  transform-origin: center center;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Layout */
