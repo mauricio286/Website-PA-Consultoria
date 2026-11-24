@@ -1,0 +1,634 @@
+/* ─── PÁGINA DE EVENTOS (GRUPO PA) ───
+   Valores conforme especificacoes-pa-eventos.md (Parte 1). */
+
+.container {
+  min-height: 100vh;
+  background-color: #0E1511;
+  color: #EEF2EA;
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ─── 01. BANNER PRINCIPAL ─── */
+.hero {
+  position: relative;
+  height: 620px;
+  background: #1A2620;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(14, 21, 17, 0.35) 0%, rgba(14, 21, 17, 0.9) 100%);
+  z-index: 2;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 3;
+  max-width: 1240px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 24px 72px;
+  box-sizing: border-box;
+}
+
+.heroBadge {
+  display: inline-block;
+  background: #C8E05A;
+  color: #0E1511;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border-radius: 999px;
+}
+
+.heroTitle {
+  font-family: 'Michroma', sans-serif;
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 1.1;
+  margin: 20px 0 12px;
+  color: #EEF2EA;
+}
+
+.heroSubtitle {
+  font-size: 22px;
+  font-weight: 400;
+  margin: 0;
+  color: #CBD5CC;
+}
+
+/* ─── Eyebrow (todas as seções) ─── */
+.sectionTag {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #C8E05A;
+  margin: 0 0 12px;
+}
+
+/* ─── 02. NÚMEROS EM DESTAQUE ─── */
+.statsSection {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 96px 24px 64px;
+  box-sizing: border-box;
+}
+
+.statsSection .sectionTag {
+  margin-bottom: 16px;
+}
+
+.statsTitle {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1.25;
+  max-width: 760px;
+  margin: 0 0 56px;
+  color: #EEF2EA;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1px;
+  background: #24322A;
+  border: 1px solid #24322A;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.statCard {
+  background: #0E1511;
+  padding: 40px 32px;
+}
+
+.statNumber {
+  font-family: 'Michroma', sans-serif;
+  font-size: 56px;
+  font-weight: 400;
+  line-height: 1;
+  color: #C8E05A;
+}
+
+.statLabel {
+  font-size: 15px;
+  font-weight: 400;
+  color: #B7C2B9;
+  margin-top: 16px;
+}
+
+/* ─── 03. INFORMAÇÕES GERAIS ─── */
+.infoSection {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 32px 24px 96px;
+  box-sizing: border-box;
+}
+
+.infoFlex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+}
+
+.infoLeft {
+  flex: 999 1 520px;
+  min-width: 0;
+}
+
+.infoHeading {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0 0 20px;
+  color: #EEF2EA;
+}
+
+.infoText {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #B7C2B9;
+}
+
+.infoText p {
+  margin: 0 0 16px;
+}
+
+.infoText p:last-child {
+  margin-bottom: 0;
+}
+
+.infoRight {
+  flex: 1 1 320px;
+  min-width: 0;
+  background: #16201A;
+  border: 1px solid #24322A;
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-sizing: border-box;
+}
+
+.infoItemKey {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #8A998E;
+}
+
+.infoItemVal {
+  display: block;
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 6px;
+  color: #EEF2EA;
+}
+
+/* ─── 04. EMPRESAS CONFIRMADAS ─── */
+.partnersSection {
+  background: #F3F5EF;
+  color: #0E1511;
+  padding: 72px 0;
+}
+
+.partnersHeader {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px 40px;
+  box-sizing: border-box;
+}
+
+.partnersTag {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #4B6B2A;
+  margin: 0 0 12px;
+}
+
+.partnersTitle {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0;
+  color: #0E1511;
+}
+
+.marqueeContainer {
+  overflow: hidden;
+}
+
+.marqueeTrack {
+  display: flex;
+  width: max-content;
+  animation: paMarquee 28s linear infinite;
+}
+
+.marqueeTrack:hover {
+  animation-play-state: paused;
+}
+
+.marqueeGroup {
+  display: flex;
+}
+
+.partnerLogoWrap {
+  flex: none;
+  width: 200px;
+  height: 96px;
+  margin: 0 16px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFFFFF;
+  border-radius: 12px;
+  border: 1.5px solid #B9C2B3;
+  padding: 16px;
+}
+
+.partnerLogoPlaceholder {
+  border-style: dashed;
+}
+
+.partnerLogo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.partnerFallbackText {
+  font-size: 14px;
+  color: #5D6A60;
+  text-align: center;
+}
+
+@keyframes paMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marqueeTrack {
+    animation: none;
+  }
+}
+
+/* ─── 05. COMO O DIA ACONTECE ─── */
+.scheduleSection {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 96px 24px;
+  box-sizing: border-box;
+}
+
+.scheduleFlex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+  align-items: stretch;
+}
+
+.scheduleMediaCol {
+  flex: 1 1 520px;
+  min-width: 0;
+  min-height: 420px;
+  background: #1A2620;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+.scheduleMediaPlaceholder {
+  border: 2px dashed #2F4237;
+}
+
+.scheduleImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.scheduleStepsCol {
+  flex: 1 1 420px;
+  min-width: 0;
+}
+
+.scheduleTitle {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0 0 32px;
+  color: #EEF2EA;
+}
+
+.stepItem {
+  display: flex;
+  gap: 20px;
+  padding: 20px 0;
+  border-top: 1px solid #24322A;
+}
+
+.stepItem:first-of-type {
+  /* o primeiro item também leva borda superior (lista sem borda no fim) */
+  border-top: 1px solid #24322A;
+}
+
+.stepTime {
+  font-family: 'Michroma', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #C8E05A;
+  min-width: 64px;
+  padding-top: 3px;
+}
+
+.stepTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  color: #EEF2EA;
+}
+
+.stepDesc {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #B7C2B9;
+  margin: 4px 0 0;
+}
+
+/* ─── 06. CTA DE COMPRA ─── */
+.ctaSection {
+  padding: 0 24px 96px;
+  box-sizing: border-box;
+}
+
+.ctaCard {
+  max-width: 1240px;
+  margin: 0 auto;
+  background: #C8E05A;
+  color: #0E1511;
+  border-radius: 24px;
+  padding: 64px 48px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  box-sizing: border-box;
+}
+
+.ctaTitle {
+  font-family: 'Michroma', sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0 0 12px;
+  color: #0E1511;
+}
+
+.ctaSubtitle {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0;
+  color: #2A3A20;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #0E1511;
+  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 22px 40px;
+  border-radius: 999px;
+  min-height: 44px;
+  text-decoration: none;
+}
+
+.ctaNotice {
+  max-width: 1240px;
+  margin: 12px auto 0;
+  font-size: 13px;
+  font-weight: 400;
+  color: #8A998E;
+  text-align: right;
+}
+
+/* ─── 07. EVENTOS ANTERIORES ─── */
+.pastSection {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px 120px;
+  box-sizing: border-box;
+}
+
+.pastHeader {
+  margin-bottom: 40px;
+}
+
+.pastTitle {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0;
+  color: #EEF2EA;
+}
+
+.pastGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.pastCard {
+  display: flex;
+  flex-direction: column;
+  background: #16201A;
+  border: 1px solid #24322A;
+  border-radius: 16px;
+  overflow: hidden;
+  color: #EEF2EA;
+  text-decoration: none;
+}
+
+.pastMediaWrap {
+  height: 200px;
+  background: #1A2620;
+  border-bottom: 1px solid #24322A;
+  overflow: hidden;
+}
+
+.pastPhoto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pastPlaceholder {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4E6356;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.pastBody {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+
+.pastName {
+  font-family: 'Michroma', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #EEF2EA;
+}
+
+.pastPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pastPill {
+  font-size: 13px;
+  background: #24322A;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+.pastDesc {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #B7C2B9;
+  margin: 0;
+}
+
+.pastLink {
+  font-size: 14px;
+  font-weight: 600;
+  color: #C8E05A;
+}
+
+/* ─── TELA DE EVENTO DESATIVADO ─── */
+.disabledContainer {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 140px 24px 80px;
+}
+
+.disabledCard {
+  max-width: 600px;
+  background: #16201A;
+  border: 1px solid #24322A;
+  border-radius: 16px;
+  padding: 48px 36px;
+}
+
+.disabledIcon {
+  width: 56px;
+  height: 56px;
+  color: #C8E05A;
+  margin-bottom: 20px;
+}
+
+.disabledTitle {
+  font-family: 'Michroma', sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  margin: 0 0 16px;
+  color: #EEF2EA;
+}
+
+.disabledText {
+  font-size: 16px;
+  color: #B7C2B9;
+  line-height: 1.6;
+  margin: 0 0 32px;
+}
+
+.disabledBtn {
+  display: inline-block;
+  background: #C8E05A;
+  color: #0E1511;
+  font-weight: 700;
+  padding: 14px 32px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+/* ─── RESPONSIVO (só reduz o que não cabe; o resto é fluido) ─── */
+@media (max-width: 760px) {
+  .hero {
+    height: auto;
+    min-height: 520px;
+    padding-top: 120px;
+  }
+
+  .heroTitle {
+    font-size: 36px;
+  }
+
+  .heroSubtitle {
+    font-size: 18px;
+  }
+
+  .statsTitle,
+  .ctaTitle {
+    font-size: 26px;
+  }
+
+  .statNumber {
+    font-size: 40px;
+  }
+
+  .ctaCard {
+    padding: 40px 24px;
+  }
+
+  .ctaButton {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .ctaNotice {
+    text-align: center;
+  }
+}

@@ -53,6 +53,7 @@ const GLOBALS = [
   'lavoura-page',
   'centro-pesquisa-page',
   'palestras-page',
+  'events-page',
 ];
 
 const COLLECTIONS = [

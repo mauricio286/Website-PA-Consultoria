@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import styles from './Header.module.css';
 import { imgLogoPa1 } from '../assets';
 import { useLanguage } from '../i18n';
+import { useEventsEnabled } from '../hooks/useEventsEnabled';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -15,6 +16,8 @@ export default function Header() {
   const floatingNavRef = useRef<HTMLElement>(null);
   const [staticPillStyle, setStaticPillStyle] = useState({ left: 0, width: 0, opacity: 0 });
   const [floatingPillStyle, setFloatingPillStyle] = useState({ left: 0, width: 0, opacity: 0 });
+
+  const eventsEnabled = useEventsEnabled();
 
   const location = useLocation();
   const subpages = [
@@ -120,7 +123,7 @@ export default function Header() {
     }, 50);
 
     return () => clearTimeout(timeout);
-  }, [activeSection, location.pathname, locale]);
+  }, [activeSection, location.pathname, locale, eventsEnabled]);
 
   const closeMobile = () => setIsMobileMenuOpen(false);
   const toggleMobile = () => setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -147,6 +150,9 @@ export default function Header() {
           <Link to="/gestaocompras" onClick={closeMobile} className={styles.dropdownLink}>{t.header.gestaoCompras}</Link>
         </div>
       </div>
+      {eventsEnabled && (
+        <Link to="/eventos" onClick={closeMobile} className={`${styles.navLink} ${location.pathname === '/eventos' ? 'active ' + styles.active : ''}`}>{t.header.eventos}</Link>
+      )}
       <Link to="/carreiras" onClick={closeMobile} className={`${styles.navLink} ${location.pathname === '/carreiras' ? 'active ' + styles.active : ''}`}>{t.header.carreiras}</Link>
       <Link to="/contato" onClick={closeMobile} className={`${styles.navLink} ${location.pathname === '/contato' ? 'active ' + styles.active : ''}`}>{t.header.contato}</Link>
     </>
@@ -235,6 +241,11 @@ export default function Header() {
               <motion.div variants={{ closed: { opacity: 0, x: -10 }, open: { opacity: 1, x: 0 } }} className="w-full">
                 <Link to="/servicos" className={styles.mobileNavLink} onClick={closeMobile}>{t.header.servicos}</Link>
               </motion.div>
+              {eventsEnabled && (
+                <motion.div variants={{ closed: { opacity: 0, x: -10 }, open: { opacity: 1, x: 0 } }} className="w-full">
+                  <Link to="/eventos" className={styles.mobileNavLink} onClick={closeMobile}>{t.header.eventos}</Link>
+                </motion.div>
+              )}
               <motion.div variants={{ closed: { opacity: 0, x: -10 }, open: { opacity: 1, x: 0 } }} className="w-full">
                 <Link to="/carreiras" className={styles.mobileNavLink} onClick={closeMobile}>{t.header.carreiras}</Link>
               </motion.div>

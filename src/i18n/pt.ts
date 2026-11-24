@@ -7,6 +7,7 @@ export const pt = {
     home: 'Home',
     quemSomos: 'Quem somos',
     servicos: 'Serviços',
+    eventos: 'Eventos',
     carreiras: 'Carreiras',
     contato: 'Contato',
     ecosistemaGeral: 'Ecossistema (Geral)',

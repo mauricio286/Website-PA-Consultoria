@@ -4,6 +4,7 @@ import styles from './Footer.module.css';
 import { imgLogoPa } from '../assets';
 import { api, type FooterSettingsData } from '../services/api';
 import { useLanguage } from '../i18n';
+import { useEventsEnabled } from '../hooks/useEventsEnabled';
 
 // Standard inline SVGs for perfectly scaled and colored icons
 const IconLinkedIn = () => (
@@ -32,6 +33,7 @@ const IconYouTube = () => (
 
 export default function Footer() {
   const { locale, t } = useLanguage();
+  const eventsEnabled = useEventsEnabled();
   const [footerData, setFooterData] = useState<FooterSettingsData | null>(null);
 
   useEffect(() => {
@@ -126,7 +128,7 @@ export default function Footer() {
             <Link to="/aldbioenergia" className={styles.navLink}>{t.footer.aldBioenergia}</Link>
             <Link to="/lavoura" className={styles.navLink}>{t.footer.lavoura}</Link>
             <Link to="/centrodepesquisa" className={styles.navLink}>{t.footer.centroPesquisa}</Link>
-            <Link to="/eventos" className={styles.navLink}>{t.footer.eventos}</Link>
+            {eventsEnabled && <Link to="/eventos" className={styles.navLink}>{t.footer.eventos}</Link>}
           </div>
         </div>
       </div>

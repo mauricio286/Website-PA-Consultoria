@@ -6,6 +6,12 @@ import path from 'path'
 import sharp from 'sharp'
 import { gcsStorage } from '@payloadcms/storage-gcs'
 import fs from 'fs'
+import dotenv from 'dotenv'
+
+if (fs.existsSync(path.resolve(process.cwd(), '.env.local'))) {
+  dotenv.config({ path: path.resolve(process.cwd(), '.env.local') })
+}
+dotenv.config()
 
 
 // Collections
@@ -27,6 +33,7 @@ import AldBioenergiaPage from './globals/AldBioenergiaPage'
 import LavouraPage from './globals/LavouraPage'
 import CentroPesquisaPage from './globals/CentroPesquisaPage'
 import PalestrasPage from './globals/PalestrasPage'
+import EventsPage from './globals/EventsPage'
 import CareersPage from './globals/CareersPage'
 import ContactSettings from './globals/ContactSettings'
 import FooterSettings from './globals/FooterSettings'
@@ -106,6 +113,7 @@ const config = buildConfig({
     LavouraPage,
     CentroPesquisaPage,
     PalestrasPage,
+    EventsPage,
     CareersPage,     // 4. Carreiras
     ContactSettings, // 5. Contato
     FooterSettings,  // 6. Footer

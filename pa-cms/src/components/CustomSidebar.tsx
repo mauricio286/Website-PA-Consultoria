@@ -128,38 +128,45 @@ export default async function CustomSidebar() {
           </details>
         </li>
 
-        {/* 2.4. Carreiras com submenu expandível */}
+        {/* 2.4. Eventos */}
+        <li>
+          <Link href="/admin/globals/events-page" className="pa-nav-link">
+            2.4. Eventos
+          </Link>
+        </li>
+
+        {/* 2.5. Carreiras com submenu expandível */}
         <li className="pa-nav-dropdown">
           <details open>
             <summary className="pa-nav-link pa-nav-link-summary">
-              2.4. Carreiras
+              2.5. Carreiras
             </summary>
             <ul className="pa-sub-list">
               <li>
                 <Link href="/admin/globals/careers-page" className="pa-sub-link">
-                  2.4.1. Geral
+                  2.5.1. Geral
                 </Link>
               </li>
               <li>
                 <Link href="/admin/collections/jobs" className="pa-sub-link">
-                  2.4.2. Vagas
+                  2.5.2. Vagas
                 </Link>
               </li>
             </ul>
           </details>
         </li>
 
-        {/* 2.5. Contato */}
+        {/* 2.6. Contato */}
         <li>
           <Link href="/admin/globals/contact-settings" className="pa-nav-link">
-            2.5. Contato
+            2.6. Contato
           </Link>
         </li>
 
-        {/* 2.6. Footer */}
+        {/* 2.7. Footer */}
         <li>
           <Link href="/admin/globals/footer-settings" className="pa-nav-link">
-            2.6. Footer
+            2.7. Footer
           </Link>
         </li>
       </ul>

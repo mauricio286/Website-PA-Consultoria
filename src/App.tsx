@@ -26,6 +26,7 @@ import Lavoura from './pages/Lavoura/Lavoura';
 import Palestras from './pages/Palestras/Palestras';
 import CentroPesquisa from './pages/CentroPesquisa/CentroPesquisa';
 import PesquisaAgronomica from './pages/PesquisaAgronomica/PesquisaAgronomica';
+import Eventos from './pages/Eventos/Eventos';
 import NotFound from './pages/NotFound/NotFound'; // Import NotFound
 
 function ScrollToTop() {
@@ -140,6 +141,7 @@ function App() {
           <Route path="/palestras" element={<Palestras />} />
           <Route path="/centropesquisa" element={<CentroPesquisa />} />
           <Route path="/pesquisaagronomica" element={<PesquisaAgronomica />} />
+          <Route path="/eventos" element={<Eventos />} />
           <Route path="/carreiras" element={<Carreiras />} />
           <Route path="/contato" element={<Contato />} />
           <Route path="*" element={<NotFound />} />

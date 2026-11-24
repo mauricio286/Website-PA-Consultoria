@@ -1,6 +1,7 @@
 import type { GlobalConfig } from 'payload'
 import { isLoggedIn } from '../access/isAdmin'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { homeCulturasField } from './homeCulturasFields'
 
 // Configuração de todos os textos e imagens editáveis da página inicial
 const HomePage: GlobalConfig = {
@@ -696,6 +697,15 @@ const HomePage: GlobalConfig = {
       label: '05 · Metodologia / Pilares',
       fields: [
         {
+          name: 'methodologyEnabled',
+          label: 'Exibir a seção "Estrutura" (Metodologia / Pilares) na Home',
+          type: 'checkbox',
+          defaultValue: false,
+          admin: {
+            description: 'Desativada por padrão: a seção "Culturas" (05.1) ocupa o lugar dela. Marque para voltar a exibi-la; o conteúdo abaixo é preservado.',
+          },
+        },
+        {
           name: 'methodologyBadge',
           label: 'Tag / Badge',
           type: 'text',
@@ -770,6 +780,9 @@ const HomePage: GlobalConfig = {
         },
       ],
     },
+
+    // ── Seção Culturas (bolhas interativas) — antes de Atuação ─────────────
+    homeCulturasField,
 
     // ── Seção Mapa / Atuação ───────────────────────────────────────────────
     {

@@ -105,6 +105,7 @@ export interface Config {
     'lavoura-page': LavouraPage;
     'centro-pesquisa-page': CentroPesquisaPage;
     'palestras-page': PalestrasPage;
+    'events-page': EventsPage;
     'careers-page': CareersPage;
     'contact-settings': ContactSetting;
     'footer-settings': FooterSetting;
@@ -117,6 +118,7 @@ export interface Config {
     'lavoura-page': LavouraPageSelect<false> | LavouraPageSelect<true>;
     'centro-pesquisa-page': CentroPesquisaPageSelect<false> | CentroPesquisaPageSelect<true>;
     'palestras-page': PalestrasPageSelect<false> | PalestrasPageSelect<true>;
+    'events-page': EventsPageSelect<false> | EventsPageSelect<true>;
     'careers-page': CareersPageSelect<false> | CareersPageSelect<true>;
     'contact-settings': ContactSettingsSelect<false> | ContactSettingsSelect<true>;
     'footer-settings': FooterSettingsSelect<false> | FooterSettingsSelect<true>;
@@ -993,6 +995,10 @@ export interface HomePage {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Desativada por padrão: a seção "Culturas" (05.1) ocupa o lugar dela. Marque para voltar a exibi-la; o conteúdo abaixo é preservado.
+   */
+  methodologyEnabled?: boolean | null;
   methodologyBadge?: string | null;
   /**
    * Dica: Use Enter para definir as quebras de linha.
@@ -1008,6 +1014,140 @@ export interface HomePage {
         id?: string | null;
       }[]
     | null;
+  culturas?: {
+    /**
+     * Desmarcado: a seção não aparece no site. Marque somente depois de preencher os textos e as fotos.
+     */
+    enabled?: boolean | null;
+    tag?: string | null;
+    titulo?: string | null;
+    subtitulo?: string | null;
+    painelKicker?: string | null;
+    painelTitulo?: string | null;
+    painelTexto?: string | null;
+    kickerCultura?: string | null;
+    kickerNumeros?: string | null;
+    soja?: {
+      nome?: string | null;
+      /**
+       * Breve texto sobre a atuação da PA nesta cultura.
+       */
+      texto?: string | null;
+      /**
+       * Aparece ao passar o mouse/tocar na bolha. Quadrada (1:1), mínimo 640×640 px.
+       */
+      foto?: (number | null) | Media;
+      /**
+       * Ex: 120
+       */
+      stat1Numero?: string | null;
+      stat1Legenda?: string | null;
+      stat2Numero?: string | null;
+      stat2Legenda?: string | null;
+      stat3Numero?: string | null;
+      stat3Legenda?: string | null;
+    };
+    milho?: {
+      nome?: string | null;
+      /**
+       * Breve texto sobre a atuação da PA nesta cultura.
+       */
+      texto?: string | null;
+      /**
+       * Aparece ao passar o mouse/tocar na bolha. Quadrada (1:1), mínimo 640×640 px.
+       */
+      foto?: (number | null) | Media;
+      /**
+       * Ex: 120
+       */
+      stat1Numero?: string | null;
+      stat1Legenda?: string | null;
+      stat2Numero?: string | null;
+      stat2Legenda?: string | null;
+      stat3Numero?: string | null;
+      stat3Legenda?: string | null;
+    };
+    algodao?: {
+      nome?: string | null;
+      /**
+       * Breve texto sobre a atuação da PA nesta cultura.
+       */
+      texto?: string | null;
+      /**
+       * Aparece ao passar o mouse/tocar na bolha. Quadrada (1:1), mínimo 640×640 px.
+       */
+      foto?: (number | null) | Media;
+      /**
+       * Ex: 120
+       */
+      stat1Numero?: string | null;
+      stat1Legenda?: string | null;
+      stat2Numero?: string | null;
+      stat2Legenda?: string | null;
+      stat3Numero?: string | null;
+      stat3Legenda?: string | null;
+    };
+    n1?: {
+      /**
+       * Ex: 15
+       */
+      valor?: string | null;
+      legenda?: string | null;
+      /**
+       * Aparece depois do número. Ex: "anos" → "15 anos".
+       */
+      tituloPainel?: string | null;
+      texto?: string | null;
+    };
+    n2?: {
+      /**
+       * Ex: 15
+       */
+      valor?: string | null;
+      legenda?: string | null;
+      /**
+       * Aparece depois do número. Ex: "anos" → "15 anos".
+       */
+      tituloPainel?: string | null;
+      texto?: string | null;
+    };
+    n3?: {
+      /**
+       * Ex: 15
+       */
+      valor?: string | null;
+      legenda?: string | null;
+      /**
+       * Aparece depois do número. Ex: "anos" → "15 anos".
+       */
+      tituloPainel?: string | null;
+      texto?: string | null;
+    };
+    n4?: {
+      /**
+       * Ex: 15
+       */
+      valor?: string | null;
+      legenda?: string | null;
+      /**
+       * Aparece depois do número. Ex: "anos" → "15 anos".
+       */
+      tituloPainel?: string | null;
+      texto?: string | null;
+    };
+    n5?: {
+      /**
+       * Ex: 15
+       */
+      valor?: string | null;
+      legenda?: string | null;
+      /**
+       * Aparece depois do número. Ex: "anos" → "15 anos".
+       */
+      tituloPainel?: string | null;
+      texto?: string | null;
+    };
+  };
   /**
    * Ex: Atuação
    */
@@ -1439,6 +1579,93 @@ export interface PalestrasPage {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events-page".
+ */
+export interface EventsPage {
+  id: number;
+  /**
+   * Desativada por padrão. Quando marcado, o menu "Eventos" aparece no cabeçalho e a página /eventos fica acessível. Desmarque para ocultar após o evento.
+   */
+  enabled?: boolean | null;
+  heroBadge?: string | null;
+  heroTitle: string;
+  heroSubtitle?: string | null;
+  heroImage?: (number | null) | Media;
+  statsTag?: string | null;
+  statsTitle?: string | null;
+  stats?:
+    | {
+        number: string;
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  aboutTitle?: string | null;
+  aboutText?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  infoItems?:
+    | {
+        key: string;
+        value: string;
+        id?: string | null;
+      }[]
+    | null;
+  partnersTag?: string | null;
+  partnersTitle?: string | null;
+  partnersLogos?:
+    | {
+        name: string;
+        logo: number | Media;
+        id?: string | null;
+      }[]
+    | null;
+  scheduleTag?: string | null;
+  scheduleTitle?: string | null;
+  scheduleImage?: (number | null) | Media;
+  scheduleSteps?:
+    | {
+        time: string;
+        title: string;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  ctaTitle?: string | null;
+  ctaSubtitle?: string | null;
+  ctaButtonLabel?: string | null;
+  ctaButtonUrl?: string | null;
+  ctaNotice?: string | null;
+  pastEventsTag?: string | null;
+  pastEventsTitle?: string | null;
+  pastEvents?:
+    | {
+        name: string;
+        date: string;
+        people?: string | null;
+        desc?: string | null;
+        photo?: (number | null) | Media;
+        galleryUrl?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "careers-page".
  */
 export interface CareersPage {
@@ -1614,6 +1841,7 @@ export interface HomePageSelect<T extends boolean = true> {
         customTextColor?: T;
         id?: T;
       };
+  methodologyEnabled?: T;
   methodologyBadge?: T;
   methodologyTitle?: T;
   methodologyTitleAlign?: T;
@@ -1625,6 +1853,98 @@ export interface HomePageSelect<T extends boolean = true> {
         icon?: T;
         image?: T;
         id?: T;
+      };
+  culturas?:
+    | T
+    | {
+        enabled?: T;
+        tag?: T;
+        titulo?: T;
+        subtitulo?: T;
+        painelKicker?: T;
+        painelTitulo?: T;
+        painelTexto?: T;
+        kickerCultura?: T;
+        kickerNumeros?: T;
+        soja?:
+          | T
+          | {
+              nome?: T;
+              texto?: T;
+              foto?: T;
+              stat1Numero?: T;
+              stat1Legenda?: T;
+              stat2Numero?: T;
+              stat2Legenda?: T;
+              stat3Numero?: T;
+              stat3Legenda?: T;
+            };
+        milho?:
+          | T
+          | {
+              nome?: T;
+              texto?: T;
+              foto?: T;
+              stat1Numero?: T;
+              stat1Legenda?: T;
+              stat2Numero?: T;
+              stat2Legenda?: T;
+              stat3Numero?: T;
+              stat3Legenda?: T;
+            };
+        algodao?:
+          | T
+          | {
+              nome?: T;
+              texto?: T;
+              foto?: T;
+              stat1Numero?: T;
+              stat1Legenda?: T;
+              stat2Numero?: T;
+              stat2Legenda?: T;
+              stat3Numero?: T;
+              stat3Legenda?: T;
+            };
+        n1?:
+          | T
+          | {
+              valor?: T;
+              legenda?: T;
+              tituloPainel?: T;
+              texto?: T;
+            };
+        n2?:
+          | T
+          | {
+              valor?: T;
+              legenda?: T;
+              tituloPainel?: T;
+              texto?: T;
+            };
+        n3?:
+          | T
+          | {
+              valor?: T;
+              legenda?: T;
+              tituloPainel?: T;
+              texto?: T;
+            };
+        n4?:
+          | T
+          | {
+              valor?: T;
+              legenda?: T;
+              tituloPainel?: T;
+              texto?: T;
+            };
+        n5?:
+          | T
+          | {
+              valor?: T;
+              legenda?: T;
+              tituloPainel?: T;
+              texto?: T;
+            };
       };
   mapTag?: T;
   mapTitle?: T;
@@ -1803,6 +2123,76 @@ export interface PalestrasPageSelect<T extends boolean = true> {
   title?: T;
   leftContent?: T;
   image?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events-page_select".
+ */
+export interface EventsPageSelect<T extends boolean = true> {
+  enabled?: T;
+  heroBadge?: T;
+  heroTitle?: T;
+  heroSubtitle?: T;
+  heroImage?: T;
+  statsTag?: T;
+  statsTitle?: T;
+  stats?:
+    | T
+    | {
+        number?: T;
+        label?: T;
+        id?: T;
+      };
+  aboutTitle?: T;
+  aboutText?: T;
+  infoItems?:
+    | T
+    | {
+        key?: T;
+        value?: T;
+        id?: T;
+      };
+  partnersTag?: T;
+  partnersTitle?: T;
+  partnersLogos?:
+    | T
+    | {
+        name?: T;
+        logo?: T;
+        id?: T;
+      };
+  scheduleTag?: T;
+  scheduleTitle?: T;
+  scheduleImage?: T;
+  scheduleSteps?:
+    | T
+    | {
+        time?: T;
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  ctaTitle?: T;
+  ctaSubtitle?: T;
+  ctaButtonLabel?: T;
+  ctaButtonUrl?: T;
+  ctaNotice?: T;
+  pastEventsTag?: T;
+  pastEventsTitle?: T;
+  pastEvents?:
+    | T
+    | {
+        name?: T;
+        date?: T;
+        people?: T;
+        desc?: T;
+        photo?: T;
+        galleryUrl?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

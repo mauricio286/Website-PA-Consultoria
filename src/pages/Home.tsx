@@ -5,6 +5,7 @@ import type { HomePageData } from '../services/api';
 import Introduction from '../components/Introduction';
 import Stats from '../components/Stats';
 import Methodology from '../components/Methodology';
+import Culturas from '../components/Culturas';
 import Atuacao from '../components/Atuacao';
 import Parceria from '../components/Parceria';
 import Testimonials from '../components/Testimonials';
@@ -158,7 +159,11 @@ export default function Home() {
       <Stats data={homeData} />
 
       {/* Pilares Metodológicos */}
-      <Methodology data={homeData} />
+      {/* "Estrutura": desativada por padrão (a seção Culturas ocupa o lugar). Ative no CMS: Home › 05 */}
+      {homeData?.methodologyEnabled === true && <Methodology data={homeData} />}
+
+      {/* Culturas (bolhas interativas) — controlada pelo CMS (Home › 05.1) */}
+      <Culturas data={homeData} />
 
       {/* Atuação (Mapa) */}
       <Atuacao data={homeData} />

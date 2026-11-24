@@ -7,6 +7,7 @@ export const en: Translations = {
     home: 'Home',
     quemSomos: 'About us',
     servicos: 'Services',
+    eventos: 'Events',
     carreiras: 'Careers',
     contato: 'Contact',
     ecosistemaGeral: 'Ecosystem (General)',

@@ -40,6 +40,42 @@ export interface Media {
 // GLOBALS TYPES
 // ─────────────────────────────────────────────────────────────────────────────
 
+export interface HomeCulturaData {
+  nome?: string;
+  texto?: string;
+  foto?: Media | string | null;
+  stat1Numero?: string; stat1Legenda?: string;
+  stat2Numero?: string; stat2Legenda?: string;
+  stat3Numero?: string; stat3Legenda?: string;
+}
+
+export interface HomeNumeroData {
+  valor?: string;
+  legenda?: string;
+  tituloPainel?: string;
+  texto?: string;
+}
+
+export interface HomeCulturasData {
+  enabled?: boolean;
+  tag?: string;
+  titulo?: string;
+  subtitulo?: string;
+  painelKicker?: string;
+  painelTitulo?: string;
+  painelTexto?: string;
+  kickerCultura?: string;
+  kickerNumeros?: string;
+  soja?: HomeCulturaData;
+  milho?: HomeCulturaData;
+  algodao?: HomeCulturaData;
+  n1?: HomeNumeroData;
+  n2?: HomeNumeroData;
+  n3?: HomeNumeroData;
+  n4?: HomeNumeroData;
+  n5?: HomeNumeroData;
+}
+
 export interface HomePageData {
   heroTitle?: string;
   heroSubtitle?: string;
@@ -102,6 +138,8 @@ export interface HomePageData {
     customBgColor?: string;
     customTextColor?: string;
   }>;
+  culturas?: HomeCulturasData;
+  methodologyEnabled?: boolean;
   methodologyBadge?: string;
   methodologyTitle?: string;
   methodologyTitleAlign?: 'left' | 'center' | 'right' | 'justify';
@@ -272,6 +310,60 @@ export interface PalestrasPageData {
   title?: string;
   leftContent?: any; // Lexical JSON
   image?: Media | string;
+}
+
+export interface EventsPageData {
+  enabled?: boolean;
+  heroBadge?: string;
+  heroTitle?: string;
+  heroSubtitle?: string;
+  heroImage?: Media | string;
+  statsTag?: string;
+  statsTitle?: string;
+  stats?: Array<{
+    id?: string;
+    number: string;
+    label: string;
+  }>;
+  aboutTitle?: string;
+  aboutText?: any; // Lexical JSON
+  infoItems?: Array<{
+    id?: string;
+    key: string;
+    value: string;
+  }>;
+  partnersTag?: string;
+  partnersTitle?: string;
+  partnersLogos?: Array<{
+    id?: string;
+    name: string;
+    logo: Media | string;
+  }>;
+  scheduleTag?: string;
+  scheduleTitle?: string;
+  scheduleImage?: Media | string;
+  scheduleSteps?: Array<{
+    id?: string;
+    time: string;
+    title: string;
+    description?: string;
+  }>;
+  ctaTitle?: string;
+  ctaSubtitle?: string;
+  ctaButtonLabel?: string;
+  ctaButtonUrl?: string;
+  ctaNotice?: string;
+  pastEventsTag?: string;
+  pastEventsTitle?: string;
+  pastEvents?: Array<{
+    id?: string;
+    name: string;
+    date: string;
+    people?: string;
+    desc?: string;
+    photo?: Media | string;
+    galleryUrl?: string;
+  }>;
 }
 
 
@@ -721,6 +813,22 @@ export const api = {
       async () => {
         const res = await fetch(getLocaleUrl('/api/globals/palestras-page', lang));
         if (!res.ok) throw new Error('Erro ao buscar dados de PalestrasPage');
+        return res.json();
+      },
+      fallback,
+      onUpdate
+    );
+  },
+
+  async getEventsPage(locale?: string, onUpdate?: (data: EventsPageData) => void): Promise<EventsPageData> {
+    const lang = locale || 'pt';
+    const key = `events-${lang}`;
+    const fallback = getStaticData(lang).globals?.['events-page'] || {};
+    return fetchSwr(
+      key,
+      async () => {
+        const res = await fetch(getLocaleUrl('/api/globals/events-page', lang));
+        if (!res.ok) throw new Error('Erro ao buscar dados de EventsPage');
         return res.json();
       },
       fallback,

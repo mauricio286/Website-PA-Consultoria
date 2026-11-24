@@ -1,0 +1,23 @@
+# Arquivos que NÃO vão para o Cloud Build (substitui o uso do .gitignore pelo gcloud)
+.gcloudignore
+.git
+.gitignore
+
+# Segredos e configuração local — nunca enviar
+.env
+.env.*
+!.env.example
+gcs-credentials.json
+*.json.key
+
+# Artefatos locais / dependências (reinstaladas e recompiladas no Dockerfile)
+node_modules/
+.next/
+dist/
+.payload/
+tsconfig.tsbuildinfo
+
+# Banco/mídia de desenvolvimento (produção usa Cloud SQL + bucket GCS)
+docker-compose.yml
+media/
+cms_logs.json
