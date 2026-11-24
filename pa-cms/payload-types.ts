@@ -1588,34 +1588,33 @@ export interface EventsPage {
    */
   enabled?: boolean | null;
   heroBadge?: string | null;
-  heroTitle: string;
+  heroTitleLine1?: string | null;
+  heroTitleLine2?: string | null;
   heroSubtitle?: string | null;
+  heroDateLocation?: string | null;
+  heroCtaLabel?: string | null;
+  /**
+   * Vazio = imagem padrão do site.
+   */
   heroImage?: (number | null) | Media;
-  statsTag?: string | null;
-  statsTitle?: string | null;
-  stats?:
+  highlightsTag?: string | null;
+  highlightsTitle1?: string | null;
+  highlightsTitleAccent?: string | null;
+  highlightsDescription?: string | null;
+  /**
+   * Recomendado: 4 itens.
+   */
+  highlightsStats?:
     | {
-        number: string;
+        value: string;
         label: string;
         id?: string | null;
       }[]
     | null;
-  aboutTitle?: string | null;
-  aboutText?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
+  aboutTitle1?: string | null;
+  aboutTitleAccent?: string | null;
+  aboutP1?: string | null;
+  aboutP2?: string | null;
   infoItems?:
     | {
         key: string;
@@ -1623,8 +1622,24 @@ export interface EventsPage {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Recomendado: 3 painéis. Foto vazia = imagem padrão do site.
+   */
+  universes?:
+    | {
+        tag?: string | null;
+        crop: string;
+        focus?: string | null;
+        image?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
   partnersTag?: string | null;
-  partnersTitle?: string | null;
+  partnersTitle1?: string | null;
+  partnersTitleAccent?: string | null;
+  /**
+   * As logos aparecem em branco sobre fundo escuro. Vazio = Syngenta, Corteva, BASF e Bayer.
+   */
   partnersLogos?:
     | {
         name: string;
@@ -1632,32 +1647,51 @@ export interface EventsPage {
         id?: string | null;
       }[]
     | null;
-  scheduleTag?: string | null;
-  scheduleTitle?: string | null;
-  scheduleImage?: (number | null) | Media;
-  scheduleSteps?:
+  experienceTag?: string | null;
+  experienceTitle1?: string | null;
+  experienceTitleAccent?: string | null;
+  experienceStepLabel?: string | null;
+  /**
+   * Cada etapa troca a foto grande ao lado. Foto vazia = imagem padrão.
+   */
+  experienceSteps?:
     | {
         time: string;
         title: string;
         description?: string | null;
+        caption?: string | null;
+        image?: (number | null) | Media;
         id?: string | null;
       }[]
     | null;
-  ctaTitle?: string | null;
-  ctaSubtitle?: string | null;
-  ctaButtonLabel?: string | null;
-  ctaButtonUrl?: string | null;
-  ctaNotice?: string | null;
-  pastEventsTag?: string | null;
-  pastEventsTitle?: string | null;
+  ticketsBadge?: string | null;
+  ticketsTitle?: string | null;
+  ticketsDescription?: string | null;
+  ticketsCtaLabel?: string | null;
+  ticketsCtaUrl?: string | null;
+  ticketsNote?: string | null;
+  pastTag?: string | null;
+  pastTitle1?: string | null;
+  pastTitleAccent?: string | null;
+  pastViewLabel?: string | null;
+  pastCloseLabel?: string | null;
+  pastPhotoLabel?: string | null;
   pastEvents?:
     | {
         name: string;
         date: string;
         people?: string | null;
         desc?: string | null;
-        photo?: (number | null) | Media;
-        galleryUrl?: string | null;
+        cover?: (number | null) | Media;
+        /**
+         * Vazio = galeria padrão do site.
+         */
+        gallery?:
+          | {
+              image: number | Media;
+              id?: string | null;
+            }[]
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -2134,20 +2168,27 @@ export interface PalestrasPageSelect<T extends boolean = true> {
 export interface EventsPageSelect<T extends boolean = true> {
   enabled?: T;
   heroBadge?: T;
-  heroTitle?: T;
+  heroTitleLine1?: T;
+  heroTitleLine2?: T;
   heroSubtitle?: T;
+  heroDateLocation?: T;
+  heroCtaLabel?: T;
   heroImage?: T;
-  statsTag?: T;
-  statsTitle?: T;
-  stats?:
+  highlightsTag?: T;
+  highlightsTitle1?: T;
+  highlightsTitleAccent?: T;
+  highlightsDescription?: T;
+  highlightsStats?:
     | T
     | {
-        number?: T;
+        value?: T;
         label?: T;
         id?: T;
       };
-  aboutTitle?: T;
-  aboutText?: T;
+  aboutTitle1?: T;
+  aboutTitleAccent?: T;
+  aboutP1?: T;
+  aboutP2?: T;
   infoItems?:
     | T
     | {
@@ -2155,8 +2196,18 @@ export interface EventsPageSelect<T extends boolean = true> {
         value?: T;
         id?: T;
       };
+  universes?:
+    | T
+    | {
+        tag?: T;
+        crop?: T;
+        focus?: T;
+        image?: T;
+        id?: T;
+      };
   partnersTag?: T;
-  partnersTitle?: T;
+  partnersTitle1?: T;
+  partnersTitleAccent?: T;
   partnersLogos?:
     | T
     | {
@@ -2164,24 +2215,32 @@ export interface EventsPageSelect<T extends boolean = true> {
         logo?: T;
         id?: T;
       };
-  scheduleTag?: T;
-  scheduleTitle?: T;
-  scheduleImage?: T;
-  scheduleSteps?:
+  experienceTag?: T;
+  experienceTitle1?: T;
+  experienceTitleAccent?: T;
+  experienceStepLabel?: T;
+  experienceSteps?:
     | T
     | {
         time?: T;
         title?: T;
         description?: T;
+        caption?: T;
+        image?: T;
         id?: T;
       };
-  ctaTitle?: T;
-  ctaSubtitle?: T;
-  ctaButtonLabel?: T;
-  ctaButtonUrl?: T;
-  ctaNotice?: T;
-  pastEventsTag?: T;
-  pastEventsTitle?: T;
+  ticketsBadge?: T;
+  ticketsTitle?: T;
+  ticketsDescription?: T;
+  ticketsCtaLabel?: T;
+  ticketsCtaUrl?: T;
+  ticketsNote?: T;
+  pastTag?: T;
+  pastTitle1?: T;
+  pastTitleAccent?: T;
+  pastViewLabel?: T;
+  pastCloseLabel?: T;
+  pastPhotoLabel?: T;
   pastEvents?:
     | T
     | {
@@ -2189,8 +2248,13 @@ export interface EventsPageSelect<T extends boolean = true> {
         date?: T;
         people?: T;
         desc?: T;
-        photo?: T;
-        galleryUrl?: T;
+        cover?: T;
+        gallery?:
+          | T
+          | {
+              image?: T;
+              id?: T;
+            };
         id?: T;
       };
   updatedAt?: T;

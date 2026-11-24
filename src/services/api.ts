@@ -314,55 +314,73 @@ export interface PalestrasPageData {
 
 export interface EventsPageData {
   enabled?: boolean;
+  // 01 · Hero
   heroBadge?: string;
-  heroTitle?: string;
+  heroTitleLine1?: string;
+  heroTitleLine2?: string;
   heroSubtitle?: string;
-  heroImage?: Media | string;
-  statsTag?: string;
-  statsTitle?: string;
-  stats?: Array<{
+  heroDateLocation?: string;
+  heroCtaLabel?: string;
+  heroImage?: Media | string | null;
+  // 02 · O evento
+  highlightsTag?: string;
+  highlightsTitle1?: string;
+  highlightsTitleAccent?: string;
+  highlightsDescription?: string;
+  highlightsStats?: Array<{ id?: string; value?: string; label?: string }>;
+  // 03 · Sobre
+  aboutTitle1?: string;
+  aboutTitleAccent?: string;
+  aboutP1?: string;
+  aboutP2?: string;
+  infoItems?: Array<{ id?: string; key?: string; value?: string }>;
+  universes?: Array<{
     id?: string;
-    number: string;
-    label: string;
+    tag?: string;
+    crop?: string;
+    focus?: string;
+    image?: Media | string | null;
   }>;
-  aboutTitle?: string;
-  aboutText?: any; // Lexical JSON
-  infoItems?: Array<{
-    id?: string;
-    key: string;
-    value: string;
-  }>;
+  // 04 · Empresas
   partnersTag?: string;
-  partnersTitle?: string;
-  partnersLogos?: Array<{
+  partnersTitle1?: string;
+  partnersTitleAccent?: string;
+  partnersLogos?: Array<{ id?: string; name?: string; logo?: Media | string | null }>;
+  // 05 · Experiência
+  experienceTag?: string;
+  experienceTitle1?: string;
+  experienceTitleAccent?: string;
+  experienceStepLabel?: string;
+  experienceSteps?: Array<{
     id?: string;
-    name: string;
-    logo: Media | string;
-  }>;
-  scheduleTag?: string;
-  scheduleTitle?: string;
-  scheduleImage?: Media | string;
-  scheduleSteps?: Array<{
-    id?: string;
-    time: string;
-    title: string;
+    time?: string;
+    title?: string;
     description?: string;
+    caption?: string;
+    image?: Media | string | null;
   }>;
-  ctaTitle?: string;
-  ctaSubtitle?: string;
-  ctaButtonLabel?: string;
-  ctaButtonUrl?: string;
-  ctaNotice?: string;
-  pastEventsTag?: string;
-  pastEventsTitle?: string;
+  // 06 · Ingressos
+  ticketsBadge?: string;
+  ticketsTitle?: string;
+  ticketsDescription?: string;
+  ticketsCtaLabel?: string;
+  ticketsCtaUrl?: string;
+  ticketsNote?: string;
+  // 07 · Edições anteriores
+  pastTag?: string;
+  pastTitle1?: string;
+  pastTitleAccent?: string;
+  pastViewLabel?: string;
+  pastCloseLabel?: string;
+  pastPhotoLabel?: string;
   pastEvents?: Array<{
     id?: string;
-    name: string;
-    date: string;
+    name?: string;
+    date?: string;
     people?: string;
     desc?: string;
-    photo?: Media | string;
-    galleryUrl?: string;
+    cover?: Media | string | null;
+    gallery?: Array<{ id?: string; image?: Media | string | null }>;
   }>;
 }
 
